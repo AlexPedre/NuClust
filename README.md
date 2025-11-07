@@ -28,4 +28,45 @@ git clone https://github.com/AlexPedre/NuClust.git
 cd NuClust/NuClust/Targets/YOUR_TARGET
 make
 ```
-The precompiled binaries for Linux (x86, x64 and ARM) and Windows (x86 and x64) are in NuClust/NuClust/Bin directory.
+The precompiled binaries for Linux (x86, x64 and ARM) and Windows (x86 and x64) are in `NuClust/NuClust/Bin` directory.
+
+## 🧪 Usage
+```
+NuClust 0.6.1.1 - (c) 2022-2025, Alessandro Pedretti
+
+Usage: NuClust -b[WHAT] -c[CLUSTFILE] -d[DIST] -fh -i[CLUSTMAXITER]
+               -k[CLUSTNUM] -n[SEQNAME] -r[SEED] -s[SEQUENCE] -t[TOPNUM] -v NUPACK_FILE
+
+Supported NUPACK input formats:
+ csv, txt
+
+Options:
+ b -> Build the 3D structures of:
+      CLOSEST     = Structures closest to each cluster centroid
+      LOWEST      = Structures with the lowest energy of each cluster
+      MFE         = Lowest energy structure
+      SHARED      = Shared substructure for each cluster
+ c -> Output cluster file
+ d -> Parameters used to calculate the distance for the cluster analysis:
+      APTAMAT     = Matrix-based similarity of secondary structure with MFE
+      BP          = Number of base pairs
+      DISTANCE    = Distance from MFE
+      ENERGY      = Energy hcal/mol
+      PROBABILITY = Suboptimal structure probability
+      STRUCTURE   = H-bond network
+      The parameters must be separated by a space and between double quotes
+ f -> Fix the decimal separator according the locale settings
+ h -> Show this help
+ i -> Maximum number of iterations for cluster analysis (default 1000)
+ k -> Number of clusters (default 20)
+ n -> Sequence name
+ s -> Base sequence (for csv format)
+ r -> Seed for random number generator
+ t -> Analyze the top ranked suboptimal structures (default 10, 0 = all)
+ v -> Save the script to show the restraint in VEGA ZZ
+
+Examples:
+ NuClust nupack_file.txt
+ NuClust -k 10 -c cluster_file.csv nupack_file.txt
+ NuClust -f -c cluster_file.csv -d "Bp Energy Structure" nupack_file.txt NuClust -b shared -c cluster_file.csv -d Structure -v nupack_file.txt
+```
