@@ -23,10 +23,3 @@ The software groups similar nucleotide sequences based on sequence similarity an
 - **MinGW/MinGW-w64** (Windows only) `
 
 ---
-
-## ⚙️ Installation and Compilation
-
-1. **Extract the archive**
-   ```bash
-   unzip Src.zip
-   cd Src
