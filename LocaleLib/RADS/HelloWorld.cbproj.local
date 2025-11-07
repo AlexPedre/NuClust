@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/01/26 14:12:48.000.570,=C:\Users\Alessandro Pedretti\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2018/01/26 14:12:48.000.993,=X:\Lcc\Vega\Src\LocaleLib\Example\main.c</Transaction>
+    <Transaction>2018/01/26 14:13:06.000.135,C:\Users\Alessandro Pedretti\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=X:\Lcc\Vega\Src\LocaleLib\RADS\HelloWorldPCH1.h</Transaction>
+    <Transaction>2018/01/26 14:13:16.000.779,C:\Users\Alessandro Pedretti\Documents\Embarcadero\Studio\Projects\Project1.cbproj=X:\Lcc\Vega\Src\LocaleLib\RADS\HelloWorld.cbproj</Transaction>
+    <Transaction>2018/01/26 14:14:56.000.413,=X:\Lcc\Vega\Src\LocaleLib\RADS\Win32\Debug\locale.lib</Transaction>
+    <Transaction>2018/01/26 14:18:07.000.155,=X:\Lcc\Vega\Src\LocaleLib\RADS\Win64\Debug\locale.a</Transaction>
+  </Transactions>
+</BorlandProject>

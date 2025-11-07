@@ -1,0 +1,28 @@
+#
+# ********************************************
+# ****      Makefile for HelloWorld       ****
+# **** (c) 2001-2025, Alessandro Pedretti ****
+# ****           Linux version            ****
+# ********************************************
+#
+#
+
+CC        = gcc
+CFLAGS     = -O2
+LDFLAGS    = -s -llocale
+LIBDIR    = ../Linux
+
+OBJS   = main.o
+
+all: helloworld_linux
+
+helloworld_linux: main.o
+	$(CC) $(CFLAGS) -o helloworld_linux main.o -L $(LIBDIR) $(LDFLAGS)
+
+clean: 
+	rm -f *.o
+
+main.o: main.c globstr.h ../locale.h
+	$(CC) $(CFLAGS) -c main.c
+
+

@@ -1,0 +1,24 @@
+## version $VER: XX.catalog XX.XX ($TODAY)
+## language X
+## codeset 0
+;
+;
+; ****************************
+; **** HelloWorld catalog ****
+; ****************************
+;
+; © 2001, Alessandro Pedretti
+;
+; $VER: HelloWorld.catalog 1.0 (07.04.2001)
+;
+;
+;
+; "Hello World" string
+MSG_HELLO
+
+; Hello World !
+;
+; "Done" string
+MSG_DONE
+
+; Done\n

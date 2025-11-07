@@ -1,0 +1,28 @@
+#
+# ********************************************
+# ****      Makefile for HelloWorld       ****
+# **** (c) 2001-2025, Alessandro Pedretti ****
+# ****            Irix version            ****
+# ********************************************
+#
+#
+
+CC         = cc
+CFLAGS     = -O2
+LDFLAGS    = -s -llocale
+LIBDIR     = ../Irix
+
+OBJS   = main.o
+
+all: helloworld_irix
+
+helloworld_irix: main.o
+	$(CC) $(CFLAGS) -o helloworld_irix main.o -L $(LIBDIR) $(LDFLAGS)
+
+clean: 
+	rm -f *.o
+
+main.o: main.c globstr.h ../locale.h
+	$(CC) $(CFLAGS) -c main.c
+
+

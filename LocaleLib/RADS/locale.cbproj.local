@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/01/26 13:59:13.000.735,=C:\Users\Alessandro Pedretti\Documents\Embarcadero\Studio\Projects\File1.c</Transaction>
+    <Transaction>2018/01/26 13:59:13.000.523,=C:\Users\Alessandro Pedretti\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2018/01/26 14:00:00.000.122,C:\Users\Alessandro Pedretti\Documents\Embarcadero\Studio\Projects\File1.c=X:\Lcc\Vega\Src\LocaleLib\RADS\dllmain.c</Transaction>
+    <Transaction>2018/01/26 14:00:20.000.701,C:\Users\Alessandro Pedretti\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=X:\Lcc\Vega\Src\LocaleLib\RADS\localePCH1.h</Transaction>
+    <Transaction>2018/01/26 14:00:27.000.899,C:\Users\Alessandro Pedretti\Documents\Embarcadero\Studio\Projects\Project1.cbproj=X:\Lcc\Vega\Src\LocaleLib\RADS\locale.cbproj</Transaction>
+    <Transaction>2018/01/26 14:00:42.000.041,=X:\Lcc\Vega\Src\LocaleLib\loc.c</Transaction>
+    <Transaction>2018/01/26 14:02:09.000.792,=X:\Lcc\Vega\Src\LocaleLib\locale.rc</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,258 @@
+
+                *******************************************
+                ****           LocaleLib V2.0          ****
+                **** Library for language localization ****
+                *******************************************
+
+
+
+1. Introduction.
+================
+LocaleLib  is  a C library  developed to  translate the applications in some
+languages  implementing  the  Locale  Technology  of  AmigaOS.  This  method
+allows  to translate the langauge strings without recompile the source code.
+A  simply translation  of a  template  text file  and a  conversion with  an
+included utility is needed.
+
+Each  language requires  a translation  file (called  catalog) that  has the
+uppercase  name of  the  program that  use it,  and  the .catalog  extension
+(e.g.  VEGA.catalog, WINDD.catalog).  Each file  must  be placed  in a  sub-
+directory  with the  name  of the  language in  lower  case (e.g.  italiano,
+français,  deutsch,  etc)  of  the  Catalogs folder,  present  in  the  same
+directory where the application is placed.
+
+All  softwares  that  use  this  technology can  run  without catalog  files
+because  the default  language (e.g. english) is bult-in in the source code.
+The  catalogs  are binary  files in IFF  format and you  must use a specific
+compiler  to build  them starting  from a  text file.  For this  reason, the
+LocaleLib  package includes  the  FlexCat catalog  compiler.  To create  the
+catalog descriptor, the catalog translator and the include file, you can see
+its documentation.
+
+
+
+2. Building the library.
+========================
+The  package includes  the  binary  files for  some  languages and operating
+systems,  but if you  want build the library for other systems, you can edit
+the  makefile changing the compilation parameters that you need. Please note
+that  the library  can  be  static (liblocale.a  or  locale.lib) or  dynamic
+(liblocale.so  or  locale.dll)  and  remember to  define  LOCALE_DLL  before
+including  the locale.h  header when you are making a Win32 application that
+uses the locale.dll
+
+
+
+3. Building the catalog file for your application.
+==================================================
+For  example, the name of your application is MyPrg. As first step, you must
+create  a MYPRG.cd catalog descriptor file  with your preferred text editor.
+Each  string  must  be inserted  as  two  lines:  the  first is  the  string
+identificator  and  the second  is the  character string. As option, you can
+indicate  the  ID, the minimum  and the maximum lenght  of the string on the
+left  of  the string  identificator,  using  the format  (ID/MinLen/MaxLen).
+Better  don't  use the  ID (identification number)  becuase the compiler can
+assign  it automatically. The semicolon (;) at the beginning of line is used
+as the remark. For more information, see the FlexCat documentation.
+
+Example:
+; "Hello World" string
+MSG_HELLO (//)
+Hello World !
+
+The  second  step is the  choice of  the .sd file  that is the template that
+generates  the  string table  of the built-in  language compatible with your
+programming language. FlexCat has some template, but you can easy create one
+following    the    simple   syntax    explained   in   its   documentation.
+Now you can create the string table as include file and the MYPRG.ct catalog
+translator file:
+
+flexcat MYPRG.cd globstr.h=HELLOWORLD.sd
+flexcat MYPRG.cd NEWCTFILE MYPRG.ct
+
+The  catalog translator  file must be contain the translated strings. Change
+the first three lines:
+
+## version $VER: XX.catalog XX.XX ($TODAY)
+## language X
+## codeset 0
+
+with:
+
+## version $VER: MYPRG.catalog 1.00 (compilation_date)
+## language your_language
+## codeset 0
+
+The  compilation_date must be in DD.MM.YYYY format and your_language must be
+in  lower case.  In each blank line,  you can translate the string showed in
+the    next    line,    using    only   the    ANSI/ISO    character    set.
+At this point, build the VEGA.catalog typing:
+
+flexcat MYPRG.cd MYPRG.ct CATALOG MYPRG.catalog
+
+and      move      VEGA.catalog     in     the     appropriate     directory
+(e.g.  Catalog/YOUR_LANGUAGE/). Please note that the YOUR_LANGUAGE directory
+must be in lower-case, otherwiese the Unix systems can't find the catalog.
+
+
+
+4. Implemented functions.
+=========================
+This  is the  list in  alphabetical order  of the  functions implemented  in
+LocaleLib:
+
+
+void LocAmigaVer(char *Ptr, AMIGAVER *Ver)
+
+It  returns the name, the  date, the version and  the release of an AmigaDOS
+file,  loaded  in  memory  at  the  Ptr  location.  These  informations  are
+returned in Ver structure pointer (see locale.h).
+
+
+int LocCreateFastIndex(void *LocInfo)
+
+Create  and use  the fast index. This  is useful for very large catalogs. If
+the function fails, FALSE is returned.
+
+
+void LocCloseCat(void *Cat)
+
+It  closes a catalog, deallocating the memory and the resources.  Cat is the
+catalog pointer.
+
+
+int LocDosPrintf(FILE *FH, char *AnsiStr, ...)
+
+This  function replaces  the standard  fprintf  and adds  the capability  to
+change the character set from ANSI/ISO into Ms-Dos. It returns the number of
+charaters printed out, or -1 if an error occurs.
+
+Example: LocDosPrintf(stdout, "Città: %s", City);
+
+
+void LocIso2Dos(char *Str, short Back)
+
+It  converts the string Str from ANSI/ISO into Ms-Dos (Back = FALSE) format,
+or from Ms-Dos into ANSI/ISO (Back = TRUE).
+
+
+char *LocGetCatStr(void *Cat, unsigned int StrID, char *BuiltIn)
+
+It  translates a  string indicating  the catalog  (Cat pointer,  opened with
+LocOpenCat()), the string identification number (StrID) and the string array
+BuiltIn    that    contains    all    strings    in    built-in    language.
+The returned value is the pointer to the translated string.
+
+
+int LocGetErr(void)
+
+This  function returns the error code if a function of locale library fails.
+If no error, it returns LOCERR_NONE (0). See the error codes in locale.h.
+
+
+void LocGetErrStr(char *Buffer, int Size)
+
+It  returns the  complete  error  message in  the  Buffer  string with  Size
+dimension.
+
+
+void *LocOpenCat(char *CatName, char *CatDir, char *Lang,
+                 unsigned int Ver, char *BuiltIn)
+
+This  function opens and loads into the memory the catalog file with CatName
+name,  placed in  CatDir directory, with Lang language and with Ver version.
+If Lang is "auto", the automatic detection of the system language is enabled.
+This function isn't available with all operating systems. If isn't possible,
+the  LOCERR_AUTONOTSUP  error code is  reported. BuiltIn  is the name of the
+built-in language (e.g. "english").
+The  functions,  if don't  fails, returns  the memory  pointer to manage the
+catalog.
+
+Example: Catalog = LocOpenCat("MYPRG", "C:\\Program Files\\MyPrg",
+                              "italiano", 1, "english");
+
+
+void LocStrCpy(char *Dest, char *Src)
+
+strcpy() replacement with ANSI/ISO into Ms-Dos charater set conversion.
+
+
+char *LocGetLangStr(void)
+
+This  is  a specific Win32  function that returns  the string pointer of the
+current system language. See the include tables.h.
+
+
+
+5. A simple application.
+========================
+In  this package  is included  an example  that highlights  the library  use
+and   it's  placed   in  Example  directory.  The  C  source  code  is  self
+explained and can be used as is to include in other applications.
+
+
+
+6. Hystory.
+===========
+2.0
+- Significant performance improvement.
+- LocCreateFastIndex() function.
+
+1.1
+- Fixed multiple catalog loading bug.
+- Added Mingw32 version.
+
+1.0
+- First public release.
+
+
+
+7. Copyright and disclaimers.
+=============================
+All  trademarks  and  software  directly  or  indirectly  referred  in  this
+document,  are  copyrighted  from  legal owners.  LocaleLib  is  a  freeware
+program  that  can  be  spread  through  Internet,  BBS,  CD-ROM  and  other
+electronic  formats. The  Author  of this  program accepts no  responsibilty
+for  hardware/software  damages resulting  from  the  use of  this  package.
+No   warranty   is   made   about   the   software   or   its   performance.
+Use  and  copying  of  this  software  and  the  preparation  of  derivative
+works  based on  this  software  are permitted,  so  long  as the  following
+conditions are met:
+
+-  The copyright  notice  and this  entire notice  are  included intact  and
+prominently carried on all copies and supporting documentation.
+
+-  No  fees or  compensation  are  charged for  use,  copies,  or access  to
+this   software.  You   may  charge  a  nominal  distribution  fee  for  the
+physical  act  of transferring  a  copy,  but you  may  not  charge for  the
+program itself.
+
+-  If  you  change  the  source code  to improve the LocaleLib performances,
+please  contact  the authors  to  add  your  modifications in  the  official
+package.
+
+-  Any work  distributed or  published  that in  whole or  in part  contains
+or  is a  derivative of  this software  or any  part thereof  is subject  to
+the   terms  of   this  agreement.  The  aggregation  of  another  unrelated
+program  with this  software or  its derivative  on a  volume of  storage or
+distribution  medium  does not  bring  the  other  program under  the  scope
+of these terms.
+
+
+
+
+                            **** LocaleLib ****
+
+                    is a software developed in 2000-2025
+                           by Alessandro Pedretti
+                            All rights reserved.
+
+                            Alessandro Pedretti
+                    Dipartimento di Scienze Farmaceutiche
+                      Università degli Studi di Milano
+                            Via Mangiagalli, 25
+                           I-20133 Milano - Italy
+                            Tel. +39 02 503 19332
+                            Fax. +39 02 503 19359
+                           E-Mail: info@vegazz.net
+                          WWW: http://www.vegazz.net

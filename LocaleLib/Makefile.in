@@ -1,0 +1,41 @@
+#
+# *******************************************
+# ****       Makefile for LocaleLib      ****
+# **** (c) 1996-2025 Alessandro Pedretti ****
+# ****              Targets              ****
+# *******************************************
+#
+#
+# Please don't edit this file. See the specific Makefiles.
+#
+
+OBJS       = loc$(O) $(EXTRAOBJ)
+
+all: $(DLL32) $(DLL64) $(LIBRARY) $(SHARED)
+
+
+$(DLL64): $(OBJS)
+	link /NOLOGO /DLL -out:$(DLL64).dll loc$(O) locale.res msvcrt.lib bufferoverflowu.lib
+
+$(DLL32): $(OBJS)
+#	$(CC) -s -shared $(CFLAGS) -o $(DLL32)$(VER).dll $(OBJS)
+	$(CC) -s -shared $(CFLAGS) -o $(DLL32)$(VER).dll $(OBJS) -Wl,--out-implib,lib$(DLL32)$(VER).a
+	
+$(LIBRARY): $(OBJS)
+	ar cq $(LIBRARY) $(OBJS)
+
+$(SHARED): $(OBJS)
+	$(CC) -s -shared -o $@ $(OBJS)
+	chmod a-x $@
+
+loc$(O): ../loc.c ../localelib.h ../iff.h ../tables.h
+	$(CC) $(CFLAGS) -c ../loc.c
+
+locale64$(O): ../locale.rc
+	rc /dWIN64 /fo locale.res ../locale.rc
+
+locale$(O): ../locale.rc
+	windres -i ../locale.rc -o locale.o --preprocessor "gcc $(CPU) -E -xc-header -DRC_INVOKED"
+
+clean:
+	$(RM) *$(O) *.res

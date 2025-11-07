@@ -1,0 +1,71 @@
+
+/**********************
+**** Resource file ****
+**********************/
+
+
+#include <winver.h>
+
+
+#define  MYDLL_NAME       "locale.dll"
+#define  MYDLL_COPYRIGHT  "© 2000-2025, Alessandro Pedretti"
+#define  MYDLL_VER_1    2,0,0,14
+#define  MYDLL_VER_2    "2.0.0.14"
+
+
+#ifdef __tune_pentium__
+#  define MYCPU_TYPE      "Intel Pentium"
+#else
+#  ifdef __tune_pentiumpro__
+#    define MYCPU_TYPE      "Intel Pentium Pro"
+#  else
+#    ifdef __tune_pentium4__
+#      define MYCPU_TYPE    "Intel Pentium 4"
+#    else
+#      ifdef __tune_k6__
+#        define MYCPU_TYPE  "AMD K6"
+#      else
+#        ifdef __tune_athlon__
+#          define MYCPU_TYPE  "AMD Athlon/Duron"
+#        endif
+#      endif
+#    endif
+#  endif
+#endif
+
+#ifdef WIN64
+#    define MYCOMMENT   "Windows x64 (64 bit) version"
+#else
+#  ifdef MYCPU_TYPE
+#    define MYCOMMENT   MYCPU_TYPE " optimized"
+#  else
+#    define MYCOMMENT   ""
+#  endif
+#endif
+
+1 VERSIONINFO
+FILEVERSION    MYDLL_VER_1
+PRODUCTVERSION MYDLL_VER_1
+FILEFLAGSMASK  0x3f
+FILEOS         VOS__WINDOWS32
+FILETYPE       VFT_DLL
+{
+  BLOCK "StringFileInfo" {
+    BLOCK "041004E4" {
+      VALUE "CompanyName", "Dipartimento di Scienze Farmaceutiche, "
+                           "Università degli Studi di Milano\0"
+      VALUE "FileDescription", "Localization dynamic library\0"
+      VALUE "FileVersion", MYDLL_VER_2 "\0"
+      VALUE "InternalName", MYDLL_NAME "\0"
+      VALUE "LegalCopyright", MYDLL_COPYRIGHT "\0"
+      VALUE "LegalTrademarks", "\0"
+      VALUE "OriginalFilename", MYDLL_NAME "\0"
+      VALUE "ProductName", "Locale library\0"
+      VALUE "ProductVersion", MYDLL_VER_2 "\0"
+      VALUE "Comments", MYCOMMENT "\0"
+    }
+  }
+  BLOCK "VarFileInfo" {
+    VALUE "Translation", 0x410, 1252
+  }
+}

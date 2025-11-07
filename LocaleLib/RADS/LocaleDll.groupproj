@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5280AC1F-D41C-462A-9CA0-BF017A3DA67F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="locale.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="HelloWorld.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="locale">
+        <MSBuild Projects="locale.cbproj"/>
+    </Target>
+    <Target Name="locale:Clean">
+        <MSBuild Projects="locale.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="locale:Make">
+        <MSBuild Projects="locale.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="HelloWorld">
+        <MSBuild Projects="HelloWorld.cbproj"/>
+    </Target>
+    <Target Name="HelloWorld:Clean">
+        <MSBuild Projects="HelloWorld.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HelloWorld:Make">
+        <MSBuild Projects="HelloWorld.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="locale;HelloWorld"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="locale:Clean;HelloWorld:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="locale:Make;HelloWorld:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

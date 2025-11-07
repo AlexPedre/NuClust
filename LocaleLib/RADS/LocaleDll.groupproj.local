@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/01/26 14:12:22.000.039,X:\Lcc\Vega\Src\LocaleLib\RADS\LocaleDll.groupproj=C:\Users\Alessandro Pedretti\Documents\Embarcadero\Studio\Projects\ProjectGroup1.groupproj</Transaction>
+  </Transactions>
+	<Default.Personality>
+		<Projects ActiveProject="X:\Lcc\Vega\Src\LocaleLib\RADS\locale.cbproj"/>
+	</Default.Personality>
+</BorlandProject>

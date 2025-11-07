@@ -1,0 +1,24 @@
+## version $VER: HelloWorld.catalog 1.0 (8.4.2001)
+## language italiano
+## codeset 0
+;
+;
+; ****************************
+; **** HelloWorld catalog ****
+; ****************************
+;
+; © 2001, Alessandro Pedretti
+;
+; $VER: HelloWorld.catalog 1.0 (08.04.2001)
+;
+;
+;
+; "Hello World" string
+MSG_HELLO
+Ciao Mondo !
+; Hello World !
+;
+; "Done" string
+MSG_DONE
+Fatto\n
+; Done\n

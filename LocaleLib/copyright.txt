@@ -1,0 +1,48 @@
+
+COPYRIGHT AND DISCLAIMERS
+
+All  trademarks  and software  directly or  indirectly referred in this
+document, are copyrighted from legal owners. LocaleLib  is  a  freeware
+program that can  be spread  through  Internet, BBS,  CD-ROM and  other
+electronic formats. The Author of this program accepts no responsibilty
+for  hardware/software damages  resulting from the use of this package.
+No   warranty   is  made   about  the   software  or  its  performance.
+Use  and copying  of this  software and  the preparation  of derivative
+works  based  on this software are  permitted, so long as the following
+conditions are met:
+
+-  The copyright  notice and this entire notice are included intact and
+prominently carried on all copies and supporting documentation.
+
+-  No  fees or compensation  are charged for  use, copies, or access to
+this  software. You  may  charge  a nominal  distribution  fee for  the
+physical  act  of transferring a  copy, but you  may not charge for the
+program itself.
+
+-  If you  change the  source code to improve the library performances,
+please  contact  the authors to  add your modifications in the official
+package.
+
+-  Any work  distributed or published that in whole or in part contains
+or  is a derivative  of this software or any part thereof is subject to
+the  terms of  this  agreement. The  aggregation  of another  unrelated
+program  with this software or its derivative on a volume of storage or
+distribution  medium  does not bring  the other program under the scope
+of these terms.
+
+
+**** LocaleLib ****
+
+is a software developed in 2001-2025
+by Alessandro Pedretti
+All rights reserved.
+
+Alessandro Pedretti
+Dipartimento di Scienze Farmaceutiche
+Università degli Studi di Milano
+Via Mangiagalli, 25
+I-20133 Milano - Italy
+Tel. +39 02 503 19332
+Fax. +39 02 503 19359
+E-Mail: info@vegazz.net
+WWW: http://www.vegazz.net
