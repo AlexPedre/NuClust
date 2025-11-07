@@ -16,10 +16,16 @@ The software groups similar nucleotide sequences based on sequence similarity an
 
 ### Required Software
 - **C++17 compiler**: `g++` or `clang++`
-- **MinGW/MinGW-w64** (Windows only)
+- **MinGW/MinGW-w64** (Windows only), alternatively Embarcadero's RAD Studio/ C++ Builder
 - **HyperDrive SDK** (included)
 - **VEGA SDK** (included)
 - **GNU Make** (optional, recommended)
-- **MinGW/MinGW-w64** (Windows only) `
 
----
+## 🧱 Installation and Compilation
+
+```bash
+git clone https://github.com/AlexPedre/NuClust.git
+cd NuClust/NuClust/Targets/YOUR_TARGET
+make
+```
+The precompiled binaries for Linux (x86, x64 and ARM) and Windows (x86 and x64) are in NuClust/NuClust/Bin directory.
