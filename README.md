@@ -1,5 +1,5 @@
 # NuClust
-NUPACK custering tool and 3D DNA builder
+NUPACK custering tool and DNA structure builder
 
 ## Overview
 **NuClust** is a C++ program designed for **biological sequence analysis** and **clustering** (e.g., DNA or RNA).  
@@ -19,7 +19,7 @@ The software groups similar nucleotide sequences based on sequence similarity an
 - **MinGW/MinGW-w64** (Windows only), alternatively Embarcadero's RAD Studio/ C++ Builder
 - **HyperDrive SDK** (included)
 - **VEGA SDK** (included)
-- **GNU Make** (optional, recommended)
+- **OpenMM Package** to build 3D strucure of DNA by simulated annealing
 
 ## 🧱 Installation and Compilation
 
