@@ -1,0 +1,37 @@
+#
+# *********************************************
+# ****        Makefile for NuClust         ****
+# **** (c) 2022-2025 - Alessandro Pedretti ****
+# ****            Common part              ****
+# *********************************************
+#
+#
+
+OBJS = build.o kmeans.o main.o nupack.o $(EXTRAOBJS)
+
+all: $(EXE)
+
+$(EXE): $(OBJS)
+	$(CC) $(LDFLAGS) -o ../../Bin/$(TARGET)/$(EXE) $(OBJS) $(LIBS)
+
+build.o: ../../Src/build.cpp ../../Src/build.h ../../Src/nupack.h ../../Src/globals.h
+	$(CC) $(CFLAGS) -c $<
+
+getopt.o: ../../Src/getopt.c ../../Src/getopt.h
+	$(CC) $(CFLAGS) -c $<
+
+
+kmeans.o: ../../Src/kmeans.cpp ../../Src/kmeans.h  ../../Src/globals.h
+	$(CC) $(CFLAGS) -c $<
+
+main.o: ../../Src/main.cpp ../../Src/kmeans.h ../../Src/getopt.h ../../Src/globals.h ../../Src/version.h
+	$(CC) $(CFLAGS) -c $<
+
+nupack.o: ../../Src/nupack.cpp ../../Src/nupack.h ../../Src/kmeans.h ../../Src/globals.h
+	$(CC) $(CFLAGS) -c $<
+
+resources.o: ../../Src/resources.rc ../../Src/version.h ../../Src/msdos.ico
+	windres -i ../../Src/resources.rc -o resources.o --preprocessor "gcc -E -xc-header -DRC_INVOKED $(RESFLAGS)"
+
+clean:
+	$(RM) *.res *.o

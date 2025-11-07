@@ -1,0 +1,48 @@
+
+/**********************
+**** Resource file ****
+**********************/
+
+
+#include <winver.h>
+#include "version.h"
+
+#define  IDI_APPICON            101
+
+#ifdef _WIN64
+#  define  MYCOMMENT            "Windows x64 (64 bit) version"
+#else
+#  define  MYCOMMENT            "Windows x86 (32 bit) version"
+#endif
+
+/**** Application icon ****/
+
+IDI_APPICON ICON                "msdos.ico"
+
+
+1 VERSIONINFO
+FILEVERSION    MYPRG_VER_1
+PRODUCTVERSION MYPRG_VER_1
+FILEFLAGSMASK  0x3f
+FILEOS         VOS__WINDOWS32
+FILETYPE       VFT_APP
+{
+  BLOCK "StringFileInfo" {
+    BLOCK "041004E4" {
+      VALUE "CompanyName"     , "Dipartimento di Scienze Farmaceutiche, "
+                                "Università degli Studi di Milano\0"
+      VALUE "FileDescription" , "NUPACK cluster analysis tool\0"
+      VALUE "FileVersion"     , MYPRG_VER_2 "\0"
+      VALUE "InternalName"    , MYPRG_NAME "\0"
+      VALUE "LegalCopyright"  , "© " MYPRG_COPYRIGHT "\0"
+      VALUE "LegalTrademarks" , "\0"
+      VALUE "OriginalFilename", MYPRG_NAME "\0"
+      VALUE "ProductName"     , MYPRG_PRODUCT "\0"
+      VALUE "ProductVersion", MYPRG_VER_2 "\0"
+      VALUE "Comments", MYCOMMENT "\0"
+    }
+  }
+  BLOCK "VarFileInfo" {
+    VALUE "Translation", 0x410, 1252
+  }
+}

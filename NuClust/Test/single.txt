@@ -1,0 +1,4 @@
+Aptamer 6: AGCAAGCACGAACACTGAACGTTCTTAACAAGCCTGGCAGAGCAGGTACGGTGTCA
+Conditions: Energy gap 5 kcal/mol, 25°C, 0.137M Na+ and 0M Mg2+
+MFE proxy structure: ...........((((((...............................)))))).., energy = -9.124 kcal/mol
+Suboptimal proxy structure: ...........((((((...............................)))))).., bp = 18, energy = -9.124, MFE distance = 0, AptaMat = 0.00, probability = 0.034594
