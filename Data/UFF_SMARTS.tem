@@ -1,0 +1,157 @@
+#TemplateFF_SMARTS UFF_SMARTS 1.0
+
+; ***********************************
+; **** VEGA SMARTS Template V1.0 ****
+; ****       UFF atom types      ****
+; ***********************************
+
+; Reference:
+; "Merck Molecular Force Field. I. Basis, Form, Scope, Parameterization, and
+; Performance of MMFF94," T. A. Halgren, J. Comput. Chem., 17, 490-519 (1996).
+
+; Atm typ   SMARTS
+; ========================================================================
+  H_b       [#1D2]          ; Bridging hydrogen
+  H_        [#1]            ; Generic hydrogen
+
+  He4+4     [#2]            ; Helium
+  Li        [#3]            ; Lithium
+  Be3+2     [#4]            ; Generic Be
+
+  B_2       [#5]            ; Trigonal planar boron
+  B_3       [#5D4]          ; Tetrahedral boron
+
+  C_R       [#6H1D3r5]      ; Aromatic C (cyclopentadienyl ring)
+  C_R       [c]             ; Aromatic C
+  C_1       [CX2]           ; sp hybridized C
+  C_2       [CX3]           ; sp2 non-aromatic C
+  C_3       [#6]            ; Generic sp3 C
+
+  N_R       [n]             ; Aromatic N
+  N_1       [NX1]           ; Sp hybridized N
+  N_2       [NX2]           ; Sp2 non-aromatic N
+  N_3       [#7]            ; Generic sp3 N
+
+  O_R       [o]             ; Aromatic O
+  O_2       [OX1]           ; Sp2 hybridized O
+;  O_1       [OX0]           ; Sp hybridized O
+  O_3_z     [#8][#14]       ; Sp3 hybridized O for zeolites
+  O_3       [#8]            ; Generic sp3 hybridized O
+
+  F_        [#9]            ; Generic F
+  Ne4+4     [#10]
+  Na        [#11]
+  Mg3+2     [#12]
+  Al3       [#13]
+  Si3       [#14]
+  P_3+5     [#15D5]         ; Tormal charge 5
+  P_3+3     [#15]           ; Generic phosphorus
+
+  S_R       [s]             ; Aromatic S
+  S_2       [SX1]           ; Non-aromatic sp2 S
+  S_3+4     [#16+4]         ; S+4 (SO2)
+  S_3+6     [#16+6]         ; S+6 (SO3/H2SO4)
+  S_3+2     [#16]           ; Generic S
+
+  Cl        [#17]
+  Ar4+4     [#18]
+  K_        [#19]
+  Ca6+2     [#20]
+  Sc3+3     [#21]
+
+  Ti3+4     [#22D3]
+  Ti6+4     [#22]           ; Generic Ti (6-valent)
+
+  V_3+5     [#23]
+  Cr6+3     [#24]
+  Mn6+2     [#25]
+
+  Fe3+2     [#26D3]
+  Fe6+2     [#26]           ; Generic Fe (6-valent)
+
+  Co6+3     [#27]
+  Ni4+2     [#28]
+  Cu3+1     [#29]
+  Zn3+2     [#30]
+  Ga3+3     [#31]
+  Ge3       [#32]
+  As3+3     [#33]
+  Se3+2     [#34]
+  Br        [#35]
+  Kr4+4     [#36]
+  Rb        [#37]
+  Sr6+2     [#38]
+  Y_3+3     [#39]
+  Zr3+4     [#40]
+  Nb3+5     [#41]
+
+  Mo3+6     [#42D3]         ; Trivalent Mo
+  Mo6+6     [#42]           ; Generic Mo (6-valent)
+
+  Tc6+5     [#43]
+  Ru6+2     [#44]
+  Rh6+3     [#45]
+  Pd4+2     [#46]
+  Ag1+1     [#47]
+  Cd3+2     [#48]
+  In3+3     [#49]
+  Sn3       [#50]
+  Sb3+3     [#51]
+  Te3+2     [#52]
+  I_        [#53]
+  Xe4+4     [#54]
+  Cs        [#55]
+  Ba6+2     [#56]
+  La3+3     [#57]
+  Ce6+3     [#58]
+  Pr6+3     [#59]
+  Nd6+3     [#60]
+  Pm6+3     [#61]
+  Sm6+3     [#62]
+  Eu6+3     [#63]
+  Gd6+3     [#64]
+  Tb6+3     [#65]
+  Dy6+3     [#66]
+  Ho6+3     [#67]
+  Er6+3     [#68]
+  Tm6+3     [#69]
+  Yb6+3     [#70]
+  Lu6+3     [#71]
+  Hf3+4     [#72]
+  Ta3+5     [#73]
+
+  W_3+4     [#74D3+4]
+  W_3+6     [#74D3+6]
+  W_6+6     [#74]           ; Generic W (6-valent)
+
+  Re3+7     [#75D3]         ; Trivalent Re
+  Re6+5     [#75]           ; Generic Re (6-valent)
+
+  Os6+6     [#76]
+  Ir6+3     [#77]
+  Pt4+2     [#78]
+  Au4+3     [#79]
+  Hg1+2     [#80]
+  Tl3+3     [#81]
+  Pb3       [#82]
+  Bi3+3     [#83]
+  Po3+2     [#84]
+  At        [#85]
+  Rn4+4     [#86]
+  Fr        [#87]
+  Ra6+2     [#88]
+  Ac6+3     [#89]
+  Th6+4     [#90]
+  Pa6+4     [#91]
+  U_6+4     [#92]
+  Np6+4     [#93]
+  Pu6+4     [#94]
+  Am6+4     [#95]
+  Cm6+3     [#96]
+  Bk6+3     [#97]
+  Cf6+3     [#98]
+  Es6+3     [#99]
+  Fm6+3     [#100]
+  Md6+3     [#101]
+  No6+3     [#102]
+  Lw6+3     [#103]

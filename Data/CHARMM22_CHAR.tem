@@ -1,0 +1,4255 @@
+#TemplateCharge Fragments CHARMM22_CHAR
+
+; **************************************
+; ****         VEGA Template        ****
+; ****   CHARMM 22 atomic charges   ****
+; **************************************
+
+; The residue section must start with #ResName.
+
+; Tag description:
+; ~~~~~~~~~~~~~~~~
+; #Call <ID>                     -> Call a macro or a residue.
+; #Charge <CHARGE>               -> Residue total charge.
+; #Define <MACROID>              -> Define a new macro.
+; #Description <DESCRIPTION>     -> Residue description (max. 127 chars).
+; #ID <ID>                       -> Unique section identificator (max. 31 chars).
+; #ResName <RESIDUE> ...         -> Residue name(s) (max. 4 chars, max. 16 items).
+; #TemplateCharge <TYPE> <NAME>  -> Template header
+; #Title <DESCRIPTION>           -> Template description
+
+; Atom description:
+; ~~~~~~~~~~~~~~~~~
+; <CHARGE> <GROUPID> <BONDS> <ATOMNAME> ...
+; <CHARGE>   -> Atomic charge.
+; <GROUPID>  -> Group ID (1...255).
+; <BONDS>    -> Number of bonds (0...6). If > 6, is not checked.
+; <ATOMNAME> -> Atom name (max. 4 chars, max. 8 items).
+
+
+#Title CHARMM 22 atomic charges
+
+; ********************
+; **** Aminoacids ****
+; ********************
+
+#Define AMINO_ASPP
+#Description Aspartate neutral side chain
+ -0.2100   1 4 CB
+  0.0900   1 1 HB1
+  0.0900   1 1 HB2
+  0.7500   1 4 CG
+ -0.5500   1 1 OD1  OD2
+ -0.6100   1 2 OD1  OD2
+  0.4400   1 1 HD1  HD2
+
+#Define AMINO_CT
+#Description C-terminus
+  0.3400   9 3 C
+ -0.6700   9 1 OT1  OCT1 O1   O
+ -0.6700   9 1 OT2  OCT2 O2   OXT
+#Delete O
+
+#Define AMINO_CTAM
+#Description Amidated C-terminus
+  0.5500   9 3 C
+ -0.5500   9 1 O
+ -0.6200  10 3 NT
+  0.3200  10 1 HT1
+  0.3000  10 1 HT2
+
+#Define AMINO_CTME
+#Description Methylated C-terminus
+ -0.4700   9 3 N
+  0.3100   9 1 HN
+  0.1700   9 4 CA
+  0.0900   9 1 HA
+  0.6300   9 3 C
+ -0.5200   9 1 OT1  OCT1 O1
+ -0.3400   9 2 OT2  OCT2 O2
+ -0.1400   9 4 CT
+  0.0900   9 1 HT1
+  0.0900   9 1 HT2
+  0.0900   9 1 HT3
+#Delete O
+
+#Define AMINO_CTNME
+#Description N-Methylamide C-terminus
+  0.5100   9 3 C
+ -0.5100   9 1 O
+ -0.4700  10 3 NT
+  0.3100  10 1 HNT
+ -0.1100  10 4 CAT
+  0.0900  10 1 HT1
+  0.0900  10 1 HT2
+  0.0900  10 1 HT3
+
+#Define AMINO_GLUP
+#Description Glutammate neutral side chain
+ -0.2100   1 4 CG
+  0.0900   1 1 HG1
+  0.0900   1 1 HG2
+  0.7500   1 4 CD
+ -0.5500   1 1 OE1  OE1
+ -0.6100   1 2 OE2  OE2
+  0.4400   1 1 HE1  HE2
+
+#Define AMINO_GLYNT
+#Description Glycine N-terminus
+ -0.3000   1 4 N    NT
+  0.3300   1 1 HT1  HN1  H1
+  0.3300   1 1 HT2  HN2  H2
+  0.3300   1 1 HT3  HN3  H3
+  0.1300   1 4 CA
+  0.0900   1 1 HA1
+  0.0900   1 1 HA2
+#Delete HN
+
+#Define AMINO_NT
+#Description N-terminus
+ -0.3000   1 4 N    NT
+  0.3300   1 1 HT1  HN1  H1
+  0.3300   1 1 HT2  HN2  H2
+  0.3300   1 1 HT3  HN3  H3
+  0.2100   1 4 CA
+  0.1000   1 1 HA
+#Delete HN
+
+#Define AMINO_NTACE
+#Description Acetylated N-terminus
+ -0.2700   1 3 CAY
+  0.0900   1 1 HY1
+  0.0900   1 1 HY2
+  0.0900   1 1 HY3
+  0.5100   2 4 CY
+ -0.5100   2 1 OY
+
+#Define AMINO_PRONT
+#Description Proline N-terminus
+ -0.0700   1 4 N    NT
+  0.2400   1 1 HT1  HN1  H1
+  0.2400   1 1 HT2  HN2  H2
+  0.1600   1 4 CD
+  0.1600   1 4 CA
+  0.0900   1 1 HA
+  0.0900   1 1 HD1
+  0.0900   1 1 HD2
+
+#Define AMINO_PRONTACE
+#Description Acetylated Proline N-terminus
+ -0.2700   1 3 CAY
+  0.0900   1 1 HY1
+  0.0900   1 1 HY2
+  0.0900   1 1 HY3
+  0.5100   2 4 CY
+ -0.5100   2 1 OY
+
+#Define AMINO_SS
+#Description Disulfide bridge
+ -0.1000   2 4 CB
+ -0.0800   2 2 SG   SG1  SG2  1SG  2SG  S1
+#Delete HG1
+
+#Define AMINO_TP1
+#Description Monoanionic phosphotyrosine
+#Delete HH
+ -0.2100   6 3 CE1
+  0.2100   6 1 HE1
+ -0.2100   7 3 CE2
+  0.2100   7 1 HE2
+ -0.1600   8 3 CZ
+ -0.3600   8 2 OH
+  1.4000   8 4 P1
+ -0.7600   8 2 O2
+  0.4000   8 1 H2
+ -0.7600   8 9 O3
+ -0.7600   8 9 O4
+
+#ResName ALA
+#Id ALA
+#Description Alanine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.2700   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+  0.0900   2 1 HB3
+
+  0.5100   3 3 C
+ -0.5100   3 1 O
+
+#ResName ALA ALAN
+#Id ALAN
+#Description Alanine (positive N-terminal)
+#Charge  1.0000
+#Call ALA
+#Call AMINO_NT
+
+#ResName ALA ALAC
+#Id ALAC
+#Description Alanine (negative C-terminal)
+#Charge -1.0000
+#Call ALA
+#Call AMINO_CT
+
+#ResName ALA ALAZ
+#Id ALAZ
+#Description Alanine (zwitterionic)
+#Charge  0.0000
+#Call ALAN
+#Call AMINO_CT
+
+#ResName ARG ARG+
+#Id ARGH
+#Description Arginine (positive side chain)
+#Charge  1.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.1800   3 4 CG
+  0.0900   3 1 HG1
+  0.0900   3 1 HG2
+  0.2000   4 4 CD
+  0.0900   4 1 HD1
+  0.0900   4 1 HD2
+ -0.7000   4 3 NE
+  0.4400   4 1 HE
+  0.6400   4 3 CZ
+ -0.8000   4 3 NH1
+  0.4600   4 1 HH11
+  0.4600   4 1 HH12
+ -0.8000   4 3 NH2
+  0.4600   4 1 HH21
+  0.4600   4 1 HH22
+
+  0.5100   5 3 C
+ -0.5100   5 1 O
+
+#ResName ARG ARG+ ARGN
+#Id ARGHN
+#Description Arginine (positive side chain, positive N-terminal)
+#Charge  2.0000
+#Call ARGH
+#Call AMINO_NT
+
+#ResName ARG ARG+ ARGC
+#Id ARGHC
+#Description Arginine (positive side chain, negative C-terminal)
+#Charge  0.0000
+#Call ARGH
+#Call AMINO_CT
+
+#ResName ARG ARG+ ARGZ
+#Id ARGHZ
+#Description Arginine (positive side chain, zwitterionic)
+#Charge  1.0000
+#Call ARGHN
+#Call AMINO_CT
+
+#ResName ASN
+#Id ASN
+#Description Asparagine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+  0.5500   3 3 CG
+ -0.5500   3 1 OD1
+ -0.6200   4 3 ND2
+  0.3200   4 1 HD21
+  0.3000   4 1 HD22
+
+  0.5100   5 3 C
+ -0.5100   5 1 O
+
+#ResName ASN ASNN
+#Id ASNN
+#Description Asparagine (positive N-terminal)
+#Charge  1.0000
+#Call ASN
+#Call AMINO_NT
+
+#ResName ASN ASNC
+#Id ASNC
+#Description Asparagine (negative C-terminal)
+#Charge -1.0000
+#Call ASN
+#Call AMINO_CT
+
+#ResName ASN ASNZ
+#Id ASNZ
+#Description Asparagine (zwitterionic)
+#Charge  0.0000
+#Call ASNN
+#Call AMINO_CT
+
+#ResName ASP ASP- AP-
+#Id ASP
+#Description Aspartate (negative side chain)
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.2800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+  0.6200   2 3 CG
+ -0.7600   2 1 OD1
+ -0.7600   2 1 OD2
+
+  0.5100   3 3 C
+ -0.5100   3 1 O
+
+#ResName ASP ASPN
+#Id ASPN
+#Description Aspartate (negative side chain, positive N-terminal)
+#Charge  0.0000
+#Call ASP
+#Call AMINO_NT
+
+#ResName ASP ASPC
+#Id ASPC
+#Description Aspartate (negative side chain, negative C-terminal)
+#Charge -2.0000
+#Call ASP
+#Call AMINO_CT
+
+#ResName ASP ASPZ
+#Id ASPZ
+#Description Aspartate (negative side chain, zwitterionic)
+#Charge -1.0000
+#Call ASPN
+#Call AMINO_CT
+
+#ResName ASP ASPP
+#Id ASPP
+#Description Aspartate (protonated side chain)
+#Charge  0.0000
+#Call ASP
+#Call AMINO_ASPP
+
+#ResName ASP ASPP
+#Id ASPPN
+#Description Aspartate (protonated side chain, positive N-terminal)
+#Charge  1.0000
+#Call ASPN
+#Call AMINO_ASPP
+
+#ResName ASP ASPC
+#Id ASPPC
+#Description Aspartate (protonated side chain, negative C-terminal)
+#Charge -1.0000
+#Call ASPC
+#Call AMINO_ASPP
+
+#ResName ASP ASPC
+#Id ASPPZ
+#Description Aspartate (protonated side chain, zwitterionic)
+#Charge  0.0000
+#Call ASPZ
+#Call AMINO_ASPP
+
+#ResName CYS CYH CYSH
+#Id CYSH
+#Description Cysteine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1100   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.2300   2 2 SG   SG1  SG2  1SG  2SG  S1
+  0.1600   2 1 HG1  HG   H1
+
+  0.5100   3 3 C
+ -0.5100   3 1 O
+
+#ResName CYS CYH CYSN CYHN
+#Id CYSHN
+#Description Cysteine (positive N-terminal)
+#Charge  1.0000
+#Call CYSH
+#Call AMINO_NT
+
+#ResName CYS CYH CYSN CYHN
+#Id CYSHC
+#Description Cysteine (negative C-terminal)
+#Charge -1.0000
+#Call CYSH
+#Call AMINO_CT
+
+#ResName CYS CYH CYSZ CYHZ
+#Id CYSHZ
+#Description Cysteine (zwitterionic)
+#Charge  0.0000
+#Call CYSH
+#Call AMINO_CT
+
+#ResName CYS
+#Id CYS
+#Description Cysteine (disulfide bridge)
+#Charge  0.0000
+#Call CYSH
+#Call AMINO_SS
+
+#ResName CYS CYSN
+#Id CYSN
+#Description Cysteine (disulfide bridge, positive N-terminal)
+#Charge  1.0000
+#Call CYS
+#Call AMINO_NT
+
+#ResName CYS CYSN
+#Id CYSC
+#Description Cysteine (disulfide bridge, negative C-terminal)
+#Charge -1.0000
+#Call CYS
+#Call AMINO_CT
+
+#ResName GLN
+#Id GLN
+#Description Glutamine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.1800   3 4 CG
+  0.0900   3 1 HG1
+  0.0900   3 1 HG2
+  0.5500   4 3 CD
+ -0.5500   4 1 OE1
+ -0.6200   5 3 NE2
+  0.3200   5 1 HE21
+  0.3000   5 1 HE22
+
+  0.5100   6 3 C
+ -0.5100   6 1 O
+
+#ResName GLN GLNN
+#Id GLNN
+#Description Glutamine (positive N-terminal)
+#Charge  1.0000
+#Call GLN
+#Call AMINO_NT
+
+#ResName GLN GLNC
+#Id GLNC
+#Description Glutamine (negative C-terminal)
+#Charge -1.0000
+#Call GLN
+#Call AMINO_CT
+
+#ResName GLN GLNZ
+#Id GLNZ
+#Description Glutamine (zwitterionic)
+#Charge  0.0000
+#Call GLNN
+#Call AMINO_CT
+
+#ResName GLU
+#Id GLU
+#Description Glutammate (negative side chain)
+#Charge -1.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.2800   3 4 CG
+  0.0900   3 1 HG1
+  0.0900   3 1 HG2
+  0.6200   3 3 CD
+ -0.7600   3 1 OE1
+ -0.7600   3 1 OE2
+
+  0.5100   4 3 C
+ -0.5100   4 1 O
+
+#ResName GLU GLUN
+#Id GLUN
+#Description Glutammate (negative side chain, positive N-terminal)
+#Charge  0.0000
+#Call GLU
+#Call AMINO_NT
+
+#ResName GLU GLUC
+#Id GLUC
+#Description Glutammate (negative side chain, negative C-terminal)
+#Charge -2.0000
+#Call GLU
+#Call AMINO_CT
+
+#ResName GLU GLUZ
+#Id GLUZ
+#Description Glutammate (negative side chain, zwitterionic)
+#Charge -1.0000
+#Call GLUN
+#Call AMINO_CT
+
+#ResName GLU GLUP
+#Id GLUP
+#Description Glutammate (protonated side chain)
+#Charge  0.0000
+#Call GLU
+#Call AMINO_GLUP
+
+#ResName GLU GLUP
+#Id GLUPN
+#Description Glutammate (protonated side chain, positive N-terminal)
+#Charge  1.0000
+#Call GLUN
+#Call AMINO_GLUP
+
+#ResName GLU GLUC
+#Id GLUPC
+#Description Glutammate (protonated side chain, negative C-terminal)
+#Charge -1.0000
+#Call GLUC
+#Call AMINO_GLUP
+
+#ResName GLU GLUC
+#Id GLUPZ
+#Description Glutammate (protonated side chain, zwitterionic)
+#Charge  0.0000
+#Call GLUZ
+#Call AMINO_GLUP
+
+#ResName GLY
+#Id GLY
+#Description Glycine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+ -0.0200   1 4 CA
+  0.0900   1 1 HA1
+  0.0900   1 1 HA2
+
+  0.5100   2 3 C
+ -0.5100   2 1 O
+
+#ResName GLY GLYN
+#Id GLYN
+#Description Glycine (positive N-terminal)
+#Charge  0.0000
+#Call GLY
+#Call AMINO_GLYNT
+
+#ResName GLY GLYC
+#Id GLYC
+#Description Glycine (negative C-terminal)
+#Charge -1.0000
+#Call GLY
+#Call AMINO_CT
+
+#ResName GLY GLYZ
+#Id GLYZ
+#Description Glycine (zwitterionic)
+#Charge  0.0000
+#Call GLYN
+#Call AMINO_CT
+
+#ResName HIS HSD
+#Id HSD
+#Description Histidine (HSD form)
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.3600   2 3 ND1
+  0.3200   2 1 HD1
+ -0.0500   2 3 CG
+ -0.0900   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.7000   3 2 NE2
+  0.2200   3 3 CD2
+  0.1000   3 1 HD2
+  0.2500   3 3 CE1
+  0.1300   3 1 HE1
+
+  0.5100   4 3 C
+ -0.5100   4 1 O
+
+#ResName HIS HSD HISN HSDN
+#Id HSDN
+#Description Histidine (HSD form, positive N-terminal)
+#Charge  1.0000
+#Call HSD
+#Call AMINO_NT
+
+#ResName HIS HSD HISC HSDC
+#Id HSDC
+#Description Histidine (HSD form, negative C-terminal)
+#Charge -1.0000
+#Call HSD
+#Call AMINO_CT
+
+#ResName HIS HSD HSDZ
+#Id HSDZ
+#Description Histidine (HSD form, zwitterionic)
+#Charge  0.0000
+#Call HSDN
+#Call AMINO_CT
+
+#ResName HIS HSE
+#Id HSE
+#Description Histidine (HSE form)
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.3600   2 3 NE2
+  0.3200   2 1 HE2
+ -0.0500   2 3 CD2
+  0.0900   2 1 HD2
+ -0.7000   3 2 ND1
+  0.2200   3 3 CG
+  0.2500   3 3 CE1
+  0.1300   3 1 HE1
+ -0.0800   3 4 CB
+  0.0900   3 1 HB1
+  0.0900   3 1 HB2
+
+  0.5100   4 3 C
+ -0.5100   4 1 O
+
+#ResName HIS HSE HISN HSEN
+#Id HSEN
+#Description Histidine (HSE form, positive N-terminal)
+#Charge  1.0000
+#Call HSE
+#Call AMINO_NT
+
+#ResName HIS HSE HISC HSEC
+#Id HSEC
+#Description Histidine (HSE form, negative C-terminal)
+#Charge -1.0000
+#Call HSE
+#Call AMINO_CT
+
+#ResName HIS HSE HSEZ
+#Id HSEZ
+#Description Histidine (HSE form, zwitterionic)
+#Charge  0.0000
+#Call HSEN
+#Call AMINO_CT
+
+#ResName HIS HSP HIS+
+#Id HSP
+#Description Histidine (positive side chain)
+#Charge  1.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.5100   2 3 ND1
+  0.4400   2 1 HD1
+ -0.5100   2 3 NE2
+  0.4400   2 1 HE2
+  0.3200   2 3 CE1
+  0.1800   2 1 HE1
+  0.1900   3 3 CD2
+  0.1300   3 1 HD2
+  0.1900   3 3 CG
+ -0.0500   3 4 CB
+  0.0900   3 1 HB1
+  0.0900   3 1 HB2
+
+  0.5100   4 3 C
+ -0.5100   4 1 O
+
+#ResName HIS HSP HIS+ HISN HSPN
+#Id HSPN
+#Description Histidine (positive side chain, positive N-terminal)
+#Charge  2.0000
+#Call HSP
+#Call AMINO_NT
+
+#ResName HIS HSP HIS+ HISC HSPC
+#Id HSPC
+#Description Histidine (positive side chain, negative C-terminal)
+#Charge  0.0000
+#Call HSP
+#Call AMINO_CT
+
+#ResName HIS HSP HIS+ HSPZ
+#Id HSPZ
+#Description Histidine (positive side chain, zwitterionic)
+#Charge  1.0000
+#Call HSPN
+#Call AMINO_CT
+
+#ResName ILE
+#Id ILE
+#Description Isoleucine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.0900   2 4 CB
+  0.0900   2 1 HB
+ -0.2700   3 4 CG2
+  0.0900   3 1 HG21
+  0.0900   3 1 HG22
+  0.0900   3 1 HG23
+ -0.1800   4 4 CG1
+  0.0900   4 1 HG11
+  0.0900   4 1 HG12
+ -0.2700   5 4 CD   CD1
+  0.0900   5 1 HD1  HD11
+  0.0900   5 1 HD2  HD12
+  0.0900   5 1 HD3  HD13
+
+  0.5100   6 3 C
+ -0.5100   6 1 O
+
+#ResName ILE ILEN
+#Id ILEN
+#Description Isoleucine (positive N-terminal)
+#Charge  1.0000
+#Call ILE
+#Call AMINO_NT
+
+#ResName ILE ILEC
+#Id ILEC
+#Description Isoleucine (negative C-terminal)
+#Charge -1.0000
+#Call ILE
+#Call AMINO_CT
+
+#ResName ILE ILEZ
+#Id ILEZ
+#Description Isoleucine (zwitterionic)
+#Charge  0.0000
+#Call ILEN
+#Call AMINO_CT
+
+#ResName LEU
+#Description Leucine
+#Id LEU
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.0900   3 4 CG
+  0.0900   3 1 HG
+ -0.2700   4 4 CD1
+  0.0900   4 1 HD11
+  0.0900   4 1 HD12
+  0.0900   4 1 HD13
+ -0.2700   5 4 CD2
+  0.0900   5 1 HD21
+  0.0900   5 1 HD22
+  0.0900   5 1 HD23
+
+  0.5100   6 3 C
+ -0.5100   6 1 O
+
+#ResName LEU LEUN
+#Id LEUN
+#Description Leucine (positive N-terminal)
+#Charge  1.0000
+#Call LEU
+#Call AMINO_NT
+
+#ResName LEU LEUC
+#Id LEUC
+#Description Leucine (negative C-terminal)
+#Charge -1.0000
+#Call LEU
+#Call AMINO_CT
+
+#ResName LEU LEUZ
+#Id LEUZ
+#Description Leucine (zwitterionic)
+#Charge  0.0000
+#Call LEUN
+#Call AMINO_CT
+
+#ResName LYS LYS+
+#Id LYSH
+#Description Lysine (positive side chain)
+#Charge  1.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.1800   3 4 CG
+  0.0900   3 1 HG1
+  0.0900   3 1 HG2
+ -0.1800   4 4 CD
+  0.0900   4 1 HD1
+  0.0900   4 1 HD2
+  0.2100   5 4 CE
+  0.0500   5 1 HE1
+  0.0500   5 1 HE2
+ -0.3000   5 4 NZ
+  0.3300   5 1 HZ1
+  0.3300   5 1 HZ2
+  0.3300   5 1 HZ3
+
+  0.5100   6 3 C
+ -0.5100   6 1 O
+
+#ResName LYS LYS+ LYSN LY+N
+#Id LYSHN
+#Description Lysine (positive side chain, positive N-terminal)
+#Charge  2.0000
+#Call LYSH
+#Call AMINO_NT
+
+#ResName LYS LYS+ LYSC LY+C
+#Id LYSHC
+#Description Lysine (positive side chain, negative C-terminal)
+#Charge  0.0000
+#Call LYSH
+#Call AMINO_CT
+
+#ResName LYS LYS+ LYSZ LY+Z
+#Id LYSHZ
+#Description Lysine (positive side chain, zwitterionic)
+#Charge  1.0000
+#Call LYSHN
+#Call AMINO_CT
+
+#ResName MET
+#Id MET
+#Description Methionine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.1400   3 4 CG
+  0.0900   3 1 HG1
+  0.0900   3 1 HG2
+ -0.0900   3 2 SD
+ -0.2200   3 4 CE
+  0.0900   3 1 HE1
+  0.0900   3 1 HE2
+  0.0900   3 1 HE3
+
+  0.5100   4 3 C
+ -0.5100   4 1 O
+
+#ResName MET METN
+#Id METN
+#Description Methionine (positive N-terminal)
+#Charge  1.0000
+#Call MET
+#Call AMINO_NT
+
+#ResName MET METC
+#Id METC
+#Description Methionine (negative C-terminal)
+#Charge -1.0000
+#Call MET
+#Call AMINO_CT
+
+#ResName MET METZ
+#Id METZ
+#Description Methionine (zwitterionic)
+#Charge  0.0000
+#Call METN
+#Call AMINO_CT
+
+#ResName PHE
+#Id PHE
+#Description Phenilalanine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+  0.0000   3 3 CG
+ -0.1150   4 3 CD1
+  0.1150   4 1 HD1
+ -0.1150   5 3 CD2
+  0.1150   5 1 HD2
+ -0.1150   6 3 CE1
+  0.1150   6 1 HE1
+ -0.1150   7 3 CE2
+  0.1150   7 1 HE2
+ -0.1150   8 3 CZ
+  0.1150   8 1 HZ
+
+  0.5100   9 3 C
+ -0.5100   9 1 O
+
+#ResName PHE PHEN
+#Id PHEN
+#Description Phenilalanine (positive N-terminal)
+#Charge  1.0000
+#Call PHE
+#Call AMINO_NT
+
+#ResName PHE PHEC
+#Id PHEC
+#Description Phenilalanine (negative C-terminal)
+#Charge -1.0000
+#Call PHE
+#Call AMINO_CT
+
+#ResName PHE PHEZ
+#Id PHEZ
+#Description Phenilalanine (zwitterionic)
+#Charge  0.0000
+#Call PHEN
+#Call AMINO_CT
+
+#ResName PRO
+#Id PRO
+#Description Proline
+#Charge  0.0000
+ -0.2900   1 3 N
+  0.0200   1 4 CA
+  0.0900   1 1 HA
+  0.0000   1 4 CD
+  0.0900   1 1 HD1
+  0.0900   1 1 HD2
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.1800   3 4 CG
+  0.0900   3 1 HG1
+  0.0900   3 1 HG2
+
+  0.5100   4 3 C
+ -0.5100   4 1 O
+
+#ResName PRO PRON
+#Id PRON
+#Description Proline (positive N-terminal)
+#Charge  1.0000
+#Call PRO
+#Call AMINO_PRONT
+
+#ResName PRO PROC
+#Id PROC
+#Description Proline (negative C-terminal)
+#Charge -1.0000
+#Call PRO
+#Call AMINO_CT
+
+#ResName PRO PROZ
+#Id PROZ
+#Description Proline (zwitterionic)
+#Charge  0.0000
+#Call PRON
+#Call AMINO_CT
+
+#ResName SER
+#Id SER
+#Description Serine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+  0.0500   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.6600   2 2 OG
+  0.4300   2 1 HG1  HG
+
+  0.5100   3 3 C
+ -0.5100   3 1 O
+
+#ResName SER SERN
+#Id SERN
+#Description Serine (positive N-terminal)
+#Charge  1.0000
+#Call SER
+#Call AMINO_NT
+
+#ResName SER SERC
+#Id SERC
+#Description Serine (negative C-terminal)
+#Charge -1.0000
+#Call SER
+#Call AMINO_CT
+
+#ResName SER SERZ
+#Id SERZ
+#Description Serine (zwitterionic)
+#Charge  0.0000
+#Call SERN
+#Call AMINO_CT
+
+#ResName THR
+#Id THR
+#Description Threonine
+#Charge  0.0000
+ -0.4700   1 3 N    N1
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+  0.1400   2 4 CB
+  0.0900   2 1 HB
+ -0.6600   2 2 OG1
+  0.4300   2 1 HG1
+ -0.2700   3 4 CG2
+  0.0900   3 1 HG21
+  0.0900   3 1 HG22
+  0.0900   3 1 HG23
+
+  0.5100   4 3 C
+ -0.5100   4 1 O
+
+#ResName THR THRN
+#Id THRN
+#Description Threonine (positive N-terminal)
+#Charge  1.0000
+#Call THR
+#Call AMINO_NT
+
+#ResName THR THRC
+#Id THRC
+#Description Threonine (negative C-terminal)
+#Charge -1.0000
+#Call THR
+#Call AMINO_CT
+
+#ResName THR THRZ
+#Id THRZ
+#Description Threonine (zwitterionic)
+#Charge  0.0000
+#Call THRN
+#Call AMINO_CT
+
+#ResName TRP
+#Id TRP
+#Description Tryptophan
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.0300   3 3 CG
+ -0.0200   3 3 CD2
+  0.0350   3 3 CD1
+  0.1150   3 1 HD1
+ -0.6100   3 3 NE1
+  0.3800   3 1 HE1
+  0.1300   3 3 CE2
+ -0.1150   4 3 CE3
+  0.1150   4 1 HE3
+ -0.1150   5 3 CZ2
+  0.1150   5 1 HZ2
+ -0.1150   6 3 CZ3
+  0.1150   6 1 HZ3
+ -0.1150   7 3 CH2
+  0.1150   7 1 HH2
+
+  0.5100   8 3 C
+ -0.5100   8 1 O
+
+#ResName TRP TRPN
+#Id TRPN
+#Description Tryptophan (positive N-terminal)
+#Charge  1.0000
+#Call TRP
+#Call AMINO_NT
+
+#ResName TRP TRPC
+#Id TRPC
+#Description Tryptophan (negative C-terminal)
+#Charge -1.0000
+#Call TRP
+#Call AMINO_CT
+
+#ResName TRP TRPZ
+#Id TRPZ
+#Description Tryptophan (zwitterionic)
+#Charge  0.0000
+#Call TRPN
+#Call AMINO_CT
+
+#ResName TYR
+#Id TYR
+#Description Tyrosine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+  0.0000   3 3 CG
+ -0.1150   4 3 CD1
+  0.1150   4 1 HD1
+ -0.1150   5 3 CD2
+  0.1150   5 1 HD2
+ -0.1150   6 3 CE1
+  0.1150   6 1 HE1
+ -0.1150   7 3 CE2
+  0.1150   7 1 HE2
+  0.1100   8 3 CZ
+ -0.5400   8 2 OH
+  0.4300   8 1 HH   1HH
+
+  0.5100   9 3 C
+ -0.5100   9 1 O
+
+#ResName TYR TYRN
+#Id TYRN
+#Description Tyrosine (positive N-terminal)
+#Charge  1.0000
+#Call TYR
+#Call AMINO_NT
+
+#ResName TYR TYRC
+#Id TYRC
+#Description Tyrosine (negative C-terminal)
+#Charge -1.0000
+#Call TYR
+#Call AMINO_CT
+
+#ResName TYR TYRZ
+#Id TYRZ
+#Description Tyrosine (zwitterionic)
+#Charge  0.0000
+#Call TYRN
+#Call AMINO_CT
+
+#ResName TP1
+#Id TP1
+#Description Monoanionic phosphotyrosine
+#Charge  -1.0000
+#Call TYR
+#Call AMINO_TP1
+
+#ResName TP1 TP1N
+#Id TP1N
+#Description Monoanionic phosphotyrosine (positive N-terminal)
+#Charge  0.0000
+#Call TP1
+#Call AMINO_NT
+
+#ResName TP1 TP1C
+#Id TP1C
+#Description Monoanionic phosphotyrosine (negative C-terminal)
+#Charge -2.0000
+#Call TP1
+#Call AMINO_CT
+
+#ResName TP1 TP1Z
+#Id TP1Z
+#Description Monoanionic phosphotyrosine (zwitterionic)
+#Charge -1.0000
+#Call TP1N
+#Call AMINO_CT
+
+#ResName VAL
+#Id VAL
+#Description Valine
+#Charge  0.0000
+ -0.4700   1 3 N
+  0.3100   1 1 HN   H    H1    H1
+  0.0700   1 4 CA
+  0.0900   1 1 HA
+
+ -0.0900   2 4 CB
+  0.0900   2 1 HB
+ -0.2700   3 4 CG1
+  0.0900   3 1 HG11
+  0.0900   3 1 HG12
+  0.0900   3 1 HG13
+ -0.2700   4 4 CG2
+  0.0900   4 1 HG21
+  0.0900   4 1 HG22
+  0.0900   4 1 HG23
+
+  0.5100   5 3 C
+ -0.5100   5 1 O
+
+#ResName VAL VALN
+#Id VALN
+#Description Valine (positive N-terminal)
+#Charge  1.0000
+#Call VAL
+#Call AMINO_NT
+
+#ResName VAL VALC
+#Id VALC
+#Description Valine (negative C-terminal)
+#Charge -1.0000
+#Call VAL
+#Call AMINO_CT
+
+#ResName VAL VALZ
+#Id VALZ
+#Description Valine (zwitterionic)
+#Charge  0.0000
+#Call VALN
+#Call AMINO_CT
+
+; ***************
+; **** Acids ****
+; ***************
+
+#ResName ACEH
+#Description Acetic acid
+ -0.3000   1 4 C2
+  0.7500   1 3 C1
+  0.0900   1 1 H21
+  0.0900   1 1 H22
+  0.0900   1 1 H23
+ -0.5500   1 1 O1   O2
+ -0.6100   1 2 O1   O2
+  0.4400   1 1 HO1  HO2  HO
+
+#ResName ACET
+#Description Acetate
+ -0.3700   1 4 C2
+  0.6200   1 3 C1
+  0.0900   1 1 H21
+  0.0900   1 1 H22
+  0.0900   1 1 H23
+ -0.7600   1 1 O1
+ -0.7600   1 1 O2
+
+; ******************
+; **** Alchools ****
+; ******************
+
+#ResName MEOH
+#Description Methanol
+ -0.0400   1 4 CB   C
+ -0.6600   1 2 OG   OH
+  0.4300   1 1 HG1  HO
+  0.0900   1 1 HB1  HC1
+  0.0900   1 1 HB2  HC2
+  0.0900   1 1 HB3  HC3
+
+#ResName METO
+#Description Methoxide
+ -0.4100   1 4 CB   C
+ -0.9200   1 1 OG   OH
+  0.1100   1 1 HB1  HC1
+  0.1100   1 1 HB2  HC2
+  0.1100   1 1 HB3  HC3
+
+#ResName ETOH
+#Description Ethanol
+  0.0500   1 4 C1
+ -0.6600   1 2 O1
+  0.4300   1 1 HO1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+ -0.2700   2 4 C2
+  0.0900   2 1 H21
+  0.0900   2 1 H22
+  0.0900   2 1 H23
+
+#ResName ETO
+#Description Ethoxide
+ -0.9200   1 1 OG
+ -0.3000   1 4 CB
+ -0.2700   1 4 CA
+  0.1100   1 1 HB1
+  0.1100   1 1 HB2
+  0.0900   1 1 HA1
+  0.0900   1 1 HA2
+  0.0900   1 1 HA3
+
+#ResName PRO2
+#Description 2-Propanol
+  0.1400   1 4 C2
+ -0.6600   1 2 O2
+  0.4300   1 1 HO2
+  0.0900   1 1 H21
+ -0.2700   2 4 C1
+  0.0900   2 1 H11
+  0.0900   2 1 H12
+  0.0900   2 1 H13
+ -0.2700   3 4 C3
+  0.0900   3 1 H31
+  0.0900   3 1 H32
+  0.0900   3 1 H33
+
+#ResName OCOH
+#Description n-Octanol
+  0.0500   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+ -0.6600   1 2 O1   OH1  OH   O
+  0.4300   1 1 HO1  HO   H
+ -0.1800   2 4 C2
+  0.0900   2 1 H21
+  0.0900   2 1 H22
+ -0.1800   3 4 C3
+  0.0900   3 1 H31
+  0.0900   3 1 H32
+ -0.1800   4 4 C4
+  0.0900   4 1 H41
+  0.0900   4 1 H42
+ -0.1800   5 4 C5
+  0.0900   5 1 H51
+  0.0900   5 1 H52
+ -0.1800   6 4 C6
+  0.0900   6 1 H61
+  0.0900   6 1 H62
+ -0.1800   7 4 C7
+  0.0900   7 1 H71
+  0.0900   7 1 H72
+ -0.2700   8 4 C8
+  0.0900   8 1 H81
+  0.0900   8 1 H82
+  0.0900   8 1 H83
+
+; *****************
+; **** Alkanes ****
+; *****************
+
+#ResName ETHA ETH
+#Description Ethane
+  0.0900   1 1 H1   H11
+  0.0900   1 1 H2   H12
+  0.0900   1 1 H3   H13
+ -0.2700   1 4 C1
+  0.0900   2 1 H4   H21
+  0.0900   2 1 H5   H22
+  0.0900   2 1 H6   H23
+ -0.2700   2 4 C2
+
+#ResName PROP
+#Description n-propane
+  0.0900   1 1 H11  H1
+  0.0900   1 1 H12  H2
+  0.0900   1 1 H13  H3
+ -0.2700   1 4 C1
+ -0.1800   2 4 C2
+  0.0900   2 1 H21  H4
+  0.0900   2 1 H22  H5
+  0.0900   3 1 H31  H6
+  0.0900   3 1 H32  H7
+  0.0900   3 1 H33  H8
+ -0.2700   3 4 C3
+
+#ResName BUTA
+#Description n-butane
+  0.0900   1 1 H11  H1
+  0.0900   1 1 H12  H2
+  0.0900   1 1 H13  H3
+ -0.2700   1 4 C1
+  0.0900   2 1 H21  H4
+  0.0900   2 1 H22  H5
+ -0.1800   2 4 C2
+  0.0900   3 1 H31  H6
+  0.0900   3 1 H32  H7
+ -0.1800   3 4 C3
+  0.0900   4 1 H41  H9
+  0.0900   4 1 H42  H9
+  0.0900   4 1 H43  H10
+ -0.2700   4 4 C4
+
+#ResName IBUT
+#Description iso-butane
+ -0.0900   1 4 C2
+  0.0900   1 1 H21
+ -0.2700   2 4 C1
+  0.0900   2 1 H11
+  0.0900   2 1 H12
+  0.0900   2 1 H13
+ -0.2700   3 4 C2
+  0.0900   3 1 H21
+  0.0900   3 1 H22
+  0.0900   3 1 H23
+ -0.2700   4 4 C3
+  0.0900   4 1 H31
+  0.0900   4 1 H32
+  0.0900   4 1 H33
+
+#ResName PENT
+#Description n-pentane
+ -0.2700   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+ -0.1800   2 4 C2
+  0.0900   2 1 H21
+  0.0900   2 1 H22
+ -0.1800   3 4 C3
+  0.0900   3 1 H31
+  0.0900   3 1 H32
+ -0.1800   4 4 C4
+  0.0900   4 1 H41
+  0.0900   4 1 H42
+ -0.2700   5 4 C5
+  0.0900   5 1 H51
+  0.0900   5 1 H52
+  0.0900   5 1 H53
+
+; *****************
+; **** Alkenes ****
+; *****************
+
+#ResName ETHE
+#Description Ethylene
+ -0.4200   1 3 C1
+  0.2100   1 1 H11
+  0.2100   1 1 H12
+ -0.4200   2 3 C2
+  0.2100   2 1 H21
+  0.2100   2 1 H22
+
+#ResName PRPE
+#Description Propene
+ -0.4200   1 3 C1
+  0.2100   1 1 H11
+  0.2100   1 1 H12
+ -0.1500   2 3 C2
+  0.1500   2 1 H21
+ -0.2700   3 4 C3
+  0.0900   3 1 H31
+  0.0900   3 1 H32
+  0.0900   3 1 H33
+
+#ResName BTE1
+#Description 1-Butene
+ -0.4200   1 3 C1
+  0.2100   1 1 H11
+  0.2100   1 1 H12
+ -0.1500   2 3 C2
+  0.1500   2 1 H21
+ -0.1800   3 4 C3
+  0.0900   3 1 H31
+  0.0900   3 1 H32
+ -0.2700   4 4 C4
+  0.0900   4 1 H41
+  0.0900   4 1 H42
+  0.0900   4 1 H43
+
+#ResName BTE2
+#Description 2-Butene
+ -0.2700   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+ -0.1500   2 3 C2
+  0.1500   2 1 H21
+ -0.1500   3 3 C3
+  0.1500   3 1 H31
+ -0.2700   4 4 C4
+  0.0900   4 1 H41
+  0.0900   4 1 H42
+  0.0900   4 1 H43
+
+; ****************
+; **** Amides ****
+; ****************
+
+#ResName FORM
+#Description Formamide
+  0.0800   1 1 HA
+  0.4200   1 3 C
+ -0.6900   1 3 N
+  0.3500   1 1 HC
+  0.3500   1 1 HT
+ -0.5100   1 1 O
+
+#ResName ACEM
+#Description Acetamide
+ -0.2700   1 4 CC
+  0.5500   1 3 C
+ -0.6200   1 3 N
+  0.3200   1 1 HC
+  0.3000   1 1 HT
+ -0.5500   1 1 O
+  0.0900   1 1 HC1
+  0.0900   1 1 HC2
+  0.0900   1 1 HC3
+
+#ResName NMA
+#Description N-methylacetamide
+ -0.2700   1 4 CL   C1
+  0.0900   1 1 HL1  H11
+  0.0900   1 1 HL2  H12
+  0.0900   1 1 HL3  H13
+  0.5100   1 3 C
+ -0.5100   1 1 O
+ -0.4700   1 3 N
+  0.3100   1 1 H    HN
+ -0.1100   1 4 CR   C2
+  0.0900   1 1 HR1  H21
+  0.0900   1 1 HR2  H22
+  0.0900   1 1 HR3  H23
+
+; ****************
+; **** Amines ****
+; ****************
+
+#ResName MAMI
+#Description Methylamine
+ -0.9600   1 3 N1
+  0.1300   1 4 C1
+  0.3400   1 1 HN1
+  0.0500   1 1 HC1
+  0.0500   1 1 HC2
+  0.0500   1 1 HC3
+  0.3400   1 1 HN2
+
+#ResName MAMM
+#Description Methylammonium
+  0.1600   1 4 CE
+ -0.3000   1 4 NZ
+  0.0500   1 1 HE1
+  0.0500   1 1 HE2
+  0.0500   1 1 HE3
+  0.3300   1 1 HZ1
+  0.3300   1 1 HZ2
+  0.3300   1 1 HZ3
+
+#ResName ETAM
+#Description Ethanolamine
+ -0.3000   1 4 N
+  0.3300   1 1 HN1
+  0.3300   1 1 HN2
+  0.3300   1 1 HN3
+  0.1300   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0500   2 4 C5
+  0.0900   2 1 H51
+  0.0900   2 1 H52
+ -0.6600   2 2 OH1
+  0.4300   2 1 HO1
+
+#ResName NC4
+#Description Tetramethylammonium
+ -0.6000   1 4 N
+ -0.3500   1 4 C1
+ -0.3500   1 4 C2
+ -0.3500   1 4 C3
+ -0.3500   1 4 C4
+  0.2500   1 1 H11
+  0.2500   1 1 H12
+  0.2500   1 1 H13
+  0.2500   1 1 H21
+  0.2500   1 1 H22
+  0.2500   1 1 H23
+  0.2500   1 1 H31
+  0.2500   1 1 H32
+  0.2500   1 1 H33
+  0.2500   1 1 H41
+  0.2500   1 1 H42
+  0.2500   1 1 H43
+
+#ResName NC5
+#Description Trimethylethylammonium
+ -0.6000   1 4 N
+ -0.1000   1 4 C1
+ -0.3500   1 4 C2
+ -0.3500   1 4 C3
+ -0.3500   1 4 C4
+  0.2500   1 1 H11
+  0.2500   1 1 H12
+  0.2500   1 1 H21
+  0.2500   1 1 H22
+  0.2500   1 1 H23
+  0.2500   1 1 H31
+  0.2500   1 1 H32
+  0.2500   1 1 H33
+  0.2500   1 1 H41
+  0.2500   1 1 H42
+  0.2500   1 1 H43
+ -0.2700   2 4 C5
+  0.0900   2 1 H51
+  0.0900   2 1 H52
+  0.0900   2 1 H53
+
+; *******************
+; **** Aromatics ****
+; *******************
+
+#ResName BENZ
+#Description Benzene
+ -0.1150   1 3 CG   C1
+  0.1150   1 1 HG   H1   H11
+ -0.1150   2 3 CD1  C2
+  0.1150   2 1 HD1  H2   H21
+ -0.1150   3 3 CD2  C3
+  0.1150   3 1 HD2  H3   H31
+ -0.1150   4 3 CE1  C4
+  0.1150   4 1 HE1  H4   H41
+ -0.1150   5 3 CE2  C5
+  0.1150   5 1 HE2  H5   H51
+ -0.1150   6 3 CZ   C6
+  0.1150   6 1 HZ   H6   H61
+
+#ResName PHEN
+#Description Phenol
+ -0.1150   1 3 CG   C4
+  0.1150   1 1 HG   H4   H41
+ -0.1150   2 3 CD1  C3
+  0.1150   2 1 HD1  H3   H31
+ -0.1150   3 3 CD2  C5
+  0.1150   3 1 HD2  H5   H51
+ -0.1150   4 3 CE1  C2
+  0.1150   4 1 HE1  H1   H21
+ -0.1150   5 3 CE2  C6
+  0.1150   5 1 HE2  H6   H61
+  0.1100   6 3 CZ   C1
+ -0.5400   6 2 OH   O1   O
+  0.4300   6 1 HH   HO   H
+
+#ResName PHEO
+#Description Phenoxide
+ -0.1150   1 4 CG   C4
+  0.1150   1 1 HG   H4   H41
+ -0.1150   2 4 CD1  C3
+  0.1150   2 1 HD1  H3   H31
+ -0.1150   3 4 CD2  C5
+  0.1150   3 1 HD2  H5   H51
+ -0.6000   4 4 CE1  C2
+  0.2800   4 1 HE1  H2   H21
+ -0.6000   4 4 CE2  C6
+  0.2800   4 1 HE2  H6   H61
+  0.4000   4 4 CZ   C1
+ -0.7600   4 1 OH   O1   O
+
+; ******************
+; **** Cholines ****
+; ******************
+
+#ResName CHOL
+#Description Choline
+ -0.6000   1 4 N
+ -0.1000   1 4 C1
+ -0.3500   1 4 C2
+ -0.3500   1 4 C3
+ -0.3500   1 4 C4
+  0.2500   1 1 H11
+  0.2500   1 1 H12
+  0.2500   1 1 H21
+  0.2500   1 1 H22
+  0.2500   1 1 H23
+  0.2500   1 1 H31
+  0.2500   1 1 H32
+  0.2500   1 1 H33
+  0.2500   1 1 H41
+  0.2500   1 1 H42
+  0.2500   1 1 H43
+  0.0500   2 1 C5
+  0.0900   2 1 H51
+  0.0900   2 1 H52
+ -0.6600   2 2 OH1  OH
+  0.4300   2 1 HO1  HO
+
+#ResName ACHO
+#Description Acetylcholine
+ -0.6000   1 4 N
+ -0.1000   1 4 C1
+ -0.3500   1 4 C2
+ -0.3500   1 4 C3
+ -0.3500   1 4 C4
+  0.2500   1 1 H11
+  0.2500   1 1 H12
+  0.2500   1 1 H21
+  0.2500   1 1 H22
+  0.2500   1 1 H23
+  0.2500   1 1 H31
+  0.2500   1 1 H32
+  0.2500   1 1 H33
+  0.2500   1 1 H41
+  0.2500   1 1 H42
+  0.2500   1 1 H43
+ -0.0500   2 4 C5
+ -0.3400   2 2 OM
+  0.6300   2 3 C
+ -0.1700   2 4 C7
+ -0.5200   2 1 O
+  0.0900   2 1 H51
+  0.0900   2 1 H52
+  0.0900   2 1 H71
+  0.0900   2 1 H72
+  0.0900   2 1 H73
+
+#ResName PC
+#Description Phosphatidylcholine
+ -0.6000   1 4 N
+ -0.1000   1 4 C1
+ -0.3500   1 4 C2
+ -0.3500   1 4 C3
+ -0.3500   1 4 C4
+  0.2500   1 1 H11
+  0.2500   1 1 H12
+  0.2500   1 1 H21
+  0.2500   1 1 H22
+  0.2500   1 1 H23
+  0.2500   1 1 H31
+  0.2500   1 1 H32
+  0.2500   1 1 H33
+  0.2500   1 1 H41
+  0.2500   1 1 H42
+  0.2500   1 1 H43
+ -0.0800   2 4 C5
+  0.0900   2 1 H51
+  0.0900   2 1 H52
+  1.5000   3 4 P1   P
+ -0.8000   3 1 O1   O2   O3   O4
+ -0.8000   3 1 O1   O2   O3   O4
+ -0.5500   3 2 O1   O2   O3   O4
+ -0.5500   3 2 O1   O2   O3   O4
+ -0.1700   4 4 C6
+  0.0900   4 1 H61
+  0.0900   4 1 H62
+  0.0900   4 1 H63
+
+#ResName GPC
+#Description Glycerolphosphorylcholine
+ -0.6000   1 4 N
+ -0.1000   1 4 C1
+ -0.3500   1 4 C2
+ -0.3500   1 4 C3
+ -0.3500   1 4 C4
+  0.2500   1 1 H11
+  0.2500   1 1 H12
+  0.2500   1 1 H21
+  0.2500   1 1 H22
+  0.2500   1 1 H23
+  0.2500   1 1 H31
+  0.2500   1 1 H32
+  0.2500   1 1 H33
+  0.2500   1 1 H41
+  0.2500   1 1 H42
+  0.2500   1 1 H43
+ -0.0800   2 4 C5
+  0.0900   2 1 H51
+  0.0900   2 1 H52
+  1.5000   2 4 P1   P
+ -0.8000   2 1 O1   O2   O3   O4
+ -0.8000   2 1 O1   O2   O3   O4
+ -0.5500   2 2 O1   O2   O3   O4
+ -0.5500   2 2 O1   O2   O3   O4
+ -0.0800   2 4 CG1
+  0.0900   2 1 HG11
+  0.0900   2 1 HG12
+  0.1400   3 4 CG2
+  0.0900   3 1 HG21
+ -0.6600   3 1 OG2
+  0.4300   3 1 HO2
+  0.0500   4 4 CG3
+  0.0900   4 1 HG31
+  0.0900   4 1 HG32
+ -0.6600   4 2 OG3
+  0.4300   4 1 HO3
+
+#ResName LPPC
+#Description Deoxylysophosphatidylcholine
+ -0.6000   1 4 N
+ -0.3500   1 4 C13
+  0.2500   1 1 H13A
+  0.2500   1 1 H13B
+  0.2500   1 1 H13C
+ -0.3500   1 4 C14
+  0.2500   1 1 H14A
+  0.2500   1 1 H14B
+  0.2500   1 1 H14C
+ -0.3500   1 4 C15
+  0.2500   1 1 H15A
+  0.2500   1 1 H15B
+  0.2500   1 1 H15C
+ -0.1000   1 4 C12
+  0.2500   1 1 H12A
+  0.2500   1 1 H12B
+ -0.0800   2 4 C11
+  0.0900   2 1 H11A
+  0.0900   2 1 H11B
+  1.5000   2 4 P1   P
+ -0.8000   2 1 O11  O12  O13  O14
+ -0.8000   2 1 O11  O12  O13  O14
+ -0.5500   2 2 O11  O12  O13  O14
+ -0.5500   2 2 O11  O12  O13  O14
+ -0.0800   2 4 C1
+  0.0900   2 1 HA   H11
+  0.0900   2 1 HB   H12
+ -0.1800   3 4 C2
+  0.0900   3 1 HS   H21
+  0.0900   3 1 HR   H22
+ -0.0500   4 4 C3
+  0.0900   4 1 HX   H31
+  0.0900   4 1 HY   H32
+ -0.3400   4 2 O31
+  0.6300   4 2 C31
+ -0.5200   4 1 O32
+ -0.0800   4 4 C32
+  0.0900   4 1 H2X
+  0.0900   4 1 H2Y
+ -0.1800   5 4 C33
+  0.0900   5 1 H3X
+  0.0900   5 1 H3Y
+ -0.1800   6 4 C34
+  0.0900   6 1 H4X
+  0.0900   6 1 H4Y
+ -0.1800   7 4 C35
+  0.0900   7 1 H5X
+  0.0900   7 1 H5Y
+ -0.1800   8 4 C36
+  0.0900   8 1 H6X
+  0.0900   8 1 H6Y
+ -0.1800   9 4 C37
+  0.0900   9 1 H7X
+  0.0900   9 1 H7Y
+ -0.1800  10 4 C38
+  0.0900  10 1 H8X
+  0.0900  10 1 H8Y
+ -0.1800  11 4 C39
+  0.0900  11 1 H9X
+  0.0900  11 1 H9Y
+ -0.1800  12 4 C310
+  0.0900  12 1 H10X
+  0.0900  12 1 H10Y
+ -0.1800  13 4 C311
+  0.0900  13 1 H11X
+  0.0900  13 1 H11Y
+ -0.2700  14 4 C312
+  0.0900  14 1 H12X
+  0.0900  14 1 H12Y
+  0.0900  14 1 H12Z
+
+; ********************
+; **** Disulfides ****
+; ********************
+
+#ResName DMDS
+#Description Dimethyldisulfide
+  0.0900   1 1 H1   H11
+  0.0900   1 1 H2   H12
+  0.0900   1 1 H3   H13
+ -0.1900   1 4 CM1  C1
+ -0.0800   1 2 S2   S1
+ -0.0800   2 2 S3   S2
+ -0.1900   2 4 CM4  C2
+  0.0900   2 1 H4   H21
+  0.0900   2 1 H5   H22
+  0.0900   2 1 H6   H23
+
+; *****************
+; **** Dummies ****
+; *****************
+
+#ResName DUM
+#Description Dummy atom
+  0.0000   1 9 DUM
+
+; ****************
+; **** Esters ****
+; ****************
+
+#ResName MAS
+#Description Methylacetate
+ -0.1700   1 4 C1
+  0.6300   1 3 C
+ -0.3400   1 2 OM
+ -0.1400   1 4 C2
+ -0.5200   1 1 O
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+  0.0900   1 1 H21
+  0.0900   1 1 H22
+  0.0900   1 1 H23
+
+#ResName ETAC
+#Description Ethylacetate
+ -0.1700   1 4 C1
+  0.6300   1 3 C
+ -0.3400   1 2 OM
+ -0.0500   1 4 C2
+ -0.5200   1 1 O
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+  0.0900   1 1 H22
+  0.0900   1 1 H23
+ -0.2700   2 4 C21
+  0.0900   2 1 H211
+  0.0900   2 1 H212
+  0.0900   2 1 H213
+
+#ResName MPRO
+#Description Methylpropionate
+ -0.0800   1 4 C1
+  0.6300   1 3 C
+ -0.3400   1 2 OM
+ -0.1400   1 4 C2
+ -0.5200   1 1 O
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+  0.0900   1 1 H21
+  0.0900   1 1 H22
+  0.0900   1 1 H23
+ -0.2700   2 4 C11
+  0.0900   2 1 H111
+  0.0900   2 1 H112
+  0.0900   2 1 H113
+
+; ********************
+; **** Guanidines ****
+; ********************
+
+#ResName GUAN
+#Description Guandinium
+  0.6400   1 3 C
+ -0.8000   1 3 N1
+  0.4600   1 1 H11
+  0.4600   1 1 H12
+ -0.8000   1 3 N2
+  0.4600   1 1 H21
+  0.4600   1 1 H22
+ -0.8000   1 3 N3
+  0.4600   1 1 H31
+  0.4600   1 1 H32
+
+#ResName MGUA
+#Description Methylguanidinium
+  0.6400   1 3 C
+ -0.8000   1 3 N1
+  0.4600   1 1 H11
+  0.4600   1 1 H12
+ -0.8000   1 3 N2
+  0.4600   1 1 H21
+  0.4600   1 1 H22
+ -0.7000   1 3 N3
+  0.4400   1 1 H31
+  0.1100   1 4 C2
+  0.0900   1 1 HC1
+  0.0900   1 1 HC2
+  0.0900   1 1 HC3
+
+; *************************
+; **** Heteroaromatics ****
+; *************************
+
+#ResName IMIA
+#Description Imidazole
+ -0.0500   1 3 CG
+  0.0900   1 1 HG
+  0.2200   1 3 CD2
+  0.1000   1 1 HD2
+ -0.3600   1 3 ND1
+  0.3200   1 1 HD1
+  0.2500   1 3 CE1
+  0.1300   1 1 HE1
+ -0.7000   1 2 NE2
+
+#ResName INDO
+#Description Indole
+  0.1150   1 1 HG
+ -0.1450   1 3 CG
+ -0.0200   1 3 CD2
+  0.0350   1 3 CD1
+  0.1150   1 1 HD1
+ -0.6100   1 3 NE1
+  0.3800   1 1 HE1
+  0.1300   1 3 CE2
+ -0.1150   2 3 CE3
+  0.1150   2 1 HE3
+ -0.1150   3 3 CZ2
+  0.1150   3 1 HZ2
+ -0.1150   4 3 CZ3
+  0.1150   4 1 HZ3
+ -0.1150   5 3 CH2
+  0.1150   5 1 HH2
+
+#ResName MIMI
+#Description 4-methylimidazole
+ -0.3600   1 3 ND1
+  0.3200   1 1 HD1
+ -0.0500   1 3 CG
+ -0.1800   1 4 CB
+  0.0900   1 1 HB1
+  0.0900   1 1 HB2
+  0.0900   1 1 HB3
+ -0.7000   2 2 NE2
+  0.2200   2 3 CD2
+  0.1000   2 1 HD2
+  0.2500   2 3 CE1
+  0.1300   2 1 HE1
+
+#ResName EIMI
+#Description 4-ethylimidazole
+ -0.2700   1 4 CA
+  0.0900   1 1 HA1
+  0.0900   1 1 HA2
+  0.0900   1 1 HA3
+ -0.3600   2 3 ND1
+  0.3200   2 1 HD1
+ -0.0500   2 3 CG
+ -0.0900   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+ -0.7000   3 2 NE2
+  0.2200   3 3 CD2
+  0.1000   3 1 HD2
+  0.2500   3 3 CE1
+  0.1300   3 1 HE1
+
+#ResName IMIM
+#Description Imidazolium
+  0.1900   1 3 CG
+  0.1300   1 1 HG
+  0.1900   1 3 CD2
+  0.1300   1 1 HD2
+ -0.5100   2 3 ND1
+  0.4400   2 1 HD1
+ -0.5100   2 3 NE2
+  0.4400   2 1 HE2
+  0.3200   2 3 CE1
+  0.1800   2 1 HE1
+
+#ResName EIMM
+#Description Ethylimidazolium
+ -0.2700   1 4 CA
+  0.0900   1 1 HA1
+  0.0900   1 1 HA2
+  0.0900   1 1 HA3
+ -0.0500   2 4 CB
+  0.0900   2 1 HB1
+  0.0900   2 1 HB2
+  0.1900   2 3 CG
+  0.1900   2 3 CD2
+  0.1300   2 1 HD2
+ -0.5100   3 3 ND1
+  0.4400   3 1 HD1
+ -0.5100   3 3 NE2
+  0.4400   3 1 HE2
+  0.3200   3 3 CE1
+  0.1800   3 1 HE1
+
+; ********************
+; **** Inorganics ****
+; ********************
+
+#ResName O2
+#Description Oxygen
+  0.0210   1 1 O1
+ -0.0210   1 1 O2
+
+#ResName CO
+#Description Carbon monoxide
+  0.0210   1 1 C
+ -0.0210   1 1 O
+
+#ResName HOH TIP3 TP3S TP3M SOL
+#Description Water
+ -0.8340   1 2 OH2  O    OW
+  0.4170   1 1 H1   HW1
+  0.4170   1 1 H2   HW2
+
+; **************
+; **** Ions ****
+; **************
+
+#ResName CA CAL CA2 CA2+ CA++
+#Description None
+  2.0000   1 9 CAL  Ca   CA2  CA2+ CA++
+
+#ResName SOD NA NA1 NA+
+#Description Sodium
+  1.0000   1 0 SOD NA1  NA
+
+#ResName CL CL-
+#Description None
+ -1.0000   1 0 CL1  CL
+
+#ResName MG MAG MG2 MG2+ MG++
+#Description None
+  2.0000   1 9 MG   Mg   MAG  MG1  MG2  MG2+ MG++
+
+#ResName ZN ZN2 ZN2+ ZN++
+#Description None
+  2.0000   1 9 ZN   Zn   ZN2  ZN2+ ZN++
+
+; ****************
+; **** Lipids ****
+; ****************
+
+#ResName GPE
+#Description L-alpha-glycerylphosphorylethanolamine
+ -0.3000   1 4 N
+  0.3300   1 1 HN1
+  0.3300   1 1 HN2
+  0.3300   1 1 HN3
+  0.1300   1 4 C12
+  0.0900   1 1 H12A
+  0.0900   1 1 H12B
+ -0.0800   2 4 C11
+  0.0900   2 1 H11A
+  0.0900   2 1 H11B
+  1.5000   2 9 P1   P
+ -0.8000   2 1 O11  O12  O13  O14
+ -0.8000   2 1 O11  O12  O13  O14
+ -0.5500   2 2 O11  O12  O13  O14
+ -0.5500   2 2 O11  O12  O13  O14
+ -0.0800   2 4 C1
+  0.0900   2 1 HA
+  0.0900   2 1 HB
+  0.1400   3 4 C2
+  0.0900   3 1 HS
+ -0.6600   3 2 OH2
+  0.4300   3 1 HO2
+  0.0500   4 4 C3
+  0.0900   4 1 HX
+  0.0900   4 1 HY
+ -0.6600   4 2 OH3
+  0.4300   4 1 HO3
+
+#ResName DLPE
+#Description 1,2 dilauroyl-DL-Phosphatidylethanolamine
+ -0.3000   1 4 N
+  0.3300   1 1 HN1
+  0.3300   1 1 HN2
+  0.3300   1 1 HN3
+  0.1300   1 4 C12
+  0.0900   1 1 H12A
+  0.0900   1 1 H12B
+ -0.0800   2 4 C11
+  0.0900   2 1 H11A
+  0.0900   2 1 H11B
+  1.5000   2 4 P1   P
+ -0.8000   2 1 O11  O12  O13  O14
+ -0.8000   2 1 O11  O12  O13  O14
+ -0.5500   2 2 O11  O12  O13  O14
+ -0.5500   2 2 O11  O12  O13  O14
+ -0.0800   2 4 C1
+  0.0900   2 1 HA
+  0.0900   2 1 HB
+  0.0400   3 4 C2
+  0.0900   3 1 HS
+ -0.3400   3 2 O21
+  0.6300   3 3 C21
+ -0.5200   3 1 O22
+ -0.0800   3 4 C22
+  0.0900   3 1 H2R
+  0.0900   3 1 H2S
+ -0.0500   4 4 C3
+  0.0900   4 1 HX
+  0.0900   4 1 HY
+ -0.3400   4 2 O31
+  0.6300   4 3 C31
+ -0.5200   4 2 O32
+ -0.0800   4 4 C32
+  0.0900   4 1 H2X
+  0.0900   4 1 H2Y
+ -0.1800   5 4 C23
+  0.0900   5 1 H3R
+  0.0900   5 1 H3S
+ -0.1800   6 4 C24
+  0.0900   6 1 H4R
+  0.0900   6 1 H4S
+ -0.1800   7 4 C25
+  0.0900   7 1 H5R
+  0.0900   7 1 H5S
+ -0.1800   8 4 C26
+  0.0900   8 1 H6R
+  0.0900   8 1 H6S
+ -0.1800   9 4 C27
+  0.0900   9 1 H7R
+  0.0900   9 1 H7S
+ -0.1800  10 4 C28
+  0.0900  10 1 H8R
+  0.0900  10 1 H8S
+ -0.1800  11 4 C29
+  0.0900  11 1 H9R
+  0.0900  11 1 H9S
+ -0.1800  12 4 C210
+  0.0900  12 1 H10R
+  0.0900  12 1 H10S
+ -0.1800  13 4 C211
+  0.0900  13 1 H11R
+  0.0900  13 1 H11S
+ -0.2700  14 4 C212
+  0.0900  14 1 H12R
+  0.0900  14 1 H12S
+  0.0900  14 1 H12T
+ -0.1800  15 4 C33
+  0.0900  15 1 H3X
+  0.0900  15 1 H3Y
+ -0.1800  16 4 C34
+  0.0900  16 1 H4X
+  0.0900  16 1 H4Y
+ -0.1800  17 4 C35
+  0.0900  17 1 H5X
+  0.0900  17 1 H5Y
+ -0.1800  18 4 C36
+  0.0900  18 1 H6X
+  0.0900  18 1 H6Y
+ -0.1800  19 4 C37
+  0.0900  19 1 H7X
+  0.0900  19 1 H7Y
+ -0.1800  20 4 C38
+  0.0900  20 1 H8X
+  0.0900  20 1 H8Y
+ -0.1800  21 4 C39
+  0.0900  21 1 H9X
+  0.0900  21 1 H9Y
+ -0.1800  22 4 C310
+  0.0900  22 1 H10X
+  0.0900  22 1 H10Y
+ -0.1800  23 4 C311
+  0.0900  23 1 H11X
+  0.0900  23 1 H11Y
+ -0.2700  24 4 C312
+  0.0900  24 1 H12X
+  0.0900  24 1 H12Y
+  0.0900  24 1 H12Z
+
+#ResName DMPC
+#Description 1,2 dimiristoyl-SN-glycero-3-Phosphorylcholine
+ -0.6000   1 4 N
+ -0.3500   1 4 C13
+  0.2500   1 1 H13A
+  0.2500   1 1 H13B
+  0.2500   1 1 H13C
+ -0.3500   1 4 C14
+  0.2500   1 1 H14A
+  0.2500   1 1 H14B
+  0.2500   1 1 H14C
+ -0.3500   1 4 C15
+  0.2500   1 1 H15A
+  0.2500   1 1 H15B
+  0.2500   1 1 H15C
+ -0.1000   1 4 C12
+  0.2500   1 1 H12A
+  0.2500   1 1 H12B
+ -0.0800   2 4 C11
+  0.0900   2 1 H11A
+  0.0900   2 1 H11B
+  1.5000   2 4 P1   P
+ -0.8000   2 1 O11  O12  O13  O14
+ -0.8000   2 1 O11  O12  O13  O14
+ -0.5500   2 2 O11  O12  O13  O14
+ -0.5500   2 2 O11  O12  O13  O14
+ -0.0800   2 4 C1
+  0.0900   2 1 HA
+  0.0900   2 1 HB
+  0.0400   3 2 C2
+  0.0900   3 1 HS
+ -0.3400   3 2 O21
+  0.6300   3 3 C21
+ -0.5200   3 1 O22
+ -0.0800   3 4 C22
+  0.0900   3 1 H2R
+  0.0900   3 1 H2S
+ -0.0500   4 4 C3
+  0.0900   4 1 HX
+  0.0900   4 1 HY
+ -0.3400   4 2 O31
+  0.6300   4 3 C31
+ -0.5200   4 1 O32
+ -0.0800   4 4 C32
+  0.0900   4 1 H2X
+  0.0900   4 1 H2Y
+ -0.1800   5 4 C23
+  0.0900   5 1 H3R
+  0.0900   5 1 H3S
+ -0.1800   6 4 C24
+  0.0900   6 1 H4R
+  0.0900   6 1 H4S
+ -0.1800   7 4 C25
+  0.0900   7 1 H5R
+  0.0900   7 1 H5S
+ -0.1800   8 4 C26
+  0.0900   8 1 H6R
+  0.0900   8 1 H6S
+ -0.1800   9 4 C27
+  0.0900   9 1 H7R
+  0.0900   9 1 H7S
+ -0.1800  10 4 C28
+  0.0900  10 1 H8R
+  0.0900  10 1 H8S
+ -0.1800  11 4 C29
+  0.0900  11 1 H9R
+  0.0900  11 1 H9S
+ -0.1800  12 4 C210
+  0.0900  12 1 H10R
+  0.0900  12 1 H10S
+ -0.1800  13 4 C211
+  0.0900  13 1 H11R
+  0.0900  13 1 H11S
+ -0.1800  14 4 C212
+  0.0900  14 1 H12R
+  0.0900  14 1 H12S
+ -0.1800  15 4 C213
+  0.0900  15 1 H13R
+  0.0900  15 1 H13S
+ -0.2700  16 4 C214
+  0.0900  16 1 H14R
+  0.0900  16 1 H14S
+  0.0900  16 1 H14T
+ -0.1800  17 4 C33
+  0.0900  17 1 H3X
+  0.0900  17 1 H3Y
+ -0.1800  18 4 C34
+  0.0900  18 1 H4X
+  0.0900  18 1 H4Y
+ -0.1800  19 4 C35
+  0.0900  19 1 H5X
+  0.0900  19 1 H5Y
+ -0.1800  20 4 C36
+  0.0900  20 1 H6X
+  0.0900  20 1 H6Y
+ -0.1800  21 4 C37
+  0.0900  21 1 H7X
+  0.0900  21 1 H7Y
+ -0.1800  22 4 C38
+  0.0900  22 1 H8X
+  0.0900  22 1 H8Y
+ -0.1800  23 4 C39
+  0.0900  23 1 H9X
+  0.0900  23 1 H9Y
+ -0.1800  24 4 C310
+  0.0900  24 1 H10X
+  0.0900  24 1 H10Y
+ -0.1800  25 4 C311
+  0.0900  25 1 H11X
+  0.0900  25 1 H11Y
+ -0.1800  26 4 C312
+  0.0900  26 1 H12X
+  0.0900  26 1 H12Y
+ -0.1800  27 4 C313
+  0.0900  27 1 H13X
+  0.0900  27 1 H13Y
+ -0.2700  28 4 C314
+  0.0900  28 1 H14X
+  0.0900  28 1 H14Y
+  0.0900  28 1 H14Z
+
+; *******************
+; **** Nobel gas ****
+; *******************
+
+#ResName HE1 HE
+#Description Helium
+  0.0000   1 0 HE01 HE0
+
+#ResName NE1 NE
+#Description Neon
+  0.0000   1 0 NE01 NE0
+
+; *********************
+; **** Nucleotides ****
+; *********************
+
+#Define NA_DEO1
+#Description Deoxyribose in pyrimidines
+#Delete O2'
+ -0.1800   1 4 C2'  C2*
+  0.0900   1 1 H2'  H2*  H21* H2*1
+  0.0900   1 1 H2'' H2** H22* H2*2
+
+#Define NA_DEO2
+#Description Deoxyribose in purines
+#Delete O2'
+ -0.1800   1 4 C2'  C2*
+  0.0900   1 1 H2'  H2*  H21* H2*1
+  0.0900   1 1 H2'' H2** H22* H2*2
+
+#Define NA_5TER
+#Description 5'-terminal hydroxyl
+  0.4300   1 1 H5T  H5*  H5*1
+ -0.6600   1 2 O5'  O5*
+  0.0500   1 4 C5'  C5*
+  0.0900   1 1 H5'  H5*  H51* H5*1
+  0.0900   1 1 H5'' H5** H52* H5*2
+#Delete P
+#Delete O1P
+#Delete O2P
+
+#Define NA_5MET
+#Description 5'-ribose methyl
+ -0.2700   1 4 C5'  C5*
+  0.0900   1 1 H5'  H5*  H51* H5*1
+  0.0900   1 1 H5'' H5** H52* H5*2
+  0.0900   1 1 H53' H53* H5*3
+#Delete O5'
+#Delete P
+#Delete O1P
+#Delete O2P
+
+#Define NA_5PHO
+#Description 5'-terminal phosphate
+ -0.0800   1 4 C5'  C5*
+  0.0900   1 1 H5'  H5*  H51* H5*1
+  0.0900   1 1 H5'' H5** H52* H5*2
+  1.5000   1 4 P
+ -0.8200   1 1 O1P
+ -0.8200   1 1 O2P
+ -0.6200   1 2 O5'  O5*
+ -0.6800   1 2 O5T
+  0.3400   1 1 H5T
+
+#Define NA_3TER
+#Description 3'-terminal hydroxyl
+  0.1400   9 4 C3'  C3*
+  0.0900   9 1 H3'  H3*  H3*1
+ -0.6600   9 2 O3'  O3*
+  0.4300   9 1 H3T  H3*  H3*1
+
+#Define NA_3MET
+#Description 3'-ribose methyl
+ -0.0900   1 4 C3'  C3*
+  0.0900   1 1 H3'  H3*
+ -0.2700   1 4 C3T
+  0.0900   1 1 H3T1
+  0.0900   1 1 H3T2
+  0.0900   1 1 H3T3
+#Delete O3'
+
+#Define NA_3PHO
+#Description 3'-terminal phosphate
+  0.0100   1 4 C3'  C3*
+  0.0900   1 1 H3'  H3*
+  1.5000   1 4 P3
+ -0.8200   1 1 O1P3
+ -0.8200   1 1 O2P3
+ -0.6200   1 2 O3'  O3*
+ -0.6800   1 2 O3T
+  0.3400   1 1 H3T
+
+#Define NA_9MG
+#Description 9-methyl-guanine
+#Delete P
+#Delete O1P
+#Delete O2P
+#Delete O5'
+#Delete C5'
+#Delete H5'
+#Delete H5''
+#Delete C4'
+#Delete H4'
+#Delete O4'
+#Delete C1'
+#Delete H1'
+#Delete C2'
+#Delete H2''
+#Delete O2'
+#Delete H2'
+#Delete C3'
+#Delete O3'
+#Delete H3'
+ -0.2700   1 4 C9
+  0.0900   1 1 H91
+  0.0900   1 1 H92
+  0.0900   1 1 H93
+
+#Define NA_9EG
+#Description 9-ethyl-guanine
+#Delete P
+#Delete O1P
+#Delete O2P
+#Delete O5'
+#Delete C5'
+#Delete H5'
+#Delete H5''
+#Delete C4'
+#Delete H4'
+#Delete O4'
+#Delete C1'
+#Delete H1'
+#Delete C2'
+#Delete H2''
+#Delete O2'
+#Delete H2'
+#Delete C3'
+#Delete O3'
+#Delete H3'
+ -0.1800   1 4 C9
+  0.0900   1 1 H91
+  0.0900   1 1 H92
+ -0.2700   2 4 C9B
+  0.0900   2 1 H9B1
+  0.0900   2 1 H9B2
+  0.0900   2 1 H9B3
+
+#Define NA_9MA
+#Description 9-methyl adenine
+#Delete P
+#Delete O1P
+#Delete O2P
+#Delete O5'
+#Delete C5'
+#Delete H5'
+#Delete H5''
+#Delete C4'
+#Delete H4'
+#Delete O4'
+#Delete C1'
+#Delete H1'
+#Delete C2'
+#Delete H2''
+#Delete O2'
+#Delete H2'
+#Delete C3'
+#Delete O3'
+#Delete H3'
+ -0.2700   1 4 C9
+  0.0900   1 1 H91
+  0.0900   1 1 H92
+  0.0900   1 1 H93
+
+#Define NA_1MC
+#Description 1-methyl cytosine
+#Delete P
+#Delete O1P
+#Delete O2P
+#Delete O5'
+#Delete C5'
+#Delete H5'
+#Delete H5''
+#Delete C4'
+#Delete H4'
+#Delete O4'
+#Delete C1'
+#Delete H1'
+#Delete C2'
+#Delete H2''
+#Delete O2'
+#Delete H2'
+#Delete C3'
+#Delete O3'
+#Delete H3'
+ -0.2700   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+
+
+#Define NA_5MC
+#Description 5-methyl-cytosine
+#Delete H5
+ -0.0500   1 3 C5
+ -0.2200   1 4 C5M
+  0.0900   1 1 H5M1
+  0.0900   1 1 H5M2
+  0.0900   1 1 H5M3
+
+#Define NA_INO
+#Description Convert guanine to inosine
+#Delete N2
+#Delete H21
+#Delete H22
+ -0.6400   4 2 N3
+  0.5900   4 3 C2
+  0.0900   4 1 H2
+ -0.2900   4 3 N1
+  0.2500   4 1 H1
+
+#Define NA_1MT
+#Description 1-methyl-thymine
+#Delete P
+#Delete O1P
+#Delete O2P
+#Delete O5'
+#Delete C5'
+#Delete H5'
+#Delete H5''
+#Delete C4'
+#Delete H4'
+#Delete O4'
+#Delete C1'
+#Delete H1'
+#Delete C2'
+#Delete H2''
+#Delete O2'
+#Delete H2'
+#Delete C3'
+#Delete O3'
+#Delete H3'
+ -0.2700   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+
+#Define NA_5DP
+#Description 5' diphosphate
+ -0.0800   1 4 C5'  C5*
+  0.0900   1 1 H5'  H5*  H5*1
+  0.0900   1 1 H5'' H5** H5*2
+ -0.6200   1 2 O5'  O5*
+  1.5000   1 4 P
+ -0.8200   1 1 O1P
+ -0.8200   1 1 O2P
+ -0.7400   1 2 O13
+  1.1000   1 4 P2
+ -0.9000   1 1 O21
+ -0.9000   1 1 O22
+ -0.9000   1 1 O23
+
+; ***************************
+; **** Guanine/guanosine ****
+; ***************************
+
+#ResName GUA G
+#Id GUA
+#Description Guanosine
+#Charge -1
+  1.5000   1 4 P
+ -0.8000   1 1 O1P
+ -0.8000   1 1 O2P
+ -0.5500   1 2 O5'  O5*
+ -0.0800   1 4 C5'  C5*
+  0.0900   1 1 H5'  H5*  H51* H5*1
+  0.0900   1 1 H5'' H5** H52* H5*2
+
+  0.1100   2 4 C4'  C4*
+  0.0900   2 1 H4'  H4*  H41* H4*1
+ -0.4000   2 2 O4'  O4*
+  0.1100   2 4 C1'  C1*
+  0.0900   2 1 H1'  H1*  H11* H1*1
+ -0.1400   3 3 N9
+  0.1400   3 3 C4
+ -0.6600   4 2 N3
+  0.7600   4 3 C2
+ -0.3800   4 3 N1
+  0.2800   4 1 H1
+ -0.6400   5 3 N2
+  0.3100   5 1 H21
+  0.3300   5 1 H22
+  0.5500   6 3 C6
+ -0.4700   6 1 O6
+ -0.0800   6 3 C5
+ -0.6900   7 2 N7
+  0.4100   7 3 C8
+  0.2800   7 1 H8
+
+  0.1400   8 4 C2'  C2*
+  0.0900   8 1 H2'' H2** H22* H2*2
+ -0.6600   8 2 O2'  O2*
+  0.4300   8 1 H2'  H2*  H21* H2*1
+
+  0.0100   9 4 C3'  C3*
+  0.0900   9 1 H3'  H3*  H3*1
+ -0.5500   9 2 O3'  O3*
+
+#ResName GUA G
+#Id GUA3M
+#Description Guanosine (3' methylated)
+#Charge -1
+#Call GUA
+#Call NA_3MET
+
+#ResName GUA G
+#Id GUA3T
+#Description Guanosine (3' terminal)
+#Charge -1
+#Call GUA
+#Call NA_3TER
+
+#ResName GUA G
+#Id GUA3P
+#Description Guanosine (3' phosphate)
+#Charge -2
+#Call GUA
+#Call NA_3PHO
+
+#ResName GUA G
+#Id GUA5M
+#Description Guanosine (5' methylated)
+#Charge -1
+#Call GUA
+#Call NA_5MET
+
+#ResName GUA G
+#Id GUA5T
+#Description Guanosine (5' terminal)
+#Charge -2
+#Call GUA
+#Call NA_5TER
+
+#ResName GUA G
+#Id GUA5P
+#Description Guanosine (5' phosphate)
+#Charge -2
+#Call GUA
+#Call NA_5PHO
+
+#ResName GDP
+#Id GDP
+#Description Guanosine diphosphate
+#Charge -3
+#Call GUA
+#Call NA_5DP
+
+#ResName DGUA DG GUA G
+#Id DGUA
+#Description Deoxy-guanosine
+#Charge -1
+#Call GUA
+#Call NA_DEO2
+
+#ResName DGUA DG GUA G
+#Id DGUA3M
+#Description Deoxy-guanosine (3' methylated)
+#Charge -1
+#Call GUA3M
+#Call NA_DEO2
+
+#ResName DGUA DG GUA G
+#Id DGUA3T
+#Description Deoxy-guanosine (3' terminal)
+#Charge -1
+#Call GUA3T
+#Call NA_DEO2
+
+#ResName DGUA DG GUA G
+#Id DGUA3P
+#Description Deoxy-guanosine (3' phosphate)
+#Charge -2
+#Call GUA3P
+#Call NA_DEO2
+
+#ResName DGUA DG GUA G
+#Id DGUA5M
+#Description Deoxy-guanosine (5' methylated)
+#Charge -1
+#Call GUA5M
+#Call NA_DEO2
+
+#ResName DGUA DG GUA G
+#Id DGUA5T
+#Description Deoxy-guanosine (5' terminal)
+#Charge -2
+#Call GUA5T
+#Call NA_DEO2
+
+#ResName DGUA DG GUA G
+#Id DGUA5P
+#Description Deoxy-guanosine (5' phosphate)
+#Charge -2
+#Call GUA5P
+#Call NA_DEO2
+
+#ResName 9MG
+#Id 9MG
+#Description 9-methyl-guanine
+#Charge  0
+#Call GUA
+#Call NA_9MG
+
+#ResName 9EG
+#Id 9EG
+#Description 9-ethyl-guanine
+#Charge  0
+#Call GUA
+#Call NA_9EG
+
+; *****************
+; **** Inosine ****
+; *****************
+
+#ResName INO I
+#Id INO
+#Description Inosine
+#Charge -1
+#Call GUA
+#Call NA_INO
+
+#ResName INO I
+#Id INO3M
+#Description Inosine (3' methylated)
+#Charge -1
+#Call GUA3M
+#Call NA_INO
+
+#ResName INO I
+#Id INO3T
+#Description Inosine (3' terminal)
+#Charge -1
+#Call GUA3T
+#Call NA_INO
+
+#ResName INO I
+#Id INO3P
+#Description Inosine (3' phosphate)
+#Charge -2
+#Call GUA3P
+#Call NA_INO
+
+#ResName INO I
+#Id INO5M
+#Description Inosine (5' methylated)
+#Charge -1
+#Call GUA5M
+#Call NA_INO
+
+#ResName INO I
+#Id INO5T
+#Description Inosine (5' terminal)
+#Charge -2
+#Call GUA5T
+#Call NA_INO
+
+#ResName INO I
+#Id INO5P
+#Description Inosine (5' phosphate)
+#Charge -2
+#Call GUA5P
+#Call NA_INO
+
+#ResName IDP
+#Id IDP
+#Description Inosine diphosphate
+#Charge -3
+#Call INO
+#Call NA_5DP
+
+; ***************************
+; **** Adenine/adenosine ****
+; ***************************
+
+#ResName ADE A
+#Id ADE
+#Description Adenosine
+#Charge -1
+  1.5000   1 4 P
+ -0.8000   1 1 O1P
+ -0.8000   1 1 O2P
+ -0.5500   1 2 O5'  O5*
+ -0.0800   1 4 C5'  C5*
+  0.0900   1 1 H5'  H5*  H51* H5*1
+  0.0900   1 1 H5'' H5** H52* H5*2
+
+  0.1100   2 4 C4'  C4*
+  0.0900   2 1 H4'  H4*  H41* H4*1
+ -0.4000   2 2 O4'  O4*
+  0.1100   2 4 C1'  C1*
+  0.0900   2 1 H1'  H1*
+  0.2300   3 3 C5
+ -0.6300   3 2 N7
+  0.3800   3 3 C8
+  0.1800   3 1 H8
+ -0.1600   3 3 N9
+ -0.7400   4 2 N1
+  0.5300   4 3 C2
+  0.1600   4 1 H2
+ -0.6900   4 2 N3
+  0.3100   4 3 C4
+  0.4300   4 3 C6
+ -0.8000   5 3 N6
+  0.4000   5 1 H61
+  0.4000   5 1 H62
+
+  0.1400   6 4 C2'  C2*
+  0.0900   6 1 H2'' H2** H22* H2*2
+ -0.6600   6 2 O2'  O2*
+  0.4300   6 1 H2'  H2*  H21* H2*1
+
+  0.0100   7 4 C3'  C3*
+  0.0900   7 1 H3'  H3*  H31*  H3*1
+ -0.5500   7 2 O3'  O3*
+
+#ResName ADE A
+#Id ADE3M
+#Description Adenosine (3' methylated)
+#Charge -1
+#Call ADE
+#Call NA_3MET
+
+#ResName ADE A
+#Id ADE3T
+#Description Adenosine (3' terminal)
+#Charge -1
+#Call ADE
+#Call NA_3TER
+
+#ResName ADE A
+#Id ADE3P
+#Description Adenosine (3' phosphate)
+#Charge -2
+#Call ADE
+#Call NA_3PHO
+
+#ResName ADE A
+#Id ADE5M
+#Description Adenosine (5' methylated)
+#Charge -1
+#Call ADE
+#Call NA_5MET
+
+#ResName ADE A
+#Id ADE5T
+#Description Adenosine (5' terminal)
+#Charge -2
+#Call ADE
+#Call NA_5TER
+
+#ResName ADE A
+#Id ADE5P
+#Description Adenosine (5' phosphate)
+#Charge -2
+#Call ADE
+#Call NA_5PHO
+
+#ResName DADE DA ADE A
+#Id DADE
+#Description Deoxy-adenosine
+#Charge -1
+#Call ADE
+#Call NA_DEO2
+
+#ResName DADE DA ADE A
+#Id DADE3M
+#Description Deoxy-adenosine (3' methylated)
+#Charge -1
+#Call ADE3M
+#Call NA_DEO2
+
+#ResName DADE DA ADE A
+#Id DADE3T
+#Description Deoxy-adenosine (3' terminal)
+#Charge -1
+#Call ADE3T
+#Call NA_DEO2
+
+#ResName DADE DA ADE A
+#Id DADE3P
+#Description Deoxy-adenosine (3' phosphate)
+#Charge -2
+#Call ADE3P
+#Call NA_DEO2
+
+#ResName DADE DA ADE A
+#Id DADE5M
+#Description Deoxy-adenosine (5' methylated)
+#Charge -1
+#Call ADE5M
+#Call NA_DEO2
+
+#ResName DADE DA ADE A
+#Id DADE5T
+#Description Deoxy-adenosine (5' terminal)
+#Charge -2
+#Call ADE5T
+#Call NA_DEO2
+
+#ResName DADE DA ADE A
+#Id DADE5P
+#Description Deoxy-adenosine (5' phosphate)
+#Charge -2
+#Call ADE5P
+#Call NA_DEO2
+
+#ResName 9MA
+#Id 5MA
+#Description 9-methyl-adenine
+#Charge  0
+#Call ADE
+#Call NA_9MA
+
+#ResName ADP
+#Id ADP
+#Description Adenosine diphosphate
+#Charge -3
+  0.1100   1 4 C4'
+  0.0900   1 1 H4'
+ -0.4000   1 2 O4'
+  0.1100   1 4 C1'
+  0.0900   1 1 H1'
+  0.2300   2 3 C5
+ -0.6300   2 2 N7
+  0.3800   2 3 C8
+  0.1800   2 1 H8
+ -0.1600   2 3 N9
+ -0.7400   3 2 N1
+  0.5300   3 3 C2
+  0.1600   3 1 H2
+ -0.6900   3 2 N3
+  0.3100   3 3 C4
+  0.4300   3 3 C6
+ -0.8000   4 3 N6
+  0.4000   4 1 H61
+  0.4000   4 1 H62
+  0.1400   5 4 C2'
+  0.0900   5 1 H2''
+ -0.6600   5 2 O2'
+  0.4300   5 1 H2'
+  0.1400   6 4 C3'
+  0.0900   6 1 H3'
+ -0.6600   6 2 O3'
+  0.4300   6 1 H3T
+ -0.0800   7 4 C5'
+  0.0900   7 1 H5'
+  0.0900   7 1 H5''
+ -0.6200   7 2 O5'
+  1.5000   7 4 PA
+ -0.8200   7 1 O1A  O2A  O3A
+ -0.8200   7 1 O1A  O2A  O3A
+ -0.7400   7 2 O1A  O2A  O3A
+  1.1000   7 4 PB
+ -0.9000   7 1 O1B
+ -0.9000   7 1 O2B
+ -0.9000   7 1 O3B
+
+#ResName ATP
+#Id ATP
+#Description Adenosine triphosphate
+#Charge -4
+  0.1100   1 4 C4'  C4*
+  0.0900   1 1 H4'  H4*  H41* H4*1
+ -0.4000   1 2 O4'  O4*
+  0.1100   1 4 C1'  C1*
+  0.0900   1 1 H1'  H1*  H11* H1*1
+  0.2300   2 3 C5
+ -0.6300   2 2 N7
+  0.3800   2 3 C8
+  0.1800   2 1 H8
+ -0.1600   2 3 N9
+ -0.7400   3 2 N1
+  0.5300   3 3 C2
+  0.1600   3 1 H2
+ -0.6900   3 2 N3
+  0.3100   3 3 C4
+  0.4300   3 3 C6
+ -0.8000   4 3 N6
+  0.4000   4 1 H61
+  0.4000   4 1 H62
+  0.1400   5 4 C2'  C2*
+  0.0900   5 1 H2'' H2** H22* H2*2
+ -0.6600   5 2 O2'  O2*
+  0.4300   5 1 H2'  H2*
+  0.1400   6 4 C3'  C3*
+  0.0900   6 1 H3'  H3*
+ -0.6600   6 2 O3'  O3*
+  0.4300   6 1 H3T
+ -0.0800   7 4 C5'  C5*
+  0.0900   7 1 H5'  H5*  H51* H5*1
+  0.0900   7 1 H5'' H5** H52* H5*2
+ -0.6200   7 2 O5'  O5*
+  1.5000   7 9 PA
+ -0.8200   7 1 O1A  O2A  O3A
+ -0.8200   7 1 O1A  O2A  O3A
+ -0.7400   7 2 O1A  O2A  O3A
+  1.5000   7 4 PB
+ -0.8200   7 1 O1B  O2B  O3B
+ -0.8200   7 1 O1B  O2B  O3B
+ -0.8600   7 2 O1B  O2B  O3B
+  1.1000   7 4 PG
+ -0.9000   7 1 O1G
+ -0.9000   7 1 O2G
+ -0.9000   7 1 O3G
+
+; ***************************
+; **** Cytosine/cytidine ****
+; ***************************
+
+#ResName CYT C
+#Id CYT
+#Description Cytidine
+#Charge -1
+  1.5000   1 4 P
+ -0.8000   1 1 O1P
+ -0.8000   1 1 O2P
+ -0.5500   1 2 O5'  O5*
+ -0.0800   1 4 C5'  C5*
+  0.0900   1 1 H5'  H5*  H51* H5*1
+  0.0900   1 1 H5'' H5** H52* H5*2
+
+  0.1100   2 4 C4'  C4*
+  0.0900   2 1 H4'  H4*  H41* H4*1
+ -0.4000   2 2 O4'  O4*
+  0.1100   2 4 C1'  C1*
+  0.0900   2 1 H1'  H1*  H11* H1*1
+ -0.1600   3 3 N1
+  0.1100   3 3 C6
+  0.0500   3 1 H6
+  0.5300   4 3 C2
+ -0.4800   4 1 O2
+ -0.6700   4 2 N3
+  0.6200   4 3 C4
+ -0.5800   5 3 N4
+  0.3100   5 1 H41
+  0.2700   5 1 H42
+ -0.1000   6 3 C5
+  0.1000   6 1 H5
+
+  0.1400   7 4 C2'  C2*
+  0.0900   7 1 H2'' H2** H22* H2*2
+ -0.6600   7 2 O2'  O2*
+  0.4300   7 1 H2'  H2*  H21* H2*1
+
+  0.0100   8 4 C3'  C3*
+  0.0900   8 1 H3'  H3*  H31* H3*1
+ -0.5500   8 2 O3'  O3*
+
+#ResName CYT C
+#Id CYT3M
+#Description Cytidine (3' methylated)
+#Charge -1
+#Call CYT
+#Call NA_3MET
+
+#ResName CYT C
+#Id CYT3T
+#Description Cytidine (3' terminal)
+#Charge -1
+#Call CYT
+#Call NA_3TER
+
+#ResName CYT C
+#Id CYT3P
+#Description Cytidine (3' phosphate)
+#Charge -2
+#Call CYT
+#Call NA_3PHO
+
+#ResName CYT C
+#Id CYT5M
+#Description Cytidine (5' methylated)
+#Charge -1
+#Call CYT
+#Call NA_5MET
+
+#ResName CYT C
+#Id CYT5T
+#Description Cytidine (5' terminal)
+#Charge -2
+#Call CYT
+#Call NA_5TER
+
+#ResName CYT C
+#Id CYT5P
+#Description Cytidine (5' phosphate)
+#Charge -2
+#Call CYT
+#Call NA_5PHO
+
+#ResName DCYT DC CYT C
+#Id DCYT
+#Description Deoxy-cytidine
+#Charge -1
+#Call CYT
+#Call NA_DEO1
+
+#ResName DCYT DC CYT C
+#Id DCYT3M
+#Description Deoxy-cytidine (3' methylated)
+#Charge -1
+#Call CYT3M
+#Call NA_DEO1
+
+#ResName DCYT DC CYT C
+#Id DCYT3T
+#Description Deoxy-cytidine (3' terminal)
+#Charge -1
+#Call CYT3T
+#Call NA_DEO1
+
+#ResName DCYT DC CYT C
+#Id DCYT3P
+#Description Deoxy-cytidine (3' phosphate)
+#Charge -2
+#Call CYT3P
+#Call NA_DEO1
+
+#ResName DCYT DC CYT C
+#Id DCYT5M
+#Description Deoxy-cytidine (5' methylated)
+#Charge -1
+#Call CYT5M
+#Call NA_DEO1
+
+#ResName DCYT DC CYT C
+#Id DCYT5T
+#Description Deoxy-cytidine (5' terminal)
+#Charge -2
+#Call CYT5T
+#Call NA_DEO1
+
+#ResName DCYT DC CYT C
+#Id DCYT5P
+#Description Deoxy-cytidine (5' phosphate)
+#Charge -2
+#Call CYT5P
+#Call NA_DEO1
+
+#ResName 1MC
+#Id 1MC
+#Description 1-methyl-cytosine
+#Charge  0
+#Call CYT
+#Call NA_1MC
+
+#ResName 5MC
+#Id 5MC
+#Description 1-methyl-cytosine
+#Charge  0
+#Call CYT
+#Call NA_5MC
+
+; ***************************
+; **** Thimine/thimidine ****
+; ***************************
+
+#ResName THY T
+#Id THY
+#Description Thymidine
+#Charge -1
+  1.5000   1 4 P
+ -0.8000   1 1 O1P
+ -0.8000   1 1 O2P
+ -0.5500   1 2 O5'  O5*
+ -0.0800   1 4 C5'  C5*
+  0.0900   1 1 H5'  H5*  H51* H5*1
+  0.0900   1 1 H5'' H5** H52* H5*2
+
+  0.1100   2 4 C4'  C4*
+  0.0900   2 1 H4'  H4*  H41* H4*1
+ -0.4000   2 2 O4'  O4*
+  0.1100   2 4 C1'  C1*
+  0.0900   2 1 H1'  H1*  H11* H1*1
+ -0.3000   3 3 N1
+  0.1700   3 3 C6
+  0.1300   3 1 H6
+  0.5700   4 3 C2
+ -0.4700   4 1 O2
+ -0.4600   4 3 N3
+  0.3600   4 1 H3
+  0.5400   5 3 C4
+ -0.4900   5 1 O4
+ -0.1500   5 3 C5
+ -0.1100   5 4 C5M
+  0.0700   5 1 H51  H5M1
+  0.0700   5 1 H52  H5M2
+  0.0700   5 1 H53  H5M3
+
+  0.1400   6 4 C2'  C2*
+  0.0900   6 1 H2'' H2** H22* H2*2
+ -0.6600   6 2 O2'  O2*
+  0.4300   6 1 H2'  H2*  H21* H2*1
+
+  0.0100   7 4 C3'  C3*
+  0.0900   7 1 H3'  H3*  H31* H3*1
+ -0.5500   7 2 O3'  O3*
+
+#ResName THY T
+#Id THY3M
+#Description Thymidine (3' methylated)
+#Charge -1
+#Call THY
+#Call NA_3MET
+
+#ResName THY T
+#Id THY3T
+#Description Thymidine (3' terminal)
+#Charge -1
+#Call THY
+#Call NA_3TER
+
+#ResName THY T
+#Id THY3P
+#Description Thymidine (3' phosphate)
+#Charge -2
+#Call THY
+#Call NA_3PHO
+
+#ResName THY T
+#Id THY5M
+#Description Thymidine (5' methylated)
+#Charge -1
+#Call THY
+#Call NA_5MET
+
+#ResName THY T
+#Id THY5T
+#Description Thymidine (5' terminal)
+#Charge -2
+#Call THY
+#Call NA_5TER
+
+#ResName THY T
+#Id THY5P
+#Description Thymidine (5' phosphate)
+#Charge -2
+#Call THY
+#Call NA_5PHO
+
+#ResName DTHY DT THY T
+#Id DTHY
+#Description Deoxy-thymidine
+#Charge -1
+#Call THY
+#Call NA_DEO1
+
+#ResName DTHY DT THY T
+#Id DTHY3M
+#Description Deoxy-thymidine (3' methylated)
+#Charge -1
+#Call THY3M
+#Call NA_DEO1
+
+#ResName DTHY DT THY T
+#Id DTHY3T
+#Description Deoxy-thymidine (3' terminal)
+#Charge -1
+#Call THY3T
+#Call NA_DEO1
+
+#ResName DTHY DT THY T
+#Id DTHY3P
+#Description Deoxy-thymidine (3' phosphate)
+#Charge -2
+#Call THY3P
+#Call NA_DEO1
+
+#ResName DTHY DT THY T
+#Id DTHY5M
+#Description Deoxy-thymidine (5' methylated)
+#Charge -1
+#Call THY5M
+#Call NA_DEO1
+
+#ResName DTHY DT THY T
+#Id DTHY5T
+#Description Deoxy-thymidine (5' terminal)
+#Charge -2
+#Call THY5T
+#Call NA_DEO1
+
+#ResName DTHY DT THY T
+#Id DTHY5P
+#Description Deoxy-thymidine (5' phosphate)
+#Charge -2
+#Call THY5P
+#Call NA_DEO1
+
+#ResName 1MT
+#Id 1MT
+#Description 1-methyl-thymine
+#Charge  0
+#Call THY
+#Call NA_1MT
+
+; *****************
+; **** Uridine ****
+; *****************
+
+#ResName URA U
+#Id URA
+#Description Uridine
+#Charge -1
+  1.5000   1 4 P
+ -0.8000   1 1 O1P
+ -0.8000   1 1 O2P
+ -0.5500   1 2 O5'  O5*
+ -0.0800   1 4 C5'  C5*
+  0.0900   1 1 H5'  H5*  H51* H5*1
+  0.0900   1 1 H5'' H5** H52* H5*2
+
+  0.1100   2 4 C4'  C4*
+  0.0900   2 1 H4'  H4*
+ -0.4000   2 2 O4'  O4*
+  0.1100   2 4 C1'  C1*
+  0.0900   2 1 H1'  H1*  H11* H1*1
+ -0.3000   3 3 N1
+  0.1700   3 3 C6
+  0.1300   3 1 H6
+  0.5700   4 3 C2
+ -0.4700   4 1 O2
+ -0.4600   4 3 N3
+  0.3600   4 1 H3
+  0.5400   5 3 C4
+ -0.4900   5 1 O4
+ -0.1500   5 3 C5
+  0.1000   5 1 H5
+
+  0.1400   6 4 C2'  C2*
+  0.0900   6 1 H2'' H2** H22* H2*2
+ -0.6600   6 2 O2'  O2*
+  0.4300   6 1 H2'  H2*  H21* H2*1
+
+  0.0100   7 4 C3'  C3*
+  0.0900   7 1 H3'  H3*  H31* H3*1
+ -0.5500   7 2 O3'  O3*
+
+#ResName URA U
+#Id URA3M
+#Description Uridine (3' meURAlated)
+#Charge -1
+#Call URA
+#Call NA_3MET
+
+#ResName URA U
+#Id URA3T
+#Description Uridine (3' terminal)
+#Charge -1
+#Call URA
+#Call NA_3TER
+
+#ResName URA U
+#Id URA3P
+#Description Uridine (3' phosphate)
+#Charge -2
+#Call URA
+#Call NA_3PHO
+
+#ResName URA U
+#Id URA5M
+#Description Uridine (5' meURAlated)
+#Charge -1
+#Call URA
+#Call NA_5MET
+
+#ResName URA U
+#Id URA5T
+#Description Uridine (5' terminal)
+#Charge -2
+#Call URA
+#Call NA_5TER
+
+#ResName URA U
+#Id URA5P
+#Description Uridine (5' phosphate)
+#Charge -2
+#Call URA
+#Call NA_5PHO
+
+#ResName DURA DU URA U
+#Id DURA
+#Description Deoxy-uridine
+#Charge -1
+#Call URA
+#Call NA_DEO1
+
+#ResName DURA DU URA U
+#Id DURA3M
+#Description Deoxy-uridine (3' meURAlated)
+#Charge -1
+#Call URA3M
+#Call NA_DEO1
+
+#ResName DURA DU URA U
+#Id DURA3T
+#Description Deoxy-uridine (3' terminal)
+#Charge -1
+#Call URA3T
+#Call NA_DEO1
+
+#ResName DURA DU URA U
+#Id DURA3P
+#Description Deoxy-uridine (3' phosphate)
+#Charge -2
+#Call URA3P
+#Call NA_DEO1
+
+#ResName DURA DU URA U
+#Id DURA5M
+#Description Deoxy-uridine (5' meURAlated)
+#Charge -1
+#Call URA5M
+#Call NA_DEO1
+
+#ResName DURA DU URA U
+#Id DURA5T
+#Description Deoxy-uridine (5' terminal)
+#Charge -2
+#Call URA5T
+#Call NA_DEO1
+
+#ResName DURA DU URA U
+#Id DURA5P
+#Description Deoxy-uridine (5' phosphate)
+#Charge -2
+#Call URA5P
+#Call NA_DEO1
+
+#ResName NAD NAD+
+#Description Nicotinamide adenine dinucleotide (oxidized)
+  0.1100   1 4 AC4' AC4*
+  0.0900   1 1 AH4' AH4*
+ -0.4000   1 2 AO4' AO4*
+  0.1100   1 4 AC1' AC1*
+  0.0900   1 1 AH1' AH1*
+  0.2300   2 3 AC5
+ -0.6300   2 2 AN7
+  0.3800   2 3 AC8
+  0.1800   2 1 AH8
+ -0.1600   2 3 AN9
+ -0.7400   3 2 AN1
+  0.5300   3 3 AC2
+  0.1600   3 1 AH2
+ -0.6900   3 2 AN3
+  0.3100   3 3 AC4
+  0.4300   3 3 AC6
+ -0.8000   4 3 AN6
+  0.4000   4 1 AH61
+  0.4000   4 1 AH62
+  0.1400   5 4 AC2' AC2*
+  0.0900   5 1 AH2' AH2*
+ -0.6600   5 2 AO2' AO2*
+  0.4300   5 1 AH2T
+  0.1400   6 4 AC3' AC3*
+  0.0900   6 1 AH3' AH3*
+ -0.6600   6 2 AO3' AO3*
+  0.4300   6 1 AH3T
+ -0.0800   7 4 AC5' AC5*
+  0.0900   7 1 AH5' AH5*
+  0.0900   7 1 AH5S
+  1.5000   7 4 AP
+ -0.8200   7 1 AO1
+ -0.8200   7 1 AO2
+ -0.6200   7 2 AO5' AO5*
+ -0.6800   7 2 O3
+  1.5000   7 4 NP
+ -0.8200   7 1 NO1
+ -0.8200   7 1 NO2
+ -0.6200   7 2 NO5' NO5*
+ -0.0800   7 4 NC5' NC5*
+  0.0900   7 1 NH5S
+  0.0900   7 1 NH5' NH5*
+  0.1400   8 4 NC2' NC2*
+  0.0900   8 1 NH2' NH2*
+ -0.6600   8 2 NO2' NO2*
+  0.4300   8 1 NH2T
+  0.1400   9 4 NC3' NC3*
+  0.0900   9 1 NH3' NH3*
+ -0.6600   9 2 NO3' NO3*
+  0.4300   9 1 NH3T
+  0.1100  10 4 NC1' NC1*
+  0.0900  10 1 NH1' NH1*
+  0.1100  10 4 NC4' NC4*
+  0.0900  10 1 NH4' NH4*
+ -0.4000  10 2 NO4' NO4*
+ -0.0700  11 3 NN1
+  0.1600  11 3 NC6
+  0.1900  11 1 NH6
+ -0.1000  11 3 NC5
+  0.1600  11 1 NH5
+ -0.0500  11 3 NC4
+  0.1600  11 1 NH4
+  0.0500  11 3 NC3
+  0.1800  11 3 NC2
+  0.1600  11 1 NH2
+  0.6800  11 3 NC7
+ -0.4000  11 1 NO7
+ -0.8200  11 3 NN7
+  0.3400  11 1 NH71
+  0.3600  11 1 NH72
+
+#ResName NADH NAD
+#Description Nicotinamide adenine dinucleotide (reduced)
+  0.1100   1 4 AC4' AC4*
+  0.0900   1 1 AH4' AH4*
+ -0.4000   1 2 AO4' AO4*
+  0.1100   1 4 AC1' AC1*
+  0.0900   1 1 AH1' AH1*
+  0.2300   2 3 AC5
+ -0.6300   2 2 AN7
+  0.3800   2 3 AC8
+  0.1800   2 1 AH8
+ -0.1600   2 3 AN9
+ -0.7400   3 2 AN1
+  0.5300   3 3 AC2
+  0.1600   3 1 AH2
+ -0.6900   3 2 AN3
+  0.3100   3 3 AC4
+  0.4300   3 3 AC6
+ -0.8000   4 3 AN6
+  0.4000   4 1 AH61
+  0.4000   4 1 AH62
+  0.1400   5 4 AC2' AC2*
+  0.0900   5 1 AH2' AH2*
+ -0.6600   5 2 AO2' AO2*
+  0.4300   5 1 AH2T
+  0.1400   6 4 AC3' AC3*
+  0.0900   6 1 AH3' AH3*
+ -0.6600   6 2 AO3' AO3*
+  0.4300   6 1 AH3T
+ -0.0800   7 4 AC5' AC5*
+  0.0900   7 1 AH5' AH5*
+  0.0900   7 1 AH5S
+  1.5000   7 4 AP
+ -0.8200   7 1 AO1
+ -0.8200   7 1 AO2
+ -0.6200   7 2 AO5' AO5*
+ -0.6800   7 2 O3
+  1.5000   7 4 NP
+ -0.8200   7 1 NO1
+ -0.8200   7 1 NO2
+ -0.6200   7 2 NO5' NO5*
+ -0.0800   7 4 NC5' NC5*
+  0.0900   7 1 NH5S
+  0.0900   7 1 NH5' NH5*
+  0.1400   8 4 NC2' NC2*
+  0.0900   8 1 NH2' NH2*
+ -0.6600   8 2 NO2' NO2*
+  0.4300   8 1 NH2T
+  0.1400   9 4 NC3' NC3*
+  0.0900   9 1 NH3' NH3*
+ -0.6600   9 2 NO3' NO3*
+  0.4300   9 1 NH3T
+  0.1100  10 4 NC1' NC1*
+  0.0900  10 1 NH1' NH1*
+  0.1100  10 4 NC4' NC4*
+  0.0900  10 1 NH4' NH4*
+ -0.4000  10 2 NO4' NO4*
+ -0.2700  11 3 NN1
+ -0.0600  11 3 NC6
+  0.1700  11 1 NH6
+ -0.1800  11 3 NC5
+  0.1400  11 1 NH5
+ -0.2800  11 4 NC4
+  0.0900  11 1 NH4
+  0.0900  11 1 NH42
+  0.3600  11 3 NC3
+ -0.1000  11 3 NC2
+  0.1400  11 1 NH2
+  0.5500  11 3 NC7
+ -0.5100  11 1 NO7
+ -0.7200  11 3 NN7
+  0.2600  11 1 NH71
+  0.3200  11 1 NH72
+
+#ResName NADP
+#Description Nicotinamide adenine dinucleotide phosphate (oxidized)
+  0.1100   1 4 AC4' AC4*
+  0.0900   1 1 AH4' AH4*
+ -0.4000   1 2 AO4' AO4*
+  0.1100   1 4 AC1' AC1*
+  0.0900   1 1 AH1' AH1*
+  0.2300   2 3 AC5
+ -0.6300   2 2 AN7
+  0.3800   2 3 AC8
+  0.1800   2 1 AH8
+ -0.1600   2 3 AN9
+ -0.7400   3 2 AN1
+  0.5300   3 3 AC2
+  0.1600   3 1 AH2
+ -0.6900   3 2 AN3
+  0.3100   3 3 AC4
+  0.4300   3 3 AC6
+ -0.8000   4 3 AN6
+  0.4000   4 1 AH61
+  0.4000   4 1 AH62
+  0.0100   5 4 AC2' AC2*
+  0.0900   5 1 AH2' AH2*
+ -0.6200   5 2 AO2' AO2*
+  1.5000   5 4 AP2
+ -0.8200   5 1 AO1P
+ -0.8200   5 1 AO2P
+ -0.6800   5 2 AO2T
+  0.3400   5 1 AH2T
+  0.1400   6 4 AC3' AC2*
+  0.0900   6 1 AH3' AH3*
+ -0.6600   6 2 AO3' AO3*
+  0.4300   6 1 AH3T
+ -0.0800   7 4 AC5' AC5*
+  0.0900   7 1 AH5' AH5*
+  0.0900   7 1 AH5S
+  1.5000   7 4 AP
+ -0.8200   7 1 AO1
+ -0.8200   7 1 AO2
+ -0.6200   7 2 AO5' AO5*
+ -0.6800   7 2 O3
+  1.5000   7 1 NP
+ -0.8200   7 1 NO1
+ -0.8200   7 1 NO2
+ -0.6200   7 2 NO5' NO5*
+ -0.0800   7 4 NC5' NC5*
+  0.0900   7 1 NH5S
+  0.0900   7 1 NH5' NH5*
+  0.1400   8 4 NC2' NC2*
+  0.0900   8 1 NH2' NH2*
+ -0.6600   8 2 NO2' NO2*
+  0.4300   8 1 NH2T
+  0.1400   9 4 NC3' NC3*
+  0.0900   9 1 NH3' NH3*
+ -0.6600   9 2 NO3' NO3*
+  0.4300   9 1 NH3T
+  0.1100  10 4 NC1' NC2*
+  0.0900  10 1 NH1' NH1*
+  0.1100  10 4 NC4' NC4*
+  0.0900  10 1 NH4' NH4*
+ -0.4000  10 2 NO4' NO4*
+ -0.0700  11 3 NN1
+  0.1600  11 3 NC6
+  0.1900  11 1 NH6
+ -0.1000  11 3 NC5
+  0.1600  11 2 NH5
+ -0.0500  11 3 NC4
+  0.1600  11 1 NH4
+  0.0500  11 3 NC3
+  0.1800  11 3 NC2
+  0.1600  11 1 NH2
+  0.6800  11 3 NC7
+ -0.4000  11 1 NO7
+ -0.8200  11 3 NN7
+  0.3400  11 1 NH71
+  0.3600  11 1 NH72
+
+#ResName NDPH
+#Description Nicotinamide adenine dinucleotide phosphate (reduced)
+  0.1100   1 4 AC4' AC4*
+  0.0900   1 1 AH4' AH4*
+ -0.4000   1 2 AO4' AO4*
+  0.1100   1 4 AC1' AC1*
+  0.0900   1 1 AH1' AH1*
+  0.2300   2 3 AC5
+ -0.6300   2 2 AN7
+  0.3800   2 3 AC8
+  0.1800   2 1 AH8
+ -0.1600   2 3 AN9
+ -0.7400   3 2 AN1
+  0.5300   3 3 AC2
+  0.1600   3 1 AH2
+ -0.6900   3 2 AN3
+  0.3100   3 3 AC4
+  0.4300   3 3 AC6
+ -0.8000   4 3 AN6
+  0.4000   4 1 AH61
+  0.4000   4 1 AH62
+  0.0100   5 4 AC2' AC2*
+  0.0900   5 1 AH2' AH2*
+ -0.6200   5 2 AO2' AO2*
+  1.5000   5 4 AP2
+ -0.8200   5 1 AO1P
+ -0.8200   5 1 AO2P
+ -0.6800   5 2 AO2T
+  0.3400   5 1 AH2T
+  0.1400   6 4 AC3' AC3*
+  0.0900   6 1 AH3' AH3*
+ -0.6600   6 2 AO3' AO3*
+  0.4300   6 1 AH3T
+ -0.0800   7 4 AC5' AC5*
+  0.0900   7 1 AH5' AH5*
+  0.0900   7 1 AH5S
+  1.5000   7 4 AP
+ -0.8200   7 1 AO1
+ -0.8200   7 1 AO2
+ -0.6200   7 2 AO5' AO5*
+ -0.6800   7 2 O3
+  1.5000   7 4 NP
+ -0.8200   7 1 NO1
+ -0.8200   7 1 NO2
+ -0.6200   7 2 NO5' NO5*
+ -0.0800   7 4 NC5' NC5*
+  0.0900   7 1 NH5S
+  0.0900   7 1 NH5' NH5*
+  0.1400   8 4 NC2' NC2*
+  0.0900   8 1 NH2' NH2*
+ -0.6600   8 2 NO2' NO2*
+  0.4300   8 1 NH2T
+  0.1400   9 4 NC3' NC3*
+  0.0900   9 1 NH3' NH3*
+ -0.6600   9 2 NO3' NO3*
+  0.4300   9 1 NH3T
+  0.1100  10 4 NC1' NC1*
+  0.0900  10 1 NH1' NH1*
+  0.1100  10 4 NC4' NC4*
+  0.0900  10 1 NH4' NH4*
+ -0.4000  10 2 NO4' NO4*
+ -0.2700  11 3 NN1
+ -0.0600  11 3 NC6
+  0.1700  11 1 NH6
+ -0.1800  11 3 NC5
+  0.1400  11 1 NH5
+ -0.2800  11 4 NC4
+  0.0900  11 1 NH4
+  0.0900  11 1 NH42
+  0.3600  11 3 NC3
+ -0.1000  11 3 NC2
+  0.1400  11 1 NH2
+  0.5500  11 3 NC7
+ -0.5100  11 1 NO7
+ -0.7200  11 3 NN7
+  0.2600  11 1 NH71
+  0.3200  11 1 NH72
+
+; ******************
+; **** Peptides ****
+; ******************
+
+#ResName ALAD
+#Description Alanine dipeptide
+ -0.2700   1 4 CL
+  0.0900   1 1 HL1
+  0.0900   1 1 HL2
+  0.0900   1 1 HL3
+  0.5100   2 3 CLP
+ -0.5100   2 1 OL
+ -0.4700   3 3 NL
+  0.3100   3 1 HL
+  0.0700   3 4 CA
+  0.0900   3 1 HA
+ -0.2700   4 4 CB
+  0.0900   4 1 HB1
+  0.0900   4 1 HB2
+  0.0900   4 1 HB3
+  0.5100   5 3 CRP
+ -0.5100   5 1 OR
+ -0.4700   6 3 NR
+  0.3100   6 1 HR
+ -0.1100   6 4 CR
+  0.0900   6 1 HR1
+  0.0900   6 1 HR2
+  0.0900   6 1 HR3
+
+; ********************
+; **** Phosphates ****
+; ********************
+
+#ResName DMPA
+#Description Dimethylphosphate
+  1.5000   1 4 P1   P
+ -0.8000   1 1 O1   O2   O3   O4
+ -0.8000   1 1 O1   O2   O3   O4
+ -0.5500   1 2 O1   O2   O3   O4
+ -0.5500   1 2 O1   O2   O3   O4
+ -0.1700   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+ -0.1700   1 4 C2
+  0.0900   1 1 H21
+  0.0900   1 1 H22
+  0.0900   1 1 H23
+
+#ResName PPI1
+#Description Inorganic phosphate
+ -0.1700   1 4 C1
+ -0.6200   1 2 O11  O12  O13  O14
+  1.5000   1 4 P1
+ -0.7400   1 2 O11  O12  O13  O14
+ -0.8200   1 1 O11  O12  O13  O14
+ -0.8200   1 1 O11  O12  O13  O14
+  1.1000   1 4 P2
+ -0.9000   1 1 O22
+ -0.9000   1 1 O23
+ -0.9000   1 1 O24
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+
+#ResName MP_0
+#Description Methylphosphate (neutral)
+  1.5000   1 4 P1
+ -0.5600   1 2 O1   O2   O3   O4
+ -0.6300   1 2 O1   O2   O3   O4
+ -0.6300   1 2 O1   O2   O3   O4
+ -0.6400   1 1 O1   O2   O3   O4
+  0.4300   1 1 H2
+  0.4300   1 1 H3
+ -0.1700   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+
+#ResName MP_1
+#Description Methylphosphate anionic
+  1.5000   1 4 P1   P
+ -0.8200   1 1 O1   O2   O3   O4
+ -0.8200   1 1 O1   O2   O3   O4
+ -0.6200   1 2 O1   O2   O3   O4
+ -0.6800   1 2 O1   O2   O3   O4
+  0.3400   1 1 H2
+ -0.1700   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+
+#ResName MP_2
+#Description Methylphosphate dianionic
+  1.1000   1 4 P1   P
+ -0.4000   1 2 O1   O2   O3   O4
+ -0.9000   1 1 O1   O2   O3   O4
+ -0.9000   1 1 O1   O2   O3   O4
+ -0.9000   1 1 O1   O2   O3   O4
+ -0.2700   2 4 C1
+  0.0900   2 1 H11
+  0.0900   2 1 H12
+  0.0900   2 1 H13
+
+; ***************************
+; **** Prosthetic groups ****
+; ***************************
+
+#ResName HEM HEME
+#Description Heme
+  0.2400   1 9 FE
+ -0.1800   1 3 NA
+ -0.1800   1 3 NB
+ -0.1800   1 3 NC
+ -0.1800   1 3 ND
+  0.1200   1 3 C1A
+ -0.0600   1 3 C2A
+ -0.0600   1 3 C3A
+  0.1200   1 3 C4A
+  0.1200   1 3 C1B
+ -0.0600   1 3 C2B
+ -0.0600   1 3 C3B
+  0.1200   1 3 C4B
+  0.1200   1 3 C1C
+ -0.0600   1 3 C2C
+ -0.0600   1 3 C3C
+  0.1200   1 3 C4C
+  0.1200   1 3 C1D
+ -0.0600   1 3 C2D
+ -0.0600   1 3 C3D
+  0.1200   1 3 C4D
+ -0.1000   2 3 CHA
+  0.1000   2 1 HA
+ -0.1000   3 3 CHB
+  0.1000   3 1 HB
+ -0.1000   4 3 CHC
+  0.1000   4 1 HC
+ -0.1000   5 3 CHD
+  0.1000   5 1 HD
+ -0.2700   6 4 CMA
+  0.0900   6 1 HMA1
+  0.0900   6 1 HMA2
+  0.0900   6 1 HMA3
+ -0.1800   7 4 CAA
+  0.0900   7 1 HAA1
+  0.0900   7 1 HAA2
+ -0.2800   8 4 CBA
+  0.0900   8 1 HBA1
+  0.0900   8 1 HBA2
+  0.6200   8 3 CGA
+ -0.7600   8 1 O1A
+ -0.7600   8 1 O2A
+ -0.2700   9 4 CMB
+  0.0900   9 1 HMB1
+  0.0900   9 1 HMB2
+  0.0900   9 1 HMB3
+ -0.2000  10 3 CAB
+  0.2000  10 1 HAB
+ -0.2000  11 3 CBB
+  0.1000  11 1 HBB1
+  0.1000  11 1 HBB2
+ -0.2700  12 4 CMC
+  0.0900  12 1 HMC1
+  0.0900  12 1 HMC2
+  0.0900  12 1 HMC3
+ -0.2000  13 3 CAC
+  0.2000  13 1 HAC
+ -0.2000  14 3 CBC
+  0.1000  14 1 HBC1
+  0.1000  14 1 HBC2
+ -0.2700  15 4 CMD
+  0.0900  15 1 HMD1
+  0.0900  15 1 HMD2
+  0.0900  15 1 HMD3
+ -0.1800  16 4 CAD
+  0.0900  16 1 HAD1
+  0.0900  16 1 HAD2
+ -0.2800  17 4 CBD
+  0.0900  17 1 HBD1
+  0.0900  17 1 HBD2
+  0.6200  17 3 CGD
+ -0.7600  17 1 O1D
+ -0.7600  17 1 O2D
+
+; ****************
+; **** Sugars ****
+; ****************
+
+#ResName AGLC
+#Description Alpha-D-glucopyranose monomer
+  0.2000   1 4 C1
+  0.0900   1 1 H1
+ -0.6600   1 2 O1
+  0.4300   1 1 HO1
+  0.2500   1 4 C5
+  0.0900   1 1 H5
+ -0.4000   1 2 O5
+  0.1400   1 4 C2
+  0.0900   1 1 H2
+ -0.6600   1 2 O2
+  0.4300   1 1 HO2
+  0.1400   1 4 C3
+  0.0900   1 1 H3
+ -0.6600   1 2 O3
+  0.4300   1 1 HO3
+  0.1400   1 4 C4
+  0.0900   1 1 H4
+ -0.6600   1 2 O4
+  0.4300   1 1 HO4
+  0.0500   1 4 C6
+  0.0900   1 1 H61
+  0.0900   1 1 H62
+ -0.6600   1 2 O6
+  0.4300   1 1 HO6
+
+#ResName RIBT
+#Description 1'-amino-5'methylribose
+ -0.2700   1 4 C5'
+  0.0900   1 1 H51
+  0.0900   1 1 H52
+  0.0900   1 1 H53
+ -0.2000   2 3 N1
+  0.1000   2 1 HN1
+  0.1000   2 1 HN2
+  0.1400   3 4 C2'
+  0.0900   3 1 H2''
+ -0.6600   3 2 O2'
+  0.4300   3 1 H2'
+  0.1400   4 4 C3'
+  0.0900   4 1 H3'
+ -0.6600   4 2 O3'
+  0.4300   4 1 H3T
+  0.1100   5 4 C1'
+  0.0900   5 1 H1'
+  0.1100   5 4 C4'
+  0.0900   5 1 H4'
+ -0.4000   5 2 O4'
+
+#ResName DEOT
+#Description 1'-amino-5'methyldeoxyribose
+ -0.2700   1 4 C5'
+  0.0900   1 1 H51
+  0.0900   1 1 H52
+  0.0900   1 1 H53
+ -0.2000   2 3 N1
+  0.1000   2 1 HN1
+  0.1000   2 1 HN2
+ -0.1800   3 4 C2'
+  0.0900   3 1 H2'
+  0.0900   3 1 H2''
+  0.1400   4 4 C3'
+  0.0900   4 1 H3'
+ -0.6600   4 2 O3'
+  0.4300   4 1 H3T
+  0.1100   5 4 C1'
+  0.0900   5 1 H1'
+  0.1100   5 4 C4'
+  0.0900   5 1 H4'
+ -0.4000   5 2 O4'
+
+; ******************
+; **** Sulfates ****
+; ******************
+
+#ResName MSO4
+#Description Methylsulfate
+  1.3300   1 9 S
+ -0.2800   1 2 OS1  OS2  OS3  OS4
+ -0.6500   1 1 OS1  OS2  OS3  OS4
+ -0.6500   1 1 OS1  OS2  OS3  OS4
+ -0.6500   1 1 OS1  OS2  OS3  OS4
+ -0.3700   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+  0.0900   1 1 H13
+
+#ResName SDS
+#Description Dodecylsulphate
+  1.3300   1 4 S1   S
+ -0.2800   1 2 OS1  OS2  OS3  OS4
+ -0.6500   1 1 OS1  OS2  OS3  OS4
+ -0.6500   1 1 OS1  OS2  OS3  OS4
+ -0.6500   1 1 OS1  OS2  OS3  OS4
+ -0.2800   1 4 C1
+  0.0900   1 1 H11
+  0.0900   1 1 H12
+ -0.1800   2 4 C2
+  0.0900   2 1 H21
+  0.0900   2 1 H22
+ -0.1800   3 4 C3
+  0.0900   3 1 H31
+  0.0900   3 1 H32
+ -0.1800   4 4 C4
+  0.0900   4 1 H41
+  0.0900   4 1 H42
+ -0.1800   5 4 C5
+  0.0900   5 1 H51
+  0.0900   5 1 H52
+ -0.1800   6 4 C6
+  0.0900   6 1 H61
+  0.0900   6 1 H62
+ -0.1800   7 4 C7
+  0.0900   7 1 H71
+  0.0900   7 1 H72
+ -0.1800   8 4 C8
+  0.0900   8 1 H81
+  0.0900   8 1 H82
+ -0.1800   9 4 C9
+  0.0900   9 1 H91
+  0.0900   9 1 H92
+ -0.1800  10 4 C10
+  0.0900  10 1 H101
+  0.0900  10 1 H102
+ -0.1800  11 4 C11
+  0.0900  11 1 H111
+  0.0900  11 1 H112
+ -0.2700  12 4 C12
+  0.0900  12 1 H121
+  0.0900  12 1 H122
+  0.0900  12 1 H123
+
+; ******************
+; **** Sulfides ****
+; ******************
+
+#ResName EMS
+#Description Ethylmethylsulfide
+  0.0900   1 1 H1   H11
+  0.0900   1 1 H2   H12
+  0.0900   1 1 H3   H13
+ -0.2700   1 4 CM1  C1
+  0.0900   2 1 H4   H21
+  0.0900   2 1 H5   H22
+ -0.1400   2 4 CM2  C2
+ -0.0900   2 2 S3   S2
+ -0.2200   2 4 CM4  C3
+  0.0900   2 1 H6   H31
+  0.0900   2 1 H7   H32
+  0.0900   2 1 H8   H33
+
+; *****************
+; **** Thioles ****
+; *****************
+
+#ResName MESH
+#Description Methanethiol
+  0.0900   1 1 H1   H11
+  0.0900   1 1 H2   H12
+  0.0900   1 1 H3   H13
+ -0.2000   1 4 CM   C1
+ -0.2300   1 2 S    S1
+  0.1600   1 1 H4   HS    HS1
+
+#ResName MES1
+#Description Methylthiolate
+ -0.8000   1 9 S    S1
+ -0.4700   1 9 C1   CM
+  0.0900   1 9 H11  H1
+  0.0900   1 9 H12  H2
+  0.0900   1 9 H13  H3
+
+#ResName ETSH
+#Description Ethanethiol
+  0.0900   1 1 H1   H21
+  0.0900   1 1 H2   H22
+  0.0900   1 1 H3   H23
+ -0.2700   1 4 CM1  C2
+  0.0900   2 1 H4   H11
+  0.0900   2 1 H5   H12
+ -0.1100   2 4 CM2  C1
+ -0.2300   2 2 S3   S1   S
+  0.1600   2 1 H6   HS1  HS
+
+#ResName ES1
+#Description Ethylthiolate
+ -0.8000   1 1 S    S3   S1
+ -0.3800   1 4 C1   CM2
+ -0.2700   1 4 C2   CM1
+  0.0900   1 1 H21  H1
+  0.0900   1 1 H22  H2
+  0.0900   1 1 H23  H3
+  0.0900   1 1 H11  H4
+  0.0900   1 1 H12  H5
+
+; *******************
+; **** Vitamines ****
+; *******************
+
+#ResName NIC
+#Description Nicotinamide (vitamin B3, oxidized)
+  0.4500   1 1 H1
+ -0.5200   1 3 N2
+  0.1600   1 3 C3
+  0.1900   1 1 H4
+ -0.1000   1 3 C5
+  0.1600   1 1 H6
+ -0.0500   1 3 C7
+  0.1600   1 1 H8
+  0.0500   1 3 C9
+  0.1800   1 3 C10
+  0.1600   1 1 H11
+  0.6800   1 3 C12
+ -0.4000   1 1 O13
+ -0.8200   1 3 N14
+  0.3400   1 1 H15
+  0.3600   1 1 H16
+
+#ResName NICH
+#Description Nicotinamide (vitamin B3, reduced)
+  0.4200   1 1 H1
+ -0.6900   1 3 N2
+ -0.0600   1 3 C3
+  0.1700   1 1 H4
+ -0.1800   1 3 C5
+  0.1400   1 1 H6
+ -0.2800   1 4 C7
+  0.0900   1 1 H8
+  0.0900   1 1 H17
+ -0.1000   1 3 C10
+  0.1400   1 1 H11
+  0.3600   1 3 C9
+  0.5500   1 4 C12
+ -0.5100   1 1 O13
+ -0.7200   1 3 N14
+  0.2600   1 1 H15
+  0.3200   1 1 H16
+
+#ResName URE
+#Description Urea
+  0.5100   1 3 C1
+ -0.5100   1 1 O2
+ -0.6200   2 3 N3
+  0.3100   2 1 H31
+  0.3100   2 1 H32
+ -0.6200   3 3 N6
+  0.3100   3 1 H61
+  0.3100   3 1 H62

@@ -1,0 +1,1189 @@
+#TemplateCharge Fragments OPLS_CHAR
+
+; **************************************
+; ****         VEGA Template        ****
+; ****  Template for atomic charges ****
+; **************************************
+
+; The residue section must start with #ResName.
+
+; Tag description:
+; ~~~~~~~~~~~~~~~~
+; #Call <ID>                     -> Call a macro or a residue.
+; #Charge <CHARGE>               -> Residue total charge.
+; #Define <MACROID>              -> Define a new macro.
+; #Description <DESCRIPTION>     -> Residue description (max. 127 chars).
+; #ID <ID>                       -> Unique section identificator (max. 31 chars).
+; #ResName <RESIDUE> ...         -> Residue name(s) (max. 4 chars, max. 16 items).
+; #TemplateCharge <TYPE> <NAME>  -> Template header
+; #Title <DESCRIPTION>           -> Template description
+
+; Atom description:
+; ~~~~~~~~~~~~~~~~~
+; <CHARGE> <GROUPID> <BONDS> <ATOMNAME> ...
+; <CHARGE>   -> Atomic charge.
+; <GROUPID>  -> Group ID (1...255).
+; <BONDS>    -> Number of bonds (0...6). If > 6, is not checked.
+; <ATOMNAME> -> Atom name (max. 4 chars, max. 8 items).
+
+#Title OPLS atomic charges
+
+; ********************
+; **** Aminoacids ****
+; ********************
+
+#Define AMINO_ASPP
+#Description Aspartate neutral side chain
+ -0.1200   1 4 CB
+  0.0600   1 1 HB1
+  0.0600   1 1 HB2
+  0.5200   1 4 CG
+ -0.4400   1 1 OD1  OD2
+ -0.5300   1 2 OD1  OD2
+  0.4500   1 1 HD1  HD2
+
+#Define AMINO_CT
+#Description C-terminus
+  0.0400   1 4 CA
+  0.7000   9 3 C
+ -0.8000   9 1 OT1  OCT1 O1   O
+ -0.8000   9 1 OT2  OCT2 O2   OXT
+#Delete O
+
+#Define AMINO_CTNME
+#Description N-Methylamide C-terminus
+ -0.5000  10 3 NT
+  0.3000  10 1 HNT
+  0.0200  10 4 CAT
+  0.0600  10 1 HT1
+  0.0600  10 1 HT2
+  0.0600  10 1 HT3
+
+#Define AMINO_GLUP
+#Description Glutammate neutral side chain
+ -0.1200   1 4 CG
+  0.0600   1 1 HG1
+  0.0600   1 1 HG2
+  0.5200   1 4 CD
+ -0.4400   1 1 OE1  OE1
+ -0.5300   1 2 OE2  OE2
+  0.4500   1 1 HE1  HE2
+
+#Define AMINO_GLYNT
+#Description Glycine N-terminus
+ -0.3000   1 4 N    NT
+  0.3300   1 1 HT1  HN1  H1
+  0.3300   1 1 HT2  HN2  H2
+  0.3300   1 1 HT3  HN3  H3
+  0.1900   1 4 CA
+  0.0600   1 1 HA1
+  0.0600   1 1 HA2
+#Delete HN
+
+#Define AMINO_NT
+#Description N-terminus
+ -0.3000   1 4 N    NT
+  0.3300   1 1 HT1  HN1  H1
+  0.3300   1 1 HT2  HN2  H2
+  0.3300   1 1 HT3  HN3  H3
+  0.2500   1 4 CA
+  0.0600   1 1 HA
+#Delete HN
+
+#Define AMINO_NTACE
+#Description Acetylated N-terminus
+ -0.1800   1 3 CAY
+  0.0600   1 1 HY1
+  0.0600   1 1 HY2
+  0.0600   1 1 HY3
+  0.5000   2 4 CY
+ -0.5000   2 1 OY
+
+#Define AMINO_PRONT
+#Description Proline N-terminus
+ -0.2000   1 4 N    NT
+  0.3100   1 1 HT1  HN1  H1
+  0.3100   1 1 HT2  HN2  H2
+  0.1700   1 4 CD
+  0.0600   1 1 HD1
+  0.0600   1 1 HD2
+  0.2300   1 4 CA
+  0.0600   1 1 HA
+
+
+#Define AMINO_PRONTACE
+#Description Acetylated Proline N-terminus
+ -0.1800   1 3 CAY
+  0.0600   1 1 HY1
+  0.0600   1 1 HY2
+  0.0600   1 1 HY3
+  0.5000   2 4 CY
+ -0.5000   2 1 OY
+
+#Define AMINO_SS
+#Description Disulfide bridge
+  0.0975   2 4 CB
+ -0.2175   2 2 SG   SG1  SG2  1SG  2SG  S1
+#Delete HG1
+
+
+#ResName ALA
+#Id ALA
+#Description Alanine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.1800   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+  0.0600   2 1 HB3
+
+  0.5000   3 3 C
+ -0.5000   3 1 O
+
+#ResName ALA ALAN
+#Id ALAN
+#Description Alanine (positive N-terminal)
+#Charge  1.0000
+#Call ALA
+#Call AMINO_NT
+
+#ResName ALA ALAC
+#Id ALAC
+#Description Alanine (negative C-terminal)
+#Charge -1.0000
+#Call ALA
+#Call AMINO_CT
+
+#ResName ALA ALAZ
+#Id ALAZ
+#Description Alanine (zwitterionic)
+#Charge  0.0000
+#Call ALAN
+#Call AMINO_CT
+
+
+#ResName ARG ARG+
+#Id ARGH
+#Description Arginine (positive side chain)
+#Charge  1.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.1200   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.0500   3 4 CG
+  0.0600   3 1 HG1
+  0.0600   3 1 HG2
+  0.1900   4 4 CD
+  0.0600   4 1 HD1
+  0.0600   4 1 HD2
+ -0.7000   4 3 NE
+  0.4400   4 1 HE
+  0.6400   4 3 CZ
+ -0.8000   4 3 NH1
+  0.4600   4 1 HH11
+  0.4600   4 1 HH12
+ -0.8000   4 3 NH2
+  0.4600   4 1 HH21
+  0.4600   4 1 HH22
+
+  0.5000   5 3 C
+ -0.5000   5 1 O
+
+#ResName ARG ARG+ ARGN
+#Id ARGHN
+#Description Arginine (positive side chain, positive N-terminal)
+#Charge  2.0000
+#Call ARGH
+#Call AMINO_NT
+
+#ResName ARG ARG+ ARGC
+#Id ARGHC
+#Description Arginine (positive side chain, negative C-terminal)
+#Charge  0.0000
+#Call ARGH
+#Call AMINO_CT
+
+#ResName ARG ARG+ ARGZ
+#Id ARGHZ
+#Description Arginine (positive side chain, zwitterionic)
+#Charge  1.0000
+#Call ARGHN
+#Call AMINO_CT
+
+
+
+#ResName ASN
+#Id ASN
+#Description Asparagine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.1200   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+  0.5000   3 3 CG
+ -0.5000   3 1 OD1
+ -0.7600   4 3 ND2
+  0.3800   4 1 HD21
+  0.3800   4 1 HD22
+
+  0.5000   5 3 C
+ -0.5000   5 1 O
+
+#ResName ASN ASNN
+#Id ASNN
+#Description Asparagine (positive N-terminal)
+#Charge  1.0000
+#Call ASN
+#Call AMINO_NT
+
+#ResName ASN ASNC
+#Id ASNC
+#Description Asparagine (negative C-terminal)
+#Charge -1.0000
+#Call ASN
+#Call AMINO_CT
+
+#ResName ASN ASNZ
+#Id ASNZ
+#Description Asparagine (zwitterionic)
+#Charge  0.0000
+#Call ASNN
+#Call AMINO_CT
+
+#ResName ASP ASP- AP-
+#Id ASP
+#Description Aspartate (negative side chain)
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.2200   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+  0.7000   2 3 CG
+ -0.8000   2 1 OD1
+ -0.8000   2 1 OD2
+
+  0.5000   3 3 C
+ -0.5000   3 1 O
+
+#ResName ASP ASPN
+#Id ASPN
+#Description Aspartate (negative side chain, positive N-terminal)
+#Charge  0.0000
+#Call ASP
+#Call AMINO_NT
+
+#ResName ASP ASPC
+#Id ASPC
+#Description Aspartate (negative side chain, negative C-terminal)
+#Charge -2.0000
+#Call ASP
+#Call AMINO_CT
+
+#ResName ASP ASPZ
+#Id ASPZ
+#Description Aspartate (negative side chain, zwitterionic)
+#Charge -1.0000
+#Call ASPN
+#Call AMINO_CT
+
+#ResName ASP ASPP
+#Id ASPP
+#Description Aspartate (protonated side chain)
+#Charge  0.0000
+#Call ASP
+#Call AMINO_ASPP
+
+#ResName ASP ASPP
+#Id ASPPN
+#Description Aspartate (protonated side chain, positive N-terminal)
+#Charge  1.0000
+#Call ASPN
+#Call AMINO_ASPP
+
+#ResName ASP ASPC
+#Id ASPPC
+#Description Aspartate (protonated side chain, negative C-terminal)
+#Charge -1.0000
+#Call ASPC
+#Call AMINO_ASPP
+
+#ResName ASP ASPC
+#Id ASPPZ
+#Description Aspartate (protonated side chain, zwitterionic)
+#Charge  0.0000
+#Call ASPZ
+#Call AMINO_ASPP
+
+
+#ResName CYS CYH CYSH
+#Id CYSH
+#Description Cysteine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+  0.0600   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.3350   2 2 SG   SG1  SG2  1SG  2SG  S1
+  0.1550   2 1 HG1  HG   H1
+
+  0.5000   3 3 C
+ -0.5000   3 1 O
+
+#ResName CYS CYH CYSN CYHN
+#Id CYSHN
+#Description Cysteine (positive N-terminal)
+#Charge  1.0000
+#Call CYSH
+#Call AMINO_NT
+
+#ResName CYS CYH CYSN CYHN
+#Id CYSHC
+#Description Cysteine (negative C-terminal)
+#Charge -1.0000
+#Call CYSH
+#Call AMINO_CT
+
+#ResName CYS CYH CYSZ CYHZ
+#Id CYSHZ
+#Description Cysteine (zwitterionic)
+#Charge  0.0000
+#Call CYSH
+#Call AMINO_CT
+
+#ResName CYS
+#Id CYS
+#Description Cysteine (disulfide bridge)
+#Charge  0.0000
+#Call CYSH
+#Call AMINO_SS
+
+#ResName CYS CYSN
+#Id CYSN
+#Description Cysteine (disulfide bridge, positive N-terminal)
+#Charge  1.0000
+#Call CYS
+#Call AMINO_NT
+
+#ResName CYS CYSN
+#Id CYSC
+#Description Cysteine (disulfide bridge, negative C-terminal)
+#Charge -1.0000
+#Call CYS
+#Call AMINO_CT
+
+#ResName GLN
+#Id GLN
+#Description Glutamine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.1200   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.1200   3 4 CG
+  0.0600   3 1 HG1
+  0.0600   3 1 HG2
+  0.5000   4 3 CD
+ -0.5000   4 1 OE1
+ -0.7600   5 3 NE2
+  0.3800   5 1 HE21
+  0.3800   5 1 HE22
+
+  0.5000   6 3 C
+ -0.5000   6 1 O
+
+#ResName GLN GLNN
+#Id GLNN
+#Description Glutamine (positive N-terminal)
+#Charge  1.0000
+#Call GLN
+#Call AMINO_NT
+
+#ResName GLN GLNC
+#Id GLNC
+#Description Glutamine (negative C-terminal)
+#Charge -1.0000
+#Call GLN
+#Call AMINO_CT
+
+#ResName GLN GLNZ
+#Id GLNZ
+#Description Glutamine (zwitterionic)
+#Charge  0.0000
+#Call GLNN
+#Call AMINO_CT
+
+#ResName GLU
+#Id GLU
+#Description Glutammate (negative side chain)
+#Charge -1.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.1200   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.2200   3 4 CG
+  0.0600   3 1 HG1
+  0.0600   3 1 HG2
+  0.7000   3 3 CD
+ -0.8000   3 1 OE1
+ -0.8000   3 1 OE2
+
+  0.5000   4 3 C
+ -0.5000   4 1 O
+
+#ResName GLU GLUN
+#Id GLUN
+#Description Glutammate (negative side chain, positive N-terminal)
+#Charge  0.0000
+#Call GLU
+#Call AMINO_NT
+
+#ResName GLU GLUC
+#Id GLUC
+#Description Glutammate (negative side chain, negative C-terminal)
+#Charge -2.0000
+#Call GLU
+#Call AMINO_CT
+
+#ResName GLU GLUZ
+#Id GLUZ
+#Description Glutammate (negative side chain, zwitterionic)
+#Charge -1.0000
+#Call GLUN
+#Call AMINO_CT
+
+#ResName GLU GLUP
+#Id GLUP
+#Description Glutammate (protonated side chain)
+#Charge  0.0000
+#Call GLU
+#Call AMINO_GLUP
+
+#ResName GLU GLUP
+#Id GLUPN
+#Description Glutammate (protonated side chain, positive N-terminal)
+#Charge  1.0000
+#Call GLUN
+#Call AMINO_GLUP
+
+#ResName GLU GLUC
+#Id GLUPC
+#Description Glutammate (protonated side chain, negative C-terminal)
+#Charge -1.0000
+#Call GLUC
+#Call AMINO_GLUP
+
+#ResName GLU GLUC
+#Id GLUPZ
+#Description Glutammate (protonated side chain, zwitterionic)
+#Charge  0.0000
+#Call GLUZ
+#Call AMINO_GLUP
+
+#ResName GLY
+#Id GLY
+#Description Glycine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.0800   1 4 CA
+  0.0600   1 1 HA1
+  0.0600   1 1 HA2
+
+  0.5000   2 3 C
+ -0.5000   2 1 O
+
+#ResName GLY GLYN
+#Id GLYN
+#Description Glycine (positive N-terminal)
+#Charge  0.0000
+#Call GLY
+#Call AMINO_GLYNT
+
+#ResName GLY GLYC
+#Id GLYC
+#Description Glycine (negative C-terminal)
+#Charge -1.0000
+#Call GLY
+#Call AMINO_CT
+
+#ResName GLY GLYZ
+#Id GLYZ
+#Description Glycine (zwitterionic)
+#Charge  0.0000
+#Call GLYN
+#Call AMINO_CT
+
+#ResName HIS HSD
+#Id HSD
+#Description Histidine (HSD form)
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.5700   2 3 ND1
+  0.4200   2 1 HD1
+  0.0150   2 3 CG
+ -0.0050   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.4900   3 2 NE2
+ -0.0150   3 3 CD2
+  0.1150   3 1 HD2
+  0.2950   3 3 CE1
+  0.1150   3 1 HE1
+
+  0.5000   4 3 C
+ -0.5000   4 1 O
+
+#ResName HIS HSD HISN HSDN
+#Id HSDN
+#Description Histidine (HSD form, positive N-terminal)
+#Charge  1.0000
+#Call HSD
+#Call AMINO_NT
+
+#ResName HIS HSD HISC HSDC
+#Id HSDC
+#Description Histidine (HSD form, negative C-terminal)
+#Charge -1.0000
+#Call HSD
+#Call AMINO_CT
+
+#ResName HIS HSD HSDZ
+#Id HSDZ
+#Description Histidine (HSD form, zwitterionic)
+#Charge  0.0000
+#Call HSDN
+#Call AMINO_CT
+
+#ResName HIS HSE
+#Id HSE
+#Description Histidine (HSE form)
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.0050   3 4 CB
+  0.0600   3 1 HB1
+  0.0600   3 1 HB2
+ -0.4900   3 2 ND1
+ -0.0150   3 3 CG
+  0.2950   3 3 CE1
+  0.1150   3 1 HE1
+ -0.5700   2 3 NE2
+
+  0.4200   2 1 HE2
+  0.0150   2 3 CD2
+  0.1150   2 1 HD2
+
+  0.5000   4 3 C
+ -0.5000   4 1 O
+
+#ResName HIS HSE HISN HSEN
+#Id HSEN
+#Description Histidine (HSE form, positive N-terminal)
+#Charge  1.0000
+#Call HSE
+#Call AMINO_NT
+
+#ResName HIS HSE HISC HSEC
+#Id HSEC
+#Description Histidine (HSE form, negative C-terminal)
+#Charge -1.0000
+#Call HSE
+#Call AMINO_CT
+
+#ResName HIS HSE HSEZ
+#Id HSEZ
+#Description Histidine (HSE form, zwitterionic)
+#Charge  0.0000
+#Call HSEN
+#Call AMINO_CT
+
+#ResName HIS HSP HIS+
+#Id HSP
+#Description Histidine (positive side chain)
+#Charge  1.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.0050   3 4 CB
+  0.0600   3 1 HB1
+  0.0600   3 1 HB2
+  0.2150   3 3 CD2
+  0.1150   3 1 HD2
+  0.2150   3 3 CG
+ -0.5400   2 3 NE2
+  0.4600   2 1 HE2
+ -0.5400   2 3 ND1
+  0.4600   2 1 HD1
+  0.3850   2 3 CE1
+  0.1150   2 1 HE1
+
+  0.5000   4 3 C
+ -0.5000   4 1 O
+
+#ResName HIS HSP HIS+ HISN HSPN
+#Id HSPN
+#Description Histidine (positive side chain, positive N-terminal)
+#Charge  2.0000
+#Call HSP
+#Call AMINO_NT
+
+#ResName HIS HSP HIS+ HISC HSPC
+#Id HSPC
+#Description Histidine (positive side chain, negative C-terminal)
+#Charge  0.0000
+#Call HSP
+#Call AMINO_CT
+
+#ResName HIS HSP HIS+ HSPZ
+#Id HSPZ
+#Description Histidine (positive side chain, zwitterionic)
+#Charge  1.0000
+#Call HSPN
+#Call AMINO_CT
+
+#ResName ILE
+#Id ILE
+#Description Isoleucine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.0600   2 4 CB
+  0.0600   2 1 HB
+ -0.1800   3 4 CG2
+  0.0600   3 1 HG21
+  0.0600   3 1 HG22
+  0.0600   3 1 HG23
+ -0.1200   4 4 CG1
+  0.0600   4 1 HG11
+  0.0600   4 1 HG12
+ -0.1800   5 4 CD   CD1
+  0.0600   5 1 HD1  HD11
+  0.0600   5 1 HD2  HD12
+  0.0600   5 1 HD3  HD13
+
+  0.5000   6 3 C
+ -0.5000   6 1 O
+
+#ResName ILE ILEN
+#Id ILEN
+#Description Isoleucine (positive N-terminal)
+#Charge  1.0000
+#Call ILE
+#Call AMINO_NT
+
+#ResName ILE ILEC
+#Id ILEC
+#Description Isoleucine (negative C-terminal)
+#Charge -1.0000
+#Call ILE
+#Call AMINO_CT
+
+#ResName ILE ILEZ
+#Id ILEZ
+#Description Isoleucine (zwitterionic)
+#Charge  0.0000
+#Call ILEN
+#Call AMINO_CT
+
+#ResName LEU
+#Description Leucine
+#Id LEU
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.1200   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.0600   3 4 CG
+  0.0600   3 1 HG
+ -0.1800   4 4 CD1
+  0.0600   4 1 HD11
+  0.0600   4 1 HD12
+  0.0600   4 1 HD13
+ -0.1800   5 4 CD2
+  0.0600   5 1 HD21
+  0.0600   5 1 HD22
+  0.0600   5 1 HD23
+
+  0.5000   6 3 C
+ -0.5000   6 1 O
+
+#ResName LEU LEUN
+#Id LEUN
+#Description Leucine (positive N-terminal)
+#Charge  1.0000
+#Call LEU
+#Call AMINO_NT
+
+#ResName LEU LEUC
+#Id LEUC
+#Description Leucine (negative C-terminal)
+#Charge -1.0000
+#Call LEU
+#Call AMINO_CT
+
+#ResName LEU LEUZ
+#Id LEUZ
+#Description Leucine (zwitterionic)
+#Charge  0.0000
+#Call LEUN
+#Call AMINO_CT
+
+#ResName LYS LYS+
+#Id LYSH
+#Description Lysine (positive side chain)
+#Charge  1.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.1200   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.1200   3 4 CG
+  0.0600   3 1 HG1
+  0.0600   3 1 HG2
+ -0.1200   4 4 CD
+  0.0600   4 1 HD1
+  0.0600   4 1 HD2
+  0.1900   5 4 CE
+  0.0600   5 1 HE1
+  0.0600   5 1 HE2
+ -0.3000   5 4 NZ
+  0.3300   5 1 HZ1
+  0.3300   5 1 HZ2
+  0.3300   5 1 HZ3
+
+  0.5000   6 3 C
+ -0.5000   6 1 O
+
+#ResName LYS LYS+ LYSN LY+N
+#Id LYSHN
+#Description Lysine (positive side chain, positive N-terminal)
+#Charge  2.0000
+#Call LYSH
+#Call AMINO_NT
+
+#ResName LYS LYS+ LYSC LY+C
+#Id LYSHC
+#Description Lysine (positive side chain, negative C-terminal)
+#Charge  0.0000
+#Call LYSH
+#Call AMINO_CT
+
+#ResName LYS LYS+ LYSZ LY+Z
+#Id LYSHZ
+#Description Lysine (positive side chain, zwitterionic)
+#Charge  1.0000
+#Call LYSHN
+#Call AMINO_CT
+
+#ResName MET
+#Id MET
+#Description Methionine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.1200   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+  0.0975   3 4 CG
+  0.0600   3 1 HG1
+  0.0600   3 1 HG2
+ -0.4350   3 2 SD
+  0.0375   3 4 CE
+  0.0600   3 1 HE1
+  0.0600   3 1 HE2
+  0.0600   3 1 HE3
+
+  0.5000   4 3 C
+ -0.5000   4 1 O
+
+#ResName MET METN
+#Id METN
+#Description Methionine (positive N-terminal)
+#Charge  1.0000
+#Call MET
+#Call AMINO_NT
+
+#ResName MET METC
+#Id METC
+#Description Methionine (negative C-terminal)
+#Charge -1.0000
+#Call MET
+#Call AMINO_CT
+
+#ResName MET METZ
+#Id METZ
+#Description Methionine (zwitterionic)
+#Charge  0.0000
+#Call METN
+#Call AMINO_CT
+
+#ResName PHE
+#Id PHE
+#Description Phenilalanine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.0050   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.1150   3 3 CG
+ -0.1150   4 3 CD1
+  0.1150   4 1 HD1
+ -0.1150   5 3 CD2
+  0.1150   5 1 HD2
+ -0.1150   6 3 CE1
+  0.1150   6 1 HE1
+ -0.1150   7 3 CE2
+  0.1150   7 1 HE2
+ -0.1150   8 3 CZ
+  0.1150   8 1 HZ
+
+  0.5000   9 3 C
+ -0.5000   9 1 O
+
+#ResName PHE PHEN
+#Id PHEN
+#Description Phenilalanine (positive N-terminal)
+#Charge  1.0000
+#Call PHE
+#Call AMINO_NT
+
+#ResName PHE PHEC
+#Id PHEC
+#Description Phenilalanine (negative C-terminal)
+#Charge -1.0000
+#Call PHE
+#Call AMINO_CT
+
+#ResName PHE PHEZ
+#Id PHEZ
+#Description Phenilalanine (zwitterionic)
+#Charge  0.0000
+#Call PHEN
+#Call AMINO_CT
+
+#ResName PRO
+#Id PRO
+#Description Proline
+#Charge  0.0000
+ -0.1400   1 3 N
+  0.0100   1 4 CA
+  0.0600   1 1 HA
+ -0.0500   1 4 CD
+  0.0600   1 1 HD1
+  0.0600   1 1 HD2
+
+ -0.1200   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.1200   3 4 CG
+  0.0600   3 1 HG1
+  0.0600   3 1 HG2
+
+  0.5000   4 3 C
+ -0.5000   4 1 O
+
+#ResName PRO PRON
+#Id PRON
+#Description Proline (positive N-terminal)
+#Charge  1.0000
+#Call PRO
+#Call AMINO_PRONT
+
+#ResName PRO PROC
+#Id PROC
+#Description Proline (negative C-terminal)
+#Charge -1.0000
+#Call PRO
+#Call AMINO_CT
+
+#ResName PRO PROZ
+#Id PROZ
+#Description Proline (zwitterionic)
+#Charge  0.0000
+#Call PRON
+#Call AMINO_CT
+
+#ResName SER
+#Id SER
+#Description Serine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+  0.1450   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.6830   2 2 OG
+  0.4180   2 1 HG1  HG
+
+  0.5000   3 3 C
+ -0.5000   3 1 O
+
+#ResName SER SERN
+#Id SERN
+#Description Serine (positive N-terminal)
+#Charge  1.0000
+#Call SER
+#Call AMINO_NT
+
+#ResName SER SERC
+#Id SERC
+#Description Serine (negative C-terminal)
+#Charge -1.0000
+#Call SER
+#Call AMINO_CT
+
+#ResName SER SERZ
+#Id SERZ
+#Description Serine (zwitterionic)
+#Charge  0.0000
+#Call SERN
+#Call AMINO_CT
+
+#ResName THR
+#Id THR
+#Description Threonine
+#Charge  0.0000
+ -0.5000   1 3 N    N1
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+  0.2050   2 4 CB
+  0.0600   2 1 HB
+ -0.6830   2 2 OG1
+  0.4180   2 1 HG1
+ -0.1800   3 4 CG2
+  0.0600   3 1 HG21
+  0.0600   3 1 HG22
+  0.0600   3 1 HG23
+
+  0.5000   4 3 C
+ -0.5000   4 1 O
+
+#ResName THR THRN
+#Id THRN
+#Description Threonine (positive N-terminal)
+#Charge  1.0000
+#Call THR
+#Call AMINO_NT
+
+#ResName THR THRC
+#Id THRC
+#Description Threonine (negative C-terminal)
+#Charge -1.0000
+#Call THR
+#Call AMINO_CT
+
+#ResName THR THRZ
+#Id THRZ
+#Description Threonine (zwitterionic)
+#Charge  0.0000
+#Call THRN
+#Call AMINO_CT
+
+#ResName TRP
+#Id TRP
+#Description Tryptophan
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.1200   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+  0.0750   3 3 CG
+ -0.0550   3 3 CD2
+ -0.1150   3 3 CD1
+  0.1150   3 1 HD1
+ -0.5700   3 3 NE1
+  0.4200   3 1 HE1
+  0.1300   3 3 CE2
+ -0.1150   4 3 CE3
+  0.1150   4 1 HE3
+ -0.1150   5 3 CZ2
+  0.1150   5 1 HZ2
+ -0.1150   6 3 CZ3
+  0.1150   6 1 HZ3
+ -0.1150   7 3 CH2
+  0.1150   7 1 HH2
+
+  0.5000   8 3 C
+ -0.5000   8 1 O
+
+#ResName TRP TRPN
+#Id TRPN
+#Description Tryptophan (positive N-terminal)
+#Charge  1.0000
+#Call TRP
+#Call AMINO_NT
+
+#ResName TRP TRPC
+#Id TRPC
+#Description Tryptophan (negative C-terminal)
+#Charge -1.0000
+#Call TRP
+#Call AMINO_CT
+
+#ResName TRP TRPZ
+#Id TRPZ
+#Description Tryptophan (zwitterionic)
+#Charge  0.0000
+#Call TRPN
+#Call AMINO_CT
+
+#ResName TYR
+#Id TYR
+#Description Tyrosine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.0050   2 4 CB
+  0.0600   2 1 HB1
+  0.0600   2 1 HB2
+ -0.1150   3 3 CG
+ -0.1150   4 3 CD1
+  0.1150   4 1 HD1
+ -0.1150   5 3 CD2
+  0.1150   5 1 HD2
+ -0.1150   6 3 CE1
+  0.1150   6 1 HE1
+ -0.1150   7 3 CE2
+  0.1150   7 1 HE2
+  0.1500   8 3 CZ
+ -0.5850   8 2 OH
+  0.4350   8 1 HH   1HH
+
+  0.5000   9 3 C
+ -0.5000   9 1 O
+
+#ResName TYR TYRN
+#Id TYRN
+#Description Tyrosine (positive N-terminal)
+#Charge  1.0000
+#Call TYR
+#Call AMINO_NT
+
+#ResName TYR TYRC
+#Id TYRC
+#Description Tyrosine (negative C-terminal)
+#Charge -1.0000
+#Call TYR
+#Call AMINO_CT
+
+#ResName TYR TYRZ
+#Id TYRZ
+#Description Tyrosine (zwitterionic)
+#Charge  0.0000
+#Call TYRN
+#Call AMINO_CT
+
+#ResName VAL
+#Id VAL
+#Description Valine
+#Charge  0.0000
+ -0.5000   1 3 N
+  0.3000   1 1 HN   H    H1    H1
+  0.1400   1 4 CA
+  0.0600   1 1 HA
+
+ -0.0600   2 4 CB
+  0.0600   2 1 HB
+ -0.1800   3 4 CG1
+  0.0600   3 1 HG11
+  0.0600   3 1 HG12
+  0.0600   3 1 HG13
+ -0.1800   4 4 CG2
+  0.0600   4 1 HG21
+  0.0600   4 1 HG22
+  0.0600   4 1 HG23
+
+  0.5000   5 3 C
+ -0.5000   5 1 O
+
+#ResName VAL VALN
+#Id VALN
+#Description Valine (positive N-terminal)
+#Charge  1.0000
+#Call VAL
+#Call AMINO_NT
+
+#ResName VAL VALC
+#Id VALC
+#Description Valine (negative C-terminal)
+#Charge -1.0000
+#Call VAL
+#Call AMINO_CT
+
+#ResName VAL VALZ
+#Id VALZ
+#Description Valine (zwitterionic)
+#Charge  0.0000
+#Call VALN
+#Call AMINO_CT
+
+#ResName HOH TIP3 TP3S TP3M
+#Description Water
+ -0.8340   1 2 OH2  O    OW
+  0.4170   1 1 H1   HW1
+  0.4170   1 1 H2   HW2
+

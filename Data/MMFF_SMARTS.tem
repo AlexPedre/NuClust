@@ -1,0 +1,235 @@
+#TemplateFF_SMARTS MMFF_SMARTS 1.0
+
+; ***********************************
+; **** VEGA SMARTS Template V1.0 ****
+; ****     MMFF94 atom types     ****
+; ***********************************
+
+; Reference:
+; "Merck Molecular Force Field. I. Basis, Form, Scope, Parameterization, and
+; Performance of MMFF94," T. A. Halgren, J. Comput. Chem., 17, 490-519 (1996).
+
+; Atm typ   SMARTS
+; ========================================================================
+
+; Hydrogens
+
+  HC        [H]C
+
+  HO+       [H][OX3]
+  HOH       [H]O[H]
+  HOCC      [H]Oc
+  HOCO      [H]O[CX3]=O
+  HOCN      [H]O[CX2]=N
+  HOCC      [H]O[CX3]=[CX3]
+  HOS       [H]OS
+  HOP       [H]OP
+  HOR       [H]O[CX4]
+  HOM       [H][OX1]
+  HO        [H]O
+
+  HIM+      [H][nr5]1[cr5][nr5]([H])[cr5][cr5]1
+  HPYL      [H][nr5]
+  HNOX      [H][NX4][OX1]
+  H3N       [H][NX4]([H])([H])[H]
+  HNR+      [H][NX4]
+  HGD+      [H][NX3][CX3]([NX3])[NX3]
+  HNN+      [H][NX3][CX3]=O
+  HNSO      [H][NX3]SO
+  HNCN      [H][NX3]C=N
+  HNCO      [H][NX3]C=O
+  HNCS      [H][NX3]C=S
+  HNCC      [H][NX3]C=C
+  HNNC      [H][NX3]N=C
+  HNNN      [H][NX3]N=N
+  HNPO      [H][NX3]PO
+  HPD+      [H][NX3]c
+  HNC%      [H][NX3][CX2]
+  HNC+      [H][NX3][CX3]
+  HNR       [H][NX3]
+  HNM       [H][NX2][CX3][CX3]
+  HN=C      [H][NX2]=C
+  HN=N      [H][NX2]=N
+  HSP2      [H][NX2]
+  HN        [H]N
+  
+  HS=N      [H]S=N
+  HS        [H]S    
+  
+  HP        [H][PX4]
+  HP        [H][PX3]
+  
+  HSI       [H][Si]
+
+  
+; Carbons
+
+  CR3R      [CX4r3]
+  CR4R      [CX4r4]
+  CR        [CX4]
+  CE4R      [CX3r4]=C
+  C=C       [CX3]=C
+  CO2M      [CX3](=[OX1])[OX1]
+  CS2M      [CX3](=[SX1])[SX1]
+  CGD+      [CX3](=[NX3v4]~[!O])([NX3])[NX3]
+  CNN+      [CX3](=[NX3v4]~[!O])[NX3]
+  CGD       [CX3](=N)([NX3])[NX3]
+  COOO      [CX3](=O)(O)O
+  COON      [CX3](=O)(O)[NX3H2]
+  CONN      [CX3](=O)(N)[NX3]
+  C=ON      [CX3](=O)N
+  C=OS      [CX3](=O)S
+  CSO2      [CX3]=S(=O)=O
+  CS=O      [CX3]=S=O
+  C=SN      [CX3](=S)[NX3]
+  CSS       [CX3](=S)S
+  C=OR      [CX3](=O)([#1,C])[#1,C]
+  COO       [CX3](=[OX1])(O)[#1,C]
+  C=O       [CX3]=O
+  C=N       [CX3]=N
+  C=P       [CX3]=P
+  C=S       [CX3]=S
+  C%        [CX1]#N
+  CSP       [CX2]#*
+  =C=       [CX2](=*)=*
+
+; Nitrogens
+
+  N3OX      [NX4]~[OX1]
+  NR+       [NX4]
+  NO3       [NX3v4](~[OX1])(~O)~O
+  NO2       [NX3](~[OX1])~[OX1]
+  N2OX      [NX3v4](~[OX1])
+  NGD+      [N+]=C([NX3])[NX3]
+  NGD+      [NX3]C(=[N+])[NX3]
+  NCN+      [NX3v4]=C[NX3v3]
+  NCN+      [NX3v3]C=[NX3v4]
+  N+=C      [NX3v4]=C
+  N+=N      [NX3v4]=N
+  NSO3      [NX3]S(=O)(~[OX1])~O
+  NSO2      [NX3]S(=O)~[OX1]
+  NPO3      [NX3]P(=O)(~[OX1])~O
+  NPO2      [NX3]P(=O)~[OX1]
+  NC%N      [NX3]C#N
+  NC=O      [NX3v3]C=O
+  NC=S      [NX3v3]C=S
+  NC=N      [NX3v3]C=N
+  NC=C      [NX3v3]C=C
+  NN=N      [NX3v3][NX2v3]=[NX2v3]
+  NC=P      [NX3v3]C=P
+  NC%C      [NX3v3]C#[Nv3]
+  NR        [NX3]
+  =N=       [NX2](=*)=*
+  N=C       [NX2]=C
+  N=N       [NX2]=N
+  NSO2      [NX2v3]S(~[OX1])~[OX1]
+  N=O       [NX2](=O)[C,N]
+  NSO       [NX2]=[SX4](=[OX1])(C)C
+  NR%       [NX2]#[C,N]
+  NM        [NX2v2]
+  NSP       [NX1]#*
+  NAZT      [NX1]=[NX2]
+
+; Phosphorous
+
+  PO4       [PX4](~O)(~O)(~O)~O
+  PO3       [PX4](~O)(~O)~O
+  PO2       [PX4](~O)~O
+  PO2       [PX4](=O)~S
+  PO        [PX4]~O
+  PTET      [PX4]
+  P         [PX3]
+  -P=C      [PX2]=C
+
+; Oxygen
+
+  O+        [OX3]
+  OH2       [OX2H2]
+  OPO3      [OX2]~P(~O)(~O)~O
+  OPO2      [OX2]~P(~O)~O
+  OPO       [OX2]~P~O
+  OC=O      [OX2]C=O
+  OSO3      [OX2]S(~[OX1])(~[OX1])~O
+  OSO2      [OX2]S(~[OX1])~[OX1]
+  ONO2      [OX2]N(~[OX1])~[OX1]
+  OS=O      [OX2]S=O
+  =-OS      [OX2]S
+  =-OP      [OX2]P
+  OC=S      [OX2]-C=S
+  OC=C      [OX2]-[CX3]=[CX3]
+  OC=N      [OX2]-[CX3]=N
+  OR        [OX2]C
+  -O-       [OX2](-*)-*
+  O=+       [OX2]=*
+  O=S=      [OX1]=[SX2]=*
+  O4S       [OX1]~S(~[OX1])(~[OX1])~[OX1]
+  O3S       [OX1]~S(~[OX1])~[OX1]
+  O2S       [OX1]~S~[OX1]
+  O4P       [OX1]~[P](~[OX1])(~[OX1])~[OX1]
+  O3P       [OX1]~[P](~[OX1])~[OX1]
+  O2P       [OX1]~[P]~[OX1]
+  O2P       [OX1]~[P]~[SX1]
+  OP        [OX1]~[P]
+  O3N       [OX1]~N(~[OX1])~[OX1]
+  O2NO      [OX1]~N(~O)~[OX1]
+  O2N       [OX1]~N~[OX1]
+  OXN       [OX1]~[Nv4]
+  O2CM      [OX1]~[CX3]~[OX1]
+  OSMS      [OX1]=[SX3]=[SX1]
+  O-S       [OX1]=[SX4]
+  O4CL      [OX1][ClX4]([OX1])([OX1])[OX1]
+  O=CN      [OX1]=C-N
+  O=CO      [OX1]=C~O
+  O=CR      [OX1]=C(~[#1,C])~[#1,C]
+  O=C       [OX1]=C
+  O=N       [OX1]=N
+  O=S       [OX1]=S
+  OM2       [OX1][CX3v4]
+  OM2       [OX1][NX2v3]
+  OM        [OX1]
+
+; Sulfurs
+
+  SO4       [SX4](=O)(=O)(O)O
+  SO3       [SX4](=O)(=O)O
+  SO2N      [SX4](=O)(=O)N
+  SO2       [SX4](=O)=O
+  SNO       [SX4](=O)=N
+  0         [SX3](=*)(=[OX1])=[OX1]
+  SSOM      [SX3](=[SX1])=[OX1]
+  SO2M      [SX3](=[OX1])=[OX1]
+  =S=O      [SX2](=*)=[OX1]
+  >S=N      [SX3](=[NX2])
+  S=O       [SX3](=[OX1])
+  S         [SX2]
+  S2CM      [SX1]~[CX3]~[SX1]
+  S=C       [SX1]=[CX3]
+  SSMO      [SX1]=S=[OX1]
+  S-P       [SX1]=P
+  S-P       [SX1]-[P+]
+  SM        [SX1]
+
+; Halogens
+
+  F         [FX1]
+  F-        [FX0]
+  BR        [BrX1]
+  BR-       [BrX0]
+  CL        [ClX1]
+  CLO4      [ClX4]([OX1])([OX1])([OX1])[OX1]
+  CL-       [ClX0]
+  I         [IX1]
+
+; Metals
+
+  LI+       [LiX0]
+  NA+       [NaX0]
+  MG+2      [MgX0]
+  SI        [SiX4]
+  K+        [KX0]
+  CA+2      [CaX0]
+  FE+2      [FeX0+2]
+  FE+3      [FeX0+3]
+  CU+1      [CuX0+1]
+  CU+2      [CuX0+2]
+  ZN+2      [ZnX0+2]

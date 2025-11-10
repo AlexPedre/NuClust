@@ -1,0 +1,148 @@
+#TemplateFF CHARMM22_PROT 1.0
+
+; **************************************
+; ****      VEGA Template V4.0      ****
+; **** Force Field CHARMM22 Protein ****
+; **************************************
+
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  H    H-100  (N-351 (C-351 (N-351 N-351)))
+  HB   H-100  (C-400 (N-300 C-300 (O-100)))
+  HR2  H-100  (C-351 (N-351 N-351))
+  HR1  H-100  (C-351 (N-351 N-251))
+  HR1  H-100  (C-351 (N-351 C-351 (N-351)))
+  HR3  H-100  (C-351 (N-251 C-351))
+  HR3  H-100  (C-351 (N-351 (H-100) C-351 (N-251))) 
+  HP   H-100  (C-391)
+  HA2  H-100  (C-300 (C-300 H-100 H-100))
+  HA1  H-100  (C-300 (C-300 H-100 #-900))
+  HA   H-100  (C-900)
+  HC   H-100  (N-400)
+;  HR2  H-100  (N-351 (C-351 (H-100) C-351 (H-100)))   ; HIS+ hydrogen
+  HR2  H-100  (N-351 (C-351 (N-351 N-351 H-100) C-351))   ; HIS+ hydrogen
+
+  HC   H-100  (N-300 (C-300 (N-300 N-300 N-300)) H-100)
+  H    H-100  (N-300)
+  HT   H-100  (O-200 (H-100 H-100))
+  H    H-100  (O-200)
+  HS   H-100  (S-200)
+  H    H-100  (F-100)
+
+; Heme:
+
+  CPA  C-350  (C-350 N-350 (Fe900))
+  CPB  C-350  (C-350 (C-350 (N-350 (Fe900))))
+  CPM  C-300  (C-350 (N-350 (Fe900)) (N-350 (Fe900)))
+  CM   C-200  (O-200 (Fe900))
+
+; Proline:
+
+  CP1  C-450  (C-450 N-350 C-300 H-100)
+  CP3  C-450  (C-450 N-350 H-100 H-100)
+  CP2  C-450  (C-450 C-450 H-100 H-100)
+
+  CS   C-400  (S-100)
+  CT3  C-400  (H-100 H-900 H-900 #-900)
+  CT2  C-400  (H-100 H-100 #-900 #-900)
+  CT1  C-400  (H-100 #-900 #-900 #-900)
+  CY   C-351  (C-400 (H-100 H-100) C-351 C-391)
+  CPH1 C-351  (C-351 N-351 C-400 (H-100 H-100))
+  CPH1 C-351  (C-351 N-251 C-400 (H-100 H-100))
+  CPH1 C-351  (C-351 (N-251) N-351 H-100)
+
+  CPH1 C-351  (C-351 (N-351) N-351 H-100)
+
+  CPH1 C-351  (C-351 N-251 H-100)
+  CPH2 C-351  (N-351 N-251 H-100)
+  CPH2 C-351  (N-351 N-351 H-100)
+  CPT  C-361  (N-351 C-361 C-391)
+  CPT  C-361  (C-351 C-361 C-391)
+  CPT  C-351  (C-351 C-361 C-391)
+  CPT  C-351  (N-351 C-361 C-391)
+  CA   C-391
+  CE2  C-300  (C-300 H-100 H-100)
+  CE1  C-300  (C-300 H-100 #-900)
+  CC   C-300  (N-300 (H-100 H-100) O-100 C-400)
+  C    C-300  (N-300 N-300 N-300)
+  CD   C-300  (O-200 O-100)
+  CC   C-300  (O-100 O-100)
+  CC   C-300  (O-200 (Zn900) O-200)
+  C    C-300  (O-100)
+
+  NP   N-450
+  NH3  N-400
+  NY   N-351  (C-351 C-391 (C-361) H-100)
+  NR1  N-351  (C-351 (N-351 N-251 H-100) C-351 H-100)
+  NR1  N-351  (C-351 (N-351 N-251 H-100) C-351 Zn900)
+  NR3  N-351  (C-351 (N-351 N-351 H-100) C-351 H-100)
+  N    N-350  (C-450 C-450)
+  NPH  N-300  (Fe900)
+  NC2  N-300  (C-300 (N-300 N-300 N-300))
+  NH2  N-300  (C-300 (O-100) H-100 H-100)
+  NH1  N-300  (C-300 (O-100) H-100 #-900)
+  NR2  N-251  (C-351 C-351)
+ 
+  OC   O-200  (Zn900)
+  OM   O-200  (C-100 Fe900)
+  OM   O-200  (C-200 Fe900)
+  OS   O-200  (C-300 (O-100) C-900)
+  OT   O-200  (H-100 H-100)
+  OH1  O-200  (H-100)
+  OB   O-100  (C-300 (O-200 O-100))
+  OC   O-100  (C-300 (O-100 O-100))
+  O    O-100  (C-300)
+ 
+  SM   S-200  (S-200 C-400)
+  S    S-200
+  SS   S-100
+
+  HE   He000
+  SOD  Na000
+  CAL  Ca000
+  NE   Ne000
+  ZN   Zn900
+  FE   Fe900

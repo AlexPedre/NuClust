@@ -1,0 +1,163 @@
+#TemplateFF CFF91 1.0
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; ****  Force Field CFF91   ****
+; ******************************
+
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  hc   H-100  (C-900)
+  h+   H-100  (N-400)
+  hi   H-100  (N-351 (C-351 (N-351)))
+  hn   H-100  (N-900)
+  hw   H-100  (O-200 (H-100 H-100))
+  ho   H-100  (O-900)
+  hp   H-100  (P-900)
+  hs   H-100  (S-900)
+  h    H-100
+
+  dw   D-100  (O-200 (D-100 H-100))
+  dw   D-100  (O-200 (D-100 D-100))
+
+  cg   C-400  (N-400 (H-100 H-100) C-300 H-100 H-100)
+  cg   C-400  (N-300 (H-100) C-300 H-100 H-100)
+  ca   C-400  (N-400 C-300 H-100 X-900)
+  ca   C-400  (N-300 C-300 H-100 X-900)
+  coh  C-400  (O-200 (C-900) O-200 H-100 X-900)
+  co   C-400  (O-200 (C-900) O-200 X-900 X-900)
+  c3h  C-430  (C-430 H-100 H-100 #-930)
+  c3m  C-430  (C-430 #-930 X-900 X-900)
+  c4h  C-440  (H-100 H-100 X-940 X-940)
+  c4m  C-440  (X-940 X-940 X-900 X-900)
+  c3   C-400  (H-100 H-100 H-100 X-900)
+  c2   C-400  (H-100 H-100 #-900 #-900)
+  c1   C-400  (H-100 #-900 #-900 #-900)
+  c    C-400
+  ci   C-351  (N-351 (H-100) N-351 (H-100) X-900)
+  cs   C-351  (S-251 X-951 X-900)
+  c5   C-351
+  cp   C-391  (X-991 X-991 X-900)
+  cr   C-300  (N-300 N-300 N-300)
+; c+   C-300  (N-300 N-300 N-300)
+  cr   C-300  (N-200 N-300 N-300)
+  c¢   C-300  (O-100 N-300)
+  c-   C-300  (O-100 O-100)
+  c"   C-300  (O-100 X-900 X-900)
+; c*   C-300  (O-100 X-900 X-900)
+  c=   C-300  (H-100 H-100)
+  c=1  C-300  (C-300 (H-100 H-100))
+  c=2  C-300
+  ct   C-200
+
+  nh+  N-460
+  n4   N-400
+; n+   N-400
+  nh+  N-361
+  ni   N-351  (C-351 (N-351) C-351 H-100)
+  nh   N-350  (H-100)
+  nho  N-360  (C-300 (O-100) H-100)
+  nh   N-360  (H-100)
+  np   N-350
+  np   N-350
+  n4n  N-340  (C-300 (O-100))
+  n4m  N-340
+  n3n  N-330  (C-300 (O-100))
+  n3m  N-330
+
+  nr   N-300  (C-300 (N-300 N-300 N-300))
+; n1   N-300  (C-300 (N-300 N-300 N-300))
+; n2   N-300  (C-300 (N-300 N-300 N-300))
+  n    N-300  (C-300 (O-100))
+  na   N-300
+  nb   N-261
+; nn   N-261
+  n=1  N-200 (N-200)
+  n=   N-200 (H-100)
+  n=2  N-200
+  nz   N-100 (N-100)
+  nt   N-100
+
+  op   O-291
+  o3e  O-230
+  o4e  O-240
+  oc   O-200  (C-400 (O-200 O-200))
+  oc   O-200  (C-400 C-400)
+  oe   O-200  (C-300 (O-100) C-900)
+  o*   O-200  (H-100 H-100)
+  oh   O-200  (H-100 X-900)
+  o    O-200
+  o-   O-100  (C-300 (O-100 O-100))
+  o-   O-100  (P-400)
+  o¢   O-100  (C-300)
+  o'   O-100  (S-400)
+
+  s    S-400
+  sp   S-251
+  s3e  S-230
+  s4e  S-240
+  sc   S-200  (C-400 (H-100 H-100 C-400) C-400 (H-100 H-100 H-100))
+  sh   S-200  (C-900 H-100) 
+  s    S-200  (C-900 X-900)
+  s1   S-200  (S-200)
+  s¢   S-100  (C-300)
+
+  p    P-900
+  si   Si900
+
+  f    F-100  (C-900)
+  cl   Cl100  (C-900)
+  Cl   Cl000
+  br   Br100  (C-900)
+  Br   Br000
+  i    I-900
+
+  ar   Ar000
+  Na   Na000
+  ca+  Ca000
+
+  lp   Lp900
+  nu   Nu900

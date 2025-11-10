@@ -1,0 +1,199 @@
+#TemplateFF CHARMM27 3.1
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; ****  Force Field CHARMM  ****
+; ******************************
+
+
+; WARNING: this template requires the parm.prm file that is copyrighted by
+; MSI/Accelrys and it's not included in VEGA package. To use it in MM/MD
+; calculations (e.g. AMMP and NAMD), you must have got a MSI/Accelrys product
+; and copy the parm.prm file to the ...\VEGA ZZ\Data\Parameters directory.
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  HF2     H-100 (C-400 (F-100 F-100))                   ; aliphatic H on fluorinated C
+  HF1     H-100 (C-400 (F-100))                         ; aliphatic H on fluorinated C
+  HB      H-100 (C-400 (N-300 C-300 (O-100)))           ; backbone H
+  HA      H-100 (C-400)                                 ; nonpolar H
+  HR2     H-100 (C-351 (N-351 N-351))                   ; (+) his HE1              
+  HR1     H-100 (C-351 (N-351 N-251))                   ; his he1, (+) his HG,HD2
+  HR3     H-100 (C-351 (N-251 C-351))                   ; neutral his HG, HD2
+  HR3     H-100 (C-351 (N-351 (H-100) C-351 (N-251)))   ; neutral his HG, HD2
+  HR2     H-100 (N-351 (C-351 (H-100) C-351 (H-100)))   ; (+) his HE1
+  HP      H-100  (C-391)                                ; aromatic H
+  HE1     H-100 (C-300 (H-100 #-900))                   ; for alkene: RHC=CR
+  HE2     H-100 (C-300 (H-100 H-100))                   ; for alkene: H2C=CR
+  HC      H-100 (N-400)                                 ; N-ter H
+  HT      H-100 (O-200 (H-100 H-100))                   ; TIPS3P WATER HYDROGEN
+  HS      H-100 (S-200)                                 ; thiol hydrogen
+
+  ; sp3 carbons
+  
+  C3      C-430                                         ; cyclopropyl carbon
+
+  CP1     C-450 (C-450 N-350 C-300 H-100)               ; tetrahedral C (proline CA)
+  CP3     C-450 (C-450 N-350 H-100 H-100)               ; tetrahedral C (proline CD)
+  CP2     C-450 (C-450 C-450 H-100 H-100)               ; tetrahedral C (proline CB/CG)
+
+  CT      C-400 (#-900 #-900 #-900 #-900)               ; aliphatic sp3 C, new LJ params, no hydrogens (see toppar_all22_prot_aliphatic_c27.str)
+  CT1     C-400 (H-100 #-900 #-900 #-900)               ; aliphatic sp3 C for CH
+  CT2     C-400 (H-100 H-100 #-900 #-900)               ; aliphatic sp3 C for CH2
+  CT3     C-400 (H-100 H-100 H-100 #-900)               ; aliphatic sp3 C for CH3
+  CF3     C-400 (F-100 F-100 F-100)                     ; trifluoromethyl
+  CF3     C-400 (F-100 F-100)                           ; difluoromethyl
+  CF1     C-400 (F-100)                                 ; monofluoromethyl
+  CS      C-400 (S-[1 | 2]00)                           ; thiolate carbon
+ 
+  ;sp2 carbons
+  
+  CY      C-351 (C-400 (H-100 H-100) C-351 C-391)       ; trp C in pyrrole ring
+  CPH1    C-351 (C-351 N-351 C-400 (H-100 H-100))       ; his CG and CD2 carbons
+  CPH1    C-351 (C-351 N-251 C-400 (H-100 H-100))       ; his CG and CD2 carbons
+  CPH1    C-351 (C-351 (N-251) N-351 H-100)             ; his CG and CD2 carbons
+  CPH1    C-351 (C-351 N-251 H-100)                     ; his CG and CD2 carbons
+  CPH2    C-351 (N-351 N-251 H-100)                     ; his CE1 carbon
+  CPH2    C-351 (N-351 N-351 H-100)                     ; his CE1 carbon
+  CPT     C-361 (N-351 C-361 C-391)                     ; trp C between rings
+  CPT     C-361 (C-351 C-361 C-391)                     ; trp C between rings
+
+  CAP     C-361 (N-261)                                 ; pyridine carbon (CD1, CD2)
+  CAP     C-361 (C-361 (N-261) C-361)                   ; pyridine carbon (CE1, CE2)
+  CAP     C-361 (C-361 (C-361 (N-261)) C-361 (C-361))   ; pyridine carbon (CE1, CE2)
+
+  CPT     C-351 (C-351 C-361 C-391)                     ; trp C between rings
+  CPT     C-351 (N-351 C-361 C-391)                     ; trp C between rings  
+  CPA     C-350 (C-350 N-350 (Fe900))                   ; heme alpha-C
+  CPB     C-350 (C-350 (C-350 (N-350 (Fe900))))         ; heme beta-C
+  CA      C-391                                         ; aromatic C
+
+  COA     C-300 (O-100 C-361 (C-361 (N-261)))           ; carbonyl C for pyridine (see toppar_all22_prot_pyridines.str)
+  CPM     C-300 (C-350 (N-350 (Fe900)) (N-350 (Fe900))) ; heme meso-C 
+  CC      C-300 (N-300 (H-100 H-100) O-100 C-400)       ; amide C
+  CE1     C-300 (H-100 #-900 C-300)                     ; for alkene: RHC=CR
+  CE2     C-300 (H-100 H-100 C-300)                     ; for alkene: H2C=CR
+  CD      C-300 (O-200 (H-100) O-100)                   ; carbonyl C, pres aspp,glup,ct1
+  CC      C-300 (O-100 O-100)                           ; carbonyl C, asn,asp,gln,glu,cter,ct
+
+  ; sp carbons
+
+  CM      C-200  (O-200 (Fe900))                        ; heme CO carbon
+  CST     C-200  (O-100 O-100)                          ; CO2 carbon
+  CN      C-200  (N-100)                                ; C for cyano group (see toppar_all22_prot_pyridines.str)
+
+  ; Nitrogens
+  
+  NP      N-450                                         ; proline N+
+  NH3     N-400 (H-100 H-100 H-100)                     ; ammonium nitrogen
+
+  NY      N-351 (C-351 C-391 (C-361) H-100)             ; trp N in pyrrole ring
+  NR1     N-351 (C-351 (N-351 N-251 H-100) C-351 H-100) ; neutral his protonated ring nitrogen
+  NR3     N-351 (C-351 (N-351 N-351 H-100) C-351 H-100) ; charged his ring nitrogen
+  N       N-350 (C-450 C-450)                           ; proline N
+
+  NC2     N-300 (C-300 (N-300 N-300 N-300))             ; guanidinium nitrogen
+  NH2     N-300 (C-300 (O-100) H-100 H-100)             ; amide nitrogen
+  NH1     N-300 (C-300 (O-100) H-100 #-900)             ; peptide nitrogen
+  NPH     N-300 (Fe900)                                 ; heme pyrrole N
+
+  NR2     N-261 (C-361 C-361)                           ; pyridine nitrogen
+  NR2     N-251 (C-351 C-351)                           ; neutral his unprotonated ring nitrogen
+  
+  NC      N-100 (C-200)                                 ; N for cyano group (see toppar_all22_prot_pyridines.str)
+
+; NN5     N-300
+
+  ; Oxygens  
+
+  OT      O-200 (H-100 H-100)                           ; tip3s water oxygen
+  OHL     O-200 (H-100 P-400 (O-100 O-100 O-200 O-900)) ; nucleic acid phosphate hydroxyl oxygen
+  OSL     O-200 (P-400 (O-100 O-100 O-200 O-900))       ; nucleic acid phosphate ester oxygen
+  OM      O-200 (C-[1 | 2]00 Fe900)                     ; heme CO/O2 oxygen      
+  OH1     O-200 (H-100)                                 ; hydroxyl oxygen
+  OS      O-200 (C-300 (O-100) C-900)                   ; ester oxyge
+
+  O2L     O-100 (P-400 (O-100 O-100 O-200 O-900))       ; nucleic acid =O in phosphate
+  O2L     O-100 (S-400 (O-100 O-100 O-200 O-900))       ; sulfate =O
+  OST     O-100 (C-200 (O-100 O-100))                   ; CO2 oxygen
+  OCA     O-100 (C-300 (C-361 (C-361 (N-261))))         ; carbonyl O for pyridine (see toppar_all22_prot_pyridines.str)
+  OB      O-100 (C-300 (C-400 (H-100 H-100 H-100)))     ; carbonyl oxygen in acetic acid
+  OC      O-100 (C-300 (O-100 O-100))                   ; carboxylate oxygen
+  O       O-100 (C-300)                                 ; carbonyl oxygen
+  ON      O-100 (N-300)
+
+  ; Sulfur
+
+  SL      S-400 (O-100 O-100 O-900 O-900)               ; sulfate sulfur
+  SM      S-200 (S-200 C-400)                           ; sulfur C-S-S-C type 
+  S       S-200                                         ; sulphur
+
+  SS      S-100 (C-400)                                 ; thiolate sulfur
+
+  ; Halogens
+
+  F3      F-100 (C-400 (F-100 F-100 F-100))             ; fluorine, trifluoro
+  F2      F-100 (C-400 (F-100 F-100))                   ; fluorine, difluoro
+  F1      F-100 (C-400 (F-100))                         ; fluorine, monofluoro
+  FA      F-100 (C-391)                                 ; aromatic flourine (see toppar_all22_prot_pyridines.str)
+  
+  CLAL    Cl100                                         ; chlorine atom (see toppar_all22_prot_aldehydes.str)
+  CLA     Cl000                                         ; chlorine ion
+
+  ; Ions
+
+  CAL     Ca000                                         ; calcium ion
+  CES     Cs000                                         ; cesium ion
+  FE      Fe900                                         ; heme iron
+  POT     K-000                                         ; potassium ion
+  MG      Mg000                                         ; magnesium ion
+  SOD     Na000                                         ; sodium ion
+  ZN      Zn900                                         ; zinc (II) ion
+
+  ; Others
+
+  DUM     Du900                                         ; dummy atom
+  HE      He000                                         ; helium
+  NE      Ne000                                         ; neon

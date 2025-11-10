@@ -1,0 +1,230 @@
+#TemplateFF MM3 1.0
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; ****    Force Field MM3   ****
+; ******************************
+
+
+; Reference:
+; ~~~~~~~~~~
+; Allinger, N. L., Y. H. Yuh, and J. H. Lii, J. Amer. Chem. Soc., 111, 8551 (1989)
+; http://europa.chem.uga.edu/allinger/mm2mm3/mm3_type.html
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  124  H-100  (C-200)
+  73   H-100  (O-200 (C-391))
+  73   H-100  (O-200 (C-300 (C-300)))
+; 28   H-100  (N-300 (C-300 (O-100)))
+  24   H-100  (O-200 (C-300 (O-100)))
+  21   H-100  (O-200 C-400)
+  48   H-100  (N-400)
+  23   H-100  (N-300 (C-300 (O-100)))
+  44   H-100  (S-200)
+  5    H-100
+
+  36   D-100
+
+  22   C-430
+  56   C-440
+  1    C-400
+  50   C-391
+  67   C-330  (O-100)
+  38   C-330
+  58   C-340  (O-100)
+  57   C-340
+  3    C-300  (O-100)
+  2    C-300
+  106  C-200  (O-100)
+  68   C-200  (C-300 C-300)
+  4    C-200 
+
+  41   O-251
+  49   O-230
+  148  O-200  (C-300 (O-100 C-900) C-300 (O-100 C-900))
+; 149  O-200  (C-300 (O-100 C-900) C-300 (O-100 C-900))
+  75   O-200  (C-300 (O-100 O-200))
+  145  O-200  (N-300 H-100)
+  6    O-200
+  83   O-100  (C-300 (O-200 (H-100) O-200 (H-100)))
+  88   O-100  (C-300 (O-200 (H-100) O-200 (C-300 (O-100))))
+  84   O-100  (C-300 (O-200 (H-100) O-200 (C-900)))
+  85   O-100  (C-300 (O-200 (H-100) N-300))
+  86   O-100  (C-300 (O-200 (H-100) Cl100))
+  86   O-100  (C-300 (O-200 (H-100) Br100))
+  86   O-100  (C-300 (O-200 (H-100) I-100))
+  87   O-100  (C-300 (O-200 (H-100) C-200 (C-300)))
+  92   O-100  (C-300 (O-200 (C-900) C-200 (C-300)))
+  93   O-100  (C-300 (O-200 (C-900) O-200 (C-300 (O-100))))
+  89   O-100  (C-300 (O-200 (C-900) O-200 (C-900)))
+  90   O-100  (C-300 (O-200 (C-900) N-300))
+  91   O-100  (C-300 (O-200 (C-900) Cl100))
+  91   O-100  (C-300 (O-200 (C-900) Br100))
+  91   O-100  (C-300 (O-200 (C-900) I-100))
+  78   O-100  (C-300 (O-200))
+  99   O-100  (C-300 (Cl100 C-200 (C-300)))
+  99   O-100  (C-300 (Br100 C-200 (C-300)))
+  99   O-100  (C-300 (I-100 C-200 (C-300)))
+  100  O-100  (C-300 (Cl100 O-200 (C-300 (O-100))))
+  100  O-100  (C-300 (Br100 O-200 (C-300 (O-100))))
+  100  O-100  (C-300 (I-100 O-200 (C-300 (O-100))))
+  101  O-100  (C-300 (C-200 (C-300) C-200 (C-300)))
+  102  O-100  (C-300 (C-200 (C-300) O-200 (C-300 (O-100))))
+  82   O-100  (C-300 (C-200 (C-300)))
+
+  115  O-100  (C-300 (C-300 (O-100) C-300 (O-100)))
+  120  O-100  (C-300 (C-300 (O-100) C-200 (C-300)))
+  116  O-100  (C-300 (C-300 (O-100) O-200 (H-100)))
+  121  O-100  (C-300 (C-300 (O-100) O-200 (C-300 (O-100))))
+  117  O-100  (C-300 (C-300 (O-100) O-200 (C-900)))
+  118  O-100  (C-300 (C-300 (O-100) N-300))
+  119  O-100  (C-300 (C-300 (O-100) Cl100))
+  119  O-100  (C-300 (C-300 (O-100) Br100))
+  119  O-100  (C-300 (C-300 (O-100) I-100))
+
+  76   O-100  (C-300 (C-300 (O-100)))
+  103  O-100  (C-300 (O-200 (C-300 (O-100)) O-200 (C-300 (O-100))))
+  77   O-100  (C-300 (O-100 (H-100)))
+  47   O-100  (C-300 (O-100 O-100))
+  96   O-100  (C-300 (N-300 C-200 (C-300)))
+  97   O-100  (C-300 (N-300 O-200 (C-300 (O-100))))
+  94   O-100  (C-300 (N-300 N-300))
+  95   O-100  (C-300 (N-300 Cl100))
+  95   O-100  (C-300 (N-300 Br100))
+  95   O-100  (C-300 (N-300 I-100))
+  79   O-100  (C-300 (N-300))
+  80   O-100  (C-300 (Cl100))
+  80   O-100  (C-300 (Br100))
+  80   O-100  (C-300 (I-100))
+  69   O-100  (N-300)
+  98   O-100  (C-300 (Cl100 Cl100))
+  7    O-100
+ 
+  39   N-400
+  40   N-351
+  111  N-361
+  155  N-300  (S-400 (O-100 O-100))
+  146  N-300  (O-200 (H-100))
+  46   N-300  (O-100 O-100)
+  150  N-300  (N-300)
+  45   N-300  (N-100)
+  9    N-300  (C-300 (O-100))
+; 151  N-300  (C-300 (O-100))
+; 110  N-300  (C-300)
+  8    N-300
+  37   N-261
+  108  N-200  (O-200 (H-100))
+  143  N-200  (N-200 O-100)
+  144  N-200  (N-200 (O-100))
+  107  N-200  (N-200)
+  72   N-200  (C-300)
+  37   N-200
+  10   N-100
+
+  154  S-400  (N-300 O-100 O-100)
+  18   S-400  (O-100 O-100)
+  42   S-351
+  17   S-300  (O-100)
+  16   S-300
+  105  S-200  (S-200 S-200)
+  105  S-200  (S-200 (S-200 S-200))
+  104  S-200  (S-200)
+  15   S-200
+  74   S-100  (C-300)
+
+  26   B-300
+  27   B-400
+  25   P-300
+  153  P-400  (O-100)
+  60   P-400
+  19   Si900
+
+  11   F-100  
+  12   Cl100
+  13   Br100
+  14   I-100
+
+  31   Ge900
+  32   Sn900
+  33   Pb900
+  34   Se900
+  35   Te900
+
+  51   He000
+  52   Ne000
+  53   Ar000
+  54   Kr000
+  55   Xe000
+
+  124  Ca000
+  56   Mg000
+  127  Ba000
+  126  Sr000
+  61   Fe900
+  62   Fe900
+  63   Ni900
+  64   Ni900
+  65   Co900
+  66   Co900
+  128  La900
+  129  Ce900
+  130  Pr900
+  131  Nd900
+  132  Pm900
+  133  Sm900
+  134  Eu900
+  135  Gd900
+  136  Tb900
+  137  Dy900
+  138  Ho900
+  139  Er900
+  140  Tm900
+  141  Yb900
+  142  Lu900
+
+
+  20   Lp900
+  200  Du900

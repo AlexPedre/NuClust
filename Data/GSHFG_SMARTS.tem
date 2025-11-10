@@ -1,0 +1,114 @@
+#TemplateFF_SMARTS GSHFG_SMARTS 1.0
+
+; ***********************************
+; **** VEGA SMARTS Template V1.0 ****
+; ****   Kier-Hall atom types    ****
+; ***********************************
+
+; Kier-Hall e-state descriptors
+
+; Atm typ   SMARTS
+
+
+CquOHal [$(C1(-Br)=CC(=O)C=CC1=O),$(C1(-Br)C(=O)C=CC(=O)C1)]
+CquOHal [$(C1(-Cl)=CC(=O)C=CC1=O),$(C1(-Cl)C(=O)C=CC(=O)C1)]
+CquOHal [$(C1(-I)=CC(=O)C=CC1=O),$(C1(-I)C(=O)C=CC(=O)C1)]
+CquOHal [$(C1(-F)=CC(=O)C=CC1=O),$(C1(-F)C(=O)C=CC(=O)C1)]
+CquO    [$(C1=CC(=O)C=CC1=O),$(C1C(=O)C=CC(=O)C1)]
+CquO    [$(c1cc(=O)ccc1=O),$(c1c(=O)ccc(=O)c1)]
+CquIM   [$(C1=CC(=O)C=CC1=N),$(C1=CC(=N)C=CC1=O)]
+CquIM   [$(c1cc(=O)ccc1=N),$(c1cc(=N)ccc1=O)]
+CAnil   [$(C1=CCC=CC1=N),$(C1C(=N)C=CCC1)]
+
+
+CzUO   [CD2](=C(-C(=C(-C(=C(-C(=O)))))) -* -*
+CzUO   C=CC=CC=CC(=O)
+CzUO   [CD2](=C(-C(=C(-C(=N(-C(=O)))))) -* -*
+CzUO   C=CC=CC=NC(=O)
+CdUO   C=CC=CC(=O)
+CdUO   [CD2](=C(-C(=C(-C(=O))))) -* -*
+CdUO   [CD2](=C(-C(=N(-C(=O))))) -* -*
+CdUO   [C](=R(-C(=N(-C(=O))))) -* -*
+Cd#CgUO C#CC=CC(=O)
+CbUO   [$(C(-*)=CC(=O)-*),$(C=CC(=O))]
+CbUSO  [CD2](=C(-C(=C(-S(=O)))))
+cbUSO  C=CS(=O)
+Cb#CaUO C#CC(=O)
+CbC#N  C=CC#N
+CaUO   [CD2](=C)(-C(=O))
+CaUSO  [CD2](=C)(-S(=O)
+CaUSO  C(=C)S=O
+Ca#N   CC#N
+C#N    C#N
+Sulfox S(=O)-C
+SulfateS S(-O)(=O)(=O)(-O)
+Sulfenic S(-*)-O
+
+UreicC C(=O)(-N)N
+Thiourea C(=S)(-N)(-N)
+Thiourea C(=N)(-S)(-N)
+
+IscyC  C(=O)=N
+IscyN  N=C=O 
+ItcyC  C(=S)=N-*
+ItcyN  N(-*)=C=S
+2ARC#C [$(C(-c)#C(-c)),$(C(c)#Cc)]
+2ArC=C  [$(C(-c)=C(-c)),$(C(c)=Cc)]
+
+CpoxHal [CRr3](-O)(-Cl)
+CpoxHal [CRr3](-O)(-Br)
+CpoxHal [CRr3](-O)(-I)
+CpoxHal [CRr3](-O)(-F)
+CpoxHal [cRr3](-O)(-Cl)
+CpoxHal [cRr3](-O)(-Br)
+CpoxHal [cRr3](-O)(-I)
+CpoxHal [cRr3](-O)(-F)
+Cpox   [CRr3](-O)
+Cpox   [cRr3](-O)
+Opox   [ORr3](-C)(-C)
+Opox   [ORr3](-c)(-c)
+Ether  [$(c-O-c),$(c-O-c)]
+Ether  C-O-c
+Ether  C-O-C
+
+NO2     [n](:[o]):[o]
+Naz+    N1CC1
+Caz     [$(C1NC1),$(C1CN1)]
+Sthii   S1CC1
+Cthii   [$(C1SC1),$(C1CS1)]
+ArCHal  c-Cl
+ArCHal  c-Br
+ArCHal  c-I
+ArCHal  c-F
+sp1CHal C(#*)Cl
+sp1CHal C(#*)Br
+sp1CHal C(#*)F
+sp1CHal C(#*)I
+sp2CHal C(=*)Cl
+sp2CHal C(=*)Br
+sp2CHal C(=*)I
+sp2CHal C(=*)F
+sp3CHal CCl
+sp3CHal CBr
+sp3CHal CI
+sp3CHal CF
+
+ArCNO2  c(-[n](:[o]):[o])
+phsest  cOP((=S)(O)(O))
+phoest  [$(cOP((=O)(O)(O))),$(cOP((=O)(O)(O)))]
+Csulfox  c-S(=O)
+Csulfox  C-S(=O)
+Cthest   C(=O)S
+disulf   [$(S-S),$(S-S)]
+
+CAr    [c]
+CCar   [C](=O)
+Calc   [C](-O)
+OCar   [O](=C)
+TAlky  [$(C#C),$(C#C)]
+Cmet   [CH3]
+Cl     [Cl](-*)
+Br     [Br](-*)
+I      [I](-*)
+F      [F](-*)
+H      [H](-*)

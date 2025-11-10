@@ -1,0 +1,6 @@
+*
+* OPLS parameters file for VEGA ZZ
+*
+INCLUDE "Parameters/par_opls_aa.inp"
+INCLUDE "Parameters/par_opls_vega.inp"
+

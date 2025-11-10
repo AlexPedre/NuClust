@@ -1,0 +1,345 @@
+#TemplateFF MMFF 4.0
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; ****   MMFF94 atom types  ****
+; ******************************
+
+; Reference:
+; "Merck Molecular Force Field. I. Basis, Form, Scope, Parameterization, and
+; Performance of MMFF94," T. A. Halgren, J. Comput. Chem., 17, 490-519 (1996).
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+; WARNING:
+; 4.0 templates use different routines that don't allow to select atoms
+; more than one time.
+
+
+; Type Atm    Bonded Atoms
+; ========================================================================
+
+; Hydrogen
+
+  HC    H-100 (C-900)                                                 ; 5  H attached to C
+  HO+   H-100 (O-300)                                                 ; 50 Hydrogen on O+ oxygen
+  HOH   H-100 (O-200 (H-100))                                         ; 31 Hydrogen in H2O
+  HOCC  H-100 (O-200 (C-391))                                         ; 29 H-O in phenols
+  HOCO  H-100 (O-200 (C-300 (O-100)))                                 ; 24 H-O in carboxylic acids
+  HOCN  H-100 (O-200 (C-300 (N-200)))                                 ; 29 H-O IN HO-C=N
+  HOCC  H-100 (O-200 (C-300 (C-300)))                                 ; 29 H-O in enols
+  HOS   H-100 (O-200 (S-900))                                         ; 33 H on oxygen attached to sulfur
+  HOP   H-100 (O-200 (P-900))                                         ; 24 Hydrogen on oxygen attached to phosphorous
+  HOR   H-100 (O-200 (C-400))                                         ; 21 Hydrogen in alcohols
+  HO    H-100 (O-200)                                                 ; 21 General H on oxygen
+  HOM   H-100 (O-100)                                                 ; 21 Hydrogen in hydroxide anion
+  HNR+  H-100 (N-400)                                                 ; 36 H on quaternary nitrogen
+  HPD+  H-100 (N-361)                                                 ; 36 H on protonated pyridine nitrogen
+  HIM+  H-100 (N-351 (C-351 (N-351)))                                 ; 36 H on imidazolium-type nitrogen
+  HPYL  H-100 (N-351)                                                 ; 23 In pyrrole
+  HGD+  H-100 (N-300 (C-300 (N-300 N-300)))                           ; 36 H on guanidinium-type nitrogen
+  HNN+  H-100 (N-300 (C-300 (N-300 H-100)))                           ; 36 H on amidinium-type nitrogen
+
+;  HN5+   36  H ON N5+, N5A+ OR N5B+
+
+  HNPO  H-100 (N-300 (P-400 (O-100)))                                 ; 28 H-N in phosphonamide
+  HNSO  H-100 (N-300 (S-400 (O-100 O-100)))                           ; 28 H-N in sulfonamide
+  HNNC  H-100 (N-300 (N-300 (C-300)))                                 ; 28 H-N in H-N-N=C
+  HNNN  H-100 (N-300 (N-200 (N-200)))                                 ; 28 H-N in H-N-N=N
+  HNCN  H-100 (N-300 (C-300 (N-200)))                                 ; 28 H-N in H-N-C=N
+  HNCO  H-100 (N-300 (C-300 (O-100)))                                 ; 28 Amide hydrogen
+  HNCS  H-100 (N-300 (C-300 (S-100)))                                 ; 28 Thioamide hydrogen
+  HNCC  H-100 (N-300 (C-300 (C-300)))                                 ; 28 H-N in enamines
+  HNC+  H-100 (N-300 (C-300))                                         ; 36 H on protonated imine nitrogen
+  HNC%  H-100 (N-300 (C-200))                                         ; 28 Hydrogen on N attached to triply bonded carbon
+  HNM   H-100 (N-200 (C-300 (C-300)))                                 ; 23 H on dicoord, negatively charged nitrogen
+  HN=C  H-100 (N-200 (C-300))                                         ; 27 Azo hydrogen
+  HN=N  H-100 (N-200 (N-200))                                         ; 27 Imine hydrogen
+  HSP2  H-100 (N-200)                                                 ; 28 General H on sp2 nitrogen
+  HNOX  H-100 (N-400 O-100)                                           ; 23 H-N in in a N-oxide
+  H3N   H-100 (N-400)                                                 ; 23 H-N(SP3), ammonia
+
+  HNR   H-100 (N-300)                                                 ; 23 H-N(SP3)
+  HN    H-100 (N-900)                                                 ; 23 general H on nitrogen
+  
+  HS=N  H-100 (S-200 (N-200))                                         ; 71 H attached to tetravalent, tricoodr S dbl bonded to N
+  HS    H-100 (S-200)                                                 ; 71 H attached to divalent, dicoordinate S
+  HP    H-100 (P-[4 | 3]00)                                           ; 71 H Attached to tri- or tetracoordinate phosphorus
+  HSI   H-100 (Si900)                                                 ; 5  H attached to Si
+
+; Carbon
+
+  CR4R  C-440                                                         ; 20 Carbon in 4-membered rings
+  CR3R  C-430                                                         ; 22 Carbon in a 3-membered ring
+  CR    C-400                                                         ; 1  Alkyl carbon, sp3
+
+  CIM+  C-351 (N-351 (C-351) N-351 (C-351))                           ; 80 C in N-C-N in imidazolium ion
+  C5B   C-351 (C-351 (S-251) N-251)                                   ; 64 Beta carbon in 5-membered heteroaromatic ring
+  C5B   C-351 (C-351 (O-251) N-251)                                   ; 64 Beta carbon in 5-membered heteroaromatic ring  
+  C5B   C-351 (N-251 (N-351) C-351)                                   ; 64 Beta carbon in 5-membered heteroaromatic ring
+  C5B   C-351 (N-251 C-351 (N-351))                                   ; 64 Beta carbon in 5-membered heteroaromatic ring
+  C5B   C-351 (C-351 (N-351) C-351)                                   ; 64 Beta carbon in 5-membered heteroaromatic ring  
+; C5B   C-351 (#-351 ($-351))                                         ; 64 Beta carbon in 5-membered heteroaromatic ring
+  C5A   C-351 (S-251)                                                 ; 63 Alpha carbon in 5-membered heteroaromatic ring
+  C5A   C-351 (O-251)                                                 ; 63 Alpha carbon in 5-membered heteroaromatic ring
+  C5A   C-351 (N-[2 | 3]51)                                           ; 63 Alpha carbon in 5-membered heteroaromatic ring
+; C5    C-351                                                         ; 78 General carbon in 5-membered heteroaromatic ring
+  CB    C-3[5 | 6]1                                                   ; 37 Carbon as in benzene, pyrrole
+  CE4R  C-340 (C-440 C-300)                                           ; 30 Olefinic carbon in 4-membered rings
+  CE4R  C-340 (C-340 C-300)                                           ; 30 Olefinic carbon in 4-membered rings
+  COOO  C-300 (O-100 O-200 O-200)                                     ; 3  Carbonic acid or ester carbonyl carbon
+  COON  C-300 (O-100 O-200 N-300)                                     ; 3  Carbamate carbonyl carbon
+  CGD   C-300 (N-300 N-300 N-200)                                     ; 3  Guanidine carbon, doubly bonded to N
+  CGD+  C-300 (N-300 N-300 N-300)                                     ; 57 Guanidinium carbon
+  CONN  C-300 (N-300 N-300 O-100)                                     ; 3  Urea carbonyl carbon
+  C=OR  C-300 (O-100 C-900 C-900)                                     ; 3  Ketone carbonyl carbon
+  COO   C-300 (O-100 O-200)                                           ; 3  Carboxylic acid or ester carbonyl carbon
+  CO2M  C-300 (O-100 O-100)                                           ; 41 Carboxylate anion carbon
+  CSS   C-300 (O-100 S-200 (H-100))                                   ; 3  Thiocarboxylic acid or ester carbonyl carbon
+  C=OS  C-300 (O-100 S-200)                                           ; 3  Thioester carbonyl carbon, double bonded to O
+  CS2M  C-300 (O-100 S-100)                                           ; 41 Carbon in thiocarboxylate anion
+  C=OR  C-300 (O-100 H-100 H-100)                                     ; 3  Aldehyde carbonyl carbon
+  C=OR  C-300 (O-100 H-100 C-900)                                     ; 3  Aldehyde carbonyl carbon
+  C=ON  C-300 (O-100 N-300)                                           ; 3  Amide carbonyl carbon
+  C=ON  C-300 (O-100 N-200 (C-300))                                   ; 3  Amide carbonyl carbon (>C=N-C=O)
+  C=SN  C-300 (S-100 N-300)                                           ; 3  Thioamide, carbon, doubly bonded to S
+  C=S   C-300 (S-100 O-200)                                           ; 3  Thioester carbon, doubly bonded to S
+  C=O   C-300 (O-100)                                                 ; 3  General carbonyl carbon
+  C=SO2 C-300 (S-300 (O-100 O-100))                                   ; 3  Carbon in >C=SO2
+  CS=O  C-300 (S-200 (O-100))                                         ; 3  Carbon in >C=S=O (sulfinyl group)
+  C=C   C-300 (C-300 N-200 (H-100))                                   ; 2  Vinylic carbon, sp2
+  C=N   C-300 (N-200)                                                 ; 3  Sp2 carbon in C=N
+  C=P   C-300 (P-200)                                                 ; 3  Carbon double bonded to phosphorous
+  C=C   C-300 (C-300)                                                 ; 2  Vinylic carbon, sp2
+  CSP2  C-300                                                         ; 2  Generic sp2 carbon
+  =C=   C-200 (C-200 C-200)                                           ; 4  Allenic carbon
+  C%    C-200 (N-200)                                                 ; 60 Isonitrile carbon
+  CSP   C-200 (C-200)                                                 ; 4  Acetylenic carbon
+  CSP   C-200 (N-100)                                                 ; 4  CN carbon
+
+; Oxygen
+
+  O+    O-300                                                         ; 49 Positively charged oxonium (tricoordinate) oxygen
+
+  OFUR  O-251                                                         ; 59 Aromatic oxygen as in furan
+  OC=C  O-200 (H-100 C-300 (C-302 H-100))                             ; 6  Enolic oxygen
+  OC=C  O-200 (H-100 C-300 (C-302 C-400))                             ; 6  Enolic oxygen
+  OR    O-200 (H-100 C-400)                                           ; 6  Alcohol oxygen
+  OC=C  O-200 (H-100 C-391)                                           ; 6  Phenolic oxygen
+  OH2   O-200 (H-100 H-100)                                           ; 70 Oxygen on water
+  OR    O-200 (C-400 C-400)                                           ; 6  Ether oxygen
+  OR    O-200 (C-400 N-200)                                           ; 6  Ether oxygen
+  OSO3  O-200 (S-400 (O-100 O-100 O-200))                             ; 6  Divalent oxygen attached to sulfur
+  OC=O  O-200 (C-300 (O-100))                                         ; 6  Ester or carboxylic acid -O-
+  OC=S  O-200 (C-300 (S-100))                                         ; 6  Thioester or thioacid -O-  
+  OC=N  O-200 (C-300 (N-200))                                         ; 6  Divalent oxygen
+  ONO2  O-200 (N-300 (O-100 O-100))                                   ; 6  Divalent nitrate "ether" oxygen
+  ON=O  O-200 (N-200 (O-100))                                         ; 6  Divalent nitrite "ether" oxygen
+  OSO2  O-200 (S-400 (O-100 O-100))                                   ; 6  Divalent oxygen attached to sulfur
+  OSO   O-200 (S-400 (O-100))                                         ; 6  Divalent oxygen attached to sulfur
+  OS=O  O-200 (S-300 (O-100))                                         ; 6  Divalent oxygen attached to sulfoxide sulfur
+  -OS   O-200 (S-900)                                                 ; 6  General divalent ox attached to S
+  OPO3  O-200 (P-400 (O-100 O-100 O-[1 | 2]00))                       ; 6  Divalent oxygen attached to phosphorous
+  OPO2  O-200 (P-400 (O-100 O-100))                                   ; 6  Divalent oxygen attached to phosphorous
+  OPO   O-200 (P-400 (O-100))                                         ; 6  Divalent oxygen attached to phosphorous
+  -OP   O-200 (P-900)                                                 ; 6  Divalent oxygen attached to phosphorous
+  -O-   O-200                                                         ; 6  General divalent O
+  O4S   O-100 (S-400 (O-100 O-100 O-100))                             ; 32 Terminal O in SO4(-3)
+  O3S   O-100 (S-400 (O-100 O-[1 | 2]00 C-900))                       ; 32 Terminal O in sulfonates
+  O4P   O-100 (P-400 (O-100 O-[1 | 2]00 O-[1 | 2]00))                 ; 32 Terminal oxygen in phosphates and phosphodiesters
+  O=CR  O-100 (C-300 (H-100 H-100))                                   ; 7  Carbonyl oxygen, aldehydes
+  O=CR  O-100 (C-300 (H-100 C-400))                                   ; 7  Carbonyl oxygen, aldehydes
+  O=CR  O-100 (C-300 (C-400 C-400))                                   ; 7  Carbonyl oxygen, ketones
+  O=CN  O-100 (C-300 (N-300))                                         ; 7  Carbonyl oxygen, amides
+  O=CN  O-100 (C-300 (N-200 (C-300)))                                 ; 7  Carbonyl oxygen, amides (O=C-N=C<)
+  O=CO  O-100 (C-300 (O-200))                                         ; 7  Carbonyl oxygen, carboxylic acids and esters
+  O2CM  O-100 (C-300 (O-100))                                         ; 32 Oxygen in carboxylate anion
+  O3N   O-100 (N-300 (O-100 O-100))                                   ; 32 Nitrate anion oxygen
+  O2NO  O-100 (N-100 (O-100 O-[1 | 2]00))                             ; 32 Nitro-group oxygen in nitrate
+
+  O3P   O-100 (P-400 (O-[1 |2]00 O-[1 | 2]00))                        ; 32 Terminal oxygen in phosphonates
+  O2N   O-100 (N-300 (O-100))                                         ; 32 Nitro oxygen
+  O2S   O-100 (S-400 (O-100))                                         ; 32 Terminal O-S in sulfones and sulfonamides
+  O2P   O-100 (P-400 (O-[1 |2]00))                                    ; 32 Terminal oxygen in phosphinates
+  OSMS  O-100 (S-300 (O-100 S-300))                                   ; 32 Term o in thiosulfinate anion - formal charge=-0.5
+  OM    O-100 (C-400)                                                 ; 35 Alkoxide oxygen, negatively charged
+  O=C   O-100 (C-300)                                                 ; 7  General C=O
+  OM2   O-100 (C-200)                                                 ; 35 Oxide oxygen on sp2 carbon, negatively charged
+  OXN   O-100 (N-300)                                                 ; 32 N-oxide oxygen
+  O=N   O-100 (N-200)                                                 ; 7  Nitroso oxygen
+  O-S   O-100 (S-400)                                                 ; 32 Single terminal oxygen on tetracoord sulfur
+  O=S   O-100 (S-300)                                                 ; 7  O=S in sulfoxides
+  O=S=  O-100 (S-200)                                                 ; 7  O=S on sulfur doubly bonded to, e.g., carbon
+  O4CL  O-100 (Cl400)                                                 ; 32 Oxygen in ClO4(-) Anion - formal charge=-0.25
+  OP    O-100 (P-400)                                                 ; 32 Terminal oxygen in phosphoxides
+
+; Nitrogen
+
+  N3OX  N-400 (O-100)                                                 ; 68 Sp3-hydridized N-oxide nitrogen
+  NR+   N-400                                                         ; 34 Quaternary nitrogen, sp3, positively charged
+  
+  NIM+  N-351 (C-351 (N-351) C-351 (C-351))                           ; 81 Imidazolium-type nitrogen - formal charge=1/2
+  NPYL  N-351 (C-351 C-351 X-990)                                     ; 39 Nitrogen, as in pyrrole
+  N5A   N-[2 | 3]51 ($-351)                                           ; 65 Alpha arom heterocyclic 5-ring  nitrogen
+  NPYL  N-351                                                         ; 39 Nitrogen, as in pyrrole
+  N5BX  N-350 (O-100 #-350 ($-351))                                   ; 82 N-oxide nitrogen in 5-ring beta position
+  N5AX  N-350 (O-100 $-350)                                           ; 82 N-oxide nitrogen in 5-ring alpha position
+  N5OX  N-350 (O-100)                                                 ; 82 N-oxide nitrogen in general 5-ring position
+  N5    N-350 (C-450 C-450)                                           ; 79 General nitrogen in 5-membered heterocyclic ring
+  NPOX  N-361 (O-100)                                                 ; 69 Pyridine n-oxide nitrogen
+  NPD+  N-361                                                         ; 58 Pyridinium-type nitrogen - formal charge=1
+  NO3   N-300 (O-100 O-100 O-[1 | 2]00)                               ; 45 Nitrate group nitrogen
+  NGD+  N-300 (C-300 (N-300 N-300))                                   ; 56 Guanidinium-type nitrogen - formal charge=1/3
+  N+=C  N-300 (C-200 N-200)                                           ; 55 N in +N=C-N resonance structures - formal charge=1/2
+  NO2   N-300 (O-100 O-100)                                           ; 45 Nitro group nitrogen
+  NSO3  N-300 (S-400 (O-100 O-100 O-[1 | 2]00))                       ; 43 Nitrogen in sulfonamides, three O's on S
+  NSO2  N-300 (S-400 (O-100 O-100))                                   ; 43 Nitrogen in sulfonamides
+  NPO3  N-300 (P-400 (O-100 O-100 O-[1 | 2]00))                       ; 43 Nitrogen in phosphonamides, three O's on P
+  NPO2  N-300 (P-400 (O-100 O-100))                                   ; 43 Nitrogen in phosphonamides
+; NN=C  N-300 (N-200 (C-300))                                         ; 10 Nitrogen in N-N=C
+  NN=N  N-300 (N-200 (N-200))                                         ; 10 Nitrogen in N-N=N 
+  NC=O  N-300 (C-300 (O-100))                                         ; 10 Nitrogen in amides
+  NC=C  N-300 (C-300 (C-300))                                         ; 40 Nitrogen in N-C=C
+  NC=N  N-300 (C-300 (N-200))                                         ; 40 Nitrogen in N-C=N
+  NC=P  N-300 (C-300 (P-200))                                         ; 40 Nitrogen in N-C=P
+  NC=S  N-300 (C-300 (S-100))                                         ; 10 Nitrogen in N-C=S, thioamide
+  NCN+  N-300 (C-200 (N-300))                                         ; 55 N in +N=C-N resonance structures - formal charge=1/2
+  NC%N  N-300 (C-200 (N-200))                                         ; 43 Nitrogen attached to cyano group
+  NC%C  N-300 (C-200 (C-200))                                         ; 40 Nitrogen attached to C-C triple bond
+  N+=C  N-300 (C-300)                                                 ; 54 Positively charged iminium nitrogen
+  NR    N-300 (N-200 (C-300))                                         ; 8  Nitrogen in aliphatic amines
+  N+=N  N-300 (N-200)                                                 ; 54 Positively charged nitrogen double-bonded to N
+  N2OX  N-300 (O-100)                                                 ; 67 Sp2-hydridized N-oxide nitrogen
+  NR    N-300                                                         ; 8  Nitrogen in aliphatic amines
+
+  NPYD  N-261                                                         ; 38 Nitrogen, as in pyridine
+  N5M   N-251 (N-251 (C-351) N-251 (N-251))                           ; 76 Negatively charged N in, e.g, tri- or tetrazole anion
+  N5M   N-251 (N-251 (N-251 (N-251)) C-351)                           ; 76 Negatively charged N in, e.g, tri- or tetrazole anion
+  N5M   N-251 (N-251 (N-251 (C-351)) C-351)                           ; 76 Negatively charged N in, e.g, tri- or tetrazole anion
+  N5M   N-251 (N-251 (C-351) N-251 (C-351))                           ; 76 Negatively charged N in, e.g, tri- or tetrazole anion  
+  N5B   N-251 (N-251 (N-351))                                         ; 66 Beta arom heterocyclic 5-ring nitrogen
+  N5B   N-251 (C-351 (S-251))                                         ; 66 Beta arom heterocyclic 5-ring nitrogen
+  N5B   N-251 (C-351 (O-251))                                         ; 66 Beta arom heterocyclic 5-ring nitrogen
+  N5B   N-251 (C-351 (N-351))                                         ; 66 Beta arom heterocyclic 5-ring nitrogen
+  N=C   N-200 (S-400 (O-100 O-100) C-300)                             ; 9  Nitrogen in imines (>C=N-SO2)
+  N=C   N-200 (C-300 (O-100) C-300)                                   ; 9  Nitrogen in imines (>C=N-C=O)
+  =N=   N-200 (C-300 N-100)                                           ; 53 Nitrogen in C=N=N
+  N=C   N-200 (C-300 C-301)                                           ; 9  Nitrogen in imines
+  N=C   N-200 (C-300 N-300)                                           ; 9  Nitrogen in imines
+  N=C   N-200 (C-300 O-200)                                           ; 9  Nitrogen in oximes
+  =N=   N-200 (N-200 N-100)                                           ; 53 Nitrogen in -N=N=N
+  NM    N-200 (S-400 (O-100 O-100))                                   ; 62 Deprotonated sulfonamide N-; Formal charge=-1
+  NM    N-200 (C-302 (C-302))                                         ; 62 Deprotonated sulfonamide N-; Formal charge=-1
+  NSO   N-200 (S-400 (O-100))                                         ; 48 Divalent nitrogen replacing monovalent O in SO2 group
+  N=C   N-200 (C-300 (C-400))                                         ; 9  Nitrogen in imines
+  NR%   N-200 (C-100)                                                 ; 61 Isonitrile nitrogen [FC = 0] or diazo nitrogen [FC = 1]
+  N=O   N-200 (O-100)                                                 ; 46 Nitroso nitrogen
+  N=N   N-200 (N-200)                                                 ; 9  Nitrogen in azo compounds
+
+  NAZT  N-100 (N-200 (N-200))                                         ; 47 Terminal nitrogen in azido or diazo group
+  NAZT  N-100 (N-200 (C-300))                                         ; 47 Terminal nitrogen in azido or diazo group
+  NSP   N-100                                                         ; 42 Nitrogen, triple bonded
+
+; Phosphorous
+
+  PO4   P-400 (O-100 O-[1 | 2]00 O-[1 | 2]00 O-[1 | 2]00)             ; 25 Phosphorous in phosphates and phosphodiesters
+  PO3   P-400 (O-100 O-[1 | 2]00 O-[1 | 2]00)                         ; 25 Tetracoordinate P with three attached oxygens
+  PO2   P-400 (O-100 O-[1 | 2]00)                                     ; 25 Tetracoordinate P with two attached oxygens
+  PO    P-400 (O-100)                                                 ; 25 Tetracoordinate P with one attached oxygen
+  PTET  P-400                                                         ; 25 General tetracoordinate phosphorus
+
+  P     P-300                                                         ; 26 Tricoordinate p, as in phosphines
+
+  -P=C  P-200 (C-300)                                                 ; 75 Phosphorous doubly bonded to carbon
+
+; Sulfur
+
+  SO4   S-400 (O-100 O-100 O-[1 | 2]00 O-[1 | 2]00)                   ; 18 Sulfate sulfur
+  SO2N  S-400 (O-100 O-100 N-300)                                     ; 18 Sulfur in sulfonamides
+  SO3   S-400 (O-100 O-100 O-[1 | 2]00)                               ; 18 Sulfonate sulfur
+  SO2   S-400 (O-100 O-100)                                           ; 18 Sulfur in sulfones
+  SNO   S-400 (O-100 N-200)                                           ; 18 Sulfur in nitrogen analog of a sulfone
+
+  =SO2  S-300 (O-100 O-100 C-300)                                     ; 18 Sulfone sulpher doubly bonded to carbon
+  SO2M  S-300 (O-100 O-100)                                           ; 73 Sulfur in negatively charged sulfinate group
+  SSOM  S-300 (O-100 S-200)                                           ; 73 Tricoord sulfur in thiosulfinate group
+  S=O   S-300 (O-100)                                                 ; 17 Sulfur in sulfoxides
+  >S=N  S-300 (N-200)                                                 ; 17 Sulfur, tricoord, doubly bonded to N
+
+  STHI  S-251                                                         ; 44 Sulfur as in thiophene
+  =S=O  S-200 (C-300 O-100)                                           ; 74 Sulfinyl sulfur, eg. in C=S=O
+  SSMO  S-200 (S-300 (O-100))                                         ; 72 Terminal sulfur in thiosulfinate group
+  S     S-200                                                         ; 15 Sulfur in thioethers and mercaptans
+
+  S2CM  S-100 (C-300 (O-100))                                         ; 72 Terminal sulfur in thiocarboxylate anion
+  SM    S-100 (C-300 (C-300))                                         ; 72 Terminal sulfur - formal charge=-1
+  S=C   S-100 (C-300)                                                 ; 16 Terminal sulfur doubly bonded to carbon
+  S-P   S-100 (P-900)                                                 ; 72 Terminal sulfur bonded to phosphorus
+  SM    S-100                                                         ; 72 Terminal sulfur - formal charge=-1
+
+; Halogens
+
+  F     F-100                                                         ; 11 Fluorine
+  F-    F-000                                                         ; 89 Fluoride anion
+  CLO4  Cl400 (O-100 O-100 O-100 O-100)                               ; 77 Chlorine in perchlorate anion, CLO4(-)
+  CL    Cl100                                                         ; 12 Chlorine
+  CL-   Cl000                                                         ; 90 Chloride anion
+  BR    Br100                                                         ; 13 Bromine
+  BR-   Br000                                                         ; 91 Bromide anion
+  I     I-100                                                         ; 14 Iodine
+
+; Silicon
+
+  SI    Si900                                                         ; 19 SILICON
+
+; Metals
+
+  FE+2  Fe000                                                         ; 87 Iron +2 cation
+; FE+3  Fe000                                                         ; 88 Iron +3 cation
+  LI+   Li000                                                         ; 92 Lithium cation
+  NA+   Na000                                                         ; 93 Sodium cation
+  K+    K-000                                                         ; 94 Potassium cation
+  ZINC  Zn000                                                         ; 95 Dipositive zinc
+; ZN+2  Zn000                                                         ; 95 Dipositive zinc
+  CA+2  Ca000                                                         ; 96 Dipositive calcium
+; CU+1  Cu000                                                         ; 97 Monopositive copper
+  CU+2  Cu000                                                         ; 98 Dipositive copper
+  MG+2  Mg000                                                         ; 99 Dipositive magnesium cation

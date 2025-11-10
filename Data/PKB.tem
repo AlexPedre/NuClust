@@ -1,0 +1,199 @@
+#TemplateFF PKB 4.0
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; **** Force Field for pKa  ****
+; ******************************
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms                                          Description
+; ========================================================================================
+
+  F       F-000                                                      ; F(-)
+  Cl      Cl000                                                      ; Cl(-)
+  Br      Br000                                                      ; Br(-)
+  I       I-000                                                      ; I(-)
+  
+  C       C-300 (C-400 C-400 C-400)                                  ; C(-)
+  C       C-300 (C-400 C-400 H-100)                                  ; C(-)
+  C       C-300 (C-400 H-100 H-100)                                  ; C(-)
+  C       C-300 (H-100 H-100 H-100)                                  ; C(-)
+  Car     C-290 (C-390 C-390)                                        ; Car(-)
+  CN      C-100 (N-100)                                              ; CN(-)
+
+  X       N-30[!1] (C-30[!1] (S-100))                                ; Cyclic thiourea nitrogen
+  X       N-300 (C-300 (O-100))                                      ; Amide
+  Npir+   N-351 (H-100 C-351 C-351)                                  ; Pyrrole
+  
+  Nhyd    N-300 (N-300 (C-300 (O-100) H-100))                        ; Acetyl hydrazide R-CO-NH-NH2
+  Nani+   N-300 (X-991)                                              ; NR2-Ar (Anyline)
+
+  X       N-300 (C-300 (N-300 N-300))                                ; Guanidine (+)
+  Ngno2+  N-300 (C-30[!1] (N-30[!1] (N-300 (O-100 O-100)) N-20[!1])) ; Guanidine-NO2
+  Ngno2+  N-300 (C-30[!1] (N-20[!1] N-30[!1] (N-300 (O-100 O-100)))) ; Guanidine-NO2
+  Ngno2+  N-300 (C-30[!1] (N-30[!1] N-20[!1]) N-300 (O-100 O-100))   ; Guanidine-NO2
+  Ngua+   N-300 (C-30[!1] (N-30[!1] N-20[!1]))                       ; Guanidine
+
+  X       N-300 (C-300 (N-200 (O-200) X-901))                        ; Aromatic amidoxime (benamidoxime)
+  X       N-300 (C-300 (X-901 N-200 (C-300 (O-100))))                ; Aromatic amidine bound to carbonyl
+  Namar+  N-300 (C-300 (N-200 (X-90[!1]) X-901))                     ; Aromatic amidine  
+  
+  X       N-300 (C-300 (N-200 C-90[!1]) N-900)                       ; Aliphatic amidine
+  X       N-300 (C-300 (N-200 (O-200) C-90[!1]))                     ; Aliphatic amidoxime
+  X       N-300 (C-300 (N-200 (C-300 (O-100))))                      ; Aliphatic amidine bound to carbonyl
+  N4ami+  N-300 (C-300 (N-200 C-90[!1]))                             ; Aliphatic amidine
+
+  Nsam+   N-300 (S-400 (O-100 O-100))                                ; NR2-SO2-R
+  Nam+    N-300 (C-300 (O-100) H-100 H-100)                          ; NH2-CO-R
+  Nam+    N-300 (C-300 (O-100) C-900 H-100)                          ; NHR-CO-R
+  Nam+    N-300 (C-300 (O-100) C-900 C-900)                          ; NR2-CO-R
+  
+  Nabno2  N-30[!1] (C-30[!1] (C-30[!1] (N-300 (O-100 O-100))))       ; H2N-CH=CH-NO2, 2-nitroethenamine 
+
+  Nd12    N-30[!1] (C-400 (N-40[!1] X-900))                          ; 1,1-diaminoethane (+)
+  Nd11    N-30[!1] (C-400 (N-30[!1] X-900))                          ; 1,1-diaminoethane
+  Nd22    N-30[!1] (C-400 (C-400 (N-40[!1] X-900)))                  ; 1,2-diaminoethane (+)
+  Nd21    N-30[!1] (C-400 (C-400 (N-30[!1] X-900)))                  ; 1,2-diaminoethane
+  Nd32    N-30[!1] (C-400 (C-400 (C-400 (N-40[!1] X-900))))          ; 1,3-diaminopropane (+)  
+  Nd31    N-30[!1] (C-400 (C-400 (C-400 (N-30[!1] X-900))))          ; 1,3-diaminopropane
+  Nd42    N-30[!1] (C-400 (C-400 (C-400 (C-400 (N-40[!1] X-900)))))  ; 1,4-diaminobutane (+)
+  Nd41    N-30[!1] (C-400 (C-400 (C-400 (C-400 (N-30[!1] X-900)))))  ; 1,4-diaminobutane
+
+  Nr0     N-300 (H-100 H-100 H-100)                                  ; NH3
+  Nr1     N-300 (H-100 H-100 C-400)                                  ; H2NR
+  Nr2     N-300 (H-100 C-400 C-400)                                  ; HNR2
+  Nr3     N-300 (C-400 C-400 C-400)                                  ; HNR3
+  
+  Npy+    N-261                                                      ; Pyridine
+  Ni2+    N-251 (C-351 (N-351) C-351)                                ; Imidazole
+  Nar     N-250 (C-350 (C-350) C-350 (C-350))                        ; Pyrrole (-)
+  NH3     N-200 (H-100 H-100)                                        ; NH2(-)
+
+  Ngno2+  N-200 (C-300 (N-300 (N-300 (O-100 O-100)) N-300))          ; Guanidine-NO2
+  Ngno2+  N-200 (C-300 (N-300 N-300 (N-300 (O-100 O-100))))          ; Guanidine-NO2
+  X       N-200 (C-300 (N-300 N-300) C-300 (O-100))                  ; Guanidine bound to carbonyl
+  X       N-200 (C-300 (N-300 N-300) N-301)                          ; Guanidine bound to pyrrole
+  Ngua+   N-200 (C-300 (N-300 N-300))                                ; Guanidine
+  
+  X       N-200 (C-300 (X-991 N-300) O-200)                          ; Aromatic amidoxime (benamidoxime)
+  X       N-200 (C-300 (X-991 N-300) C-300 (O-100))                  ; Aromatic amidine bound to carbonyl
+  Namar+  N-200 (C-300 (X-991 N-300) X-90[!1])                       ; Aromatic amidine
+
+  X       N-20[!1] (C-300 (N-300 X-900) C-200 (N-100))               ; Aliphatic amidine bound to CN
+  X       N-20[!1] (C-300 (O-100) C-300 (N-300 X-900))               ; Aliphatic amidine with carbonyl
+  X       N-20[!1] (C-300 (N-300 X-900) C-300 (O-100))               ; Aliphatic amidine with carbonyl
+  X       N-20[!1] (C-300 (N-200 X-900) C-300 (O-100))               ; Aliphatic amidine with carbonyl
+  X       N-20[!1] (C-300 (N-300 (C-300 (O-100)) X-900))             ; Aliphatic amidine with carbonyl
+  X       N-26[!1] (C-36[!1] (N-26[!1] N-300) C-36[!1] (N-36[!1] (C-36[!1] (O-100))))
+  X       N-26[!1] (C-36[!1] (N-36[!1] (C-36[!1] (O-100))) C-36[!1] (N-26[!1] N-300))
+  X       N-26[!1] (C-36[!1] (O-100 N-36[!1] (C-36[!1] (C-36[!1] (C-36[!1])))))
+  X       N-20[!1] (C-30[!1] (N-30[!1] (N-900) X-90[!1]) X-90[!1])   ; Aliphatic amidine bound to N
+  X       N-20[!1] (C-30[!1] (N-30[!1] X-90[!1]) O-200)              ; Aliphatic amidoxime
+  X       N-20[!1] (C-30[!1] (N-30[!1] O-100) C-30[!1])              ; R2N-CO-N=CR2
+  N3ami+  N-20[!1] (C-30[!1] (N-30[!1] X-90[!1]) X-90[!1])           ; Aliphatic amidine
+
+  NO+     N-200 (O-100 C-400)                                        ; O=N-R
+  NO+     N-200 (O-100 C-301)                                        ; O=N-Ar
+  Nam     N-200 (C-300 (O-100))                                      ; R-N(-)-CO-R
+  Nsam    N-200 (S-400 (O-100 O-100))                                ; R-N(-)-SO2-R
+
+  NN      N-100 (N-200)                                              ; (-)N=N-R
+  NC+     N-100 (C-200)                                              ; NC-R
+
+  Ow+     O-200 (H-100 H-100)                                        ; H2O
+
+  Ow      O-100 (H-100)                                              ; OH(-)
+  Oal     O-100 (C-400)                                              ; (-)O-R  
+;  Oph     O-100 (C-360 (C-360 (C-360 (C-360))))                     ; (-)O-Ar
+  
+  X       O-100 (C-360 (C-360 (C-360 (C-360 (O-100 X-900)))))        ; p-Benzoquinone
+  X       O-100 (C-360 (C-360 (C-360 (C-360 (N-200 X-900)))))        ; p-Benzoquinone imine
+  X       O-100 (C-360 (C-360 (C-360 (C-460 ))))                     ; 2,5-Cyclohexadienone
+  Oph     O-100 (C-360 (C-360 ([!O-]100) C-360 ([!O-]100)))          ; (-)O-Ar
+  
+  Obic    O-100 (C-300 (O-100 O-100))                                ; CO32-
+  Obz     O-100 (C-300 (O-100 X-991))                                ; (-)OOC-Ar
+  Oac     O-100 (C-300 (O-100))                                      ; (-)OOC-R
+  Ohyam1  O-100 (N-300 (C-400 H-100))                                ; Hydroxylamine (-)
+  Ohyam2  O-100 (N-300 (C-400 C-400))                                ; Hydroxylamine (-)
+  Ohyx    O-100 (N-300 (C-300 (O-100)))                              ; Hydroxamic acid (-)
+  Onit    O-100 (N-300 (O-100 O-100))                                ; NO3(-)
+  ONO+    O-100 (N-300 (O-100))                                      ; O2N-R
+  Ooxi    O-100 (N-200 (C-30[!1]))                                   ; (-)O-NR=CR2 (Oxyme)
+
+  OphR1H2 O-100 (P-400 (O-200 (H-100) O-200 (#-900) O-100))          ; HPO4-R, Methylphosphate (-)
+  OphR1H1 O-100 (P-400 (O-200 (#-900) O-100 O-100))                  ; PO4-R(-), Methylphosphate (2-)
+  OphR2H1 O-100 (P-400 (O-200 (#-900) O-200 (#-900) O-100))          ; PO4-R2(-), Dimethylphosphate (-)
+  OphoH2  O-100 (P-400 (O-200 O-100 O-100))                          ; HPO4(2-)
+  OphoH1  O-100 (P-400 (O-100 O-100 O-100))                          ; PO4(3-)
+  Opous   O-100 (P-400 (O-200 O-100 H-100))                          ; H2PO3(-)
+  Ohyp    O-100 (P-400 (O-100 H-100))                                ; H2PO2(-) (Hypophosphorate)
+  
+  Opnous  O-100 (P-300 (O-100 H-100))                                ; HPO2(-)
+  Opar    O-100 (P-300 (X-991))                                      ; (-)OP-Ar
+  Op      O-100 (P-300 ([!O-]900))                                   ; (-)OPR2 
+  
+  Ophin   O-100 (P-200 (O-100))                                      ; PO(2-)
+
+
+  OsulH   O-100 (S-400 (O-100 O-100 O-100))                          ; SO4(2-)
+  Oson    O-100 (S-400 (O-100 O-100 C-900))                          ; (-)O3S-R
+
+  OsiteH  O-100 (S-300 (O-100 O-100))                                ; SO3(2-)
+  Osnic   O-100 (S-300 (O-100 X-900))                                ; (-)O3S-R
+  
+  OH-     O-000                                                      ; O(2-)
+
+  OphiH   P-300 (O-100 O-100 O-100)                                  ; PO3(2-)
+  Pnium   P-300 (H-100 H-100 H-100)                                  ; PH3
+  Pine    P-200 (H-100 H-100)                                        ; PH2(-)
+
+  SH2+    S-200 (X-900 X-900)                                        ; R-S-R
+
+  Sac     S-100 (X-900 (O-100))                                      ; (-)S-CO-R
+  SHar    S-100 (C-360 (C-360 (C-360 (C-360))))                      ; (-)S-Ar
+  SH2     S-100 (H-100)                                              ; SH(-)
+  SH      S-100 (C-400)                                              ; (-)S-R
+
+
+  X       X-900                                                      ; Not considered

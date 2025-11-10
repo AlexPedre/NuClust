@@ -1,0 +1,91 @@
+#TemplateFF DAVIES 1,0
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; ****  Force Field CHARMM  ****
+; ******************************
+
+; DAVIES potential for HLB calculation.
+;
+; For more information:
+; Davies JT (1957), "A quantitative kinetic theory of emulsion type, I.
+; Physical chemistry of the emulsifying agent"
+; Gas/Liquid and Liquid/Liquid Interface
+; (Proceedings of the International Congress of Surface Activity), pp. 426-38
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm      Bonded atoms
+; ========================================================================
+
+; Carbons
+
+  CH3     C-400    (H-100 H-100 H-100)               ; Carbon with three hydrogens
+  CH2     C-400    (H-100 H-100)                     ; Carbon with two hydrogens
+  CH      C-400    (H-100 H-100)                     ; Carbon with one hydrogen
+  COO-    C-300    (O-100 O-100)                     ; Carboxylate
+  COOH    C-300    (O-100 O-200 (H-100))             ; Carboxylic acid
+  COOR    C-300    (O-100 O-200)                     ; Generic ester
+  CH      C-300    (H-100)                           ; Sp2 carbon with one hydrogen
+
+; Nitrogens
+
+  N3      N-300                                      ; Tertiary amine
+
+; Oxygens
+
+  exOH    O-200    (C-300 (O-100) H-100)             ; Carboxylic OH
+  OHsorb  O-200    (H-100 C-45[!1])                  ; Sorbitan OH
+  OH      O-200    (H-100)                           ; Alcholic
+  exO     O-200    (S-400 (O-100 O-100 O-100))       ; Sulfate oxygen
+  exO     O-200    (C-300 (O-100) C-400)             ; Ester oxygen
+  O       O-200                                      ; Ether
+
+; Sulphurs
+
+  SO4     S-400    (O-200 O-100 O-100 O-100)         ; Sulfate
+
+; Metals
+
+  K       K-000                                      ; Potassium 1+
+
+  ex      X-900                                      ; Other atoms

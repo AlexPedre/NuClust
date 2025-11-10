@@ -1,0 +1,143 @@
+#TemplateFF MENG 1.0
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; ****    Meng atom types   ****
+; ******************************
+
+
+; Reference:
+; ~~~~~~~~~~
+; Elanie C. Meng and Richard A. Lewis,
+; J. Comp. Chem., 12, pp 891-898 (1991)
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  HC   H-100  (C-900)
+  HN   H-100  (N-900)
+  HO   H-100  (O-900)
+  H    H-100
+; H-
+
+  DC   D-100  (C-900)
+  D    D-100
+
+  C3   C-400
+  Cac  C-300  (O-100 O-100)
+  C2   C-300
+  C1   C-200
+; Car
+; Cbl
+; C-
+; C.
+; Cx
+
+; N4
+  N3+  N-400
+  N3   N-300
+; N2   N-200
+; N2+
+  Npl  N-200
+; Nam
+; Nar
+; Naz
+  N1   N-100
+; Ntr
+; Ng+
+
+  O3   O-200
+; Oes
+  OCO2 O-100  (C-200 (O-100 O-100))
+  O-   O-100  (C-300 (O-100 O-100))
+  O-   O-100  (N-300 (O-100 O-100))
+  O2   O-100  (C-300)
+
+  Sox  S-300 (O-100 C-900 C-900)
+  S3+  S-300
+  S3   S-200
+  S2   S-100
+  Sox  S-400 (O-100 O-100 C-900 C-900)
+  Sac  S-400 (O-900 O-900 O-900 O-900)
+  S    S-900
+
+  Bac  B-300 (O-900 O-900 O-900)
+  Box  B-400
+  B    B-900
+
+; P3
+  Pac  P-400 (O-100 O-900 O-900 O-900)
+  Pox  P-400 (O-100)
+  P3+  P-400
+  P    P-900
+
+  F    F-900
+  Cl   Cl900
+  Br   Br900
+  I    I-900
+
+  K    K-900
+  Ca   Ca900
+  Li   Li900
+  Al   Al900
+
+  Si   Si900
+  Ge   Ge900
+  Sn   Sn900
+  Pb   Pb900
+  Se   Se900
+  Te   Te900
+  W    W-900
+  Pd   Pd900
+  Pt   Pt900
+  Ni   Ni900
+  Cu   Cu900
+  Mn   Mn900
+  Fe   Fe900
+
+  Du   Du900
+  Lp   Lp900
+  X    Du900
+  Z0   Du900
+  

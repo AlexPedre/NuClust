@@ -1,0 +1,438 @@
+#TemplateFF_SMARTS GAFF_SMARTS 1.0
+
+; ***********************************
+; **** VEGA SMARTS Template V1.0 ****
+; ****      GAFF atom types      ****
+; ***********************************
+
+; Based on OpenBabel SMARTS template
+
+; Atm typ   SMARTS
+; ========================================================================
+
+; Hydrogens
+
+  DU        [#1X1][Ge]                                                           ; H on Ge
+  h5        [#1X1][c]([#7,#8,#16,#17,#35,#53])[#7,#8,#16,#17,#35,#53]            ; H on carbon in a ring  with 2 electron-withdrawal group
+  h5        [#1X1][c](=[#7,#8,#16])([#7,#8,#9,#16,#17,#35,#53])                  ; H on carbon in a ring  with 2 electron-withdrawal group
+  h5        [#1X1][c]([#7,#8,#9,#16,#17,#35,#53])(=[#7,#8,#16])                  ; H on carbon in a ring  with 2 electron-withdrawal group
+  h4        [#1X1][c]-[#15X3]                                                    ; H on carbon in a ring  with 1 electron-withdrawal group
+  h4        [#1X1][c][#7,#8,#16,#17,#35,#53]                                     ; H on carbon in a ring  with 1 electron-withdrawal group
+  h4        [#1X1][c][#7,#8,#16,#17,#35,#53]                                     ; H on carbon in a ring  with 1 electron-withdrawal group
+  h4        [#1X1][c]([#7,#8,#16])(=[#6])                                        ; H on carbon in a ring  with 1 electron-withdrawal group
+  h4        [#1X1][c]([#7,#8,#16,#17,#35,#53])(=[#6])                            ; H on carbon in a ring  with 1 electron-withdrawal group
+  h4        [#1X1][c](=[#7,#8,#16])                                              ; H on carbon in a ring  with 1 electron-withdrawal group
+  h3        [#1X1][C]([F,Cl,Br,I])([F,Cl,Br,I])[O,F,Cl,Br,I]                     ; H on carbon in a chain with 3 electron-withdrawal group NEW
+  h3        [#1X1][C]([F,Cl,Br,I])([F,Cl,Br,I])[F,Cl,Br,I]                       ; H on carbon in a chain with 3 electron-withdrawal group
+  h3        [#1X1][C]([#7,#8,#16,#17,#35,#53])([#7,#8,#16,#17,#35,#53])[#35,#53] ; H on carbon in a chain with 3 electron-withdrawal group
+  h3        [#1X1][C]([#7,#8,#16,#17,#35,#53])([#7,#8,#16,#17,#35,#53])[#16,#17] ; H on carbon in a chain with 3 electron-withdrawal group
+  h3        [#1X1][C]([#7,#8,#16,#17,#35,#53])([#7,#8,#16,#17,#35,#53])[#7,#8]   ; H on carbon in a chain with 3 electron-withdrawal group
+  h2        [#1X1][C](=[#7,#8,#9,#16])([#7,#8,#9,#16])                           ; H on carbon in a chain with 2 electron-withdrawal group
+  h2        [#1X1][C]([F,Cl,Br,I])[F,Cl,Br,I]                                    ; H on carbon in a chain with 2 electron-withdrawal group
+  h2        [#1X1][C]([#6])([F,Cl,Br,I])[F,Cl,Br,I]                              ; H on carbon in a chain with 2 electron-withdrawal group
+  h2        [#1X1][C]([#7,#8,#9,#16,#17,#35,#53])[#7,#8,#9,#16,#17,#35,#53]      ; H on carbon in a chain with 2 electron-withdrawal group
+  h1        [#1X1][C](=[#6])[F,Cl,Br,I]                                          ; H on carbon in a chain with 1 electron-withdrawal group
+  h1        [#1X1][C]([#6])([F,Cl,Br,I])[#1]                                     ; H on carbon in a chain with 1 electron-withdrawal group
+  h1        [#1X1][C][F,Cl,Br,I]                                                 ; H on carbon in a chain with 1 electron-withdrawal group
+  h1        [#1X1][C]=[#7,#8,#9,#16]                                             ; H on carbon in a chain with 1 electron-withdrawal group
+  h1        [#1X1][C][#7,#8,#9,#16,#17,#35,#53]                                  ; H on carbon in a chain with 1 electron-withdrawal group
+  hc        [#1X1][#6X4]([#6])([#6])[#1]                                         ; H on aliphatic C
+  ha        [#1X1][#6](-[#6]=[#7])(=[#6])                                        ; H on conjugate carbon
+  ha        [#1X1][#6X2]#[#6]                                                    ; H on carbon with a triple bond
+  ha        [#1X1][#6X3](=[#6])[#1]                                              ; H on conjugate carbon
+  ha        [#1X1][#6X3](=[#6])[#6]                                              ; H on conjugate carbon
+  ha        [#1X1][#6X3]=[#6]                                                    ; H on conjugate carbon
+  hc        [#1X1][#6X4]                                                         ; H on aliphatic C
+  hc        [#1X1][CX4]                                                          ; H on aliphatic C
+  hp        [#1X1]P                                                              ; H on phosphor
+  hs        [#1X1]S                                                              ; H on sulphur
+  hn        [#1X1]n                                                              ; H on nitrogen
+  hn        [#1X1]N                                                              ; H on nitrogen
+  ho        [#1X1][OH1]                                                          ; H on water
+  ho        [#1X1]O                                                              ; H on oxygen
+  ha        [#1X1]                                                               ; other hydrogen e.g. on aromatic C
+  hc        [#1]                                                                 ; other hydrogen e.g. on aromatic C
+
+; Carbons
+
+  c3        [#6X4r8]  
+  c3        [#6X4r7]  
+  c3        [#6X4r6]([#6X4][#8X2])([#7])([#1])[#1]  
+  c3        [#6X4r6]([#6X4])([#8X2])([#6X2])[#1]  
+  cc        [#6X4r6]([#6X3])([#6X3])[#6X4]  
+  c3        [#6X4r6]  
+  c3        [#6X4r5]([#6X4])([#6X3])([#6X3])[#1]  
+  c3        [#6X4r5]([#6X4])([#6X3]=[#8])([#7X3])[#1]  
+  c3        [#6X4r5]([#6X3]=[#8X1])([#6X3])([#6X4])[#1]  
+  c3        [#6X4r5]([#6X4])([#6X4r5])([#6X3r5])[#1]  
+  c3        [#6X4r5]  
+  cc        [#6X4r5]([#7])([#6])[#6]  
+  c3        [#6X4r5]  
+  cy        [#6X4r4]                                                             ; 4-membered ring atom
+  cx        [#6X4r3]                                                             ; 3-membered ring atom
+  cc        [#6X4&H0;R][#7]  
+  cc        [#6X4&H;R]  
+  c3        [#6X4;R]([#6])([#6])([F])[F]  
+  c3        [#6X4;R]([#6])([#6])([#6])[F]  
+  c3        [#6X4;R]([#6])([#6])([#6])[#8]  
+  c3        [#6X4;R]([#6])([#6])([#6])[#6]  
+  c3        [#6X4;R]([#6])([#6])([#1])[#1]                                       ; sp3 carbon in aliphatic ring
+  c3        [#6X4]([#6])([#6])([#6])[#6]  
+  c3        [#6X4]([#6X3])([#8X2])([#1])[#1]  
+  c3        [#6X4]([#6X4])([#6X4])([#1])[#1]  
+  c3        [#6X4]([#6X3])([#6X3])([#1])[#1]  
+  c3        [#6X4]([#6])([#6])([#1])[#1]                                         ; sp3 carbon
+  c3        [#6X4](-*)(-*)(-*)-*                                                 ; other sp3 C
+  c3        [#6X4]                                                               ; other sp3 C
+  cc        [#6X3r8]=*-*=*                                                       ; sp2 C in a ring of size 8
+  c2        [#6X3r8](=[#6])([#6])[#1]                                            ; sp2 C in a ring of size 8
+  cc        [#6X3r8](=[#6]-*)(-[#6]=*)[#1]  
+  cc        [#6X3r7]([#6X3]:[#6X3][#6X3]=[O])[#6X3][#1]  
+  cc        [#6X3r7](:[#6X3][#6X3]=[O])[#6X3][#1]  
+  cc        [#6X3r7](:[#6X3])([#6X3]=[O])[#1]  
+  cc        [#6X3r7](=[#6][#15])([#6])[#1]  
+  cc        [#6X3r7](!:[#6])([#6]=[#6])                                          ; sp2 C in a non-aromatic conjugated ring of size 7
+  cc        [#6X3r7](=[#6X3])([#15X3])[#1]                                       ; sp2 C in a conjugated ring of size 7
+  cc        [#6X3r7](=[#6][#15])([#6])[#1]  
+  cc        [#6X3r7][#6]=[#6]-[#15]  
+  c2        [#6X3r7](=[#6])([#6])[#1]  
+  cc        [cX3r6]([nX3])([cX3][cX3]=O)  
+  cd        [cX3r6]([cX3]=O)  
+  cc        [cX3r6](:[c][cX3][NX3])([nX3])                                       ; SP2 carbon in cytosine-like rings
+  cd        [cX3r6](:[c][nX3])([c][NX3])                                         ; SP2 carbon in cytosine-like rings
+  cd        [cX3r6](:[n][c]=[O])([NX3])[c]                                       ; SP2 carbon in cytosine-like rings
+  c         [cX3r6]=O  
+  ca        [cr6]([c][n])  
+  ca        [cr6]n  
+  cc        [#6X3r6](=[#6X3][#6X3](=[O])[O])([#6X3]=[O])[#1]  
+  cc        [#6X3r6](=[#6X3])([#6X3](=[O])[O])[#6X3]=[O]  
+  cc        [#6X3r6](=[#6X3][#7])([#6X3]=[#7])[#1]  
+  c2        [#6X3r6]([#6X4]-[#6X3])(=[#6X3]-[#8])[#1]  
+  c2        [#6X3r6](-[#6X4]-[#6X4])(=[#6X3]-[#8])[#1]  
+  c2        [#6X3r6](=[#6X3]-[F])([#6X4]-[#6X4])[#1]  
+  c2        [#6X3r6](=[#6X3]@[#6X4])([#6X3])[#1]  
+  c2        [#6X3r6]([#6X4])(=[#6X3]-[#6X3])[#1]  
+  c2        [#6X3r6](=[#6X3]-[#6X4])([#6X3]=[#8])[#1]  
+  c2        [#6X3r6](=[#6X3]-[#6X4])([#8]-[#6X3])[#1]  
+  c2        [#6X3r6](=[#6]-[#6X4])([#8]-[#6X4])[#1]  
+  cd        [#6X3r6](=[#6]@[#7,#8,#16])[#6] ; CHANGED
+  cd        [#6X3r6](=[#6X3]-[#6X3]=[#8X1])([#6X3])[#1]                          ; sp2 C in a conjugated ring of size 6
+  cc        [#6X3r6](:[#6])([#6]@[#7])[#1]  
+  ca        [#6X3r6](=[#6X3])([#6X3])[F]  
+  ca        [#6X3r6](=[#6X3])([#6X3])[Cl]  
+  ca        [#6X3r6](=[#6X3])([#6X3])[Br]  
+  c2        [#6X3r6](=[#6X3])([#6X4])[#6X4]                                      ; sp2 C in a ring of size 6
+  c2        [#6X3r6](=[#6])([#6X4])[#1]                                          ; sp2 C in aliphatic ring of size 6
+  cp         c-c                                                                 ; bridge aromatic c
+  c         [#6X3r5]=[O,S]  
+  c2        [#6X3r5](=[#6X3]-[#16X2])(-[#6X4]-[#6X4])[#1]  
+  cc        [#6X3r5](=[#6X3]-[#6X3])(@[#8]@[#6X3]([#1]))[#1]  
+  c2        [#6X3r5](=[#6X3]-[#6X4])([#6X4]-[#6X4])[#1]  
+  c2        [#6X3r5](=[#6X3][#8X2])([#6X4]-[#6X3])[#1]  
+  cd        [#6X3r5](-[#6X3]=[#6X3])(=[#6X3]-[#6X4])[#1]  
+  c2        [#6X3r5](=[#6])([#7,#8,#16])[#1]                                     ; sp2 C in aliphatic ring of size 5
+  c2        [#6X3r5]([#6X4])(=[#6X3]-[#8])[#1]  
+  c2        [#6X3r5](=[#6X3])(-[#6X4]-[#8])[#1]  
+  c2        [#6X3r5](=[#6X3])(-[#6X4]-[#8])[#1]  
+  cc        [#6X3r5](=[#6X3][#8X2])([#6X3])[#1]  
+  cc        [#6X3r5](-[#6X4])(=[#6X3]-[#6X3])[#1]  
+  cc        [#6X3r5](-[#6X3])(=[#6X3]-[#6X4])[#1]  
+  cc        [#6X3r5](=[#6X3]-[#6X3])[#6X3]=[#8X1]  
+  cc        [#6X3r5](=[#6X3][#6X3]=[#8X1])[#6X3]  
+  cc        [#6X3r5](=[#6X3][#6X3])[#6X3]=[#8X1]  
+  cd        [#6X3r5](:[#6X3]-[#16X2])([#6X3])[#1]                                ; sp2 C in a conjugated ring of size 5
+  cc        [#6X3r5](:[#6X3])(-[#16X2])[#1]                                      ; sp2 C in a conjugated ring of size 5
+  cc        [#6X3r5](=[#6X3])(-[#6X3]=[#8X1])[#1]                                ; sp2 C in a conjugated ring of size 5
+  c2        [#6X3r5](=[#6])([#6])[#1]                                            ; sp2 C in aliphatic ring of size 5 with 1 electron-withdrawal group
+  cc        [#6X3r5](-[#6]=[#6]-[#6])                                            ; sp2 C fulvene
+  c         [cX3r5](=[O])([nX3])[nX3]  
+  cc        [cr5]([nX3])  
+  cd        [cr5]([nX2])  
+  cc        [cr5]n  
+  cc        [cr5]o  
+  cd        [#6X3r5](:[#6][#7,#8,#16])[#6]                                       ; CHANGED
+  c         [#6X3r4]=O  
+  cc        [#6X3r4]-*=*-* ; NEW
+  cc        [#6X3r4]=*-*=* ; NEW
+  cv        [#6X3r4] ; sp2 C 4-membered ring
+  c         [#6X3r3]=O ; sp2 C 3-membered ring
+  cu        [#6X3r3] ; sp2 C 3-membered ring
+  cc        [#6X3;R](:[#6][#8X2])[#6]=[#16X1]  
+  cc        [#6X3;R](=[#6X3])(-[#6X3]=[#8X1])[#1]                                ; sp2 C in a conjugated ring
+  cc        [#6X3;R](=[#7])(@[#6,#7,#8,#16])[#1]                                 ; sp2 C in a ring with 2 electron-withdrawal group
+  cc        [#6X3;R](=[#6,#7])(@[#7,#8,#16])[#1]                                 ; sp2 C in a ring with 2 electron-withdrawal group
+  cc        [#6X3;R](=[#7])(@[#6,#7,#8,#16])                                     ; sp2 C in a ring with 2 electron-withdrawal group
+  cc        [#6X3;R](=[#6,#7])(@[#7,#8,#16])                                     ; sp2 C in a ring with 2 electron-withdrawal group
+  cc        [#6X3;R](=[#6])([#7,#8,#16])[#1]                                     ; sp2 C in a ring with 1 electron-withdrawal group
+  cc        [#6X3;R]([#7,#8,#16])([#7,#8,#16])[#1]                               ; sp2 C in a ring with 2 electron-withdrawal group
+  c         [#6X3]=[O,S]                                                         ; C=O or C=S
+  cc        [#6X3;R]([#7,#8,#16])[#7,#8,#16]                                     ; sp2 C in a ring with 2 electron-withdrawal group
+  cc        [#6X3;R](=[#6])([#8X2,#16X2])[#6]                                    ; sp2 C in a ring
+  cc        [#6X3;R](=[#7])(-[#6,#7])[#1]                                        ; sp2 C in a ring
+  cc        [#6X3;R]([#7,#8,#16])[#1]                                            ; sp2 C in a ring with 1 electron-withdrawal group
+  cc        [#6X3;R]:[#7,#8,#16]                                                 ; sp2 C in a ring with 1 electron-withdrawal group
+  cc        [#6X3;R](#*)-*#*                                                     ; sp2 C in a conjugated ring
+  cc        [#6X3;R](=*)-*#*                                                     ; sp2 C in a conjugated ring
+  c2        [#6X3;R](=[#6X3])([#6X4])[#6]                                        ; sp2 C in a ring
+  c2        [#6X3;R](=[#6])([#6])[F,Cl,Br,I]                                     ; sp2 C in a ring with 1 electron-withdrawal group
+  ca        [#6X3;R](=[#6X3])([#6])[#1]                                          ; sp2 C in aromatic ring
+  ca        [#6X3;R](=*)-*=*                                                     ; sp2 C in aromatic ring
+  ca        [#6X3;R](=[#6])([#6])[#1]                                            ; sp2 C in aromatic ring
+  ca        [#6X3;R](:[#6])[#6]                                                  ; sp2 C in aromatic ring
+  cc        [#6X3;R]([#6]=[#6]-[#6])                                             ; sp2 C in conjugated ring NEW
+  ca        [#6X3;R](=[#6,#7,#8])(-[#6,#7,#8])(-[#1])                            ; sp2 C in aromatic ring
+  ce        [#6X3;H&!R](=*)-*~[R;a]                                              ; sp2 C conjugated chain
+  ce        [#6X3;!R](=*)-*#*                                                    ; sp2 C conjugated chain
+  ce        [#6X3;!R](#*)-*#*                                                    ; sp2 C conjugated chain
+  ce        [#6X3;!R](#*)-*=*                                                    ; sp2 C conjugated chain
+  ce        [#6X3;!R](=[*&!O,S])-*=*                                             ; sp2 C conjugated chain
+  cz        [#6X3;!R](=[#7])([#7])[#7]                                           ; guanidine carbon
+  c2        [#6X3;!R](=[#6])([#6])[#1]                                           ; sp2 C in aliphatic system
+  c2        [#6X3;!R](=[#6])([#1])[#1]                                           ; sp2 C in aliphatic system
+  c2        [#6X3](=[#6X3])([#6X4])[#6X3]                                        ; sp2 C in aliphatic system
+  cz        [#6X3](N)(N)N ; guanidine carbon
+  c2        [#6X3] ; sp2 C in aliphatic system
+  c1        [#6X2](#[#6])[#1]                                                    ; sp C
+  cg        [#6X2](#[#7])[#6X3]                                                  ; sp C in conjugated system
+  cg        [#6X2](#*)-*#*                                                       ; sp C in conjugated system
+  cg        [#6X2](#*)-*=*                                                       ; sp C in conjugated system
+  cg        [#6X2](=*)-*=*                                                       ; sp C in conjugated system
+  c1        [#6X2]                                                               ; sp C
+  c1        [#6X1]                                                               ; sp C
+  ca        [c]                                                                  ; sp2 C in aromatic ring
+
+; Nitrogens
+
+  n4        [#7X4]                                                               ; sp3 N
+  no        [#7X3&H0](=O)=O                                                      ; N in nitro group
+  n         [#7X3r6]([#6X3]=[#8])([#6X3])[#6X4]                                  ; sp2 N in amides
+  n         [#7X3r6]([#6X3]=[#8])([#6X3])[#1]                                    ; sp2 N in amides
+  n         [#7X3r6]([#6X3]=[#8])([#6X3]=[#8])[#6X4]                             ; sp2 N in amides
+  n         [#7X3r6]([#6X3]=[#8])([#6X3]=[#8])[#1]                               ; sp2 N in amides
+  n         [#7X3r5]([#6X3]=[#8])([#6X3])[#6X4]                                  ; sp2 N in amides
+  n         [#7X3r5]([#6X3]=[#8])([#6X3])[#1]                                    ; sp2 N in amides
+  n         [#7X3]-[CX3]=[O,S]                                                   ; sp2 N in amides
+  nh        [#7X3H2]-[r6;a]                                                      ; Amine Nitrogen
+  nh        [NX3]-[R;a]                                                          ; Amine Nitrogen
+  nh        [#7X3H2]-[R;a]                                                       ; Amine Nitrogen
+  nh        [#7X3H2;H1]                                                          ; Amine Nitrogen
+  n3        [#7X3r6]([#6])([#6])[#1]                                             ; sp3 N
+  na        [nX3]([#6])([#6])[#1]                                                ; sp2 N with 3 subst
+  na        [nX3]                                                                ; sp2 N with 3 subst
+  na        [nX3&H;R]                                                            ; sp2 N with 3 subst
+  na        [nX3;R]([#6])([#6])[#6]                                              ; sp2 N with 3 subst
+  n3        [#7X3r5]([#6])([#6])[#1]                                             ; sp3 N
+  n3        [#7X3r5]([#6])([#6])[#6]                                             ; sp3 N
+  n3        [#7X3r6]([#6])([#6])[#1]                                             ; sp3 N
+  n3        [#7X3r6]([#6])([#6])[#6]                                             ; sp3 N
+  na        [#7X3;R]([#6])([#6])[#6]                                             ; sp2 N with 3 subst
+  na        [#7X3;R](-*)=*-*                                                     ; sp2 N with 3 subst
+  n3        [#7X3]([#7])([F,Cl,Br,I])[F,Cl,Br,I]                                 ; sp3 N
+  n2        [#7X3&H0]([#7])[F,Cl,Br,I]                                           ; sp2 N
+  n3        [#7X3]                                                               ; sp3 N
+  ne        [#7X2;!R](#*)-*#*                                                    ; sp2 N of conjugated chain
+  ne        [#7X2;!R](=*)-*#*                                                    ; sp2 N of conjugated chain
+  ne        [#7X2;!R](=*)-*=*                                                    ; sp2 N of conjugated chain
+  nc        [#7X2;R]=[#6]([#7])[#7]                                              ; sp2 N of conjugated ring
+  nc        [#7X2;R]([#7])[#7]                                                   ; sp2 N of conjugated ring
+  nc        [#7X2;R](:[#7])[#16X2]                                               ; sp2 N of conjugated ring
+  nc        [#7X2;R](:[#7])[#7]                                                  ; sp2 N of conjugated ring
+  nc        [#7X2;R](#*)-*#*                                                     ; sp2 N of conjugated ring
+  nc        [#7X2;R](=*)-*#*                                                     ; sp2 N of conjugated ring
+  nc        [#7X2;R](=*)-*=*                                                     ; sp2 N of conjugated ring
+  nc        [#7X2;R](-[#7X3]-[#6X3])=[#6X3]                                      ; sp2 N of conjugated ring
+  nc        [nX2r5]([#6])[#8,#16]                                                ; N in aromatic ring due to lone pairs of size 5
+  nd        [nX2r6](:[#6X3][NX3])([#6X3]=[O])                                    ; N in Cytosine
+  nb        [#7X2r5](:[#6])[#6]                                                  ; N in aromatic ring due to lone pairs of size 5
+  nd        [#7X2;R]=[#6][#16]                                                   ; sp2 N of conjugated ring
+  nd        [#7X2;R]=[#6][#8]                                                    ; sp2 N of conjugated ring
+  nd        [#7X2;R]=[#6][#7]                                                    ; sp2 N of conjugated ring
+  nd        [#7X2;R](:[#6])[#7]                                                  ; sp2 N of conjugated ring
+  nd        [#7X2;R](=[#7])[#16]                                                 ; sp2 N of conjugated ring
+  nb        [#7X2;R](=*)(-*)                                                     ; aromatic N
+  nb        [#7X2;R](=*)=*                                                       ; aromatic N
+  nb        [nX2]                                                                ; aromatic N
+  n2        [#7X2](=[#7X2])-*                                                    ; sp1 N
+  n1        [#7X2](#*)-*                                                         ; sp1 N
+  n1        [#7X2](=[#7X2])(=[#7X2])                                             ; sp1 N
+  n1        [#7X2](=[#7X2]=[#7X2])                                               ; sp1 N
+  n2        [#7X2](=[#8])[F,Cl,Br,I]                                             ; sp2 N
+  n2        [#7X2](=[#6])[#1]                                                    ; sp2 N
+  n2        [#7X2]                                                               ; sp2 N
+  n1        [#7X1]=[#8]                                                          ; sp1 N
+  n1        [#7X1;!R]                                                            ; sp1 N
+
+; Oxygens
+
+  oh        [OX3H]                                                               ; sp3 O in hydroxyl group
+  os        [OX3]                                                                ; sp3 O in esters and ethers
+  os        [OX2]([#6X3]=[OX1])[#6X3]=[OX1]  
+  os        [OX2]([#6X3]=[OX1])[#6X4]  
+  os        [OX2&H0;!R]([#6X3])([CX3]=[OX1])                                     ; sp2 O
+  os        [OX2&H0;!R]([#6X4])([NX3]=[OX1])                                     ; O in carboxylic group
+  o         [OX2&H0;!R][NX3]=[OX1]                                               ; O in carboxylic group
+  o         [OX2&H0;!R][NX2]=[OX1]                                               ; O in carboxylic group
+  o         [OX2&H0;!R][CX3]=[OX1]                                               ; O in carboxylic group
+  ow        [OX2]([#1])[#1]                                                      ; water
+  oh        [OX2H]                                                               ; sp3 O in hydroxyl group
+  os        [OX2&H0]([#16X4])[#6]  
+  os        [OX2r5]([#15X3][Cl])[#6]  
+  os        [OX2&H0]([#15X4])[#6]  
+  o         [OX2&H0][#16X4]-[#6X4]  
+  o         [OX2&H0][#16X4]=[OX1]  
+  o         [OX2&H0][#15X4]=[OX1]  
+  os        [OX2r5](-[#6X3]=[#6X3])[#15X3]  
+  os        [OX2]([#6])[#6]  
+  os        [OX2&H0]([#6])[#6]  
+  os        [OX2;R]([#6])[#6]  
+  os        [#8X2]                                                               ; sp3 O in esters and ethers
+  os        [OX2]                                                                ; sp3 O in esters and ethers
+  os        [OX2]([#6,#7])[#6,#7]                                                ; sp2 O
+  o         [OX1][#16]                                                           ; sp2 O
+  o         [OX1]                                                                ; sp2 O
+
+; Sulfur
+
+  s6        [SX6]                                                                ; hypervalent S
+  s6        [SX5]                                                                ; hypervalent S
+  sy        [SX4](=*)-*#*                                                        ; conjugated S
+  sy        [SX4](=*)-*=*                                                        ; conjugated S
+  s6        [SX4]                                                                ; hypervalent S
+  sx        [SX3](=*)-*#*                                                        ; conjugated S
+  sx        [SX3](=*)-*=*                                                        ; conjugated S
+  s4        [SX3]                                                                ; hypervalent S
+  sh        [SX2H]                                                               ; sp3 S in thiol
+  s2        [SX2]#*                                                              ; sp2 sulphur
+  s2        [SX2]=*                                                              ; sp2 sulphur
+  ss        [#16X2]                                                              ; sp3 sulphur
+  ss        [SX2]                                                                ; sp3 sulphur
+  s         [#16X1](=[C,O])  
+  s         [#16X1]  
+  s         [SX1]  
+
+; Phosphorus
+
+  p5        [#15X6]                                                              ; hypervalent P
+  p5        [#15X5]                                                              ; hypervalent P
+  py        [#15X4](=*)-*#*                                                      ; P of conjugated system
+  py        [#15X4](=*)-*=*                                                      ; P of conjugated system
+  p5        [#15X4]                                                              ; hypervalent P
+  p4        [#15X3]=[O,S]                                                        ; hypervalent P
+  p4        [#15X3](=[#8])(=[#8])[#8]  
+  px        [#15X3](=*)-*#*                                                      ; sp2 P of conjugated system
+  px        [#15X3](=*)-*=*                                                      ; sp2 P of conjugated system
+  p3        [#15X3]                                                              ; other sp3 P
+  pb        [#15;a]                                                              ; aromatic P
+  pe        [#15X2;!R](#*)-*#*                                                   ; sp2 P of conjugated chain
+  pe        [#15X2;!R](=*)-*#*                                                   ; sp2 P of conjugated chain
+  pe        [#15X2;!R](=*)-*=*                                                   ; sp2 P of conjugated chain
+  pc        [#15X2;R](#*)-*#*                                                    ; sp2 P of conjugated ring
+  pc        [#15X2;R](=[#6])[#8]                                                 ; sp2 P of conjugated ring
+  pc        [#15X2;R](=*)-*#*                                                    ; sp2 P of conjugated ring
+  pc        [#15X2;R](=*)-*=*                                                    ; sp2 P of conjugated ring
+  p2        [#15X2]                                                              ; other sp2 P
+  p2        [#15X1]                                                              ; other sp2 P
+
+; Halogens
+
+  i         [#53]*
+  br        [#35]*
+  cl        [#17]*
+  f         [#9]*
+
+; Others
+
+  Lr        [Lr]
+  No        [No]
+  Md        [Md]
+  Fm        [Fm]
+  Es        [Es]
+  Cf        [Cf]
+  Bk        [Bk]
+  Cm        [Cm]
+  Am        [Am]
+  Pu        [Pu]
+  Np        [Np]
+  U         [U]
+  Pa        [Pa]
+  Th        [Th]
+  Ac        [Ac]
+  Ra        [Ra]
+  Fr        [Fr]
+  Rn        [Rn]
+  At        [At]
+  Po        [Po]
+  Bi        [Bi]
+  Pb        [Pb]
+  Tl        [Tl]
+  Hg        [Hg]
+  Au        [Au]
+  Pt        [Pt]
+  Ir        [Ir]
+  Os        [Os]
+  Re        [Re]
+  W         [W]
+  Ta        [Ta]
+  Hf        [Hf]
+  Lu        [Lu]
+  Yb        [Yb]
+  Tm        [Tm]
+  Er        [Er]
+  Ho        [Ho]
+  Dy        [Dy]
+  Tb        [Tb]
+  Gd        [Gd]
+  Eu        [Eu]
+  Sm        [Sm]
+  Pm        [Pm]
+  Nd        [Nd]
+  Pr        [Pr]
+  Ce        [Ce]
+  La        [La]
+  Ba        [Ba]
+  Cs        [Cs]
+  Xe        [Xe]
+  Te        [Te]
+  Sb        [Sb]
+  Sn        [Sn]
+  In        [In]
+  Cd        [Cd]
+  Ag        [Ag]
+  Pd        [Pd]
+  Rh        [Rh]
+  Ru        [Ru]
+  Tc        [Tc]
+  Mo        [Mo]
+  Nb        [Nb]
+  Zr        [Zr]
+  Y         [Y]
+  Sr        [Sr]
+  Rb        [Rb]
+  Kr        [Kr]
+  Se        [Se]
+  As        [As]
+  Ge        [Ge]
+  Ga        [Ga]
+  Zn        [Zn]
+  Cu        [Cu]
+  Ni        [Ni]
+  Co        [Co]
+  Fe        [Fe]
+  Mn        [Mn]
+  Cr        [Cr]
+  V         [V]
+  Ti        [Ti]
+  Sc        [Sc]
+  Ca        [Ca]
+  K         [K]
+  Ar        [Ar]
+  Si        [Si]
+  Al        [Al]
+  Mg        [Mg]
+  Na        [Na]
+  Ne        [Ne]
+  B         [B]
+  Be        [Be]
+  Li        [Li]
+  He        [He]
+  X         [*]  

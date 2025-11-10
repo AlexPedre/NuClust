@@ -1,0 +1,118 @@
+#TemplateFF CHARMM22_NA 1.0
+
+; *******************************************
+; ****         VEGA Template V4.0        ****
+; **** Force Field CHARMM22 Nucleic Acid ****
+; *******************************************
+
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  HN3  H-100  (C-391)
+  HN3  H-100  (C-360 (N-300))
+  HN3  H-100  (C-360 (C-360 C-360))
+  HN6  H-100  (C-450)
+  HN7  H-100  (C-900)
+  HN2  H-100  (N-360)
+  HN1  H-100  (N-300)
+  HT   H-100  (O-200 (H-100 H-100))
+  HN4  H-100  (O-200 (P-900))
+  HN5  H-100  (O-200 (C-400))
+  HN3B H-100  (C-361 (N-361 (H-100)))
+  HN3B H-100  (C-361 (C-361 (N-361 (H-100))))
+  HN3B H-100  (C-361 (C-361 (C-361 (N-361 (H-100)))))
+
+  CN6B C-450  (O-250 (C-450 C-450) C-450 N-300 H-100)
+  CN6C C-450  (C-450 C-450 H-100 H-100)
+  CN6  C-450  (H-100)
+  CN9  C-400  (H-100 H-100 H-100 #-900)
+  CN8  C-400  (H-100 H-100 #-900 #-900)
+  CN7  C-400  (H-100 #-900 #-900 #-900)
+  CN3A C-361  (C-361 (C-300 (O-100 N-200)) C-361 H-100)
+  CN3B C-361  (C-361 N-361 (H-100) H-100)
+  CN3D C-360  (C-400 (H-100 H-100 H-100) C-360 (H-100) C-360 (N-300 (H-100 H-100)))
+
+  CN5  C-3[5 & 6]0 N-350 N-260
+  CN5  C-3[5 & 6]0 N-250 C-360
+
+  CN4  C-361  (N-261 N-261 H-100)
+  CN2  C-360  (N-360 (H-100) N-300 (H-100 H-100) C-360)
+  CN2  C-360  (N-260 C-360)
+  CN2  C-360  (N-260 N-360 (H-100))
+  CN3C C-360  (C-360 N-360 (H-100) H-100)
+  CN4  C-351  (N-251 N-351 H-100)
+  CN2  C-391  (N-261 N-361 N-300 (H-100 H-100))
+  CN2  C-391  (N-261 N-300 (H-100 H-100) C-391)
+
+  CN1A C-300  (O-100 N-200 C-361)
+  CN1  C-300  (O-100)
+  CN3  C-390
+
+  NN2G N-360  (C-300 (O-100) C-300 (N-200 N-300 N-300) H-100)
+  NN2U N-360  (C-300 (O-100) C-300 (O-100) H-100)
+  NN2  N-390
+  NN5  N-300  (C-400 H-100 H-100)
+  NN1  N-300  (C-300 H-100 H-100)
+  NN3  N-260  (C-360 (O-100) C-360)
+  NN3A N-260
+  NN4  N-251
+  
+  ON6  O-250  (C-450 C-450)
+  OT   O-200  (H-100 H-100)
+  ON5  O-200  (C-400 H-100)
+  ON4  O-200  (P-400 H-100)
+  ON2  O-200  (P-400 C-400)
+  ON2  O-200  (P-400 P-400)
+  ON1C O-100  (C-360 (N-300 N-200))
+  ON1  O-100  (C-300)
+  ON3  O-100  (P-400)
+
+  P2   P-400  (O-200 (P-400 P-400))
+  P    P-400
+  SOD  Na000
+  MG   Mg000
+
+
+

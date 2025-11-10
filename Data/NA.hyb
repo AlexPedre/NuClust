@@ -1,0 +1,183 @@
+#TemplateHyb NA 1.0
+
+; *************************************
+; **** VEGA Hybridization Template ****
+; ****      for Nucleic Acids      ****
+; *************************************
+
+
+; Description:
+; ~~~~~~~~~~~~
+; This template is usefufl to find angle distorsion in the nucleic acids in order
+; to correctly add the hydrogens.
+
+; Residue = residue name
+; Atom    = atom name
+; Type    = atom type (Meng):
+;           C1  = C sp
+;           C2  = C sp2
+;           C3  = C sp3
+;           C+  = C protonated guanidine
+;           Cac = C carboxylic
+;           N3  = N sp3
+;           N3+ = N sp3 positively charged
+;           Npl = N planar
+;           Nam = N amidic
+;           Ng+ = N protonated guanidine
+;           Nim = N in five member aromatic rings
+;           O2  = O sp2
+;           O3  = O sp3
+;           O-  = O carboxylate
+;           S3  = S sp3
+
+
+; Residue  Atom    Warn    Types
+; ========================================================================
+  *        O5*     1       O3
+  *        C5*     1       C3
+  *        C4*     1       C3
+  *        O4*     1       O3
+  *        C3*     1       C3
+  *        O3*     1       O3
+  *        C2*     1       C3
+  *        C1*     1       C3
+  *        P       1       Pac
+  *        O1P     1       O-
+  *        O2P     1       O-
+
+; Adenine
+
+  A        N9      1       Nim
+  A        C8      1       C2
+  A        N7      1       Nim
+  A        C5      1       C2
+  A        C6      1       C2
+  A        N6      1       Npl
+  A        N1      1       Npy
+  A        C2      1       C2
+  A        N3      1       Npy
+  A        C4      1       C2
+
+  DA       N9      1       Nim
+  DA       C8      1       C2
+  DA       N7      1       Nim
+  DA       C5      1       C2
+  DA       C6      1       C2
+  DA       N6      1       Npl
+  DA       N1      1       Npy
+  DA       C2      1       C2
+  DA       N3      1       Npy
+  DA       C4      1       C2
+
+; Cytosine
+
+  C        N1      1       Nam
+  C        C2      1       C2
+  C        O2      1       O2
+  C        N3      1       Npy
+  C        C4      1       C2
+  C        N4      1       Npl
+  C        C5      1       C2
+  C        C6      1       C2
+
+  DC       N1      1       Nam
+  DC       C2      1       C2
+  DC       O2      1       O2
+  DC       N3      1       Npy
+  DC       C4      1       C2
+  DC       N4      1       Npl
+  DC       C5      1       C2
+  DC       C6      1       C2
+  
+; 5-Methyl-cytosine 
+
+  5CM      N1      1       Nam
+  5CM      C2      1       C2
+  5CM      O2      1       O2
+  5CM      N3      1       Npy
+  5CM      C4      1       C2
+  5CM      N4      1       Npl
+  5CM      C5      1       C2
+  5CM      C6      1       C2
+  5CM      C5A     1       C3
+
+; Inosine
+
+  I        N9      1       Nim
+  I        C8      1       C2
+  I        N7      1       Nim
+  I        C5      1       C2
+  I        C6      1       C2
+  I        O6      1       O2
+  I        N1      1       Nam
+  I        C2      1       C2
+  I        N3      1       Npy
+  I        C4      1       C2
+
+  DI       N9      1       Nim
+  DI       C8      1       C2
+  DI       N7      1       Nim
+  DI       C5      1       C2
+  DI       C6      1       C2
+  DI       O6      1       O2
+  DI       N1      1       Nam
+  DI       C2      1       C2
+  DI       N3      1       Npy
+  DI       C4      1       C2
+ 
+; Guanine
+
+  G        N9      1       Nim
+  G        C8      1       C2
+  G        N7      1       Nim
+  G        C5      1       C2
+  G        C6      1       C2
+  G        O6      1       O2
+  G        N1      0       Nam
+  G        C2      1       C2
+  G        N2      1       Npl
+  G        N3      1       Npy
+
+  DG       N9      1       Nim
+  DG       C8      1       C2
+  DG       N7      1       Nim
+  DG       C5      1       C2
+  DG       C6      1       C2
+  DG       O6      1       O2
+  DG       N1      0       Nam
+  DG       C2      1       C2
+  DG       N2      1       Npl
+  DG       N3      1       Npy
+
+; Thymine
+
+  T        N1      1       Nam
+  T        C2      1       C2
+  T        O2      1       O2
+  T        N3      0       Nam
+  T        C4      1       C2
+  T        O4      1       O2
+  T        C5      1       C2
+  T        C5M     1       C3
+  T        C6      1       C2
+
+  DT       N1      1       Nam
+  DT       C2      1       C2
+  DT       O2      1       O2
+  DT       N3      0       Nam
+  DT       C4      1       C2
+  DT       O4      1       O2
+  DT       C5      1       C2
+  DT       C5M     1       C3
+  DT       C6      1       C2
+
+; Uracil
+
+  U        N1      1       Nam
+  U        C2      1       C2
+  U        O2      1       O2
+  U        N3      0       Nam
+  U        C4      1       C2
+  U        O4      1       O2
+  U        C5      1       C2
+  U        C6      1       C2

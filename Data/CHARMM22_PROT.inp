@@ -1,0 +1,8 @@
+*
+* CHARMM 22 parameters file for VEGA ZZ
+*
+INCLUDE "Parameters/par_all22_lipid.inp"
+INCLUDE "Parameters/par_all22_na.inp"
+INCLUDE "Parameters/par_all22_prot.inp"
+INCLUDE "Parameters/par_all22_vega.inp"
+INCLUDE "Parameters/par_all22_user.inp"

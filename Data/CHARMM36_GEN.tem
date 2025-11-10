@@ -1,0 +1,409 @@
+#TemplateFF CHARMM36_GEN 1.0
+
+; **************************************
+; ****      VEGA Template V4.0      ****
+; **** Force Field CHARMM35 generic ****
+; **************************************
+
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  HGAAM0  H-100            (C-400 (N-300 (C-400 C-400 C-400) H-100 H-100 H-100))
+  HGAAM1  H-100            (C-400 (N-300 (C-400 C-400 H-100) H-100 H-100 H-100))
+  HGAAM2  H-100            (C-400 (N-300 (C-400 H-100 H-100) H-100 H-100 H-100))
+  HGP5    H-100            (C-400 (N-400 (C-400 C-900 C-900 C-900)))  
+  HGA7    H-100            (C-400 (F-100 F-100 [X- & !F-]900 [X- & !F-]900))
+  HGA6    H-100            (C-4[!9]0 (F-100 [X- & !F-]900 [X- & !F-]900 [X- & !F-]900))
+  HGA1    H-100            (C-400 (H-100 #-900 #-900 #-900))  
+  HGA2    H-100            (C-400 (H-100 H-100 #-900 #-900))
+  HGA3    H-100            (C-400 (H-100 H-100 H-100 #-900))
+  HGR71   H-100            (C-370)
+  HGR62   H-100            (C-360 (C-360 (N-260) C-360 (N-360)))
+
+; Protonated pyridine, nicotinamide and NAD:
+  HGR63   H-100            (C-3[6 & !9]1 (N-361 ([H- | C-][1 | 4 ]00)))                  ; Orto
+  HGR63   H-100            (C-361 (C-3[6 & !9]1 (N-361 ([H- | C-][1 | 4 ]00))))          ; Meta
+  HGR63   H-100            (C-361 (C-361 (C-3[6 & !9]1 (N-361 ([H- | C-][1 | 4 ]00)))))  ; Para
+
+; Uracil and thymine:
+  HGR62   H-100            (C-360 (C-360 (O-100 N-360)) C-360 (N-360))  
+  HGR62   H-100            (C-360 (C-360 N-360 (C-360 (O-100))))
+  
+  HGR62   H-100            (C-361 ($-961))
+  HGR61   H-100            (C-361)
+  HGR53   H-100            (C-351 (N-351 (H-100) N-351 (H-100)))
+  HGR52   H-100            (C-351 (N-351))
+  HGR52   H-100            (C-351 (N-361))
+  HGR52   H-100            (C-351 (N-251))
+  HGR52   H-100            (C-351 (O-251))
+  HGR52   H-100            (C-351 (S-251))
+  HGR51   H-100            (C-351)
+  HGR52   H-100            (C-350 (N-450))
+  HGR52   H-100            (C-350 (N-350))
+  HGR52   H-100            (C-350 (N-250))
+  HGR52   H-100            (C-350 (O-250))
+  HGR52   H-100            (C-350 (S-250))
+  HGR51   H-100            (C-350)
+
+  HGR52   H-100            (C-300 (O-100 H-100))
+  HGR52   H-100            (C-300 (O-100 C-900))
+  HGR52   H-100            (C-300 (O-100 N-300))
+  HGA5    H-100            (C-300 (C-300 H-100 H-100))
+  HGA4    H-100            (C-300 (C-300 H-100 #-900))
+  HGA4    H-100            (C-300 (N-200 H-100 #-900))
+  HGR52   H-100            (C-300 (C-400 N-300 (C-400 H-100)))
+  
+; Reduced nicotinamide:
+  HGPAM1  H-100            (N-36[!1] (C-360 (C-360 (C-460)) H-100))
+  
+  HGP2    H-100            (N-400)
+  HGPAM1  H-100            (N-361 (C-3[6 & 6]1 C-3[6 & 6]1))
+  HGP2    H-100            (N-361)
+  HGP2    H-100            (N-351 (C-351 (N-351 (H-100) N-351) C-351))
+  HGP1    H-100            (N-351)
+  HGP1    H-100            (N-360)
+  HGP2    H-100            (N-350 (C-350 (C-350) C-450 (C-350 H-100 H-100)))
+  HGP1    H-100            (N-350)
+  HGPAM3  H-100            (N-300 (H-100 H-100 H-100))
+  HGP4    H-100            (N-300 (C-360 (N-360 N-260)))
+  HGPAM1  H-100            (N-300 (C-361 C-361))
+;  HGP4    H-100            (N-300 (C-361)) 
+  HGPAM1  H-100            (N-300 (C-400 (H-100 H-100 H-100) C-400 (H-100 H-100 H-100)))
+  HGPAM1  H-100            (N-300 (C-300 (N-300 N-300 N-200) C-400)) 
+  HGPAM2  H-100            (N-300 (C-300 (N-300 N-300 N-200)))  
+  HGPAM2  H-100            (N-300 (C-400 (H-100) H-100 H-100))
+  HGP2    H-100            (N-300 (C-300 (N-300 N-300 N-300)))
+  HGP2    H-100            (N-300 (C-300 (C-400 N-300 N-300)))
+  HGPAM1  H-100            (N-300 (C-300 (H-100) C-300 (H-100)))
+  HGP1    H-100            (N-300 (C-300 (O-100)))
+  HGP2    H-100            (N-300 (C-300 C-400))
+  HGP4    H-100            (N-300 (C-300))
+  HGP1    H-100            (N-300)
+  HGP1    H-100            (N-200)
+  HGP1    H-100            (O-200)
+  HGP3    H-100            (S-200)
+  HGP3    H-100            (Se200)
+
+; Bridgehead in bicyclic systems containing at least one 5-membered or smaller ring:
+  CG3RC1  C-4[6 &  5][!1]
+  CG3RC1  C-4[6 &  4][!1]
+  CG3RC1  C-4[5 &  3][!1]
+  CG3C31  C-430
+
+  CG3C54  C-450            (H-100 H-100 N-350 (C-350 H-100) C-350)
+  CG3C54  C-450            (H-100 H-100 N-400 #-900)
+  CG3C52  C-450            (H-100 H-100 #-900 #-900)
+  CG3C53  C-450            (H-100 N-400 #-900 #-900)
+  CG3C53  C-450            (H-100 N-361 #-900 #-900)
+  CG3C51  C-450            (H-100 #-900 #-900 #-900)
+  CG3RC1  C-450            (C-450 C-430 C-490 X-900)
+  CG3RC1  C-450            (C-450 C-460 C-490 X-900)
+  CG3C50  C-450            (#-900 #-900 #-900 #-900)
+
+  CG3AM0  C-400            (N-300 (C-400 (H-100 H-100 H-100) C-400 (H-100 H-100 H-100) C-400 (H-100 H-100 H-100)))
+  CG3AM1  C-400            (N-300 (C-400 (H-100 H-100 H-100) C-400 (H-100 H-100 H-100) H-100))
+  CG3AM2  C-400            (N-300 (C-400 (H-100 H-100 H-100) H-100 H-100))
+
+  CG302   C-400            (F-100 F-100 F-100 #-900)
+  CG312   C-400            (F-100 F-100 #-900 X-900)
+  CG301   C-400            (#-900 #-900 #-900 #-900)
+  CG334   C-400            (H-100 H-100 H-100 N-400)
+  CG331   C-400            (H-100 H-100 H-100 N-300 (C-300 (O-100 C-400)))
+  CG334   C-400            (H-100 H-100 H-100 N-300 (C-300 (C-400)))
+  CG334   C-400            (H-100 H-100 H-100 N-300 (C-300 (N-300 N-300 N-300)))
+  CG324   C-400            (H-100 H-100 C-400 N-300 (C-300 (C-400)))
+  CG324   C-400            (H-100 H-100 C-400 N-300 (C-300 (N-300 N-300 N-300)))
+  CG323   C-400            (H-100 H-100 H-100 S-100)
+  CG331   C-400            (H-100 H-100 H-100 #-900)
+  CG324   C-400            (H-100 H-100 N-400 #-900)
+  CG323   C-400            (H-100 H-100 S-100 #-900)
+  CG322   C-400            (H-100 H-100 F-100 #-900)
+  CG321   C-400            (H-100 H-100 #-900 #-900)
+  CG314   C-400            (H-100 N-400 #-900 #-900)
+  CG311   C-400            (H-100 #-900 #-900 #-900)
+
+; Carbazole biphenyl bridge:
+  CG2R67  C-3[6 &  5]1     (C-3[6 & 5]1 (N-351) C-3[6 & 5]1)
+
+; Fluorene biphenyl bridge:
+  CG2R67  C-3[6 &  5]1     (C-3[6 & 5]1 (C-450) C-3[6 & 5]1)
+
+  CG2RC0  C-351            (X-990 X-990 X-990)
+  CG2R53  C-351            (N-351 (C-351 C-391) N-251)
+  CG2R53  C-351            (N-351 (H-100 C-351 C-351) N-351)
+  CG2R63  C-351            (C-360 (O-100 N-360))
+  CG2R51  C-351            (N-251 C-351 (N-351))
+  CG2R51  C-351            (N-251 C-351 (S-251))
+  CG2R52  C-351            (N-251 (N-251) S-251)
+  CG2R52  C-351            (N-251 (N-251) N-351)
+  CG2R53  C-351            (N-251 S-251)
+  CG2R53  C-350            (O-100 N-300 #-900)  
+  CG2R53  C-35[!1]         (N-25[!1] N-35[!1] X-900)
+  CG2R51  C-350            (H-100 N-350 C-350)  
+; CG2R52  C-350            (H-100 N-350 (C-450 H-100))
+  CG3C53  C-350            (H-100 N-300 #-900)
+  CG2R53  C-350            (N-350 N-250)
+  CG2R51  C-350            (C-350 (C-450))
+  CG2R52  C-350            (N-250)
+  CG2R51  C-350
+
+  CG2R67  C-3[6 & !9]1     (C-361 C-361 C-361)
+  CG2RC0  C-3[6 &  5]1     (X-990 X-990 X-990)
+  CG2R64  C-361            (N-261 N-261)
+  CG2RC0  C-361            (N-261 N-351 #-391)
+  CG2R64  C-361            (N-261 N-300 #-991)
+  CG2R63  C-361            (C-360 (O-100 N-360))
+
+; Protonated pyridine, nicotinamide and NAD:
+  CG2R62  C-3[6 & !9]1     (C-361 N-361 ([H- | C-][1 | 4 ]00))                    ; Ortho
+  CG2R62  C-361            (C-3[6 & !9]1 (N-361 ([H- | C-][1 | 4 ]00)))           ; Meta
+  CG2R62  C-361            (C-361 (C-3[6 & !9]1 (N-361 ([H- | C-][1 | 4 ]00))))   ; Para
+
+  CG2R66  C-361            (F-100)
+  CG2R61  C-361
+  CG2R62  C-360            (C-360 (O-100 N-360) C-360)
+  CG2R63  C-360            (O-100 N-360 C-360)
+  CG2R63  C-360            (O-100 N-360 N-260)
+  CG2R63  C-360            (O-100 N-360 N-360) 
+  CG2R64  C-360            (N-360 N-260 N-300)
+  CG2R64  C-360            (C-360 N-260 N-300)
+  
+; Cytosine, thymine and uracil:
+  CG2R62  C-360            (C-360 (N-260) C-360 (N-360))
+  CG2R62  C-360            (C-360 N-360 (C-360 (O-100 N-[2 | 3]60)))
+
+  CG2RC7  C-371            (C-371 C-351 C-351)
+  CG2RC7  C-371            (C-371 C-371 C-351)
+  CG2R71  C-371
+  
+  CG2D2   C-300            (H-100 H-100 C-300 (C-300 (O-100 O-100) C-300))
+  CG2D1   C-300            (H-100 C-300 (H-100 H-100) C-300 (O-100 O-100))
+  CG2DC3  C-300            (H-100 H-100 C-300 (C-300 C-300))
+  CG2DC1  C-300            (H-100 C-300 (H-100 H-100) C-300 (C-400 C-300 C-300))
+  CG2DC2  C-300            (H-100 C-300 (H-100 H-100) C-300)
+  CG2DC2  C-300            (C-400 C-300 (H-100 H-100) C-300)
+  CG2DC2  C-300            (C-400 C-400 C-300 (C-300 (O-100)))
+  CG2DC2  C-300            (C-400 C-400 C-300 (C-300 C-400))
+  CG2DC2  C-300            (C-300 (O-100) C-300 H-100)
+  CG2DC2  C-300            (C-300 (C-400 C-400) C-400 C-300)
+  
+
+;  CG2DC2  C-300            (C-300 C-400 C-300)
+;  CG2DC2  C-300            (C-300 (C-300 (C-300 (C-300 (O-100)))))
+  
+ 
+  CG2N1   C-300            (N-300 N-300 N-300)
+  CG2N1   C-300            (N-300 N-300 N-200)
+  CG2O6   C-300            (N-300 N-300 O-100)
+  CG2O6   C-300            (N-300 N-300 S-100)
+  CG2N2   C-300            (N-300 N-300 C-900)
+  CG2O1   C-300            (N-300 O-100 H-100)
+  CG2O6   C-300            (O-100 O-900 O-900)
+  CG2DC1  C-300            (C-30[!1] (C-30[!1] C-30[!1]) C-400)
+  CG2O1   C-300            (N-300 (H-100 C-400) C-400 O-100)
+  CG2D1   C-300            (N-300 (H-100 C-400) C-400)
+  CG2DC1  C-300            (C-300 C-300 [X- & !O-]900)
+  CG2O4   C-300            (O-100 H-100)
+  CG2O3   C-300            (O-100 O-100)
+  CG2O2   C-300            (O-100 O-200)
+  CG2O1   C-300            (O-100 N-300)
+  CG2O5   C-300            (O-100)
+  CG2D2O  C-300            (C-300 (H-100 H-100) $-900)
+  CG2D1O  C-300            (C-300 $-900)
+  CG2D2   C-300            (C-300 H-100 H-100)
+  CG2D1   C-300            (C-300 H-100)
+  CG2D1   C-300            (C-300 C-400)
+  CG2O7   C-200            (O-100 O-100)
+  CG1T1   C-200            (C-200)
+  CG2D1   C-300            (N-200 (C-900))
+  CG1N1   C-200            (N-100)
+ 
+  NG3P3   N-400            (C-900 H-100 H-100 H-100)
+  NG3P2   N-400            (C-900 C-900 H-100 H-100)
+  NG3P2   N-400            (C-900 N-900 H-100 H-100)
+  NG3P1   N-400            (C-900 C-900 C-900 H-100)
+  NG3P0   N-400            (C-900 C-900 C-900 C-900)
+
+; 6/5-mem ring bridging N:
+  NG2RC0  N-3[5 & 6]1      (C-3[6 & 5]1 C-351 C-361)
+
+  NG2R52  N-351            (H-100 C-351 (N-351 (H-100)))
+  NG2R51  N-351
+  NG2R53  N-35[!1]         (C-35[!1] (O-100))  
+  NG3C51  N-35[!1]         (H-100)
+  NG311   N-361            (C-3[6 & 6]1 C-3[6 & 6]1 H-100)
+  
+; Protonated pyridine and nicotinamide:
+  NG2R61  N-361
+
+  NG3C51  N-350            (N-450 (H-100) C-400)
+  NG3C51  N-350            (N-350 C-400)    
+  NG2R52  N-350            (C-350 H-100 C-450)
+
+  NG2R61  N-360            (C-360 (O-100) C-360 (N-260 N-300))
+  NG2R61  N-360            (C-360 (O-100) C-490 (O-200))
+  NG2R61  N-360            (C-360 (O-100) C-360 (O-100))
+  NG2R61  N-360            (C-360 (O-100) C-360 (C-360))
+
+  NG331   N-300            (H-100 H-100 H-100)
+  NG2O1   N-300            (C-391 O-100 O-100)
+  
+  
+  NG2S1   N-300            (C-391 C-30[!1] (O-100))
+  
+  NG2S3   N-300            (C-391)
+
+  NG2S3   N-300            (C-360 (C-360 N-260 (C-360 (O-100 N-360))))
+  NG2S3   N-300            (C-360 (N-360 N-260))
+
+  NG301   N-300            (C-400 (H-100 H-100 H-100) C-400 (H-100 H-100 H-100) C-400 (H-100 H-100 H-100))
+  NG311   N-300            (C-400 (H-100 H-100 H-100) C-400 (H-100 H-100 H-100) H-100)
+  NG311   N-300            (C-400 (H-100 H-100 H-100) C-300 (N-200) H-100)
+  NG3N1   N-300            (H-100 H-100 N-300 (H-100 H-100))
+  NG2S2   N-300            (C-300 (O-100) H-100 H-100)
+  NG2S1   N-300            (C-300 (O-100) H-100 #-900)
+  NG301   N-300            (C-400 C-300 (C-300 (C-400)))
+  NG311   N-300            (C-300 (C-300 (C-400)) H-100)
+  NG2S0   N-300            (C-300 (O-100) #-900 #-900)
+  NG2S0   N-300            (S-400 (O-100 O-100) #-900 #-900)
+  NG2P1   N-300            (C-300 (N-300 N-300 C-400) H-100 H-100)
+  NG2P1   N-300            (C-300 (C-400) C-400 H-100)
+  NG2P1   N-300            (C-300 (N-300 N-300 N-300))
+  NG321   N-300            (C-300 (N-200) H-100 H-100)
+  NG2R52  N-300            (C-300 H-100)
+  NG321   N-300            (C-900 H-100 H-100)
+  NG2S3   N-300            (P-400 (O-200 O-100 O-100))
+  NG301   N-300            (O-200)
+
+  NG2R62  N-261            (C-361 (N-261 N-261))
+  NG2R62  N-261            (N-261)
+  NG2R60  N-261
+  NG2R62  N-260            (C-360 ($-960))
+  NG2R50  N-250
+  NG2D1   N-200            (C-300)
+  NG2D1   N-200
+
+  NG1T1   N-100            (C-200)
+  NG1T1   N-100
+
+  OG2R50  O-251
+  OG301   O-220            (C-391 C-391)
+  OG3C51  O-250
+  OG3R60  O-260            (C-3[6 & 6]1 C-3[6 & 6]1)
+  OG3C61  O-260
+  OG301   O-200            (C-400 C-400)
+  OG301   O-200            (C-400 C-391)
+  OG302   O-200            (C-300 (O-100) C-400)
+  OG311   O-200            (H-100)
+  OG303   O-200            (N-900)
+  OG303   O-200            (P-900)
+  OG303   O-200            (S-900)
+
+  OG312   O-100            (C-400)
+  OG312   O-100            (C-361)
+  OG2D4   O-100            (C-360 (N-360 (C-360 (C-360) C-360) N-260 (C-360 (N-302))))
+  OG2D4   O-100            (C-360 (N-360 (C-360 (N-360) C-360) C-390))
+  OG2D4   O-100            (C-360 (N-360 (H-100 C-360 C-360) N-360 (C-400)))
+  OG2D4   O-100            (C-300 (N-360 (C-360 (N-260) C-360) C-391))
+  OG2N1   O-100            (N-300 (C-361))
+  OG2D1   O-100            (C-300 (H-100))
+  OG2D1   O-100            (C-300 (N-300))
+  OG2D1   O-100            (C-300 (O-200))
+  OG2D2   O-100            (C-300 (O-100 O-100))
+  OG2D3   O-100            (C-300)
+  OG2D5   O-100            (C-200 (O-100 O-100))
+  OG2P1   O-100            (P-900)
+  OG2P1   O-100            (S-900)
+
+  SG3O1   S-400            (O-900 O-900 O-900 O-900)
+  SG3O1   S-400            (O-100 O-100 N-300 C-900)
+  SG301   S-400            (O-100 O-100)
+  SG301   S-300            (O-100 X-900 X-900)
+  SG2R50  S-251
+  SG301   S-200            (S-200)
+  SG311   S-200
+  SG302   S-100            (C-400)
+  SG302   S-100            (C-300)
+
+  PG3     P-400            (O-200 (P-400 P-400) O-200 (H-100))
+  PG2     P-400            (O-200 (P-400 P-400))
+  PG1     P-900
+
+  CLGR1   Cl100            (C-391)
+  CLGA3   Cl100            (C-400 (Cl100 Cl100 Cl100))
+  CLGA1   Cl100            (C-400)
+
+  BRGR1   Br100            (C-391)
+  BRGA3   Br100            (C-400 (Br100 Br100 Br100))
+  BRGA2   Br100            (C-400 (Br100 Br100))
+  BRGA1   Br100            (C-400 (Br100))
+
+  IGR1    I-100            (C-391)
+
+  FGR1    F-100            (C-391)
+  FGA3    F-100            (C-400 (F-100 F-100 F-100))
+  FGA2    F-100            (C-400 (F-100 F-100))
+  FGA1    F-100            (C-400 (F-100))
+  FGP1    F-100            (Al400)
+
+  ALG1    Al400            (F-100 F-100 F-100 F-100)
+
+  SG301   Se200
+
+  ; Ions
+
+  CAL     Ca000                                         ; calcium ion
+  CES     Cs000                                         ; cesium ion
+  FE      Fe900                                         ; heme iron
+  POT     K-000                                         ; potassium ion
+  MG      Mg000                                         ; magnesium ion
+  SOD     Na000                                         ; sodium ion
+  ZN      Zn900                                         ; zinc (II) ion
+
+  ; Others
+
+  DUM     Du900                                         ; dummy atom
+  HE      He000                                         ; helium
+  NE      Ne000                                         ; neon

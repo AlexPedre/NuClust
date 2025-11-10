@@ -1,0 +1,112 @@
+#TemplateFF BOND 1.0
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; ****      Bond types      ****
+; ******************************
+
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+; Bond types
+; ~~~~~~~~~~
+; 0     = Atom not bonded
+; 1     = Single bond
+; 2     = Double bond
+; 3     = Triple bond
+; 4     = Partial double bond
+
+
+; Bond Atm    Bonded atoms
+; ========================================================================
+
+; 2    C-351 (C-351 (N-351))
+; 2    C-351 (N-351)
+  1    C-400
+  4    C-391
+  4g   C-300 (N-300 N-300 N-300)                 ; Protonated guanidine carbon  
+  4    C-300 (O-100 O-100)                       ; Carboxylate carbon
+  2c   C-300 (O-100)
+  2c   C-300 (S-100)
+  2    C-300
+  2    C-200 (O-100 O-100)
+  3    C-200 (C-200)
+  3    C-200 (N-100) 
+
+; 1    N-351
+  4    N-391
+  4g   N-300 (C-300 (N-300 N-300 N-300))         ; Protonated guanidine nitrogen
+  4    N-300 (O-100 O-100)
+  1    N-300
+  4    N-291
+  2    N-200
+  3    N-100
+
+  4    P-400 (O-100 O-100 O-100 O-100)
+  4    P-400 (O-100 O-100 O-100 O-200)
+  4    P-400 (O-100 O-100 O-200 O-200)
+  2    P-400 (O-100 O-200 O-200 O-200)
+  2    P-400 (O-200 O-200 O-100 C-900)
+  2    P-400 (N-300 N-300 N-300 O-100)
+  2    P-400 (N-300 N-300 N-300 S-100)
+
+  4    O-100 (N-300 (O-100 O-100))
+  4    O-100 (C-300 (O-100 O-100))
+ 
+  2c   O-100 (C-300)                             ; Carboxylate oxygen
+  2c   O-100 (S-400 (O-100 O-100))
+  2    O-100 (S-300)                             ; Sulfoxyde 
+  2    O-100 (P-400 (O-100 O-200 O-200 O-200))
+  2    O-100 (P-400 (O-100 O-200 O-200 C-900))
+  2    O-100 (P-400 (N-300 N-300 N-300))
+  4    O-100 (P-400)
+  2    O-100
+
+  2c   S-100 (C-300)                             ; Sulfoxyde
+  2    S-100
+  2    S-300 (O-100 C-900 C-900)
+  2c   S-400 (O-100 O-100)
+  2    S-400
+
+  4    X-991
+  1    X-900
+  0    X-000
+

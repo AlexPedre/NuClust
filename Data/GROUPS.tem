@@ -1,0 +1,118 @@
+#TemplateFF GROUPS 3.0
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; ****   Functional groups  ****
+; ******************************
+
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm     Bonded atoms
+; ========================================================================
+
+  COOH   C-300    (O-200 (H-100) O-100)                             ; Carboxylic acid
+  COOR   C-300    (O-200 (C-900) O-100)                             ; Ester
+  CHO    C-300    (O-100 H-100 C-900)                               ; Aldehyde
+  COOH   C-300    (O-100 O-100 C-900)                               ; Carboxylic acid
+  CON2   C-300    (O-100 N-300 N-300)                               ; Urea
+  CON    C-300    (O-100 N-300 (H-100))                             ; Primary amide
+  CON    C-300    (O-100 N-300 (C-900 C-900))                       ; Secondary amide
+  OCOO   C-300    (O-200 O-200 O-100)                               ; Carbonate
+  COCl   C-300    (O-100 Cl100)                                     ; Acyl chloride
+  COBr   C-300    (O-100 Br100)                                     ; Acyl bromide
+  CN3    C-30[!1] (N-300 N-300 N-300)                               ; Guanidine protonated
+  CN3    C-30[!1] (N-200 N-300 N-300)                               ; Guanidine
+    
+  CNH    C-300    (N-200 H-100)                                     ; Aldimine
+  CNR    C-300    (N-200)                                           ; Imine
+  CO     C-300    (O-100)                                           ; Ketone
+  OCN    C-200    (N-100 O-200)                                     ; Cyanate 
+  NCO    C-200    (N-200 O-100)                                     ; Isocyanate
+  NCS    C-200    (N-200 S-100)                                     ; Tiocyanate
+  CN     C-200    (N-100 C-900)                                     ; Nitrile
+  
+  N1     N-400    (C-400 H-100 H-100 H-100)                         ; Primary amine
+  N2     N-400    (C-400 C-400 H-100 H-100)                         ; Secondary amine
+  N3     N-400    (C-400 C-400 C-400 H-100)                         ; Tertiary amine
+  N+     N-400                                                      ; Ammonium salt
+  NP     N-391                                                      ; Aromatic planar nitrogen
+  N1     N-300    (C-400 H-100 H-100)                               ; Primary amine
+  N2     N-300    (C-400 C-400 H-100)                               ; Secondary amine
+  NO3    N-300    (O-200 O-100 O-100)                               ; Nitrate
+  NO2    N-300    (O-100 O-100)                                     ; Nitrite
+  N3     N-300    (C-400 C-400 C-400)                               ; Tertiary amine
+  N3     N-300    (C-400 C-400 C-391)                               ; Tertiary amine
+  NP     N-291                                                      ; Aromatic planar nitrogen
+  NNN    N-200    (N-100 N-200)                                     ; Azide
+  NO     N-200    (O-100)                                           ; Nitrose
+  NC     N-200    (C-100)                                           ; Isocyanide
+    
+  OH2    O-200    (H-100 H-100)                                     ; Water
+  OH     O-200    (H-100 C-400)                                     ; Alchol
+  PhOH   O-200    (H-100 C-991)                                     ; Phenol
+  OR2    O-200    (C-900 C-900)                                     ; Ether
+  2O2    O-100    (O-100)                                           ; Peroxyde
+
+  SO3H   S-400    (O-200 (H-100) O-100 O-100)                       ; Sulfonic acid
+  SO3H   S-400    (O-100 O-100 O-100)                               ; Sulfonic acid
+  SO2    S-400    (O-100 O-100)                                     ; Sulfone
+  SO     S-300    (O-100)                                           ; Sulfoxide
+  SH     S-200    (H-100)                                           ; Thiol
+  SR2    S-200    (C-400 C-400)                                     ; Thioether
+  2S2    S-200    (S-200)                                           ; Disulfide
+
+  PO4    P-400    (O-200 (H-100) O-200 (H-100) O-200 (H-100) O-100) ; Phosphate
+  PO4    P-400    (O-200 (H-100) O-200 (H-100) O-200 O-100)         ; Phosphate
+  PO4    P-400    (O-200 (H-100) O-100 O-100 O-100)                 ; Phosphate 
+  PO4    P-400    (O-100 O-100 O-100 O-100)                         ; Phosphate
+  PO3    P-400    (O-200 (H-100) O-200 (H-100) O-100)               ; Phosphonate
+  PO3    P-400    (O-200 (H-100) O-100 O-100)                       ; Phosphonate
+  PO3    P-400    (O-100 O-100 O-100)                               ; Phosphonate
+  P3     P-300                                                      ; Phosphine
+
+  F      F-900                                                      ; Fluoride
+  Cl     Cl900                                                      ; Chloride
+  Br     Br900                                                      ; Bromide
+  I      I-900                                                      ; Iodidie
+
+  X      X-900

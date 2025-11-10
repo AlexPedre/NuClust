@@ -1,0 +1,334 @@
+#TemplateHyb PROTEIN 1.0
+
+; *************************************
+; **** VEGA Hybridization Template ****
+; ****         for Proteins        ****
+; *************************************
+
+
+; Description:
+; ~~~~~~~~~~~~
+; This template is usefufl to find angle distorsion in the protein structure in order
+; to correctly add the hydrogens.
+
+; Residue = residue name
+; Atom    = atom name
+; Warn    = show a warning message if the computed hybridization is wrong
+; Type    = atom type (Meng):
+;           C1   = C sp
+;           C2   = C sp2
+;           C3   = C sp3
+;           C+   = C protonated guanidine
+;           Cac  = C carboxylic
+;           N1   = N sp
+;           N2   = N sp2
+;           N3   = N sp3
+;           N3+  = N sp3 positively charged
+;           Npl  = N planar
+;           Nam  = N amidic
+;           Ng+  = N protonated guanidine
+;           Nim  = N in five member ring
+;           NimH = N in five member ring with hydrogen
+;           O2   = O sp2
+;           O3   = O sp3
+;           O-   = O carboxylate
+;           S3   = S sp3
+
+
+; Residue  Atom    Warn    Types
+; ========================================================================
+  HOH      O       1       O
+  CA       CA      0       ?
+
+  *        N       0       Nam Nim N3+
+  *        CA      1       C3
+  *        C       1       C2 Cac
+  *        O       0       O2 O-
+
+  ALA      CB      1       C3
+
+  ARG      CB      1       C3
+  ARG      CG      1       C3
+  ARG      CD      1       C3
+  ARG      NE      1       Ng+
+  ARG      CZ      1       C+
+  ARG      NH1     1       Ng+
+  ARG      NH2     1       Ng+
+
+  ASP      CB      1       C3
+  ASP      CG      1       Cac
+  ASP      OD1     1       O-
+  ASP      OD2     1       O-
+
+  ASN      CB      1       C3
+  ASN      CG      1       C2
+  ASN      OD1     1       O2
+  ASN      ND2     1       Nam
+
+  CSX      CB      1       C3
+  CSX      SG      1       S3
+  CSX      OD      1       O3
+
+  CYD      CB      1       C3
+  CYD      SG      0       S2
+
+  CYS      CB      1       C3
+  CYS      SG      1       S3
+  
+  GLN      CB      1       C3
+  GLN      CG      1       C3
+  GLN      CD      1       C2
+  GLN      OE1     1       O2
+  GLN      NE2     1       Nam
+
+  GLU      CB      1       C3
+  GLU      CG      1       C3
+  GLU      CD      1       Cac
+  GLU      OE1     1       O-
+  GLU      OE2     1       O-
+
+  HIS      CB      1       C3
+  HIS      CG      1       C2
+  HIS      ND1     1       Nim
+  HIS      CD2     1       C2
+  HIS      CE1     1       C2
+  HIS      NE2     1       NimH
+
+  HIP      CB      1       C3
+  HIP      CG      1       C2
+  HIP      ND1     0       NimH
+  HIP      CD2     1       C2
+  HIP      CE1     1       C2
+  HIP      NE2     0       NimH
+
+  ILE      CB      1       C3
+  ILE      CG1     1       C3
+  ILE      CG2     1       C3
+  ILE      CD1     1       C3
+
+  LEU      CB      1       C3
+  LEU      CG      1       C3
+  LEU      CD1     1       C3
+  LEU      CD2     1       C3
+
+  LYS      CB      1       C3
+  LYS      CG      1       C3
+  LYS      CD      1       C3
+  LYS      CE      1       C3
+  LYS      NZ      1       N3+
+
+  MET      CB      1       C3
+  MET      CG      1       C3
+  MET      SD      1       S3
+  MET      CE      1       C3
+
+  PHE      CG      1       C2
+  PHE      CD1     1       C2
+  PHE      CD2     1       C2
+  PHE      CE1     1       C2
+  PHE      CE2     1       C2
+  PHE      CZ      1       C2
+
+  PRO      CB      1       C3
+  PRO      CG      1       C3
+  PRO      CD      1       C3
+  PRO      N       1       Nam
+
+  HYP      CB      1       C3  
+  HYP      CG      1       C3
+  HYP      CD      0       C3
+
+  SER      CB      1       C3
+  SER      OG      1       O3
+
+  THR      CB      1       C3
+  THR      OG1     1       O3
+  THR      CG2     1       C3
+
+  TRP      CB      1       C3
+  TRP      CG      1       C2
+  TRP      CD1     1       C2
+  TRP      CD2     1       C2
+  TRP      NE1     1       NimH
+  TRP      CE2     1       C2
+  TRP      CE3     1       C2
+  TRP      CZ2     1       C2
+  TRP      CZ3     1       C2
+
+  TYR      CB      1       C3
+  TYR      CG      1       C2
+  TYR      CD1     1       C2
+  TYR      CD2     1       C2
+  TYR      CE1     1       C2
+  TYR      CE2     1       C2
+  TYR      CZ      1       C2
+  TYR      OH      1       O3
+
+  VAL      CB      1       C3
+  VAL      CG1     1       C3
+  VAL      CG2     1       C3
+
+  URE      C1      1       C2
+  URE      O2      1       O2
+  URE      N3      0       Nam
+  URE      N6      0       Nam
+  
+; Natural -D
+
+  DAL      CB      1       C3
+
+  DAR      CB      1       C3
+  DAR      CG      1       C3
+  DAR      CD      1       C3
+  DAR      NE      1       Ng+
+  DAR      CZ      1       C+
+  DAR      NH1     1       Ng+
+  DAR      NH2     1       Ng+
+
+  DAS      CB      1       C3
+  DAS      CG      1       Cac
+  DAS      OD1     1       O-
+  DAS      OD2     1       O-
+
+  DSG      CB      1       C3
+  DSG      CG      1       C2
+  DSG      OD1     1       O2
+  DSG      ND2     1       Nam
+
+  CSX      CB      1       C3
+  CSX      SG      1       S3
+  CSX      OD      1       O3
+
+  DGN      CB      1       C3
+  DGN      CG      1       C3
+  DGN      CD      1       C2
+  DGN      OE1     1       O2
+  DGN      NE2     1       Nam
+
+  DGL      CB      1       C3
+  DGL      CG      1       C3
+  DGL      CD      1       Cac
+  DGL      OE1     1       O-
+  DGL      OE2     1       O-
+
+  DHI      CB      1       C3
+  DHI      CG      1       C2
+  DHI      ND1     1       Nim
+  DHI      CD2     1       C2
+  DHI      CE1     1       C2
+  DHI      NE2     1       NimH
+
+  DHIP     CB      1       C3
+  DHIP     CG      1       C2
+  DHIP     ND1     0       NimH
+  DHIP     CD2     1       C2
+  DHIP     CE1     1       C2
+  DHIP     NE2     0       NimH
+
+  DIL      CB      1       C3
+  DIL      CG1     1       C3
+  DIL      CG2     1       C3
+  DIL      CD1     1       C3
+
+  DLE      CB      1       C3
+  DLE      CG      1       C3
+  DLE      CD1     1       C3
+  DLE      CD2     1       C3
+
+  DLY      CB      1       C3
+  DLY      CG      1       C3
+  DLY      CD      1       C3
+  DLY      CE      1       C3
+  DLY      NZ      1       N3+
+
+  MED      CB      1       C3
+  MED      CG      1       C3
+  MED      SD      1       S3
+  MED      CE      1       C3
+
+  DPN      CG      1       C2
+  DPN      CD1     1       C2
+  DPN      CD2     1       C2
+  DPN      CE1     1       C2
+  DPN      CE2     1       C2
+  DPN      CZ      1       C2
+
+  DPR      CB      1       C3
+  DPR      CG      1       C3
+  DPR      CD      1       C3
+  DPR      N       1       Nam
+
+  DSN      CB      1       C3
+  DSN      OG      1       O3
+
+  DTH      CB      1       C3
+  DTH      OG1     1       O3
+  DTH      CG2     1       C3
+
+  DTR      CB      1       C3
+  DTR      CG      1       C2
+  DTR      CD1     1       C2
+  DTR      CD2     1       C2
+  DTR      NE1     1       NimH
+  DTR      CE2     1       C2
+  DTR      CE3     1       C2
+  DTR      CZ2     1       C2
+  DTR      CZ3     1       C2
+
+  DTY      CB      1       C3
+  DTY      CG      1       C2
+  DTY      CD1     1       C2
+  DTY      CD2     1       C2
+  DTY      CE1     1       C2
+  DTY      CE2     1       C2
+  DTY      CZ      1       C2
+  DTY      OH      1       O3
+
+  DVA      CB      1       C3
+  DVA      CG1     1       C3
+  DVA      CG2     1       C3
+
+; Non natural -L
+
+  AZDA     CB      1       C3
+  AZDA     NG      0       N2
+  AZDA     ND      0       N2
+  AZDA     NE      0       N1
+
+  CHP      CB      1       C2
+
+  CPG2     CB      1       C2
+  CPG3     CB      1       C2
+  CPG4     CB      1       C2
+  FPG2     CB      1       C2
+  FPG3     CB      1       C2
+  FPG4     CB      1       C2
+  LVG      CB      1       C2
+  
+  CSE      CB      1       C3
+  CSE      SE      1       S3
+
+; Non natural -D
+
+  
+  DZDA     CB      1       C3
+  DZDA     NG      0       N2
+  DZDA     ND      0       N2
+  DZDA     NE      0       N1
+
+  DCHP     CB      1       C2
+
+  DCG5     CB      1       C2
+  DCG6     CB      1       C2
+  DCGD     CB      1       C2
+  DFP6     CB      1       C2
+  DFP7     CB      1       C2
+  DFP8     CB      1       C2  
+  DLVG     CB      1       C2
+  
+  DCSE     CB      1       C3
+  DCSE     SE      1       S3
+
+; Pattern
+
+  *        CB      1       C3

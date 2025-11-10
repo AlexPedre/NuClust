@@ -1,0 +1,26 @@
+#Hydrogen_bonds
+
+; ******************************
+; ****  VEGA Template V3.0  ****
+; ****    Hydrogen bonds    ****
+; ******************************
+
+
+; Reference:
+; F. H. Allen, O. Kennard and D. G. Watson
+; "Tables of Bond Lengths determined by X-Ray and Neutron Diffraction. Part 1
+; Bond Lengths in Organic Compounds"
+; J. Chem. Soc. Perkin Trans. II 1987
+
+; Donor    Acceptor  MinLen  MaxLen
+; ======================================
+  N-H         N       2.88    3.38
+  N-H         O       2.55    3.52
+  N-H         F       2.62    3.01
+  N-H         Cl      2.91    3.52
+  N-H         Br      3.28    3.44
+
+  O-H         N       2.62    2.93
+  O-H         O       2.36    3.36
+  O-H         Cl      2.86    3.21
+  O-H         Br      3.17    3.38

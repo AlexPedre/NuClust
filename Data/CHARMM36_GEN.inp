@@ -1,0 +1,6 @@
+*
+* CHARMM 36 parameters file for VEGA ZZ
+*
+INCLUDE "Parameters/par_all36_cgenff.prm"
+INCLUDE "Parameters/par_all36_cgenff_vega.inp"
+INCLUDE "Parameters/par_all36_cgenff_user.inp"

@@ -1,0 +1,101 @@
+#TemplateFF AM1BCC 1.0
+
+; ******************************
+; ****  VEGA Template V3.0  ****
+; ****  Force Field AM1BCC  ****
+; ******************************
+
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  91   H-100
+
+  11   C-400
+  17   C-351  (N-251)
+  17   C-351  (O-251)
+  16   C-391
+  14   C-300  (O-100)
+  14   C-300  (S-100)
+  13   C-300  (P-200)
+  13   C-300  (N-200)
+  12   C-300  (C-300)
+  15   C-200
+  15   C-100
+
+  21   N-400
+  23   N-351
+  23   N-300  (C-300 (N-300 N-300 N-300))
+  23   N-300  (C-300 (N-200 N-300 N-300))
+  23   N-300  (O-100 O-100)
+  22   N-300  (C-300 (O-100))
+  22   N-300  (C-300 (S-100))
+  21   N-300
+  24   N-291
+  25   N-200
+  25   N-100
+
+  31   O-200
+  33   O-100  (C-390 (O-290))
+  33   O-100  (C-390 (N-390))
+  32   O-100  (C-300 (O-100 O-100))
+  32   O-100  (C-300 (O-100 O-200))
+  31   O-100
+
+  42   P-400
+  42   P-300  (O-100)
+  41   P-300
+  41   P-200
+
+  53   S-400
+  52   S-300
+  51   S-200
+  51   S-100
+
+  61   Si400
+
+  71   F-100
+  72   Cl100
+  73   Br100
+  74   I-100

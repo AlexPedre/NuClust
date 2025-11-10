@@ -1,0 +1,368 @@
+#TemplateFF CHARMM 3.1
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; ****  Force Field CHARMM  ****
+; ******************************
+
+; WARNING: this template requires the parm.prm file that is copyrighted by
+; MSI/Accelrys and it's not included in VEGA package. To use it in MM/MD
+; calculations (e.g. AMMP and NAMD), you must have got a MSI/Accelrys product
+; and copy the parm.prm file to the ...\VEGA ZZ\Data\Parameters directory.
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  HA   H-100  (C-900)
+  HC   H-100  (N-400)
+  HC   H-100  (N-300 (C-300 (N-300 N-300 N-300)) H-100 H-100)
+  HC   H-100  (N-[2 | 3]20 (C-320 (N-20[!1] N-30[!1] N-30[!1])))
+  H    H-100  (N-300)
+  H    H-100  (N-200)
+  HT   H-100  (O-200 (H-100 H-100))
+  HO   H-100  (O-200 (C-400))
+  H    H-100  (O-200)
+  H    H-100  (P-900)
+  H    H-100  (F-100)
+  H    H-100  (S-200)
+  H    H-100  (S-400)
+  H    H-100  (Se900)
+  HMU  H-100  (B-300)
+  HMU  H-100  (Si300)
+  HMU  H-100  (Na900)
+  HMU  H-100  (Li900)
+  HMU  H-100  (Al900)
+  H    H-100  (X-900)
+
+  CT3  C-430
+  CT4  C-440
+  CF3  C-400  (F-100 F-100 F-100)
+  CF2  C-400  (F-100 F-100)
+  CF1  C-400  (F-100)
+  CT   C-400
+  C3   C-330  (O-100 C-400)
+  C4   C-340  (O-100 C-300 (O-100))
+  C4   C-340  (O-100 C-400)
+;  CPH2 C-351  (N-351 N-251) 
+;  CPH2 C-351  (N-351 N-351) 
+;  CPH1 C-351  (N-251)
+
+  C5RP C-3[5 & !9]1 (#-951 #-951 #-951) 
+  CR55 C-3[5 & 5]1 (#-951 #-951 #-951)
+  CR56 C-3[5 & 6]1 (#-951 #-951 #-961)
+  CR56 C-3[5 & 6]1 (#-9[5 & 6]1 #-9[5 & 6]1 #-951)
+
+  C    C-361  (O-100 N-261 C-391)
+  C    C-361  (O-100 N-261 N-361)
+
+  C6RP C-3[6 & !9]1 (#-961 #-961 #-961)
+  CR66 C-3[6 &  6]1 (#-961 #-961 #-961)
+
+  C5R  C-3[5 & !6]1 (#-951 #-991 X-900)
+  C5R  C-3[5 & 6]1 (#-9[5 & 6]1 #-951 #-960)         ; 5 aromatic condensed to 6 alyphatic
+  C6R  C-361  (#-961 #-961 X-900)
+  C    C-300  (N-300 (O-200) N-300 C-400)            ; R3C-C(=NR2)NROR
+  C    C-300  (N-300 N-300 N-300)                    ; R2NC(NR2)NR2+
+  C    C-300  (N-200 N-300 N-300)                    ; R2NC(NR)NR2
+  C    C-300  (N-200 (O-200 (H-100)))                ; R2C=N-OH
+; CP3  C-300  (O-100 N-350)
+  C    C-300  (O-100 X-900 X-900)                    ; R2C=O
+  C    C-300  (S-200 (O-100))                        ; R2C=S=O
+  C    C-300  (S-100)                                ; R2C=S
+  C    C-300  (N-100)                                ; R2C=N
+; CUA2 C-300  (C-300 C-300 C-300)
+  CUA2 C-300  (S-200 S-200 N-200)
+  CUA2 C-300  (S-200 S-200 X-300)
+; CUA2 C-300  (C-300 C-300)
+  CUA1 C-300  (N-400 (H-100) C-400 H-100)            ; R4C-CH=NH(+)-R2
+  CUA1 C-300  (N-300 (C-400 H-100))                  ; R2C=NH-CR3
+  CUA1 C-300  (N-300 (O-100))                        ; R2C=N-O
+  CUA1 C-300  (N-300 (C-400 C-400) C-400 S-200)      ; R2N(+)=C(R)SR
+  CUA1 C-300  (C-300)                                ; R2C=CR2
+  CUA1 C-300  (C-200)                                ; R=C(R)-C±R
+  CUA1 C-300  (N-300 (H-100))                        ; R2C=N(H+)-R
+  CUA1 C-300  (N-200)                                ; R2C=N-R
+  CUA1 C-300  (O-200)                                ; R=C(-R)-O-R
+  CUA1 C-300  (N-30[!1])                             ; R2C=N+R2
+  CUA1 C-300
+
+  C    C-200  (O-100 N-200)                          ; Isocyanate
+  CM   C-200  (O-100)
+  CUA2 C-200  (C-300 C-300)                          ; Allene
+  CUY2 C-200  (C-300 N-200)
+  CUY2 C-200  (C-300 O-100)
+  CUY2 C-200  (C-300 S-100)
+  CUY2 C-200  (C-200 C-200)
+  CUY1 C-200  (C-200)
+  CUY1 C-200  (N-200 S-100)
+  CUY1 C-200  (S-100)
+  CUY1 C-200  (N-200)
+  CUY1 C-100  (N-200)
+  CUY1 Du100  (N-200)
+  CUY1 C-200  (N-100)
+
+  NT   N-400
+
+  N5RP N-3[5 & !9]1 (#-951 #-951 #-951) 
+  N6RP N-3[6 & !9]1 (#-961 #-961 #-961)
+  NR55 N-3[5 & 5]1 (#-951 #-951 #-951)
+  NR56 N-3[5 & 6]1 (#-951 #-951 #-961)
+  NR66 N-3[6 & 6]1
+
+;  NR3  N-351 (C-351 (N-351 (H-100) N-351 (H-100)))
+;  NR1  N-351 (C-351 (N-251))
+  N5R  N-351
+  N6R  N-361 (C-361 (O-100) C-361)
+  N6R  N-361 (H-100)
+  N6R  N-361 (C-400)
+  N6R  N-361 (O-100)
+  NP   N-320 (O-100 C-900 C-900)
+  N3   N-330
+  NP   N-300 (N-200 (H-100) N-200 H-100)             ; R-N=NH=NH
+  NP   N-300 (N-200 (C-400) O-100 C-400)             ; R-N=N(O)-R
+  NO2  N-300 (O-100 O-100)
+  NP   N-300 (S-400 (O-100 O-100))
+  NP   N-300 (C-361 (N-261 N-261))
+  NP   N-300 (C-361 (N-261 C-391))
+  NC   N-300 (C-300 (N-300 N-300 N-300) H-100 H-100)
+  NC2  N-300 (H-100 C-30[!1] (N-200 (H-100) N-300 (H-100) N-300))          ; Neutral guanidine nitrogen
+  NP   N-300 (C-300 (O-100))                         ; Amide
+  NP   N-300 (C-300 (S-100))                         ; Tiamide
+  NP   N-300 (C-300 O-100 C-400)                     ; >C=N(-O)-
+  NP   N-300 (P-400 (O-100))                         ; Phosphamide
+  NP   N-300 (C-300 (N-300 N-300)) 
+  NT   N-300 (C-300 (N-200 N-300) O-200)
+  NP   N-300 (C-300 (N-200 N-300))
+  NP   N-300 (C-361)
+  NP   N-300 (C-351)
+  NP   N-300 (C-30[!1] H-100)                        ; R2C=NH-CR3
+  NP   N-300 (O-200 (H-100) N-200)                   ; R-N=N(OH)R (+)
+  NT   N-300
+
+;  NR2  N-251 (N-351 C-351)
+  N5R  N-251
+  NP   N-250 (C-350 (S-100 S-200) C-350)
+  NP   N-261 (C-361 (O-100) C-361 (O-100))
+  N6R  N-261
+  NP   N-250 (N-350 C-450)
+  NC2  N-200 (H-100 C-300 (N-300 (H-100 H-100) N-300))  ; Neutral guanidine nitrogen
+  NP   N-200 (N-300 (O-100) C-400)                   ; R-N=N(O)-R
+  NP   N-200 (N-300 (N-200 N-200) H-100)             ; R-N=NH=NH
+  NP   N-200 (N-300 (H-100 C-400) N-100)             ; N=N-NH-R
+  NP   N-200 (N-300 (N-200 N-200) C-400)             ; R-N=NH=NH
+  NP   N-200 (N-300 (C-400 N-300) O-200)             ; R3N-N(+)(R)=N-O-R
+  NP   N-200 (N-300 O-200)
+  NP   N-200 (C-300 (O-100) C-300)
+  NP   N-200 (C-300 O-200)
+  NP   N-200 (S-400 (O-100 O-100) N-300)             ; R2N-N(-)-SO2-R
+  NT   N-200 (C-400 C-400)                           ; Negatively charged
+  NT   N-200 (C-400 H-100)                           ; Negatively charged
+  NP   N-200 (S-400 (O-100) H-100)                   ; HN=S(=O)R2
+  NP   N-200 (S-400 (O-100) C-400)                   ; R3C-N=S(=O)R2
+  NP   N-200 (N-300 O-100)
+  NP   N-200 (N-300 (O-200 (H-100)) C-400)           ; R-N=N(OH)R (+) 
+  NP   N-200 (C-300)
+  NP   N-200 (C-200)
+  NP   N-200 (O-100 S-200)                           ; O=N-S-R
+  NP   N-200 (S-400 (O-100 O-100))                   ; R-N-SO2-R
+  NT   N-200 (C-100)
+  NT   N-200 (Du100)
+  N    N-200 (N-200 N-100)
+  NP   N-200 (N-400 (H-100))
+  NP   N-200 (N-200)
+  NP   N-200 (P-400 H-100)                           ; H-N=P-R3
+  NP   N-200 (P-400 P-400)                           ; R3P=N-PR3
+  NP   N-200 (N-300 N-300)                           ; R2N=N-NR2
+  N    N-200 (N-100)                                 ; N±N(+)-R
+  N    N-200 (O-100)                                 ; R-N=O
+  NP   N-200 
+  N    N-100
+  NX   N-350 (C-300 C-450 C-450)
+
+  O5R  O-251
+  O6R  O-261
+  OW   O-200 (H-100 H-100)
+  O2M  O-200 (Si900 Al900)
+  OSI  O-200 (Si900 Si900)
+  OS   O-200 (C-300 (O-100) C-900)
+  OE   O-200 (C-900 C-900)
+  OE   O-200 (O-200 C-900)
+; OPH  O-200 (P-400 H-100)
+  OT   O-200 (P-400 H-100)
+  OS   O-200 (P-400)
+  OS   O-200 (S-400)
+  OS   O-200 (S-300)
+  OS   O-200 (N-200 (C-300) C-400)
+  OT   O-200 (N-300 H-100)
+  OS   O-200 (N-300)
+  OT   O-200 (N-200)
+  OT   O-200 (H-100)
+  OE   O-200
+
+  OAC  O-100 (C-300 (O-100 O-200))
+  OAC  O-100 (C-300 (O-100 S-200))
+  OC   O-100 (C-300 (O-100 O-100))
+  OC   O-100 (P-300 (O-200 O-100 O-100))             ; RO-PO2(-)
+  OC   O-100 (S-300 (O-100 O-100))                   ; R-SO2(-)
+  O    O-100 (P-400 (O-200 C-400 H-100))             ; R-PH(=O)-OR
+  O    O-100 (P-400 (O-200 O-200 H-100))             ; RO-PH(=O)-OR
+  O    O-100 (C-300 (Cl100))                         ; Acyl chloride
+  O    O-100 (C-300 (N-300))                         ; Amide
+  O    O-100 (C-300 (N-200))
+  O    O-100 (S-400)                                 ; Sulfate
+  O    O-100 (S-300)                                 ; Sulfite
+  O    O-100 (N-300 (O-100 O-100))                   ; Nitro
+  O    O-100 (C-200 (N-200))                         ; Isocyanate
+  O    O-100 (P-300)
+  OSI  O-100 (Si900)
+  OA   O-100 (C-300 (H-100))
+  OK   O-100 (C-300 (C-900 C-900))
+  OC   O-100 (N-400)                                 ; N-oxyde
+  OC   O-100 (N-300)                                 ; Hydroxamate oxygen
+  O    O-100 (N-200 (S-200))                         ; O=N-S-R
+  OC   O-100 (N-200)
+  O    O-100 (P-400 (O-200 O-200 O-100 S-200))       ; Tiophosphate
+  O    O-100 (P-400 (S-200 S-200 O-100 S-200))
+  O    O-100 (P-400 (N-300 N-300 O-100 F-100))
+  O    O-100 (P-400 (O-200 F-100 C-400))
+  O    O-100 (P-400 (O-200 O-200 O-100 C-900))       ; Protonated phosphonate
+  O    O-100 (P-400 (O-200 O-200 O-200 O-100))       ; Protonated phosphate
+  O    O-100 (P-400 (O-200 S-200 C-400))
+  O    O-100 (P-400 (O-200 C-400 C-400))
+  O    O-100 (P-400 (O-200 N-300))                   ; Phosphamide
+  OC   O-100 (P-400)
+  OC   O-100 (As400)
+  OC   O-100 (C-400)
+  O    O-100 (C-300)
+  OM   O-100 (C-200)
+  O    O-100 (S-200)                                 ; O=S-R
+  O    O-100 (Se900)                                 ; O=Se
+  O    O-100 (Cl300)                                 ; R-Cl(=O)=O
+  O    O-100 (Mo900)
+  O    O-100 (V-400)
+  
+  P5R  P-951                                         ; Aromatic phosphorus in 5 member ring
+  P6R  P-961                                         ; Aromatic phosphorus in 6 member ring
+  PT   P-500                                         ; Phosphorane
+  PO4  P-400 (O-900 O-900 O-900 O-900)               ; Phosphate
+  PO3  P-400 (O-900 O-900 O-900)                     ; Phosphite
+  PO3  P-400 (H-100 O-900 O-900)
+  PT   P-400                                         ; Generic sp3 phosphorus
+  PUA1 P-300
+  PUY1 P-200
+
+  ST   S-600                                         ; R6S
+  
+  SO3  S-400  (O-200 O-200 O-100)
+  SO2  S-400  (O-200 (H-100) O-200 (H-100) N-300)    ; >N-S(OH)(OH)-R
+  SO3  S-400  (O-200 O-100 O-100)
+  SO3  S-400  (O-200 O-100 S-100)
+  SO3  S-400  (O-100 O-100 O-100)
+  SO2  S-400  (O-100 O-100)
+  SO2  S-400  (O-100 N-200)
+  SO2  S-400  (N-200 N-200)
+
+  SO3  S-300  (O-200 O-200 O-100)                    ; Sufite
+  SO1  S-300  (O-100)
+  SO1  S-300  (N-200)
+  ST   S-300
+
+  S5R  S-251  (X-951 X-951)
+  S6R  S-261  (X-961 X-961)
+  SE   S-200  (C-900 C-900)
+  ST   S-200
+  SK   S-100  (C-300)
+  SK   S-100  (P-400) 
+  ST   S-100
+
+  XAT  At900
+  XBR  Br900
+  XCL  Cl900
+  XF   F-900
+  XI   I-900
+
+  B    B-900
+  HE   He000
+  KR   Kr000
+  LP   Lp000
+  NE   Ne000
+  MAC  Ac900
+  MAG  Ag900
+  MAL  Al900
+  MAM  Am900
+  MAS  As900
+  MAU  Au900
+  MBA  Ba000
+  MBE  Be000
+  MCA  Ca000
+  MCR  Cr900
+  MCS  Cs900
+  MCU  Cu900
+  MFE  Fe900
+  MGE  Ge900
+  MK   K-000
+  MHG  Hg900
+  MLI  Li000
+  MMG  Mg900
+  MMN  Mn900
+  MMO  Mo900
+  MNA  Na000
+  MNI  Ni900
+  MOS  Os900
+  MPD  Pd900
+  MPT  Pt900
+  MRB  Rb900
+  MRH  Rh900
+  MRU  Ru900
+  MSI  Si900
+  MSE  Se900
+  MSN  Sn900
+  MSR  Sr900
+  MV   V-900
+  MYB  Yb900
+  MZN  Zn900
+  MZR  Zr900
+  RN   Rn000
+  XE   Xe000
+

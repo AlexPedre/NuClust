@@ -1,0 +1,82 @@
+#TemplateFF CHARMM22_LIPID 1.0
+
+; **************************************
+; ****      VEGA Template V4.0      ****
+; **** Force Field CHARMM22 Lipid ****
+; **************************************
+
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  HL   H-100  (C-400 (N-400))
+  HCL  H-100  (N-400)
+  HOL  H-100  (O-200)
+  HAL2 H-100  (C-300 (C-300 H-100 H-100))
+  HAL1 H-100  (C-300 (C-300 #-900))
+  HAL  H-100 
+  
+  CTL3 C-400  (H-100 H-100 H-100 #-900)
+  CTL2 C-400  (H-100 H-100 #-900 #-900)
+  CTL1 C-400  (H-100 #-900 #-900 #-900)
+  CEL2 C-300  (C-300 H-100 H-100)
+  CEL1 C-300  (C-300 H-100 #-900)
+  CL   C-300  (O-100)
+  
+  NH3L N-400  (H-100 H-100 H-100)
+  NTL  N-400
+  
+  OSL  O-200  (C-300 (O-100) C-400)
+  OSL  O-200  (P-400 (O-200 O-200 O-100 O-100) C-400)
+  OHL  O-200  (H-100)
+  O2L  O-100  (P-400 (O-200 O-200 O-100 O-100))
+  O2L  O-100  (S-400 (O-200 O-100 O-100 O-100))
+  OBL  O-100
+  
+  PL   P-400
+  SL   S-400
+  CLA  Cl000
+  SOD  Na000
+  MG   Mg000
+  K    K-000

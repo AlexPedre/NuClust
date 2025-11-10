@@ -1,0 +1,100 @@
+#TemplateFF VINA 1.0
+
+; ***********************************
+; ****     VEGA Template V4.0    ****
+; **** Force Field AUTODOCK VINA ****
+; ***********************************
+
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+
+; Type    Atm    Bonded atoms
+; ========================================================================
+
+  HD   H-100  (N-900)
+  HD   H-100  (O-200)
+  HD   H-100  (F-100)
+  H    H-100
+  
+  A    C-991
+  C    C-900
+  
+  N    N-400
+  N    N-300 (C-300 (O-100))
+  N    N-300 (C-300 (S-100))
+  N    N-300 (C-300 (N-200 N-200 N-200))
+  N    N-300 (C-300 (N-100 N-200 N-200))
+  N    N-300 (O-100 O-100)
+  N    N-300 (S-900)
+  NA   N-300
+  NA   N-200
+  NA   N-100
+  
+  OA   O-900
+  
+  SA   S-200
+  S    S-900
+  
+  P    P-900
+
+; Halogens
+
+  F    F-900
+  Cl   Cl900
+  Br   Br900
+  I    I-900
+
+; Metals
+
+  Ca   Ca900
+  Cd   Cd900
+  Cu   Cu900
+  K    K-900
+  Hg   Hg900
+  Mg   Mg900
+  Mn   Mn900
+  Na   Na900
+  Ni   Ni900
+  Fe   Fe900
+  U    U-900
+  Zn   Zn900
+

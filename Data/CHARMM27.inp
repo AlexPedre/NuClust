@@ -1,0 +1,7 @@
+*
+* CHARMM 27 parameters file for VEGA ZZ
+*
+INCLUDE "Parameters/par_all27_prot_na.prm"
+INCLUDE "Parameters/par_all27_lipid.prm"
+INCLUDE "Parameters/par_all27_vega.inp"
+INCLUDE "Parameters/par_all27_user.inp"

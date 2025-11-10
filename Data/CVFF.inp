@@ -1,0 +1,5 @@
+*
+* CVFF parameters file for VEGA ZZ
+*
+INCLUDE "Parameters/par_cvff.inp"
+INCLUDE "Parameters/par_cvff_user.prm"

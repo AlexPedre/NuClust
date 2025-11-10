@@ -1,0 +1,206 @@
+#TemplateFF UNIV 4.0
+
+; ******************************
+; ****  VEGA Template V4.0  ****
+; ****   UNIV atom types    ****
+; ******************************
+
+
+; ATDL atom description:
+; ~~~~~~~~~~~~~~~~~~~~~~
+; Element (2) - Bond order (1) - Ring indicator (1) - Aromatic indicator (1)
+;
+; The brackets indicates the length in characters of each field.
+
+; Generic elements:                     Bond order:
+; ~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~
+; X = Any atom                          0   = Atom not bonded
+; # = Heavy atom                        1-6 = Bond order
+; $ = Any atom excluding C and H        9   = Any bond order
+; @ = Halogen
+; - = None
+
+; Ring indicator:                       Aromatic indicator:
+; ~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~~~~~~
+; 0     = Don't check ring              0 = Don't check
+; 2     = Not inside a ring             1 = Aromatic
+; 3...7 = From 3 to 7 member ring
+; 9     = Generic ring
+
+; Logical operators:
+; ~~~~~~~~~~~~~~~~~~
+; to use the logical operators AND, OR and NOT (&, | and !), you must
+; place the expression between square brackets at the specified position:
+;
+; Examples:
+; [C- |  N-]900  -> the element can be carbon or nitrogen
+; [X- & !Cl]900  -> all elements but not chlorine
+; C-[4 | 3]00    -> sp3 or sp2 carbon
+; C-4[9 & 9]0    -> sp3 carbon in a double condensed ring
+; C-3[6 | 5][!1] -> sp2 carbon in 5 or 6 member ring not aromatic
+
+; Atom types:
+; ~~~~~~~~~~~
+; each not blank and not commented line (; is the remark indicator) must
+; include at least the atom type name (max. 8 characters) and the ATDL
+; description. Optionally, you can specify the bonded atoms placing them
+; between round brackets.
+
+; WARNING:
+; 4.0 templates use different routines that don't allow to select atoms
+; more than one time.
+
+
+; Type Atm    Bonded Atoms
+; =======================================================================================================
+  Hhyd  H-100 (O-300 (H-100 H-100))                                   ; H3O(+) (Hydronium)
+  HOS3  H-100 (O-200 (S-400))                                         ; H-O-S
+  H     H-100                                                         ; Generic hydrogen
+
+  CSO2  C-400 (S-400 (O-100 O-100 N-900))                             ; Sulfonamide
+  CSO2  C-400 (S-400 (O-100 O-100 C-900))                             ; Sulfone
+  C3    C-400                                                         ; Sp3 carbon
+  CSO2  C-300 (S-400 (O-100 O-100 N-900))                             ; Sulfonamide
+  CSO2  C-300 (S-400 (O-100 O-100 C-900))                             ; Sulfone
+  CS2   C-300 (S-100 C-900 C-900)                                     ; Tioketon
+  CG    C-300 (N-300 N-300 N-300)                                     ; Guanidine +
+  CG    C-300 (N-300 N-300 N-200 (C-300 (N-300 N-300)))               ; Biguanide +1
+  CAMI  C-30[!1] (N-30[!1] N-30[!1] C-301)                            ; Benzamidine +1
+  CAMI  C-30[!1] (N-30[!1] N-30[!1] C-400)                            ; Amidine +1
+  C2    C-300                                                         ; Sp2 carbon
+  C1    C-200                                                         ; Sp carbon
+  CN    C-100 (N-100)                                                 ; Nitrile
+
+  NNOX  N-400 (O-100)                                                 ; N-oxyde
+  NNOX  N-361 (O-100)                                                 ; Pyridine N-oxyde
+  N3+   N-400                                                         ; Ammonium salt
+  N3    N-361 (C-361 (O-100) C-361)
+
+  N3    N-351 (C-351 (N-200 N-351))                                   ; WARNING: to test...
+
+  NI+   N-351 (C-351 (N-351))
+  N3    N-351                                                         ; Aromatic N in five member ring
+  NP+   N-361                                                         ; Pyridinium 
+ 
+  NBG++ N-300 (C-300 (N-300 N-300) C-300 (N-300 N-300))               ; Biguanide +2
+  NBG   N-300 (C-320 (N-[2 | 3]00 (C-320 (N-300 N-300))))             ; Biguanide +1, +2
+  NG    N-300 (C-300 (N-300 N-300))                                   ; Guanidine +1
+  NAMI  N-30[!1] (C-30[!1] (N-30[!1] C-400))                          ; Amidine +1
+  NAMI  N-30[!1] (C-30[!1] (N-30[!1] C-301))                          ; Benzamidine +1
+
+  NSO2  N-300 (S-400 (O-100 O-100 C-900))                             ; R2N-SO2-R
+  NSO2- N-200 (S-400 (O-100 O-100 C-400))                             ; R(N-)-SO2-R
+  NSO2- N-200 (S-400 (O-100 O-100 C-301))                             ; R(N-)-SO2-Ar
+  N3    N-300
+  NBG+  N-200 (C-300 (N-300 N-300) C-300 (N-300 N-300))               ; Biguanide +1
+  NT1-  N-250 (N-250 (N-250) C-350 (N-250))                           ; Tetrazole 1,4 nitrogen (-)
+  NT2-  N-250 (N-250 (C-350) N-250 (N-250))                           ; Tetrazole 2,3 nitrogen (-)
+  N2    N-200                                                         ; Sp2 nitrogen
+  NC    N-100 (C-100)                                                 ; Nitrile 
+  N1    N-100                                                         ; Sp nitrogen
+
+  Ohyd  O-300  (H-100 H-100 H-100)                                    ; H3O(+) (Hydronium)
+  O3    O-200  (P-400 P-400)                                          ; Phosphodiester oxygen
+  O3    O-200  (P-400 C-900)
+;  OP    O-200  (P-400 (O-200 O-100 O-100))
+  OS4E  O-200  (S-400 (O-100 O-100 O-900))                            ; Sulphate -1
+;  OS1   O-200  (S-400 H-100)
+  O-    O-200  (C-300 Zn900)
+  O3    O-200
+
+  ON-   O-100  (N-300 (H-100 C-300 (O-100)))                          ; Hydroxamate oxygen
+  O3    O-100  (S-400 (O-100 O-200 (C-900) C-900))
+  OS4-  O-100  (S-400 (O-100 O-100 O-100))
+  OS4   O-100  (S-400 (O-100 O-100 O-900))
+
+  OS3   O-100  (S-400 (O-100 O-100 C-900))
+  OS2   O-100  (S-400 (O-100 C-900 C-900))
+  OS2   O-100  (S-400 (O-100 C-900 F-100))
+  OS2   O-100  (S-400 (O-100 C-900 Cl100))
+  OS2   O-100  (S-400 (O-100 N-300 C-900))
+  OS2   O-100  (S-400 (O-100 N-400 C-900))                            ; Sulfonamide (+) 
+  OS2   O-100  (S-400 (O-100 N-300 N-300))
+  OS2   O-100  (S-400 (O-100 N-200 N-300))
+  OS2   O-100  (S-400 (O-100 N-200 C-900))
+  OS2   O-100  (S-400 (O-100 O-200 C-900))                            ; Sulfone oxygen
+  OS2   O-100  (S-400 (O-100 O-200 N-300))                            ; Sulfonamide oxygen
+  OS2   O-100  (S-400 (O-100 H-100))                                  ; R-S(=O)(=O)-H
+  OS2   O-100  (S-400 (C-300 C-900 C-900))
+
+  OS1   O-100  (S-400)
+  OS1   O-100  (S-300)
+  O-    O-100  (C-300 (O-100))
+  ; Oar-  O-100  (C-360 (C-36[!1] (C-36[!1] (C-36[!1] (C-36[!1] (C-36[!1])))))) ; Ph-O(-)
+  ; Oen3- O-100  (C-300 (C-300 (C-300 (O-100) C-300 (O-100))))          ; R-C(=O)C=C(O-)C(=O)R
+  
+  ; Oen3- O-100  (C-300 (C-300 (O-100)) C-300 (C-300 (O-100)))          ; Deprotonated enol RC(=O)C(O-)=CC(=O)R
+  ; Oen3- O-100  (C-300 (C-300 (O-100 C-300 (C-300 (O-100)))))          ; Deprotonated enol RC(=O)C(O-)=CC(=O)R
+  ; Oen3- O-100  (C-300 (C-300 (C-300 (C-300 (O-100) O-100))))          ; Deprotonated enol RC(=O)C(O-)=CC(=O)R
+  
+  ; Oen-  O-100  (C-300 (C-300 (C-300) C-300 (N-300 (C-300 (O-100)))))  ; Deprotonated enol
+  ; Oen-  O-100  (C-300 (C-300 (O-100 N-300) C-300))                    ; Deprotonated enol R2C=C(O-)C(=O)NR2
+  ; Oen-  O-100  (C-300 (N-300 C-300 (C-300 (O-100))))                  ; Deprotonated enol R2NC(O-)=C(R)C(=O)
+  ; Oen-  O-100  (C-300 (C-300 (S-200) C-300))                          ; Deprotonated enol R2C=CC(O-)=CSR
+  ; Oen-  O-100  (C-300 (N-200 C-400))                                  ; Deprotonated enol R3CC(O-)=NR
+  ; Oen-  O-100  (C-300 (N-300 C-30[!1]))                               ; Deprotonated enol R2NC(O-)=CR2
+
+ 
+  OP    O-100  (P-400 (O-200 O-200 O-100))                            ; Phosphoric ester
+  OP    O-100  (P-400 (O-200 N-300 O-100))
+  OP    O-100  (P-400 (O-100 C-400 C-400))                            ; R-PO2(-)-R
+  OP    O-100  (P-400 (O-100 O-200 C-400))                            ; R-PO2(-)-OR
+  OP4   O-100  (P-400 (O-100 O-100 O-100))
+  OP=   O-100  (P-400 (O-100 O-100))                                  ; Phosphate -1
+  OP    O-100  (P-400 (O-100 H-100))                                  ; H2PO2(-) (Hypophosphorate)
+  OP-   O-100  (P-300 (O-200 O-100))                                  ; HPO3(2-) (Hydrogenphosphite)
+  ONOX  O-100  (N-400)                                                ; N-oxyde
+  ONOX  O-100  (N-361)                                                ; Pyridine N-oxyde
+  OH-   O-100  (H-100)                                                ; OH(-) Hydroxyl
+  O2    O-100
+
+  SO4   S-400  (O-100 O-100 O-900 O-900)
+  SO3H  S-400  (O-200 (H-100) O-100 O-100)
+  SO3-  S-400  (O-100 O-100 O-100 C-900)
+  SO2   S-400  (O-100 O-100 C-900 #-900)
+  SO2   S-400  (O-100 O-100 C-900 H-100)
+  SO2   S-400  (O-100 O-100 O-200 #-900)
+  SO2   S-400  (O-100 C-300 C-400 C-400)
+  SO1   S-300  (O-100 C-900 C-900)
+  S+    S-300
+  S-    S-200  (C-400 Zn900)
+  S3    S-200
+  S-    S-100  (C-400)
+  ;S-    S-100  (C-360 (C-360 C-360))                                  ; Ph-S(-)
+  S-    S-100  (C-350 (N-250 S-250))
+  S2    S-100  (C-300)
+  S2    S-100  (C-200)
+
+  P+    P-400  (C-400 C-400 C-400 C-400)
+  PN    P-400  (O-200 O-200 O-100 O-100)
+  PO4   P-400  (O-100 O-100 O-100 O-100)
+  P=    P-400  (O-100 O-100 O-100)
+  PHY   P-400  (O-100 O-100 H-100)                                    ; H2PO2(-) (Hypophosphorate)
+  PO-   P-300  (O-100 O-100 O-200)                                    ; HPO3(2-) (Hydrogenphosphite)
+  P     P-900
+  
+  F0    F-000
+  Cl0   Cl000
+  Br0   Br000
+  I0    I-000
+
+  F     F-900
+  Cl    Cl900
+  Br    Br900
+  I     I-900
+
+  Na    Na900
+  K     K-900
+  Ca    Ca900
+  Mg    Mg900
+  Mn    Mn900
+  Co    Co900
+  Cr3+  Cr000
+  Fe    Fe900
+  Zn    Zn900
+
+  Du    X-900

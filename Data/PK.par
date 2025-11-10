@@ -1,0 +1,106 @@
+#FF_Param PK
+  
+; ***************************************
+; ****        VEGA Parameters        ****
+; **** pKa parameters for ionization ****
+; ***************************************
+
+  
+; Actions for acids:
+; ~~~~~~~~~~~~~~~~~~
+; 0 - None
+; 1 - Remove all hydrogens
+; 2 - Remove one hydrogen sharing the same central atom (e.g. NH4(+))
+; 3 - Remove one hydrogen sharing a second central atom (e.g. H2(+)N=C(R)NH2)
+; 4 - Remove one hydrogen to one of two close amines
+;
+; Actions for bases:
+; ~~~~~~~~~~~~~~~~~~
+; 0 - None
+; 1 - Add all hydrogens
+; 2 - Add one hydrogen to one atom sharing a central atom (e.g R-COO(-))
+; 3 - Add one hydrogen to one atom sharing a second central atom (HN=C(R)NH2)
+; 4 - Add one hydrogen to one of two close amines
+
+
+;  Name         pKa      pKb       Acid action     Base action     Base hyb     Example
+; ====================================================================================================
+   F            3.18    10.82           1               1               3       HF
+   Cl          -6.50    20.50           1               1               3       HCl
+   Br          -8.50    22.50           1               1               3       HBr
+   I           -9.00    23.00           1               1               3       HI
+   Car         43.00   -29.00           0               1               2       Benzene
+   CN           9.30     4.70           1               1               1       Hydrogen cyanide
+   C           50.00   -36.00           2               1               3       Methane
+   Nar         16.50    -2.50           1               1               2       Pyrrole
+   NN         -99.99   113.99           1               1               1       Imino(oxo)azanium
+   Nam         22.00    -8.00           2               1               2       Acetamide
+   Nsam        10.10     3.90           2               1               3       Methanesulfonamide
+   NH3         32.50   -18.50           2               1               3       Ammonia
+
+   Nd11         9.90     4.10           4               4               3       1,1-diaminoethane
+   Nd12         6.50     7.10           4               1               3       1,1-diaminoethane (+)
+   Nd21         9.90     4.10           4               4               3       1,2-diaminoethane
+   Nd22         6.50     7.10           4               1               3       1,2-diaminoethane (+)
+   Nd31        10.60     3.40           4               4               3       1,3-diaminopropane
+   Nd32         8.90     5.10           4               1               3       1,3-diaminopropane (+)
+   Nd41        10.80     3.20           4               4               3       1,3-diaminopropane
+   Nd42         9.60     4.40           4               1               3       1,3-diaminopropane (+)
+
+   Nabno2       4.06     9.94           2               1               3       2-nitroethenamine (H2N-CH=CH-NO2)
+   Nhyd         2.40    11.60           2               2               3       Acetyl hydrazide R-CO-NH-NH2
+   Ni2+         7.00     7.00           4               1               2       Imidazole (+)
+   Npir+       -3.80    17.80           2               1               3       Pyrrole (+)
+   Npy+         5.23     8.77           1               1               2       Pyridine
+   NC+        -12.00    26.00           1               1               1       Acetonitrile (+)
+   Ngua+       14.40    -0.40           3               3               2       Guanidine (+)   
+   Ngno2+       6.00     8.00           3               3               2       Guanidine-NO2 (+)   
+   Namar+      11.60     2.40           3               3               2       Benzamidine (+)
+   N3ami+      12.40     1.60           3               1               2       Acetamidine (+)
+   NO+        -99.99   113.99           1               1               3       Nitrosomethane
+   Nani+        4.69     9.31           2               1               3       Aniline (+)
+   Nam+         4.74     9.26           2               1               3       Acetamide (+)
+   N4ami+     -99.99   113.99           0               0               0       Acetamidine
+   Nsam+      -99.99   113.99           2               1               3       Methanesulfonamide (+)
+   Nr3         10.50     3.50           1               1               3       Trimethylamine
+   Nr2         11.10     2.90           2               1               3       Dimethylamine (+)
+   Nr1         10.60     3.40           2               1               3       Methylamine (+)
+   Nr0          9.25     4.75           2               1               3       Ammonium (+)
+   Ow          15.70    -1.70           2               1               3       Water
+   Oph         10.00     4.00           1               1               3       Phenol
+   Obic        10.33     3.67           1               2               3       Bicarbonate (-)
+   Obz          4.20     9.80           1               2               3       Benzoic acid
+   Oac          4.80     9.20           1               2               3       Acetic acid
+   Oal         15.50    -1.50           1               1               3       Methanol
+   Onit        -1.40    15.40           1               2               3       Nitric acid
+   ONO+       -12.00    26.00           1               2               3       Nitromethane
+   Ohyx         9.40     4.60           1               1               3       Acetohydroxamic acid
+   Ooxi        12.34     1.66           1               1               3       Acetaldoxime
+   Ohyam2       5.20     8.80           1               1               3       N,N-Dimethylhydroxylamine
+   Ohyam1       5.96     8.04           1               1               3       N-Methylhydroxylamine
+   Ohyp         1.20    12.80           1               2               3       Hypophosphorous acid
+   OphoH3       2.14    11.86           3               2               3       Phosphoric acid
+   OphoH2       7.20     6.80           3               2               3       Dihydrogen phosphate 
+   OphoH1      12.50     1.50           1               2               3       Hydrogen phosphate (2-)
+   OphR1H2      1.60    12.40           3               2               3       Methylphosphate
+   OphR1H1      6.50     7.50           3               2               3       Methylphosphate (-)
+   OphR2H1      1.40    12.60           1               2               3       Dimethylphosphate
+   Opous        1.30    12.70           3               2               3       Phosphorous acid
+   OphiH        6.70     7.30           1               1               3       Hydrogen phosphite
+   Ophin        2.00    12.00           1               2               3       Phosphinic acid
+   Opnous      99.99   -85.99           1               2               3       Phosphonous acid
+   Opar         2.10    11.90           3               1               3       Hydroxyphenylphosphine oxide
+   Op           3.08    10.92           3               1               3       Methylphosphonous acid
+   OsulH        2.00    12.00           1               2               3       Hydrogen sulfate
+   Oson        -2.00    16.00           1               2               3       Methansulfonic acid
+   OsiteH       7.00     7.00           1               2               3       Bisulfite (-)
+   Osnic        1.80    12.20           1               2               3       Methanesulfinic acid
+   OH-         99.99   -85.99           0               1               3       Hydroxyl
+   Ow+         -1.74    15.74           2               1               3       Hydronium
+   Pine        29.00   -15.00           2               1               3       Phosphine
+   Pnium      -13.00    27.00           2               1               3       Phosphonium
+   Sac          3.52    10.48           1               1               3       Thioacetic acid
+   SHar         6.52     7.48           1               1               3       Benzenethiol
+   SH2          7.00     7.00           2               1               3       Hydrogen sulfide
+   SH          12.00     2.00           1               1               3       Methanethiol
+   SH2+        -7.00    21.00           1               1               3       Dimethyl sulfide (+)

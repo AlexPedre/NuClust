@@ -1,0 +1,6 @@
+*
+* CHARMM 22 parameters file for VEGA ZZ
+*
+INCLUDE "Parameters/parm.prm"
+INCLUDE "Parameters/parm_vega.prm"
+INCLUDE "Parameters/parm_user.prm"
