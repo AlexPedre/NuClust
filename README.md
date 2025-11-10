@@ -25,11 +25,20 @@ The software groups similar nucleotide sequences based on sequence similarity an
 
 ```bash
 git clone https://github.com/AlexPedre/NuClust.git
-cd NuClust/NuClust/Targets/YOUR_TARGET
+cd NuClust/NuClust/Targets/<MY_TARGET>
 make
 ```
 The precompiled binaries for Linux (x86, x64 and ARM) and Windows (x86 and x64) are in `NuClust/NuClust/Bin` directory.
-
+Remember to set both VEGADIR and LD_LIBRARY_PATH environment variables to make working the program:
+```bash
+export VEGADIR="<PACKAGE_ROOT_DIRECTORY>"
+export LD_LIBRARY_PATH="$VEGADIR/NuClust/Bin/MY_TARGET $LD_LIBRARY_PATH"
+export PATH="$VEGADIR/NuClust/Bin/<MY_TARGET>:$PATH"
+```
+For Windows OS, you need only to set the VEGADIR enviroment variable:
+```bash
+set VEGADIR="<PACKAGE_ROOT_DIRECTORY>"
+```
 ## 🧪 Usage
 ```
 NuClust 0.6.1.1 - (c) 2022-2025, Alessandro Pedretti
