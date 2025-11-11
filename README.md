@@ -3,9 +3,16 @@ NUPACK custering tool and DNA structure builder
 
 ## Overview
 **NuClust** is a C++ program designed for **biological sequence analysis** and **clustering** (e.g., DNA or RNA).  
-It implements **K-Means clustering** combined with **thermodynamic analysis** using **HyperDrive** and **VEGA** SDKs. 
+It implements **K-Means clustering** combined with **thermodynamic analysis** using **HyperDrive** and **VEGA* SDKs.
 
 The software groups similar nucleotide sequences based on sequence similarity and calculated energy parameters, supporting research in **bioinformatics**, **aptamer design**, and **oligonucleotide optimization**.
+Moreover, the program is able to build the 3D structure of DNA as single strand, to generate the restraint map for base pairing, according the secondary structure predicted by NUPACK and the input file for OpenMM molecular dynamics package. In detalis, the conversion to 3D consist of these steps:
+- build of the single strand chain;
+- optimization of the starting structure by conjugate gradients energy minimization (50,000 steps, Amber14 force field);
+- perform the simulated annealing keeping the restraints, heating the system from 300 to 800 K, equilibrating it for 10 ps and cooling from 800 to 300K.
+- this cycle is repeated 5 times;
+- the resulting structure is optimized with 50,000 steps of conjugate gradients minimization;
+- the resulting structure is insesrted into a water box.
 
 ---
 
