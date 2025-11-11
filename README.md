@@ -6,13 +6,13 @@ NUPACK custering tool and DNA structure builder
 It implements **K-Means clustering** combined with **thermodynamic analysis** using **HyperDrive** and **VEGA* SDKs.
 
 The software groups similar nucleotide sequences based on sequence similarity and calculated energy parameters, supporting research in **bioinformatics**, **aptamer design**, and **oligonucleotide optimization**.
-Moreover, the program is able to build the 3D structure of DNA as single strand, to generate the restraint map for base pairing, according the secondary structure predicted by NUPACK and the input file for OpenMM molecular dynamics package. In detalis, the conversion to 3D consist of these steps:
-- build of the single strand chain;
-- optimization of the starting structure by conjugate gradients energy minimization (50,000 steps, Amber14 force field);
-- perform the simulated annealing keeping the restraints, heating the system from 300 to 800 K, equilibrating it for 10 ps and cooling from 800 to 300K.
-- this cycle is repeated 5 times;
-- the resulting structure is optimized with 50,000 steps of conjugate gradients minimization;
-- the resulting structure is insesrted into a water box.
+Moreover, the program is capable of constructing the 3D structure of DNA as a single strand, generating the restraint map for base pairing based on the secondary structure predicted by NUPACK, and producing the input file for the OpenMM molecular dynamics package. Specifically, the conversion to 3D involves the following steps:
+- Construction of the single-stranded DNA chain;
+- Optimization of the initial structure using conjugate gradients energy minimization (50,000 steps, Amber14 force field);
+- Execution of simulated annealing while maintaining the restraints: the system is heated from 300 K to 800 K, equilibrated for 10 ps, and then cooled back to 300 K;
+- This annealing cycle is repeated five times;
+- The resulting structure is further optimized with an additional 50,000 steps of conjugate gradients minimization;
+- The optimized structure is inserted into a water box.
 
 ---
 
