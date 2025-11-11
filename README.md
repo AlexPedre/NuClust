@@ -12,7 +12,8 @@ Moreover, the program is capable of constructing the 3D structure of DNA as a si
 - Execution of simulated annealing while maintaining the restraints: the system is heated from 300 K to 800 K, equilibrated for 10 ps, and then cooled back to 300 K;
 - This annealing cycle is repeated five times;
 - The resulting structure is further optimized with an additional 50,000 steps of conjugate gradients minimization;
-- The optimized structure is inserted into a water box.
+- The optimized structure is inserted into a water box and neutralized with sodium couterions;
+- Optimization using conjugate gradients energy minimization (50,000 steps); 
 
 ---
 
