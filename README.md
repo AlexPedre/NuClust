@@ -13,8 +13,10 @@ Moreover, the program is capable of constructing the 3D structure of DNA as a si
 - This annealing cycle is repeated five times;
 - The resulting structure is further optimized with an additional 50,000 steps of conjugate gradients minimization;
 - The optimized structure is inserted into a water box and neutralized with sodium couterions;
-- Optimization using conjugate gradients energy minimization (50,000 steps); 
-
+- Optimization using conjugate gradients energy minimization (50,000 steps);
+- A NVT heating to 300 K is carried out (50000 steps), follwed by NPT equilibration (50000 steps);
+- Production MD simulation (NPT, 500000 steps, 1 ns)
+All simulation parameters can be chenged (see Data/NuClust/parameters.py)
 ---
 
 ## 🧩 System Requirements
