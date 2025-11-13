@@ -6,7 +6,7 @@ NUPACK custering tool and DNA structure builder
 It implements **K-Means clustering** combined with **thermodynamic analysis** using **HyperDrive** and **VEGA* SDKs.
 
 The software groups similar nucleotide sequences based on sequence similarity and calculated energy parameters, supporting research in **bioinformatics**, **aptamer design**, and **oligonucleotide optimization**.
-Moreover, the program is capable of constructing the 3D structure of DNA as a single strand, generating the restraint map for base pairing based on the secondary structure predicted by NUPACK, and producing the input file for the **OpenMM molecular dynamics package** (https://openmm.org/). Specifically, the conversion to 3D involves the following steps:
+Optionally, the program is capable of constructing the 3D structure of DNA as a single strand, generating the restraint map for base pairing based on the secondary structure predicted by NUPACK, and producing the input file for the **OpenMM molecular dynamics package** (https://openmm.org/). Specifically, the conversion to 3D involves the following steps:
 - Construction of the single-stranded DNA chain;
 - Optimization of the initial structure using conjugate gradients energy minimization (50,000 steps, Amber14 force field);
 - Execution of simulated annealing while maintaining the restraints: the system is heated from 300 K to 800 K, equilibrated for 10 ps, and then cooled back to 300 K;
@@ -16,7 +16,9 @@ Moreover, the program is capable of constructing the 3D structure of DNA as a si
 - Optimization using conjugate gradients energy minimization (50,000 steps);
 - A NVT heating to 300 K is carried out (50000 steps), follwed by NPT equilibration (50000 steps);
 - Production MD simulation (NPT, 500000 steps, 1 ns)
+
 All simulation parameters can be chenged (see Data/NuClust/parameters.py)
+
 ---
 
 ## 🧩 System Requirements
