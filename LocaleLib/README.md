@@ -9,4 +9,3 @@ Each catalog file must be placed in a subdirectory named after the target langua
 
 All software using this technology can run without catalog files, since the default language (e.g. English) is built into the source code.
 Catalogs are binary files in IFF format, and must be compiled from text files using a dedicated compiler.
-For this purpose, the LocaleLib package includes the FlexCat catalog compiler. Please refer to its documentation for instructions on creating the catalog descriptor, catalog translator, and include file.
