@@ -33,7 +33,7 @@ All simulation parameters can be chenged (see Data/NuClust/parameters.py)
 - **VEGA SDK** (included)
 - **OpenMM Package** to build 3D strucure of DNA by simulated annealing
 
-## 🧱 Installation and Compilation
+## 🧱 Installation and compilation
 
 ```bash
 git clone https://github.com/AlexPedre/NuClust.git
